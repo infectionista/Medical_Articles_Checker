@@ -2,9 +2,23 @@
 
 An automated tool to apply standard research reporting checklists to scientific articles. Supports CONSORT, PRISMA, STROBE, and custom genomics reporting guidelines.
 
+## 🆕 NEW: Detailed Check with Auto-Detection
+
+The new `detailed_check.py` script automatically:
+- 🔍 **Detects study type** from article content
+- 📋 **Selects appropriate checklist** from comprehensive reference table
+- ✅ **Applies evaluation** using local equivalent checklists
+- 📊 **Recommends external tools** for comprehensive appraisal
+
+**Supports 18+ study types** including RCTs, cohort studies, case series, systematic reviews, diagnostic accuracy, prognostic studies, and more!
+
+See [DETAILED_CHECK_GUIDE.md](DETAILED_CHECK_GUIDE.md) for complete documentation.
+
 ## Features
 
 - ✅ **Multiple Checklists**: CONSORT, PRISMA, STROBE, Genomics
+- 🤖 **Auto-Detection**: Automatic study type detection (NEW!)
+- 📋 **18+ Study Types**: Comprehensive coverage of research designs (NEW!)
 - 📄 **Format Support**: Text files (.txt, .md) and PDF files (.pdf)
 - 🔍 **Keyword Matching**: Intelligent keyword-based item detection
 - 📊 **Detailed Reports**: Generate compliance reports in text, markdown, or JSON
@@ -36,14 +50,33 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Basic Usage
+### Quick Start: Auto-Detection (Recommended!)
+
+**NEW:** Let the system automatically detect study type and apply the appropriate checklist:
+
+```bash
+# Automatic study type detection
+python detailed_check.py article.pdf
+```
+
+The script will:
+1. Detect the study type (RCT, cohort, case series, etc.)
+2. Recommend the appropriate appraisal checklist
+3. Apply the local equivalent
+4. Generate comprehensive reports
+
+See [DETAILED_CHECK_GUIDE.md](DETAILED_CHECK_GUIDE.md) for full documentation.
+
+### Manual Checklist Selection
+
+If you know which checklist to use:
 
 List available checklists:
 ```bash
 python checklist_applier.py --list
 ```
 
-Apply a checklist to an article:
+Apply a specific checklist to an article:
 ```bash
 python checklist_applier.py article.txt -c CONSORT
 ```
