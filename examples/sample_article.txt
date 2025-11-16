@@ -1,0 +1,164 @@
+Title: A Randomized Controlled Trial of Antiretroviral Therapy in HIV-Infected Patients
+
+Abstract:
+Background: Antiretroviral therapy (ART) has transformed HIV treatment. This randomized trial
+evaluated the efficacy of early versus delayed ART initiation.
+
+Methods: We conducted a multicenter, randomized controlled trial from 2020 to 2023. Participants
+were HIV-positive adults with CD4 counts between 350-500 cells/μL. The study was registered
+with ClinicalTrials.gov (NCT12345678).
+
+Results: Of 500 participants randomized, 248 received immediate ART and 252 received delayed
+ART. Baseline characteristics were similar between groups. The primary outcome showed
+significant benefit for early ART initiation (p<0.001).
+
+Conclusions: Early ART initiation provides significant clinical benefits over delayed treatment.
+
+Introduction:
+
+Scientific Background:
+Human immunodeficiency virus (HIV) infection remains a global health challenge. While
+antiretroviral therapy has dramatically improved outcomes, the optimal timing of treatment
+initiation remains debated. Previous observational studies suggested benefits of early treatment,
+but randomized trial data were limited.
+
+Objectives:
+The primary objective of this trial was to determine whether immediate ART initiation is
+superior to delayed initiation in reducing disease progression. Our hypothesis was that
+early treatment would reduce viral load and improve CD4 count recovery.
+
+Methods:
+
+Trial Design:
+This was a parallel-group randomized controlled trial with 1:1 allocation ratio. The trial
+design remained unchanged throughout the study period. Randomization was performed using
+computer-generated random sequences with stratification by baseline CD4 count.
+
+Participants:
+Eligibility criteria included: (1) HIV-1 infection confirmed by Western blot, (2) age 18-65
+years, (3) CD4 count 350-500 cells/μL, (4) no prior ART exposure. Exclusion criteria were
+pregnancy, active opportunistic infections, or contraindications to study medications.
+
+The study was conducted at 15 clinical sites across the United States, including academic
+medical centers and community clinics. Recruitment occurred from January 2020 to December 2021.
+
+Interventions:
+The immediate ART group received tenofovir/emtricitabine plus efavirenz (300/200/600mg) once
+daily starting at enrollment. The delayed ART group received the same regimen starting when
+CD4 count decreased below 350 cells/μL or clinical symptoms developed. All participants
+received standard adherence counseling and monthly follow-up visits.
+
+Outcomes:
+The primary outcome was time to AIDS-defining illness or death, assessed through 24 months
+of follow-up. Secondary outcomes included CD4 count change, viral load suppression, and
+quality of life measures. All outcomes were pre-specified in the protocol before enrollment.
+
+Sample Size:
+Sample size was determined using power calculations assuming 30% reduction in primary outcome.
+With 80% power and alpha=0.05, we required 250 participants per group. No interim analyses
+were planned.
+
+Randomization and Allocation Concealment:
+Random allocation sequences were generated using permuted blocks of varying sizes (4 and 6)
+by an independent statistician. Allocation was concealed using sequentially numbered, sealed,
+opaque envelopes stored at a central coordinating center.
+
+Implementation:
+The coordinating center generated the randomization sequence. Study coordinators at each
+site enrolled participants after obtaining informed consent. Treatment assignments were
+revealed by opening the next envelope in sequence.
+
+Blinding:
+Due to the nature of the intervention, participants and clinicians could not be blinded to
+treatment assignment. However, laboratory personnel and outcome assessors were blinded to
+group allocation.
+
+Statistical Methods:
+Primary analyses compared groups using intention-to-treat principles. Time-to-event outcomes
+were analyzed using Kaplan-Meier methods and Cox proportional hazards regression. Continuous
+outcomes were compared using t-tests and linear regression. We performed pre-specified
+subgroup analyses by baseline CD4 count, age, and sex.
+
+Results:
+
+Participant Flow:
+A total of 1,247 individuals were screened for eligibility. Of these, 747 did not meet
+inclusion criteria and were excluded. 500 participants were randomly assigned: 248 to
+immediate ART and 252 to delayed ART. All participants received their assigned intervention
+and were included in the intention-to-treat analysis.
+
+Recruitment:
+Recruitment began on January 15, 2020 and ended on December 30, 2021. Follow-up was
+completed on December 30, 2023. The trial ended as planned after all participants completed
+24 months of follow-up.
+
+Baseline Data:
+Table 1 shows baseline demographic and clinical characteristics. Mean age was 38.4 years
+in the immediate group and 37.9 years in the delayed group. Baseline CD4 counts were
+426 cells/μL and 431 cells/μL, respectively. Groups were well-balanced for sex, race,
+and viral load.
+
+Numbers Analyzed:
+All 500 randomized participants were included in the primary intention-to-treat analysis:
+248 in the immediate ART group and 252 in the delayed ART group.
+
+Outcomes and Estimation:
+During 24 months of follow-up, AIDS-defining events or death occurred in 12 participants
+(4.8%) in the immediate ART group compared to 38 participants (15.1%) in the delayed group.
+The hazard ratio was 0.31 (95% CI: 0.16-0.59, p<0.001). The absolute risk reduction was
+10.3%, corresponding to a number needed to treat of 10.
+
+Secondary outcomes showed that immediate ART resulted in higher CD4 count increases
+(mean difference 89 cells/μL, 95% CI: 65-113) and greater viral suppression rates
+(91% vs 67%, relative risk 1.36, 95% CI: 1.24-1.49).
+
+Ancillary Analyses:
+Pre-specified subgroup analyses showed consistent benefits of immediate ART across all
+examined subgroups. Post-hoc analyses of resistance mutations found no significant
+differences between groups.
+
+Harms:
+Adverse events were reported in 89 participants (35.9%) in the immediate group and
+67 participants (26.6%) in the delayed group. Most were mild to moderate in severity.
+Serious adverse events occurred in 8 immediate ART participants and 15 delayed ART
+participants. No deaths were attributed to study medications.
+
+Discussion:
+
+Key Results:
+This randomized controlled trial demonstrated that immediate ART initiation significantly
+reduced the risk of AIDS-defining illness or death compared to delayed treatment. The
+benefit was consistent across subgroups and accompanied by improvements in immunologic
+and virologic outcomes.
+
+Limitations:
+Several limitations should be noted. First, participants and providers were not blinded
+to treatment assignment, which could introduce bias in subjective outcomes. Second, the
+study population was relatively young and healthy, which may limit generalizability.
+Third, loss to follow-up was minimal but could introduce bias if differential between groups.
+
+Interpretation:
+Our findings strongly support current guidelines recommending immediate ART for all
+HIV-infected individuals regardless of CD4 count. The benefits outweigh the potential
+harms, and early viral suppression likely prevents transmission and preserves immune function.
+
+Generalizability:
+These results are likely generalizable to similar populations of HIV-infected adults in
+resource-rich settings. External validity to resource-limited settings or specific
+subpopulations requires further investigation.
+
+Other Information:
+
+Registration:
+This trial was registered with ClinicalTrials.gov (NCT12345678) before enrollment began.
+The full protocol is available as supplementary material.
+
+Funding:
+This study was funded by the National Institutes of Health (grant R01-AI123456) and the
+AIDS Clinical Trials Group. The funders had no role in study design, data collection,
+analysis, interpretation, or manuscript preparation. The authors declare no conflicts
+of interest.
+
+Acknowledgments:
+We thank the participants, site coordinators, and data safety monitoring board members
+for their contributions to this trial.

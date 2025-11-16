@@ -1,0 +1,9 @@
+# Requirements for Automatic Checklist Applier
+
+# PDF parsing (choose one or both)
+PyPDF2>=3.0.0
+pdfplumber>=0.10.0
+
+# Optional: For advanced NLP-based matching
+# nltk>=3.8
+# scikit-learn>=1.3.0

@@ -1,0 +1,230 @@
+{
+  "name": "CONSORT",
+  "full_name": "Consolidated Standards of Reporting Trials",
+  "description": "Checklist for randomized controlled trials",
+  "version": "2010",
+  "items": [
+    {
+      "section": "Title and Abstract",
+      "item": "1a",
+      "description": "Identification as a randomised trial in the title",
+      "keywords": ["randomized", "randomised", "RCT", "trial", "controlled trial"]
+    },
+    {
+      "section": "Title and Abstract",
+      "item": "1b",
+      "description": "Structured summary of trial design, methods, results, and conclusions",
+      "keywords": ["abstract", "background", "methods", "results", "conclusions", "trial design"]
+    },
+    {
+      "section": "Introduction",
+      "item": "2a",
+      "description": "Scientific background and explanation of rationale",
+      "keywords": ["introduction", "background", "rationale", "scientific"]
+    },
+    {
+      "section": "Introduction",
+      "item": "2b",
+      "description": "Specific objectives or hypotheses",
+      "keywords": ["objectives", "hypothesis", "hypotheses", "aim", "aims"]
+    },
+    {
+      "section": "Methods - Trial design",
+      "item": "3a",
+      "description": "Description of trial design including allocation ratio",
+      "keywords": ["trial design", "allocation", "randomization", "randomisation", "ratio"]
+    },
+    {
+      "section": "Methods - Trial design",
+      "item": "3b",
+      "description": "Important changes to methods after trial commencement",
+      "keywords": ["protocol changes", "amendments", "modifications"]
+    },
+    {
+      "section": "Methods - Participants",
+      "item": "4a",
+      "description": "Eligibility criteria for participants",
+      "keywords": ["eligibility", "inclusion criteria", "exclusion criteria", "participants"]
+    },
+    {
+      "section": "Methods - Participants",
+      "item": "4b",
+      "description": "Settings and locations where data were collected",
+      "keywords": ["setting", "location", "site", "hospital", "clinic", "center"]
+    },
+    {
+      "section": "Methods - Interventions",
+      "item": "5",
+      "description": "Interventions for each group with details to allow replication",
+      "keywords": ["intervention", "treatment", "control", "procedure", "dosage"]
+    },
+    {
+      "section": "Methods - Outcomes",
+      "item": "6a",
+      "description": "Completely defined pre-specified primary and secondary outcome measures",
+      "keywords": ["outcome", "primary outcome", "secondary outcome", "endpoint"]
+    },
+    {
+      "section": "Methods - Outcomes",
+      "item": "6b",
+      "description": "Any changes to trial outcomes after trial commenced",
+      "keywords": ["outcome changes", "modified outcomes"]
+    },
+    {
+      "section": "Methods - Sample size",
+      "item": "7a",
+      "description": "How sample size was determined",
+      "keywords": ["sample size", "power", "calculation", "statistical power"]
+    },
+    {
+      "section": "Methods - Sample size",
+      "item": "7b",
+      "description": "Explanation of any interim analyses and stopping guidelines",
+      "keywords": ["interim analysis", "stopping rules", "early termination"]
+    },
+    {
+      "section": "Methods - Randomization",
+      "item": "8a",
+      "description": "Method used to generate the random allocation sequence",
+      "keywords": ["randomization", "random allocation", "sequence generation"]
+    },
+    {
+      "section": "Methods - Randomization",
+      "item": "8b",
+      "description": "Type of randomisation; details of any restriction",
+      "keywords": ["block randomization", "stratification", "minimization"]
+    },
+    {
+      "section": "Methods - Allocation concealment",
+      "item": "9",
+      "description": "Mechanism used to implement random allocation sequence",
+      "keywords": ["allocation concealment", "sealed envelopes", "central randomization"]
+    },
+    {
+      "section": "Methods - Implementation",
+      "item": "10",
+      "description": "Who generated sequence, enrolled participants, and assigned interventions",
+      "keywords": ["enrollment", "assignment", "allocation"]
+    },
+    {
+      "section": "Methods - Blinding",
+      "item": "11a",
+      "description": "If done, who was blinded after assignment to interventions",
+      "keywords": ["blinding", "masking", "double-blind", "single-blind"]
+    },
+    {
+      "section": "Methods - Blinding",
+      "item": "11b",
+      "description": "If relevant, description of the similarity of interventions",
+      "keywords": ["placebo", "similarity", "appearance"]
+    },
+    {
+      "section": "Methods - Statistical methods",
+      "item": "12a",
+      "description": "Statistical methods used to compare groups for primary and secondary outcomes",
+      "keywords": ["statistical analysis", "statistical methods", "analysis plan"]
+    },
+    {
+      "section": "Methods - Statistical methods",
+      "item": "12b",
+      "description": "Methods for additional analyses, such as subgroup analyses and adjusted analyses",
+      "keywords": ["subgroup", "adjusted analysis", "multivariate"]
+    },
+    {
+      "section": "Results - Participant flow",
+      "item": "13a",
+      "description": "Numbers of individuals who were randomly assigned, received treatment, and analyzed",
+      "keywords": ["participant flow", "enrollment", "analyzed", "CONSORT diagram"]
+    },
+    {
+      "section": "Results - Participant flow",
+      "item": "13b",
+      "description": "Losses and exclusions after randomisation, together with reasons",
+      "keywords": ["dropout", "withdrawal", "lost to follow-up", "exclusions"]
+    },
+    {
+      "section": "Results - Recruitment",
+      "item": "14a",
+      "description": "Dates defining the periods of recruitment and follow-up",
+      "keywords": ["recruitment period", "study period", "dates", "enrollment dates"]
+    },
+    {
+      "section": "Results - Recruitment",
+      "item": "14b",
+      "description": "Why the trial ended or was stopped",
+      "keywords": ["trial ended", "stopped", "completed", "terminated"]
+    },
+    {
+      "section": "Results - Baseline data",
+      "item": "15",
+      "description": "Baseline demographic and clinical characteristics for each group",
+      "keywords": ["baseline", "demographics", "characteristics", "table 1"]
+    },
+    {
+      "section": "Results - Numbers analysed",
+      "item": "16",
+      "description": "Number of participants in each group included in each analysis",
+      "keywords": ["analyzed", "intention-to-treat", "per-protocol", "sample size"]
+    },
+    {
+      "section": "Results - Outcomes and estimation",
+      "item": "17a",
+      "description": "For each primary and secondary outcome, results for each group and estimated effect size",
+      "keywords": ["results", "outcomes", "effect size", "confidence interval"]
+    },
+    {
+      "section": "Results - Outcomes and estimation",
+      "item": "17b",
+      "description": "For binary outcomes, presentation of both absolute and relative effect sizes recommended",
+      "keywords": ["relative risk", "odds ratio", "absolute risk", "number needed to treat"]
+    },
+    {
+      "section": "Results - Ancillary analyses",
+      "item": "18",
+      "description": "Results of any other analyses performed, including subgroup analyses",
+      "keywords": ["subgroup", "secondary analysis", "post-hoc"]
+    },
+    {
+      "section": "Results - Harms",
+      "item": "19",
+      "description": "All important harms or unintended effects in each group",
+      "keywords": ["adverse events", "side effects", "safety", "harms"]
+    },
+    {
+      "section": "Discussion - Limitations",
+      "item": "20",
+      "description": "Trial limitations, addressing sources of potential bias and imprecision",
+      "keywords": ["limitations", "bias", "weaknesses"]
+    },
+    {
+      "section": "Discussion - Generalisability",
+      "item": "21",
+      "description": "Generalisability (external validity) of the trial findings",
+      "keywords": ["generalisability", "generalizability", "external validity", "applicability"]
+    },
+    {
+      "section": "Discussion - Interpretation",
+      "item": "22",
+      "description": "Interpretation consistent with results, balancing benefits and harms",
+      "keywords": ["interpretation", "discussion", "conclusions", "implications"]
+    },
+    {
+      "section": "Other information - Registration",
+      "item": "23",
+      "description": "Registration number and name of trial registry",
+      "keywords": ["registration", "clinical trials", "registry", "NCT", "trial number"]
+    },
+    {
+      "section": "Other information - Protocol",
+      "item": "24",
+      "description": "Where the full trial protocol can be accessed",
+      "keywords": ["protocol", "supplementary", "available"]
+    },
+    {
+      "section": "Other information - Funding",
+      "item": "25",
+      "description": "Sources of funding and other support, role of funders",
+      "keywords": ["funding", "support", "grant", "sponsor", "conflict of interest"]
+    }
+  ]
+}
