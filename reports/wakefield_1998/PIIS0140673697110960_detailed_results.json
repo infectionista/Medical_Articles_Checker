@@ -1,0 +1,357 @@
+{
+  "checklist_name": "STROBE",
+  "checklist_full_name": "Strengthening the Reporting of Observational Studies in Epidemiology",
+  "description": "Checklist for observational studies (cohort, case-control, cross-sectional)",
+  "total_items": 22,
+  "items_found": 15,
+  "items_not_found": 7,
+  "compliance_percentage": 68.18,
+  "items": [
+    {
+      "section": "Title and Abstract",
+      "item": "1",
+      "description": "Indicate study design in title or abstract with commonly used term",
+      "keywords": [
+        "cohort",
+        "case-control",
+        "cross-sectional",
+        "observational",
+        "title",
+        "abstract"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Introduction - Background",
+      "item": "2",
+      "description": "Explain scientific background and rationale for investigation",
+      "keywords": [
+        "background",
+        "introduction",
+        "rationale",
+        "scientific"
+      ],
+      "found_keywords": [
+        "background",
+        "introduction",
+        "scientific"
+      ],
+      "found": true,
+      "keyword_match_rate": 75.0
+    },
+    {
+      "section": "Introduction - Objectives",
+      "item": "3",
+      "description": "State specific objectives, including any prespecified hypotheses",
+      "keywords": [
+        "objectives",
+        "hypothesis",
+        "aim",
+        "research question"
+      ],
+      "found_keywords": [
+        "hypothesis"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Methods - Study design",
+      "item": "4",
+      "description": "Present key elements of study design early in paper",
+      "keywords": [
+        "study design",
+        "methods",
+        "design"
+      ],
+      "found_keywords": [
+        "methods"
+      ],
+      "found": true,
+      "keyword_match_rate": 33.3
+    },
+    {
+      "section": "Methods - Setting",
+      "item": "5",
+      "description": "Describe setting, locations, and relevant dates",
+      "keywords": [
+        "setting",
+        "location",
+        "dates",
+        "recruitment period"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Participants",
+      "item": "6",
+      "description": "Describe eligibility criteria, sources and methods of selection",
+      "keywords": [
+        "eligibility",
+        "participants",
+        "selection",
+        "inclusion",
+        "exclusion"
+      ],
+      "found_keywords": [
+        "selection"
+      ],
+      "found": true,
+      "keyword_match_rate": 20.0
+    },
+    {
+      "section": "Methods - Variables",
+      "item": "7",
+      "description": "Clearly define all outcomes, exposures, predictors, confounders",
+      "keywords": [
+        "variables",
+        "outcome",
+        "exposure",
+        "predictor",
+        "confounder"
+      ],
+      "found_keywords": [
+        "exposure"
+      ],
+      "found": true,
+      "keyword_match_rate": 20.0
+    },
+    {
+      "section": "Methods - Data sources",
+      "item": "8",
+      "description": "Give information on data sources and methods of assessment",
+      "keywords": [
+        "data sources",
+        "measurement",
+        "assessment",
+        "data collection"
+      ],
+      "found_keywords": [
+        "assessment"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Methods - Bias",
+      "item": "9",
+      "description": "Describe any efforts to address potential sources of bias",
+      "keywords": [
+        "bias",
+        "selection bias",
+        "information bias",
+        "confounding"
+      ],
+      "found_keywords": [
+        "bias"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Methods - Study size",
+      "item": "10",
+      "description": "Explain how study size was arrived at",
+      "keywords": [
+        "sample size",
+        "study size",
+        "power calculation"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Quantitative variables",
+      "item": "11",
+      "description": "Explain how quantitative variables were handled in analyses",
+      "keywords": [
+        "continuous variables",
+        "categorization",
+        "transformation"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Statistical methods",
+      "item": "12",
+      "description": "Describe all statistical methods and methods for confounding control",
+      "keywords": [
+        "statistical analysis",
+        "regression",
+        "adjustment",
+        "confounding"
+      ],
+      "found_keywords": [
+        "regression"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Results - Participants",
+      "item": "13",
+      "description": "Report numbers at each stage and reasons for non-participation",
+      "keywords": [
+        "participant flow",
+        "non-participation",
+        "response rate",
+        "diagram"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Results - Descriptive data",
+      "item": "14",
+      "description": "Give characteristics of participants and information on exposures",
+      "keywords": [
+        "baseline",
+        "characteristics",
+        "descriptive",
+        "table 1"
+      ],
+      "found_keywords": [
+        "table 1"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Results - Outcome data",
+      "item": "15",
+      "description": "Report numbers of outcome events or summary measures",
+      "keywords": [
+        "outcome",
+        "events",
+        "incidence",
+        "prevalence"
+      ],
+      "found_keywords": [
+        "events",
+        "incidence",
+        "prevalence"
+      ],
+      "found": true,
+      "keyword_match_rate": 75.0
+    },
+    {
+      "section": "Results - Main results",
+      "item": "16",
+      "description": "Give unadjusted estimates and confounder-adjusted estimates",
+      "keywords": [
+        "results",
+        "estimates",
+        "adjusted",
+        "unadjusted",
+        "confidence interval"
+      ],
+      "found_keywords": [
+        "results"
+      ],
+      "found": true,
+      "keyword_match_rate": 20.0
+    },
+    {
+      "section": "Results - Other analyses",
+      "item": "17",
+      "description": "Report other analyses done\u2014eg subgroup and sensitivity analyses",
+      "keywords": [
+        "subgroup",
+        "sensitivity analysis",
+        "secondary analysis"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Discussion - Key results",
+      "item": "18",
+      "description": "Summarise key results with reference to study objectives",
+      "keywords": [
+        "key results",
+        "summary",
+        "main findings"
+      ],
+      "found_keywords": [
+        "summary"
+      ],
+      "found": true,
+      "keyword_match_rate": 33.3
+    },
+    {
+      "section": "Discussion - Limitations",
+      "item": "19",
+      "description": "Discuss limitations taking into account sources of bias or imprecision",
+      "keywords": [
+        "limitations",
+        "bias",
+        "weaknesses"
+      ],
+      "found_keywords": [
+        "bias"
+      ],
+      "found": true,
+      "keyword_match_rate": 33.3
+    },
+    {
+      "section": "Discussion - Interpretation",
+      "item": "20",
+      "description": "Give cautious overall interpretation of results",
+      "keywords": [
+        "interpretation",
+        "discussion",
+        "implications"
+      ],
+      "found_keywords": [
+        "interpretation",
+        "discussion"
+      ],
+      "found": true,
+      "keyword_match_rate": 66.7
+    },
+    {
+      "section": "Discussion - Generalisability",
+      "item": "21",
+      "description": "Discuss the generalisability (external validity) of study findings",
+      "keywords": [
+        "generalisability",
+        "generalizability",
+        "external validity"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Other - Funding",
+      "item": "22",
+      "description": "Give source of funding and role of funders",
+      "keywords": [
+        "funding",
+        "support",
+        "grant",
+        "sponsor",
+        "conflict of interest"
+      ],
+      "found_keywords": [
+        "support"
+      ],
+      "found": true,
+      "keyword_match_rate": 20.0
+    }
+  ],
+  "detected_study_type": "case_series",
+  "detection_confidence": 100.0,
+  "matched_keywords": [],
+  "recommended_checklist": "JBI Case Series",
+  "checklist_url": "https://jbi.global/critical-appraisal-tools"
+}

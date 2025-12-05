@@ -1,0 +1,594 @@
+{
+  "checklist_name": "CONSORT",
+  "checklist_full_name": "Consolidated Standards of Reporting Trials",
+  "description": "Checklist for randomized controlled trials",
+  "total_items": 37,
+  "items_found": 22,
+  "items_not_found": 15,
+  "compliance_percentage": 59.46,
+  "items": [
+    {
+      "section": "Title and Abstract",
+      "item": "1a",
+      "description": "Identification as a randomised trial in the title",
+      "keywords": [
+        "randomized",
+        "randomised",
+        "RCT",
+        "trial",
+        "controlled trial"
+      ],
+      "found_keywords": [
+        "randomized",
+        "trial"
+      ],
+      "found": true,
+      "keyword_match_rate": 40.0
+    },
+    {
+      "section": "Title and Abstract",
+      "item": "1b",
+      "description": "Structured summary of trial design, methods, results, and conclusions",
+      "keywords": [
+        "abstract",
+        "background",
+        "methods",
+        "results",
+        "conclusions",
+        "trial design"
+      ],
+      "found_keywords": [
+        "background",
+        "methods",
+        "results"
+      ],
+      "found": true,
+      "keyword_match_rate": 50.0
+    },
+    {
+      "section": "Introduction",
+      "item": "2a",
+      "description": "Scientific background and explanation of rationale",
+      "keywords": [
+        "introduction",
+        "background",
+        "rationale",
+        "scientific"
+      ],
+      "found_keywords": [
+        "introduction",
+        "background"
+      ],
+      "found": true,
+      "keyword_match_rate": 50.0
+    },
+    {
+      "section": "Introduction",
+      "item": "2b",
+      "description": "Specific objectives or hypotheses",
+      "keywords": [
+        "objectives",
+        "hypothesis",
+        "hypotheses",
+        "aim",
+        "aims"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Trial design",
+      "item": "3a",
+      "description": "Description of trial design including allocation ratio",
+      "keywords": [
+        "trial design",
+        "allocation",
+        "randomization",
+        "randomisation",
+        "ratio"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Trial design",
+      "item": "3b",
+      "description": "Important changes to methods after trial commencement",
+      "keywords": [
+        "protocol changes",
+        "amendments",
+        "modifications"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Participants",
+      "item": "4a",
+      "description": "Eligibility criteria for participants",
+      "keywords": [
+        "eligibility",
+        "inclusion criteria",
+        "exclusion criteria",
+        "participants"
+      ],
+      "found_keywords": [
+        "participants"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Methods - Participants",
+      "item": "4b",
+      "description": "Settings and locations where data were collected",
+      "keywords": [
+        "setting",
+        "location",
+        "site",
+        "hospital",
+        "clinic",
+        "center"
+      ],
+      "found_keywords": [
+        "setting",
+        "hospital",
+        "center"
+      ],
+      "found": true,
+      "keyword_match_rate": 50.0
+    },
+    {
+      "section": "Methods - Interventions",
+      "item": "5",
+      "description": "Interventions for each group with details to allow replication",
+      "keywords": [
+        "intervention",
+        "treatment",
+        "control",
+        "procedure",
+        "dosage"
+      ],
+      "found_keywords": [
+        "treatment",
+        "control",
+        "procedure",
+        "dosage"
+      ],
+      "found": true,
+      "keyword_match_rate": 80.0
+    },
+    {
+      "section": "Methods - Outcomes",
+      "item": "6a",
+      "description": "Completely defined pre-specified primary and secondary outcome measures",
+      "keywords": [
+        "outcome",
+        "primary outcome",
+        "secondary outcome",
+        "endpoint"
+      ],
+      "found_keywords": [
+        "outcome",
+        "endpoint"
+      ],
+      "found": true,
+      "keyword_match_rate": 50.0
+    },
+    {
+      "section": "Methods - Outcomes",
+      "item": "6b",
+      "description": "Any changes to trial outcomes after trial commenced",
+      "keywords": [
+        "outcome changes",
+        "modified outcomes"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Sample size",
+      "item": "7a",
+      "description": "How sample size was determined",
+      "keywords": [
+        "sample size",
+        "power",
+        "calculation",
+        "statistical power"
+      ],
+      "found_keywords": [
+        "sample size",
+        "power"
+      ],
+      "found": true,
+      "keyword_match_rate": 50.0
+    },
+    {
+      "section": "Methods - Sample size",
+      "item": "7b",
+      "description": "Explanation of any interim analyses and stopping guidelines",
+      "keywords": [
+        "interim analysis",
+        "stopping rules",
+        "early termination"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Randomization",
+      "item": "8a",
+      "description": "Method used to generate the random allocation sequence",
+      "keywords": [
+        "randomization",
+        "random allocation",
+        "sequence generation"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Randomization",
+      "item": "8b",
+      "description": "Type of randomisation; details of any restriction",
+      "keywords": [
+        "block randomization",
+        "stratification",
+        "minimization"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Allocation concealment",
+      "item": "9",
+      "description": "Mechanism used to implement random allocation sequence",
+      "keywords": [
+        "allocation concealment",
+        "sealed envelopes",
+        "central randomization"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Implementation",
+      "item": "10",
+      "description": "Who generated sequence, enrolled participants, and assigned interventions",
+      "keywords": [
+        "enrollment",
+        "assignment",
+        "allocation"
+      ],
+      "found_keywords": [
+        "enrollment"
+      ],
+      "found": true,
+      "keyword_match_rate": 33.3
+    },
+    {
+      "section": "Methods - Blinding",
+      "item": "11a",
+      "description": "If done, who was blinded after assignment to interventions",
+      "keywords": [
+        "blinding",
+        "masking",
+        "double-blind",
+        "single-blind"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Blinding",
+      "item": "11b",
+      "description": "If relevant, description of the similarity of interventions",
+      "keywords": [
+        "placebo",
+        "similarity",
+        "appearance"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Statistical methods",
+      "item": "12a",
+      "description": "Statistical methods used to compare groups for primary and secondary outcomes",
+      "keywords": [
+        "statistical analysis",
+        "statistical methods",
+        "analysis plan"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Methods - Statistical methods",
+      "item": "12b",
+      "description": "Methods for additional analyses, such as subgroup analyses and adjusted analyses",
+      "keywords": [
+        "subgroup",
+        "adjusted analysis",
+        "multivariate"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Results - Participant flow",
+      "item": "13a",
+      "description": "Numbers of individuals who were randomly assigned, received treatment, and analyzed",
+      "keywords": [
+        "participant flow",
+        "enrollment",
+        "analyzed",
+        "CONSORT diagram"
+      ],
+      "found_keywords": [
+        "enrollment"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Results - Participant flow",
+      "item": "13b",
+      "description": "Losses and exclusions after randomisation, together with reasons",
+      "keywords": [
+        "dropout",
+        "withdrawal",
+        "lost to follow-up",
+        "exclusions"
+      ],
+      "found_keywords": [
+        "dropout"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Results - Recruitment",
+      "item": "14a",
+      "description": "Dates defining the periods of recruitment and follow-up",
+      "keywords": [
+        "recruitment period",
+        "study period",
+        "dates",
+        "enrollment dates"
+      ],
+      "found_keywords": [
+        "study period"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Results - Recruitment",
+      "item": "14b",
+      "description": "Why the trial ended or was stopped",
+      "keywords": [
+        "trial ended",
+        "stopped",
+        "completed",
+        "terminated"
+      ],
+      "found_keywords": [
+        "stopped"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Results - Baseline data",
+      "item": "15",
+      "description": "Baseline demographic and clinical characteristics for each group",
+      "keywords": [
+        "baseline",
+        "demographics",
+        "characteristics",
+        "table 1"
+      ],
+      "found_keywords": [
+        "baseline",
+        "demographics",
+        "characteristics",
+        "table 1"
+      ],
+      "found": true,
+      "keyword_match_rate": 100.0
+    },
+    {
+      "section": "Results - Numbers analysed",
+      "item": "16",
+      "description": "Number of participants in each group included in each analysis",
+      "keywords": [
+        "analyzed",
+        "intention-to-treat",
+        "per-protocol",
+        "sample size"
+      ],
+      "found_keywords": [
+        "sample size"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Results - Outcomes and estimation",
+      "item": "17a",
+      "description": "For each primary and secondary outcome, results for each group and estimated effect size",
+      "keywords": [
+        "results",
+        "outcomes",
+        "effect size",
+        "confidence interval"
+      ],
+      "found_keywords": [
+        "results",
+        "outcomes"
+      ],
+      "found": true,
+      "keyword_match_rate": 50.0
+    },
+    {
+      "section": "Results - Outcomes and estimation",
+      "item": "17b",
+      "description": "For binary outcomes, presentation of both absolute and relative effect sizes recommended",
+      "keywords": [
+        "relative risk",
+        "odds ratio",
+        "absolute risk",
+        "number needed to treat"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Results - Ancillary analyses",
+      "item": "18",
+      "description": "Results of any other analyses performed, including subgroup analyses",
+      "keywords": [
+        "subgroup",
+        "secondary analysis",
+        "post-hoc"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Results - Harms",
+      "item": "19",
+      "description": "All important harms or unintended effects in each group",
+      "keywords": [
+        "adverse events",
+        "side effects",
+        "safety",
+        "harms"
+      ],
+      "found_keywords": [
+        "side effects",
+        "safety"
+      ],
+      "found": true,
+      "keyword_match_rate": 50.0
+    },
+    {
+      "section": "Discussion - Limitations",
+      "item": "20",
+      "description": "Trial limitations, addressing sources of potential bias and imprecision",
+      "keywords": [
+        "limitations",
+        "bias",
+        "weaknesses"
+      ],
+      "found_keywords": [
+        "limitations"
+      ],
+      "found": true,
+      "keyword_match_rate": 33.3
+    },
+    {
+      "section": "Discussion - Generalisability",
+      "item": "21",
+      "description": "Generalisability (external validity) of the trial findings",
+      "keywords": [
+        "generalisability",
+        "generalizability",
+        "external validity",
+        "applicability"
+      ],
+      "found_keywords": [],
+      "found": false,
+      "keyword_match_rate": 0.0
+    },
+    {
+      "section": "Discussion - Interpretation",
+      "item": "22",
+      "description": "Interpretation consistent with results, balancing benefits and harms",
+      "keywords": [
+        "interpretation",
+        "discussion",
+        "conclusions",
+        "implications"
+      ],
+      "found_keywords": [
+        "discussion"
+      ],
+      "found": true,
+      "keyword_match_rate": 25.0
+    },
+    {
+      "section": "Other information - Registration",
+      "item": "23",
+      "description": "Registration number and name of trial registry",
+      "keywords": [
+        "registration",
+        "clinical trials",
+        "registry",
+        "NCT",
+        "trial number"
+      ],
+      "found_keywords": [
+        "registry"
+      ],
+      "found": true,
+      "keyword_match_rate": 20.0
+    },
+    {
+      "section": "Other information - Protocol",
+      "item": "24",
+      "description": "Where the full trial protocol can be accessed",
+      "keywords": [
+        "protocol",
+        "supplementary",
+        "available"
+      ],
+      "found_keywords": [
+        "protocol",
+        "supplementary",
+        "available"
+      ],
+      "found": true,
+      "keyword_match_rate": 100.0
+    },
+    {
+      "section": "Other information - Funding",
+      "item": "25",
+      "description": "Sources of funding and other support, role of funders",
+      "keywords": [
+        "funding",
+        "support",
+        "grant",
+        "sponsor",
+        "conflict of interest"
+      ],
+      "found_keywords": [
+        "funding",
+        "support",
+        "sponsor"
+      ],
+      "found": true,
+      "keyword_match_rate": 60.0
+    }
+  ],
+  "detected_study_type": "randomized_controlled_trial",
+  "detection_confidence": 100.0,
+  "matched_keywords": [],
+  "recommended_checklist": "RoB 2 (Risk of Bias 2)",
+  "checklist_url": "https://www.riskofbias.info/welcome/rob-2-0-tool/current-version-of-rob-2"
+}

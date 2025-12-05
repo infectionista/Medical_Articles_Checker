@@ -1,0 +1,140 @@
+{
+  "name": "STROBE",
+  "full_name": "Strengthening the Reporting of Observational Studies in Epidemiology",
+  "description": "Checklist for observational studies (cohort, case-control, cross-sectional)",
+  "version": "2007",
+  "items": [
+    {
+      "section": "Title and Abstract",
+      "item": "1",
+      "description": "Indicate study design in title or abstract with commonly used term",
+      "keywords": ["cohort", "case-control", "cross-sectional", "observational", "title", "abstract"]
+    },
+    {
+      "section": "Introduction - Background",
+      "item": "2",
+      "description": "Explain scientific background and rationale for investigation",
+      "keywords": ["background", "introduction", "rationale", "scientific"]
+    },
+    {
+      "section": "Introduction - Objectives",
+      "item": "3",
+      "description": "State specific objectives, including any prespecified hypotheses",
+      "keywords": ["objectives", "hypothesis", "aim", "research question"]
+    },
+    {
+      "section": "Methods - Study design",
+      "item": "4",
+      "description": "Present key elements of study design early in paper",
+      "keywords": ["study design", "methods", "design"]
+    },
+    {
+      "section": "Methods - Setting",
+      "item": "5",
+      "description": "Describe setting, locations, and relevant dates",
+      "keywords": ["setting", "location", "dates", "recruitment period"]
+    },
+    {
+      "section": "Methods - Participants",
+      "item": "6",
+      "description": "Describe eligibility criteria, sources and methods of selection",
+      "keywords": ["eligibility", "participants", "selection", "inclusion", "exclusion"]
+    },
+    {
+      "section": "Methods - Variables",
+      "item": "7",
+      "description": "Clearly define all outcomes, exposures, predictors, confounders",
+      "keywords": ["variables", "outcome", "exposure", "predictor", "confounder"]
+    },
+    {
+      "section": "Methods - Data sources",
+      "item": "8",
+      "description": "Give information on data sources and methods of assessment",
+      "keywords": ["data sources", "measurement", "assessment", "data collection"]
+    },
+    {
+      "section": "Methods - Bias",
+      "item": "9",
+      "description": "Describe any efforts to address potential sources of bias",
+      "keywords": ["bias", "selection bias", "information bias", "confounding"]
+    },
+    {
+      "section": "Methods - Study size",
+      "item": "10",
+      "description": "Explain how study size was arrived at",
+      "keywords": ["sample size", "study size", "power calculation"]
+    },
+    {
+      "section": "Methods - Quantitative variables",
+      "item": "11",
+      "description": "Explain how quantitative variables were handled in analyses",
+      "keywords": ["continuous variables", "categorization", "transformation"]
+    },
+    {
+      "section": "Methods - Statistical methods",
+      "item": "12",
+      "description": "Describe all statistical methods and methods for confounding control",
+      "keywords": ["statistical analysis", "regression", "adjustment", "confounding"]
+    },
+    {
+      "section": "Results - Participants",
+      "item": "13",
+      "description": "Report numbers at each stage and reasons for non-participation",
+      "keywords": ["participant flow", "non-participation", "response rate", "diagram"]
+    },
+    {
+      "section": "Results - Descriptive data",
+      "item": "14",
+      "description": "Give characteristics of participants and information on exposures",
+      "keywords": ["baseline", "characteristics", "descriptive", "table 1"]
+    },
+    {
+      "section": "Results - Outcome data",
+      "item": "15",
+      "description": "Report numbers of outcome events or summary measures",
+      "keywords": ["outcome", "events", "incidence", "prevalence"]
+    },
+    {
+      "section": "Results - Main results",
+      "item": "16",
+      "description": "Give unadjusted estimates and confounder-adjusted estimates",
+      "keywords": ["results", "estimates", "adjusted", "unadjusted", "confidence interval"]
+    },
+    {
+      "section": "Results - Other analyses",
+      "item": "17",
+      "description": "Report other analyses done—eg subgroup and sensitivity analyses",
+      "keywords": ["subgroup", "sensitivity analysis", "secondary analysis"]
+    },
+    {
+      "section": "Discussion - Key results",
+      "item": "18",
+      "description": "Summarise key results with reference to study objectives",
+      "keywords": ["key results", "summary", "main findings"]
+    },
+    {
+      "section": "Discussion - Limitations",
+      "item": "19",
+      "description": "Discuss limitations taking into account sources of bias or imprecision",
+      "keywords": ["limitations", "bias", "weaknesses"]
+    },
+    {
+      "section": "Discussion - Interpretation",
+      "item": "20",
+      "description": "Give cautious overall interpretation of results",
+      "keywords": ["interpretation", "discussion", "implications"]
+    },
+    {
+      "section": "Discussion - Generalisability",
+      "item": "21",
+      "description": "Discuss the generalisability (external validity) of study findings",
+      "keywords": ["generalisability", "generalizability", "external validity"]
+    },
+    {
+      "section": "Other - Funding",
+      "item": "22",
+      "description": "Give source of funding and role of funders",
+      "keywords": ["funding", "support", "grant", "sponsor", "conflict of interest"]
+    }
+  ]
+}
