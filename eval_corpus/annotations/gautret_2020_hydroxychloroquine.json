@@ -1,6 +1,5 @@
 {
-  "_comment": "Ground truth annotation for evaluation corpus. Fill in by reading the article.",
-
+  "_comment": "Ground truth annotation — STROBE checklist for Gautret et al. 2020",
   "article": {
     "id": "gautret_2020_hydroxychloroquine",
     "title": "Hydroxychloroquine and azithromycin as a treatment of COVID-19",
@@ -8,54 +7,44 @@
     "year": 2020,
     "journal": "International Journal of Antimicrobial Agents",
     "doi": "10.1016/j.ijantimicag.2020.105949",
-    "file": "articles/gautret_2020.pdf"
+    "file": "articles/hydroxichlorohine_retracted.pdf"
   },
-
   "study_type": {
     "expected_type": "non_randomized_intervention",
     "expected_checklist": "STROBE",
-    "notes": "Open-label, non-randomized. Authors call it a 'clinical trial' but there is no randomization, no blinding, no allocation concealment."
+    "notes": "Open-label, non-randomized clinical trial. Authors call it a trial but no randomization, no blinding."
   },
-
-  "consort_items": {
-    "_comment": "For each CONSORT item: true = present in article, false = absent, null = not applicable or uncertain. Add 'notes' to explain your reasoning.",
-
-    "1a": { "present": true,  "notes": "Title does not say 'randomized' but does say 'treatment' — partial" },
-    "1b": { "present": false, "notes": "No structured abstract with standard CONSORT fields" },
-    "2a": { "present": true,  "notes": "Brief background on COVID-19 and chloroquine rationale" },
-    "2b": { "present": true,  "notes": "Objective stated: assess effect of HCQ on viral load" },
-    "3a": { "present": false, "notes": "No trial design description, no allocation ratio" },
-    "3b": { "present": false, "notes": "No mention of protocol changes" },
-    "4a": { "present": true,  "notes": "Inclusion: confirmed COVID-19, >12 years old" },
-    "4b": { "present": true,  "notes": "IHU Méditerranée Infection, Marseille" },
-    "5":  { "present": true,  "notes": "HCQ 200mg TID for 10 days, +/- azithromycin described" },
-    "6a": { "present": true,  "notes": "Primary outcome: viral load at day 6 (PCR)" },
-    "6b": { "present": false, "notes": "No mention of outcome changes" },
-    "7a": { "present": false, "notes": "No sample size calculation" },
-    "7b": { "present": false, "notes": "No interim analysis" },
-    "8a": { "present": false, "notes": "No randomization performed" },
-    "8b": { "present": false, "notes": "No randomization type" },
-    "9":  { "present": false, "notes": "No allocation concealment" },
-    "10": { "present": false, "notes": "No description of who enrolled or assigned" },
-    "11a": { "present": false, "notes": "Open-label — explicitly no blinding" },
-    "11b": { "present": false, "notes": "No placebo" },
-    "12a": { "present": true,  "notes": "Chi-square, Fisher exact mentioned" },
-    "12b": { "present": false, "notes": "No subgroup or adjusted analyses" },
-    "13a": { "present": false, "notes": "No CONSORT flow diagram" },
-    "13b": { "present": true,  "notes": "6 patients lost (1 death, 3 ICU, 1 nausea, 1 left)" },
-    "14a": { "present": false, "notes": "Dates not clearly specified" },
-    "14b": { "present": false, "notes": "No explanation of trial ending" },
-    "15": { "present": true,  "notes": "Table 1 with baseline characteristics" },
-    "16": { "present": false, "notes": "No ITT or per-protocol described" },
-    "17a": { "present": true,  "notes": "Viral carriage at day 6 reported per group" },
-    "17b": { "present": false, "notes": "No absolute/relative risk measures" },
-    "18": { "present": false, "notes": "No ancillary analyses" },
-    "19": { "present": true,  "notes": "Briefly: 1 patient stopped due to nausea" },
-    "20": { "present": false, "notes": "No limitations section" },
-    "21": { "present": false, "notes": "No generalizability discussion" },
-    "22": { "present": true,  "notes": "Discussion of findings, but brief and one-sided" },
-    "23": { "present": true,  "notes": "EU Clinical Trials Register: 2020-000890-25" },
-    "24": { "present": false, "notes": "No protocol access mentioned" },
-    "25": { "present": true,  "notes": "Funded by ANR and IHU Méditerranée Infection" }
+  "strobe_items": {
+    "1":   { "present": true,  "notes": "Title says 'open-label non-randomized clinical trial'" },
+    "2":   { "present": true,  "notes": "Background on chloroquine efficacy against SARS-CoV-2" },
+    "3":   { "present": true,  "notes": "Objective: evaluate effect of HCQ on viral load" },
+    "4":   { "present": false, "notes": "No formal study design description (cohort/case-control etc)" },
+    "5":   { "present": true,  "notes": "Marseille, March 2020, hospital setting described" },
+    "6a":  { "present": true,  "notes": "Confirmed COVID-19, age >12, inclusion/exclusion listed" },
+    "6b":  { "present": false, "notes": "Not a case-control study, N/A" },
+    "7":   { "present": true,  "notes": "Outcome: viral load at day 6. Exposure: HCQ +/- azithromycin" },
+    "8":   { "present": true,  "notes": "Nasopharyngeal swabs, PCR testing described" },
+    "9":   { "present": false, "notes": "No discussion of bias sources or efforts to address them" },
+    "10":  { "present": false, "notes": "No sample size calculation or justification" },
+    "11":  { "present": false, "notes": "No discussion of how quantitative variables were handled" },
+    "12a": { "present": true,  "notes": "Chi-square test, Fisher exact test mentioned" },
+    "12b": { "present": false, "notes": "No subgroup or interaction analyses" },
+    "12c": { "present": false, "notes": "No discussion of missing data handling" },
+    "12d": { "present": false, "notes": "No loss-to-follow-up methods described" },
+    "12e": { "present": false, "notes": "No sensitivity analyses" },
+    "13a": { "present": false, "notes": "No flow diagram of participants" },
+    "13b": { "present": true,  "notes": "6 lost: 1 death, 3 ICU, 1 nausea, 1 left hospital" },
+    "14a": { "present": true,  "notes": "Table 1 with age, sex, clinical status per group" },
+    "14b": { "present": false, "notes": "No reporting of missing data per variable" },
+    "15":  { "present": true,  "notes": "Viral carriage percentages at day 6 per group" },
+    "16a": { "present": false, "notes": "No adjusted or unadjusted estimates with CI" },
+    "16b": { "present": false, "notes": "No category boundaries reported" },
+    "16c": { "present": false, "notes": "No absolute risk reported" },
+    "17":  { "present": false, "notes": "No subgroup or sensitivity analyses" },
+    "18":  { "present": true,  "notes": "Key results summarized: HCQ reduces viral load" },
+    "19":  { "present": false, "notes": "No limitations discussed" },
+    "20":  { "present": true,  "notes": "Interpretation given but one-sided, no caveats" },
+    "21":  { "present": false, "notes": "No generalizability discussed" },
+    "22":  { "present": true,  "notes": "Funded by ANR, IHU Méditerranée Infection, PACA region" }
   }
 }

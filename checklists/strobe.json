@@ -8,21 +8,21 @@
       "section": "Title and Abstract",
       "item": "1",
       "description": "Indicate study design in title or abstract with commonly used term",
-      "keywords": ["cohort study", "case-control study", "cross-sectional study", "observational study", "prospective study", "retrospective study", "longitudinal study"],
+      "keywords": ["cohort study", "case-control study", "cross-sectional study", "observational study", "prospective study", "retrospective study", "longitudinal study", "clinical trial", "open-label", "non-randomized"],
       "weight": 1.0
     },
     {
       "section": "Introduction - Background",
       "item": "2",
       "description": "Explain scientific background and rationale for investigation",
-      "keywords": ["scientific background", "rationale for the study", "existing evidence", "knowledge gap", "previous studies have shown"],
+      "keywords": ["scientific background", "rationale for the study", "existing evidence", "knowledge gap", "previous studies have shown", "have been found to be", "have been reported", "background"],
       "weight": 0.8
     },
     {
       "section": "Introduction - Objectives",
       "item": "3",
       "description": "State specific objectives, including any prespecified hypotheses",
-      "keywords": ["specific objectives", "prespecified hypotheses", "aim of this study", "research question", "primary objective"],
+      "keywords": ["specific objectives", "prespecified hypotheses", "aim of this study", "research question", "primary objective", "we evaluate", "we assess", "we aimed", "objective of this study", "purpose of this study"],
       "weight": 1.0
     },
     {
@@ -36,14 +36,14 @@
       "section": "Methods - Setting",
       "item": "5",
       "description": "Describe setting, locations, and relevant dates including recruitment, exposure, follow-up, and data collection",
-      "keywords": ["study setting", "recruitment period", "follow-up period", "data collection period", "study location", "enrollment dates"],
+      "keywords": ["study setting", "recruitment period", "follow-up period", "data collection period", "study location", "enrollment dates", "hospital setting", "were included from", "single center", "multi-center"],
       "weight": 1.0
     },
     {
       "section": "Methods - Participants",
       "item": "6a",
       "description": "Cohort: describe eligibility criteria, sources and methods of selection, and follow-up methods",
-      "keywords": ["eligibility criteria", "inclusion criteria", "exclusion criteria", "source population", "methods of selection", "follow-up methods"],
+      "keywords": ["eligibility criteria", "inclusion criteria", "exclusion criteria", "source population", "methods of selection", "follow-up methods", "patients were included", "were enrolled", "confirmed patients"],
       "weight": 1.2
     },
     {
@@ -57,14 +57,14 @@
       "section": "Methods - Variables",
       "item": "7",
       "description": "Clearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers",
-      "keywords": ["outcome variable", "exposure variable", "potential confounders", "effect modifiers", "outcome definition", "exposure definition"],
+      "keywords": ["outcome variable", "exposure variable", "potential confounders", "effect modifiers", "outcome definition", "exposure definition", "viral load", "end point", "endpoint", "primary outcome"],
       "weight": 1.3
     },
     {
       "section": "Methods - Data sources",
       "item": "8",
       "description": "For each variable, give sources of data and details of methods of assessment (measurement)",
-      "keywords": ["data sources", "methods of assessment", "measurement methods", "data collection", "medical records", "questionnaire", "laboratory methods"],
+      "keywords": ["data sources", "methods of assessment", "measurement methods", "data collection", "medical records", "questionnaire", "laboratory methods", "nasopharyngeal", "PCR", "swab", "blood samples", "serology"],
       "weight": 1.0
     },
     {
@@ -92,7 +92,7 @@
       "section": "Methods - Statistical methods",
       "item": "12a",
       "description": "Describe all statistical methods, including those used to control for confounding",
-      "keywords": ["statistical methods", "Cox regression", "logistic regression", "Poisson regression", "adjusted for confounding", "multivariable analysis", "hazard ratio", "odds ratio", "relative risk"],
+      "keywords": ["statistical methods", "Cox regression", "logistic regression", "Poisson regression", "adjusted for confounding", "multivariable analysis", "hazard ratio", "odds ratio", "relative risk", "chi-square", "Fisher exact", "t-test", "Mann-Whitney", "Wilcoxon", "ANOVA", "statistical analysis"],
       "weight": 1.3
     },
     {
@@ -127,14 +127,14 @@
       "section": "Results - Participants",
       "item": "13a",
       "description": "Report numbers of individuals at each stage—numbers potentially eligible, examined, confirmed eligible, included, completing follow-up, and analysed",
-      "keywords": ["participant flow", "flow diagram", "numbers at each stage", "eligible participants", "study population"],
+      "keywords": ["participant flow", "flow diagram", "numbers at each stage", "eligible participants", "flowchart", "CONSORT diagram"],
       "weight": 1.2
     },
     {
       "section": "Results - Participants",
       "item": "13b",
       "description": "Give reasons for non-participation at each stage",
-      "keywords": ["reasons for non-participation", "reasons for exclusion", "non-response", "refusal"],
+      "keywords": ["reasons for non-participation", "reasons for exclusion", "non-response", "refusal", "were excluded", "dropped out", "lost to follow-up", "transferred to intensive care", "withdrew"],
       "weight": 0.9
     },
     {
@@ -148,14 +148,14 @@
       "section": "Results - Descriptive data",
       "item": "14b",
       "description": "Indicate number of participants with missing data for each variable of interest",
-      "keywords": ["missing data", "completeness of data", "participants with missing", "available data"],
+      "keywords": ["completeness of data", "participants with missing data", "percentage missing", "data were available for"],
       "weight": 0.9
     },
     {
       "section": "Results - Outcome data",
       "item": "15",
       "description": "Report numbers of outcome events or summary measures over time",
-      "keywords": ["outcome events", "incidence rate", "prevalence", "person-years", "summary measures", "event rate"],
+      "keywords": ["outcome events", "incidence rate", "prevalence", "person-years", "summary measures", "event rate", "viral carriage", "virological cure", "at day", "positive rate", "negative rate"],
       "weight": 1.1
     },
     {
@@ -190,7 +190,7 @@
       "section": "Discussion - Key results",
       "item": "18",
       "description": "Summarise key results with reference to study objectives",
-      "keywords": ["key results", "main findings", "principal findings", "key finding", "in summary"],
+      "keywords": ["key results", "main findings", "principal findings", "key finding", "in summary", "significant reduction", "significantly associated", "our results show", "we report", "our study shows"],
       "weight": 1.0
     },
     {
@@ -204,7 +204,7 @@
       "section": "Discussion - Interpretation",
       "item": "20",
       "description": "Give a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses",
-      "keywords": ["overall interpretation", "cautious interpretation", "in context of", "compared with previous studies", "consistent with"],
+      "keywords": ["overall interpretation", "cautious interpretation", "in context of", "compared with previous studies", "consistent with", "we suggest", "we recommend", "our findings suggest", "these results suggest"],
       "weight": 1.0
     },
     {
@@ -218,7 +218,7 @@
       "section": "Other - Funding",
       "item": "22",
       "description": "Give the source of funding and the role of the funders for the present study",
-      "keywords": ["source of funding", "role of the funders", "financial support", "grant number", "conflict of interest", "competing interests"],
+      "keywords": ["source of funding", "role of the funders", "financial support", "grant number", "conflict of interest", "competing interests", "funded by", "supported by", "no conflict"],
       "weight": 1.0
     }
   ]

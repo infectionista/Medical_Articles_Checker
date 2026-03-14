@@ -24,6 +24,23 @@ from dataclasses import dataclass, field
 from section_parser import SectionParser, ArticleSection, get_expected_sections
 
 
+def normalize_pdf_text(text: str) -> str:
+    """Normalize text extracted from PDF: fix ligatures, collapse whitespace."""
+    # Fix common PDF ligatures
+    ligatures = {
+        '\ufb01': 'fi', '\ufb02': 'fl', '\ufb00': 'ff',
+        '\ufb03': 'ffi', '\ufb04': 'ffl',
+        '\u0131': 'i',  # dotless i
+    }
+    for lig, replacement in ligatures.items():
+        text = text.replace(lig, replacement)
+    # Collapse multiple spaces into one
+    text = re.sub(r'  +', ' ', text)
+    # Fix hyphenated line breaks (e.g., "ran-\ndomized" -> "randomized")
+    text = re.sub(r'(\w)-\s*\n\s*(\w)', r'\1\2', text)
+    return text
+
+
 # ---------------------------------------------------------------------------
 # Data structures
 # ---------------------------------------------------------------------------
@@ -138,6 +155,9 @@ class EnhancedChecker:
             )
 
         checklist = self.checklists[checklist_name]
+
+        # Normalize PDF artifacts before parsing
+        article_text = normalize_pdf_text(article_text)
 
         # Parse sections if not provided
         if sections is None:
