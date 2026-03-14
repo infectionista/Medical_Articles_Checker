@@ -1,0 +1,304 @@
+{
+  "name": "CONSORT",
+  "full_name": "Consolidated Standards of Reporting Trials",
+  "description": "Checklist for randomized controlled trials (CONSORT 2010)",
+  "version": "2010",
+  "items": [
+    {
+      "section": "Title and Abstract",
+      "item": "1a",
+      "description": "Identification as a randomised trial in the title",
+      "keywords": ["randomized", "randomised", "RCT", "controlled trial", "randomized controlled"],
+      "weight": 1.5,
+      "notes": "High specificity: these keywords are unlikely to appear outside title/abstract if the article is not a trial"
+    },
+    {
+      "section": "Title and Abstract",
+      "item": "1b",
+      "description": "Structured summary of trial design, methods, results, and conclusions",
+      "keywords": ["structured abstract", "trial design", "objective", "setting", "main outcome"],
+      "weight": 1.0,
+      "notes": "Replaced generic keywords (background, methods, results) with abstract-specific phrases to reduce false positives"
+    },
+    {
+      "section": "Introduction",
+      "item": "2a",
+      "description": "Scientific background and explanation of rationale",
+      "keywords": ["rationale", "scientific background", "evidence suggests", "previous studies", "gap in knowledge", "current evidence"],
+      "weight": 0.8,
+      "notes": "Introduction is nearly always present; low weight"
+    },
+    {
+      "section": "Introduction",
+      "item": "2b",
+      "description": "Specific objectives or hypotheses",
+      "keywords": ["objective", "objectives", "aim", "aims", "hypothesis", "hypotheses", "purpose of this study", "we hypothesized", "we aimed"],
+      "weight": 1.2,
+      "notes": "Expanded keywords to catch common phrasings"
+    },
+    {
+      "section": "Methods - Trial design",
+      "item": "3a",
+      "description": "Description of trial design including allocation ratio",
+      "keywords": ["trial design", "parallel group", "crossover", "factorial", "allocation ratio", "superiority", "non-inferiority", "equivalence"],
+      "weight": 1.5,
+      "notes": "Critical methodological item; replaced generic 'allocation' with specific design terms"
+    },
+    {
+      "section": "Methods - Trial design",
+      "item": "3b",
+      "description": "Important changes to methods after trial commencement",
+      "keywords": ["protocol amendment", "protocol change", "modification to methods", "revised protocol", "protocol deviation", "protocol violation"],
+      "weight": 1.0,
+      "notes": "More specific phrases; original 'modifications' was too generic"
+    },
+    {
+      "section": "Methods - Participants",
+      "item": "4a",
+      "description": "Eligibility criteria for participants",
+      "keywords": ["eligibility criteria", "inclusion criteria", "exclusion criteria", "eligible patients", "enrolled if", "were eligible", "criteria for inclusion"],
+      "weight": 1.3,
+      "notes": "Replaced generic 'participants' with criteria-specific phrases"
+    },
+    {
+      "section": "Methods - Participants",
+      "item": "4b",
+      "description": "Settings and locations where data were collected",
+      "keywords": ["study site", "conducted at", "hospital", "clinical center", "medical center", "department of", "university hospital", "tertiary care"],
+      "weight": 1.0,
+      "notes": "Added institutional descriptors"
+    },
+    {
+      "section": "Methods - Interventions",
+      "item": "5",
+      "description": "Interventions for each group with details to allow replication",
+      "keywords": ["intervention group", "control group", "treatment arm", "placebo arm", "received treatment", "administered", "dosage", "mg per day", "regimen"],
+      "weight": 1.5,
+      "notes": "Critical item; expanded to catch drug/intervention descriptors"
+    },
+    {
+      "section": "Methods - Outcomes",
+      "item": "6a",
+      "description": "Completely defined pre-specified primary and secondary outcome measures",
+      "keywords": ["primary outcome", "secondary outcome", "primary endpoint", "secondary endpoint", "outcome measure", "primary end point", "efficacy endpoint"],
+      "weight": 1.5,
+      "notes": "Critical; replaced generic 'outcome' with compound phrases"
+    },
+    {
+      "section": "Methods - Outcomes",
+      "item": "6b",
+      "description": "Any changes to trial outcomes after trial commenced",
+      "keywords": ["outcome changed", "modified endpoint", "revised primary outcome", "endpoint was changed", "post-hoc outcome"],
+      "weight": 0.8,
+      "notes": "Rare item; often not applicable"
+    },
+    {
+      "section": "Methods - Sample size",
+      "item": "7a",
+      "description": "How sample size was determined",
+      "keywords": ["sample size calculation", "power calculation", "power analysis", "sample size was determined", "statistical power", "we calculated that", "participants were needed"],
+      "weight": 1.5,
+      "notes": "Critical quality marker; expanded phrases"
+    },
+    {
+      "section": "Methods - Sample size",
+      "item": "7b",
+      "description": "Explanation of any interim analyses and stopping guidelines",
+      "keywords": ["interim analysis", "stopping rule", "early termination", "data safety monitoring", "DSMB", "futility analysis", "stopping guideline"],
+      "weight": 1.0,
+      "notes": "Added DSMB and futility"
+    },
+    {
+      "section": "Methods - Randomization",
+      "item": "8a",
+      "description": "Method used to generate the random allocation sequence",
+      "keywords": ["random number", "computer-generated", "sequence generation", "random allocation sequence", "randomization sequence", "random number generator"],
+      "weight": 1.5,
+      "notes": "Critical; replaced generic 'randomization' with sequence-specific terms"
+    },
+    {
+      "section": "Methods - Randomization",
+      "item": "8b",
+      "description": "Type of randomisation; details of any restriction",
+      "keywords": ["block randomization", "stratified randomization", "stratification", "minimization", "permuted blocks", "variable block size", "adaptive randomization"],
+      "weight": 1.3,
+      "notes": "Specific randomization method terms"
+    },
+    {
+      "section": "Methods - Allocation concealment",
+      "item": "9",
+      "description": "Mechanism used to implement random allocation sequence",
+      "keywords": ["allocation concealment", "sealed envelope", "central randomization", "opaque envelope", "sequentially numbered", "telephone randomization", "web-based randomization"],
+      "weight": 1.5,
+      "notes": "Critical bias prevention mechanism"
+    },
+    {
+      "section": "Methods - Implementation",
+      "item": "10",
+      "description": "Who generated sequence, enrolled participants, and assigned interventions",
+      "keywords": ["generated the sequence", "enrolled participants", "assigned to intervention", "treatment assignment", "allocated to", "group assignment"],
+      "weight": 1.0,
+      "notes": "Replaced single generic words with specific phrases"
+    },
+    {
+      "section": "Methods - Blinding",
+      "item": "11a",
+      "description": "If done, who was blinded after assignment to interventions",
+      "keywords": ["blinding", "blinded", "masking", "masked", "double-blind", "single-blind", "open-label", "triple-blind", "participants were blinded"],
+      "weight": 1.5,
+      "notes": "Critical; added open-label as it explicitly addresses blinding status"
+    },
+    {
+      "section": "Methods - Blinding",
+      "item": "11b",
+      "description": "If relevant, description of the similarity of interventions",
+      "keywords": ["placebo", "identical appearance", "matching placebo", "indistinguishable", "identical tablets", "sham procedure"],
+      "weight": 1.0,
+      "notes": "More specific; original 'similarity' and 'appearance' too generic"
+    },
+    {
+      "section": "Methods - Statistical methods",
+      "item": "12a",
+      "description": "Statistical methods used to compare groups for primary and secondary outcomes",
+      "keywords": ["statistical analysis", "statistical methods", "chi-square", "t-test", "Mann-Whitney", "Fisher exact", "logistic regression", "Cox regression", "ANOVA", "Wilcoxon", "analysis of variance"],
+      "weight": 1.3,
+      "notes": "Added specific test names — much less ambiguous than 'analysis plan'"
+    },
+    {
+      "section": "Methods - Statistical methods",
+      "item": "12b",
+      "description": "Methods for additional analyses, such as subgroup analyses and adjusted analyses",
+      "keywords": ["subgroup analysis", "adjusted analysis", "multivariate analysis", "sensitivity analysis", "per-protocol analysis", "stratified analysis", "multivariable"],
+      "weight": 1.0,
+      "notes": "Full compound phrases"
+    },
+    {
+      "section": "Results - Participant flow",
+      "item": "13a",
+      "description": "Numbers of individuals who were randomly assigned, received treatment, and analyzed",
+      "keywords": ["flow diagram", "CONSORT diagram", "randomly assigned", "randomized to", "allocated to", "flow chart", "participant flow"],
+      "weight": 1.3,
+      "notes": "Replaced generic 'enrollment' with trial-specific terms"
+    },
+    {
+      "section": "Results - Participant flow",
+      "item": "13b",
+      "description": "Losses and exclusions after randomisation, together with reasons",
+      "keywords": ["lost to follow-up", "withdrew", "withdrawal", "dropout", "discontinued", "excluded after randomization", "did not complete"],
+      "weight": 1.2,
+      "notes": "Expanded loss/exclusion vocabulary"
+    },
+    {
+      "section": "Results - Recruitment",
+      "item": "14a",
+      "description": "Dates defining the periods of recruitment and follow-up",
+      "keywords": ["recruitment period", "enrollment period", "between January", "between March", "from January", "study period", "follow-up period", "recruited between"],
+      "weight": 1.0,
+      "notes": "Added date-pattern phrases"
+    },
+    {
+      "section": "Results - Recruitment",
+      "item": "14b",
+      "description": "Why the trial ended or was stopped",
+      "keywords": ["trial ended", "trial was stopped", "study terminated", "enrollment completed", "recruitment completed", "reached target sample"],
+      "weight": 0.8,
+      "notes": "Often implicit; low weight"
+    },
+    {
+      "section": "Results - Baseline data",
+      "item": "15",
+      "description": "Baseline demographic and clinical characteristics for each group",
+      "keywords": ["baseline characteristics", "baseline demographics", "Table 1", "patient characteristics", "demographic characteristics", "clinical characteristics at baseline"],
+      "weight": 1.3,
+      "notes": "Compound phrases to distinguish from incidental 'baseline' mentions"
+    },
+    {
+      "section": "Results - Numbers analysed",
+      "item": "16",
+      "description": "Number of participants in each group included in each analysis",
+      "keywords": ["intention-to-treat", "per-protocol", "modified intention-to-treat", "ITT", "analyzed population", "analysis population", "full analysis set"],
+      "weight": 1.2,
+      "notes": "Replaced generic 'sample size' and 'analyzed'"
+    },
+    {
+      "section": "Results - Outcomes and estimation",
+      "item": "17a",
+      "description": "For each primary and secondary outcome, results for each group and estimated effect size",
+      "keywords": ["effect size", "confidence interval", "95% CI", "mean difference", "hazard ratio", "risk ratio", "treatment effect", "between-group difference", "p value"],
+      "weight": 1.5,
+      "notes": "Statistical result terms instead of generic 'results'"
+    },
+    {
+      "section": "Results - Outcomes and estimation",
+      "item": "17b",
+      "description": "For binary outcomes, presentation of both absolute and relative effect sizes recommended",
+      "keywords": ["relative risk", "odds ratio", "absolute risk reduction", "relative risk reduction", "number needed to treat", "NNT", "absolute difference"],
+      "weight": 1.2,
+      "notes": "Specific statistical measures for binary outcomes"
+    },
+    {
+      "section": "Results - Ancillary analyses",
+      "item": "18",
+      "description": "Results of any other analyses performed, including subgroup analyses",
+      "keywords": ["subgroup analysis", "secondary analysis", "post-hoc analysis", "exploratory analysis", "sensitivity analysis results", "per-protocol results"],
+      "weight": 1.0,
+      "notes": "Full phrases; 'subgroup' alone too ambiguous"
+    },
+    {
+      "section": "Results - Harms",
+      "item": "19",
+      "description": "All important harms or unintended effects in each group",
+      "keywords": ["adverse events", "adverse effects", "side effects", "safety profile", "serious adverse", "treatment-related adverse", "harms", "toxicity", "complications"],
+      "weight": 1.5,
+      "notes": "Critical safety reporting; expanded vocabulary"
+    },
+    {
+      "section": "Discussion - Limitations",
+      "item": "20",
+      "description": "Trial limitations, addressing sources of potential bias and imprecision",
+      "keywords": ["limitations", "limitation of this study", "potential bias", "weaknesses", "our study has", "should be interpreted with caution"],
+      "weight": 1.3,
+      "notes": "More specific phrases"
+    },
+    {
+      "section": "Discussion - Generalisability",
+      "item": "21",
+      "description": "Generalisability (external validity) of the trial findings",
+      "keywords": ["generalisability", "generalizability", "external validity", "applicability", "generalizable", "generalisable", "broader population"],
+      "weight": 1.0,
+      "notes": "Multiple spellings + concept terms"
+    },
+    {
+      "section": "Discussion - Interpretation",
+      "item": "22",
+      "description": "Interpretation consistent with results, balancing benefits and harms",
+      "keywords": ["in conclusion", "our findings suggest", "these results indicate", "implications", "consistent with previous", "in line with", "benefits and harms", "risk-benefit"],
+      "weight": 1.0,
+      "notes": "Interpretation-specific phrases instead of generic 'discussion'"
+    },
+    {
+      "section": "Other information - Registration",
+      "item": "23",
+      "description": "Registration number and name of trial registry",
+      "keywords": ["NCT", "ISRCTN", "trial registration", "registered at", "clinicaltrials.gov", "trial registry", "registration number", "ACTRN", "CTRI", "ChiCTR"],
+      "weight": 1.5,
+      "notes": "Critical transparency item; specific registry identifiers"
+    },
+    {
+      "section": "Other information - Protocol",
+      "item": "24",
+      "description": "Where the full trial protocol can be accessed",
+      "keywords": ["trial protocol", "study protocol", "protocol available", "protocol published", "supplementary protocol", "protocol was approved"],
+      "weight": 1.0,
+      "notes": "Compound phrases instead of generic 'protocol' and 'supplementary'"
+    },
+    {
+      "section": "Other information - Funding",
+      "item": "25",
+      "description": "Sources of funding and other support, role of funders",
+      "keywords": ["funded by", "supported by", "grant from", "financial support", "role of the funder", "conflict of interest", "competing interests", "no funding", "no financial support"],
+      "weight": 1.2,
+      "notes": "Added 'no funding' to catch explicit disclosure of no funding"
+    }
+  ]
+}

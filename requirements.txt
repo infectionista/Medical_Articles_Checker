@@ -1,0 +1,14 @@
+# Core
+PyPDF2>=3.0.0
+
+# Optional: better PDF extraction
+pdfplumber>=0.9.0
+
+# Visualization
+matplotlib>=3.5.0
+
+# Web app (install with: pip install -r requirements.txt)
+streamlit>=1.30.0
+
+# Testing
+pytest>=7.0.0

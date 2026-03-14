@@ -1,0 +1,61 @@
+{
+  "_comment": "Ground truth annotation for evaluation corpus. Fill in by reading the article.",
+
+  "article": {
+    "id": "gautret_2020_hydroxychloroquine",
+    "title": "Hydroxychloroquine and azithromycin as a treatment of COVID-19",
+    "authors": "Gautret et al.",
+    "year": 2020,
+    "journal": "International Journal of Antimicrobial Agents",
+    "doi": "10.1016/j.ijantimicag.2020.105949",
+    "file": "articles/gautret_2020.pdf"
+  },
+
+  "study_type": {
+    "expected_type": "non_randomized_intervention",
+    "expected_checklist": "STROBE",
+    "notes": "Open-label, non-randomized. Authors call it a 'clinical trial' but there is no randomization, no blinding, no allocation concealment."
+  },
+
+  "consort_items": {
+    "_comment": "For each CONSORT item: true = present in article, false = absent, null = not applicable or uncertain. Add 'notes' to explain your reasoning.",
+
+    "1a": { "present": true,  "notes": "Title does not say 'randomized' but does say 'treatment' — partial" },
+    "1b": { "present": false, "notes": "No structured abstract with standard CONSORT fields" },
+    "2a": { "present": true,  "notes": "Brief background on COVID-19 and chloroquine rationale" },
+    "2b": { "present": true,  "notes": "Objective stated: assess effect of HCQ on viral load" },
+    "3a": { "present": false, "notes": "No trial design description, no allocation ratio" },
+    "3b": { "present": false, "notes": "No mention of protocol changes" },
+    "4a": { "present": true,  "notes": "Inclusion: confirmed COVID-19, >12 years old" },
+    "4b": { "present": true,  "notes": "IHU Méditerranée Infection, Marseille" },
+    "5":  { "present": true,  "notes": "HCQ 200mg TID for 10 days, +/- azithromycin described" },
+    "6a": { "present": true,  "notes": "Primary outcome: viral load at day 6 (PCR)" },
+    "6b": { "present": false, "notes": "No mention of outcome changes" },
+    "7a": { "present": false, "notes": "No sample size calculation" },
+    "7b": { "present": false, "notes": "No interim analysis" },
+    "8a": { "present": false, "notes": "No randomization performed" },
+    "8b": { "present": false, "notes": "No randomization type" },
+    "9":  { "present": false, "notes": "No allocation concealment" },
+    "10": { "present": false, "notes": "No description of who enrolled or assigned" },
+    "11a": { "present": false, "notes": "Open-label — explicitly no blinding" },
+    "11b": { "present": false, "notes": "No placebo" },
+    "12a": { "present": true,  "notes": "Chi-square, Fisher exact mentioned" },
+    "12b": { "present": false, "notes": "No subgroup or adjusted analyses" },
+    "13a": { "present": false, "notes": "No CONSORT flow diagram" },
+    "13b": { "present": true,  "notes": "6 patients lost (1 death, 3 ICU, 1 nausea, 1 left)" },
+    "14a": { "present": false, "notes": "Dates not clearly specified" },
+    "14b": { "present": false, "notes": "No explanation of trial ending" },
+    "15": { "present": true,  "notes": "Table 1 with baseline characteristics" },
+    "16": { "present": false, "notes": "No ITT or per-protocol described" },
+    "17a": { "present": true,  "notes": "Viral carriage at day 6 reported per group" },
+    "17b": { "present": false, "notes": "No absolute/relative risk measures" },
+    "18": { "present": false, "notes": "No ancillary analyses" },
+    "19": { "present": true,  "notes": "Briefly: 1 patient stopped due to nausea" },
+    "20": { "present": false, "notes": "No limitations section" },
+    "21": { "present": false, "notes": "No generalizability discussion" },
+    "22": { "present": true,  "notes": "Discussion of findings, but brief and one-sided" },
+    "23": { "present": true,  "notes": "EU Clinical Trials Register: 2020-000890-25" },
+    "24": { "present": false, "notes": "No protocol access mentioned" },
+    "25": { "present": true,  "notes": "Funded by ANR and IHU Méditerranée Infection" }
+  }
+}

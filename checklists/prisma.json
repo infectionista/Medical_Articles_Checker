@@ -1,0 +1,211 @@
+{
+  "name": "PRISMA",
+  "full_name": "Preferred Reporting Items for Systematic Reviews and Meta-Analyses",
+  "description": "Checklist for systematic reviews and meta-analyses",
+  "version": "2020",
+  "items": [
+    {
+      "section": "Title",
+      "item": "1",
+      "description": "Identify the report as a systematic review",
+      "keywords": ["systematic review", "meta-analysis", "systematic literature review", "scoping review"],
+      "weight": 1.0
+    },
+    {
+      "section": "Abstract",
+      "item": "2",
+      "description": "Structured summary including background, objectives, data sources, study eligibility criteria, participants, interventions, appraisal and synthesis methods, results, limitations, conclusions",
+      "keywords": ["structured abstract", "background and objectives", "data sources and study selection", "synthesis methods", "results and conclusions"],
+      "weight": 0.9
+    },
+    {
+      "section": "Introduction - Rationale",
+      "item": "3",
+      "description": "Describe the rationale for the review in the context of existing knowledge",
+      "keywords": ["rationale for the review", "existing knowledge", "gap in the literature", "previous reviews", "need for this review"],
+      "weight": 0.8
+    },
+    {
+      "section": "Introduction - Objectives",
+      "item": "4",
+      "description": "Provide an explicit statement of the question being addressed with reference to PICO",
+      "keywords": ["review question", "PICO framework", "population intervention comparison outcome", "specific objectives", "research question"],
+      "weight": 1.1
+    },
+    {
+      "section": "Methods - Eligibility criteria",
+      "item": "5",
+      "description": "Specify the inclusion and exclusion criteria for the review",
+      "keywords": ["inclusion criteria", "exclusion criteria", "eligibility criteria", "study selection criteria", "PICO criteria"],
+      "weight": 1.2
+    },
+    {
+      "section": "Methods - Information sources",
+      "item": "6",
+      "description": "Specify all databases, registers, websites, organisations, reference lists and other sources searched or consulted",
+      "keywords": ["PubMed", "MEDLINE", "Embase", "Cochrane Library", "CENTRAL", "Web of Science", "Scopus", "grey literature", "reference lists", "databases searched"],
+      "weight": 1.3
+    },
+    {
+      "section": "Methods - Search strategy",
+      "item": "7",
+      "description": "Present full electronic search strategies for all databases, including any filters and limits",
+      "keywords": ["search strategy", "search terms", "MeSH terms", "Boolean operators", "search filters", "full search strategy"],
+      "weight": 1.3
+    },
+    {
+      "section": "Methods - Selection process",
+      "item": "8",
+      "description": "State the process for selecting studies, including screening by two reviewers independently",
+      "keywords": ["study selection process", "independent screening", "title and abstract screening", "full-text screening", "two reviewers", "inter-rater agreement", "kappa"],
+      "weight": 1.2
+    },
+    {
+      "section": "Methods - Data collection process",
+      "item": "9",
+      "description": "Describe the method of data extraction from reports, including piloting forms and duplicate extraction",
+      "keywords": ["data extraction", "data collection process", "extraction form", "piloted extraction", "duplicate extraction", "data extraction tool"],
+      "weight": 1.1
+    },
+    {
+      "section": "Methods - Data items",
+      "item": "10",
+      "description": "List and define all outcomes for which data were sought, specifying primary and secondary",
+      "keywords": ["data items", "outcomes sought", "primary outcome", "secondary outcomes", "variables extracted"],
+      "weight": 1.0
+    },
+    {
+      "section": "Methods - Risk of bias assessment",
+      "item": "11",
+      "description": "Specify the methods used for assessing risk of bias of individual studies, including at outcome level",
+      "keywords": ["risk of bias assessment", "quality assessment", "Cochrane risk of bias tool", "Newcastle-Ottawa Scale", "ROBINS-I", "methodological quality", "bias domains"],
+      "weight": 1.3
+    },
+    {
+      "section": "Methods - Effect measures",
+      "item": "12",
+      "description": "Specify for each outcome the effect measure(s) used in the synthesis or presentation",
+      "keywords": ["effect measure", "odds ratio", "risk ratio", "relative risk", "mean difference", "standardized mean difference", "hazard ratio", "risk difference"],
+      "weight": 1.1
+    },
+    {
+      "section": "Methods - Synthesis methods",
+      "item": "13a",
+      "description": "Describe the processes used to decide which studies were eligible for each synthesis",
+      "keywords": ["synthesis methods", "meta-analysis methods", "random-effects model", "fixed-effect model", "DerSimonian and Laird", "inverse variance", "pooling method"],
+      "weight": 1.3
+    },
+    {
+      "section": "Methods - Synthesis methods",
+      "item": "13b",
+      "description": "Describe any methods to assess and deal with statistical heterogeneity",
+      "keywords": ["statistical heterogeneity", "I-squared", "I² statistic", "Cochran Q test", "tau-squared", "heterogeneity assessment", "subgroup analysis for heterogeneity"],
+      "weight": 1.2
+    },
+    {
+      "section": "Methods - Reporting bias assessment",
+      "item": "14",
+      "description": "Describe any methods used to assess risk of bias due to missing results in a synthesis",
+      "keywords": ["publication bias", "funnel plot", "Egger test", "Begg test", "trim and fill", "reporting bias assessment"],
+      "weight": 1.1
+    },
+    {
+      "section": "Methods - Certainty assessment",
+      "item": "15",
+      "description": "Describe any methods used to assess certainty (or confidence) in the body of evidence",
+      "keywords": ["GRADE approach", "certainty of evidence", "quality of evidence", "strength of evidence", "evidence certainty", "confidence in evidence"],
+      "weight": 1.1
+    },
+    {
+      "section": "Results - Study selection",
+      "item": "16",
+      "description": "Describe the results of the search and selection process, ideally with a flow diagram",
+      "keywords": ["PRISMA flow diagram", "flow chart", "studies identified", "studies screened", "studies included", "studies excluded", "selection results"],
+      "weight": 1.2
+    },
+    {
+      "section": "Results - Study characteristics",
+      "item": "17",
+      "description": "Cite each included study and present its characteristics",
+      "keywords": ["characteristics of included studies", "study characteristics table", "summary of included studies", "evidence table"],
+      "weight": 1.1
+    },
+    {
+      "section": "Results - Risk of bias in studies",
+      "item": "18",
+      "description": "Present assessments of risk of bias for each included study",
+      "keywords": ["risk of bias results", "quality assessment results", "bias assessment table", "risk of bias summary", "methodological quality results"],
+      "weight": 1.1
+    },
+    {
+      "section": "Results - Results of syntheses",
+      "item": "19",
+      "description": "For each synthesis, briefly summarise characteristics and risk of bias, present results with confidence intervals",
+      "keywords": ["forest plot", "pooled estimate", "pooled effect", "meta-analysis results", "summary estimate", "confidence interval", "overall effect"],
+      "weight": 1.3
+    },
+    {
+      "section": "Results - Reporting biases",
+      "item": "20",
+      "description": "Present results of all assessments of risk of bias due to missing results",
+      "keywords": ["publication bias results", "funnel plot results", "Egger test results", "asymmetry", "reporting bias results"],
+      "weight": 1.0
+    },
+    {
+      "section": "Results - Certainty of evidence",
+      "item": "21",
+      "description": "Present assessments of certainty in the body of evidence for each outcome",
+      "keywords": ["GRADE results", "certainty of evidence", "evidence quality", "summary of findings table", "GRADE assessment"],
+      "weight": 1.0
+    },
+    {
+      "section": "Discussion - Discussion",
+      "item": "22a",
+      "description": "Provide a general interpretation of the results in the context of other evidence",
+      "keywords": ["general interpretation", "context of other evidence", "consistent with previous", "compared with other reviews", "overall interpretation"],
+      "weight": 1.0
+    },
+    {
+      "section": "Discussion - Discussion",
+      "item": "22b",
+      "description": "Discuss limitations of the evidence and of the review process",
+      "keywords": ["limitations of the evidence", "limitations of the review", "review limitations", "evidence limitations", "strength of the evidence"],
+      "weight": 1.2
+    },
+    {
+      "section": "Discussion - Discussion",
+      "item": "22c",
+      "description": "Provide implications of results for practice, policy, and future research",
+      "keywords": ["implications for practice", "implications for research", "future research", "policy implications", "clinical implications"],
+      "weight": 0.9
+    },
+    {
+      "section": "Other - Registration and protocol",
+      "item": "23",
+      "description": "Provide registration information including registration number, and where the review protocol can be accessed",
+      "keywords": ["PROSPERO registration", "protocol registration", "registration number", "registered protocol", "review protocol"],
+      "weight": 1.1
+    },
+    {
+      "section": "Other - Support",
+      "item": "24",
+      "description": "Describe sources of financial or non-financial support for the review",
+      "keywords": ["source of funding", "financial support", "funding source", "grant support", "funded by"],
+      "weight": 0.9
+    },
+    {
+      "section": "Other - Competing interests",
+      "item": "25",
+      "description": "Declare any competing interests of review authors",
+      "keywords": ["competing interests", "conflict of interest", "declaration of interests", "no conflicts", "disclosure statement"],
+      "weight": 0.9
+    },
+    {
+      "section": "Other - Availability of data",
+      "item": "26",
+      "description": "Report which data, analytic code, and other materials used in the review are publicly available and where they can be found",
+      "keywords": ["data availability", "supplementary materials", "analytic code", "data sharing", "publicly available data"],
+      "weight": 0.8
+    }
+  ]
+}

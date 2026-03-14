@@ -1,0 +1,74 @@
+{
+  "_comment": "TEMPLATE — copy this file, rename to <author_year_topic>.json, and fill in.",
+
+  "article": {
+    "id": "",
+    "title": "",
+    "authors": "",
+    "year": null,
+    "journal": "",
+    "doi": "",
+    "file": "articles/<filename>.pdf"
+  },
+
+  "study_type": {
+    "expected_type": "",
+    "expected_checklist": "",
+    "notes": ""
+  },
+
+  "_checklist_instructions": [
+    "Fill in ONLY the checklist that matches expected_checklist above.",
+    "For each item: true = clearly present, false = absent, null = uncertain/N/A.",
+    "Add notes explaining your reasoning — this is crucial for dispute resolution.",
+    "You don't need to fill all checklists, only the relevant one."
+  ],
+
+  "consort_items": {
+    "1a": { "present": null, "notes": "" },
+    "1b": { "present": null, "notes": "" },
+    "2a": { "present": null, "notes": "" },
+    "2b": { "present": null, "notes": "" },
+    "3a": { "present": null, "notes": "" },
+    "3b": { "present": null, "notes": "" },
+    "4a": { "present": null, "notes": "" },
+    "4b": { "present": null, "notes": "" },
+    "5":  { "present": null, "notes": "" },
+    "6a": { "present": null, "notes": "" },
+    "6b": { "present": null, "notes": "" },
+    "7a": { "present": null, "notes": "" },
+    "7b": { "present": null, "notes": "" },
+    "8a": { "present": null, "notes": "" },
+    "8b": { "present": null, "notes": "" },
+    "9":  { "present": null, "notes": "" },
+    "10": { "present": null, "notes": "" },
+    "11a": { "present": null, "notes": "" },
+    "11b": { "present": null, "notes": "" },
+    "12a": { "present": null, "notes": "" },
+    "12b": { "present": null, "notes": "" },
+    "13a": { "present": null, "notes": "" },
+    "13b": { "present": null, "notes": "" },
+    "14a": { "present": null, "notes": "" },
+    "14b": { "present": null, "notes": "" },
+    "15": { "present": null, "notes": "" },
+    "16": { "present": null, "notes": "" },
+    "17a": { "present": null, "notes": "" },
+    "17b": { "present": null, "notes": "" },
+    "18": { "present": null, "notes": "" },
+    "19": { "present": null, "notes": "" },
+    "20": { "present": null, "notes": "" },
+    "21": { "present": null, "notes": "" },
+    "22": { "present": null, "notes": "" },
+    "23": { "present": null, "notes": "" },
+    "24": { "present": null, "notes": "" },
+    "25": { "present": null, "notes": "" }
+  },
+
+  "strobe_items": {
+    "_comment": "Fill this section if expected_checklist = STROBE"
+  },
+
+  "prisma_items": {
+    "_comment": "Fill this section if expected_checklist = PRISMA"
+  }
+}
