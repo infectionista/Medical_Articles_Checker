@@ -76,11 +76,82 @@ class CheckResult:
 
     @property
     def present_count(self) -> int:
-        return sum(1 for i in self.items if i.verdict in ('present', 'partial'))
+        return sum(1 for i in self.items if i.verdict == 'present')
+
+    @property
+    def partial_count(self) -> int:
+        return sum(1 for i in self.items if i.verdict == 'partial')
 
     @property
     def absent_count(self) -> int:
         return sum(1 for i in self.items if i.verdict in ('absent', 'explicitly_absent'))
+
+    @property
+    def grade(self) -> str:
+        """Letter grade based on weighted score."""
+        s = self.weighted_score
+        if s >= 80:
+            return 'A'
+        elif s >= 65:
+            return 'B'
+        elif s >= 50:
+            return 'C'
+        elif s >= 35:
+            return 'D'
+        else:
+            return 'F'
+
+    @property
+    def grade_label(self) -> str:
+        """Human-readable quality label."""
+        labels = {
+            'A': 'Excellent reporting quality',
+            'B': 'Good reporting quality',
+            'C': 'Acceptable, but significant gaps',
+            'D': 'Poor reporting quality',
+            'F': 'Very poor — major items missing',
+        }
+        return labels[self.grade]
+
+    def summary(self, study_type: str = '', detected_checklist: str = '') -> dict:
+        """Generate a standardized summary for the article quality assessment."""
+        # Strongest items
+        strong = [i for i in self.items if i.verdict == 'present']
+        strong.sort(key=lambda x: -x.confidence)
+
+        # Critical missing items (high weight, absent)
+        critical_missing = [
+            i for i in self.items
+            if i.verdict in ('absent', 'explicitly_absent') and i.weight >= 1.1
+        ]
+
+        # Partially met items
+        partial = [i for i in self.items if i.verdict == 'partial']
+
+        return {
+            'checklist': self.checklist_name,
+            'study_type': study_type,
+            'total_items': self.total_items,
+            'weighted_score': round(self.weighted_score, 1),
+            'grade': self.grade,
+            'grade_label': self.grade_label,
+            'present': self.present_count,
+            'partial': self.partial_count,
+            'absent': self.absent_count,
+            'section_coverage': {k: round(v, 1) for k, v in self.section_coverage.items()},
+            'strong_items': [
+                {'id': i.item_id, 'desc': i.description, 'confidence': round(i.confidence, 2)}
+                for i in strong[:5]
+            ],
+            'critical_missing': [
+                {'id': i.item_id, 'desc': i.description, 'weight': i.weight, 'section': i.section}
+                for i in critical_missing
+            ],
+            'partial_items': [
+                {'id': i.item_id, 'desc': i.description, 'confidence': round(i.confidence, 2)}
+                for i in partial
+            ],
+        }
 
 
 # ---------------------------------------------------------------------------
@@ -393,13 +464,246 @@ class EnhancedChecker:
 
     # ----- reporting -----
 
-    def generate_report(self, result: CheckResult, format: str = 'markdown') -> str:
+    def generate_report(self, result: CheckResult, format: str = 'markdown',
+                        audience: str = 'specialist', study_type: str = '') -> str:
+        """
+        Generate a report.
+
+        Args:
+            result: CheckResult from check()
+            format: 'markdown', 'json', or 'text'
+            audience: 'public' (patient/layperson), 'student', or 'specialist'
+            study_type: detected study type string (for context)
+        """
         if format == 'json':
             return self._to_json(result)
         elif format == 'markdown':
-            return self._to_markdown(result)
+            return self._to_audience_markdown(result, audience, study_type)
         else:
             return self._to_text(result)
+
+    # ----- audience-level explanations -----
+
+    # Maps section names to plain-language explanations
+    SECTION_EXPLANATIONS_PUBLIC = {
+        'Title and Abstract': 'Does the title and summary clearly say what kind of study this is?',
+        'Introduction': 'Does the article explain why the study was done and what it was trying to find out?',
+        'Methods': 'Does the article explain how the study was done — who participated, what was measured, and how?',
+        'Results': 'Does the article clearly show what was found?',
+        'Discussion': 'Does the article discuss what the results mean, what the limitations are, and whether the results apply to other people?',
+        'Other': 'Does the article disclose funding sources and conflicts of interest?',
+        'Other information': 'Does the article disclose funding sources and conflicts of interest?',
+    }
+
+    SECTION_EXPLANATIONS_STUDENT = {
+        'Title and Abstract': 'The title should identify the study design. The abstract should be structured (Background, Methods, Results, Conclusions).',
+        'Introduction': 'Should include scientific background/rationale and clearly stated objectives or hypotheses.',
+        'Methods': 'Should describe study design, setting, participants, variables, data sources, bias control, sample size, and statistical methods.',
+        'Results': 'Should report participant flow, descriptive data, outcome data, main results with effect estimates and confidence intervals.',
+        'Discussion': 'Should summarize key results, discuss limitations and biases, provide cautious interpretation, and address generalizability.',
+        'Other': 'Should declare funding, role of funders, competing interests, and data availability.',
+        'Other information': 'Should declare funding, role of funders, competing interests, and data availability.',
+    }
+
+    # Maps item descriptions to plain-language "why it matters"
+    ITEM_WHY_IT_MATTERS = {
+        'bias': 'Without discussing potential biases, readers cannot judge how reliable the results are.',
+        'sample size': 'Without a sample size calculation, the study may be too small to detect a real effect.',
+        'statistical': 'Without proper statistical methods, the conclusions may be mathematically wrong.',
+        'limitations': 'If authors do not discuss limitations, they may be overstating their conclusions.',
+        'confound': 'Without controlling for confounders, the observed effect may be caused by something else entirely.',
+        'generali': 'Without discussing generalizability, it is unclear whether the results apply to other populations.',
+        'randomiz': 'Without randomization, treatment groups may differ in ways that bias the results.',
+        'blinding': 'Without blinding, participants or researchers may unconsciously influence the results.',
+        'flow diagram': 'Without a flow diagram, it is hard to see how many participants dropped out and why.',
+        'funding': 'Funding sources can influence study design and interpretation — transparency is essential.',
+        'missing data': 'If missing data are not addressed, the results may be biased by incomplete information.',
+        'consent': 'Ethical approval and consent ensure participants were protected and the study was reviewed.',
+    }
+
+    def _get_why_it_matters(self, description: str) -> str:
+        """Get a plain-language explanation of why a missing item matters."""
+        desc_lower = description.lower()
+        for key, explanation in self.ITEM_WHY_IT_MATTERS.items():
+            if key in desc_lower:
+                return explanation
+        return 'This information helps readers assess whether the study was conducted and reported properly.'
+
+    def _to_audience_markdown(self, result: CheckResult, audience: str = 'specialist',
+                              study_type: str = '') -> str:
+        """Generate markdown report tailored to audience level."""
+        if audience == 'public':
+            return self._report_public(result, study_type)
+        elif audience == 'student':
+            return self._report_student(result, study_type)
+        else:
+            return self._report_specialist(result, study_type)
+
+    def _report_public(self, result: CheckResult, study_type: str = '') -> str:
+        """Plain-language report for patients and non-specialists."""
+        lines = []
+        grade_emoji = {'A': '🟢', 'B': '🔵', 'C': '🟡', 'D': '🟠', 'F': '🔴'}.get(result.grade, '⚪')
+
+        # --- Title and verdict ---
+        lines.append(f"# Can you trust this study?")
+        lines.append("")
+
+        verdict_text = {
+            'A': 'This study is **well-reported**. The authors described their methods, results, and limitations clearly. This does not guarantee the conclusions are correct, but the reporting meets high standards.',
+            'B': 'This study is **mostly well-reported**, with some minor gaps. Overall, the key information is present.',
+            'C': 'This study has **significant gaps** in how it was reported. Some important details are missing, which makes it harder to evaluate the results.',
+            'D': 'This study is **poorly reported**. Many important details about methods, results, or limitations are missing. Be cautious about the conclusions.',
+            'F': 'This study has **very poor reporting quality**. Most of the information needed to evaluate the study is missing. The conclusions should be treated with significant skepticism.',
+        }
+
+        lines.append(f"{grade_emoji} **Reporting quality: Grade {result.grade}** — {result.weighted_score:.0f}%\n")
+        lines.append(verdict_text.get(result.grade, ''))
+        lines.append("")
+
+        # --- What was checked ---
+        if study_type:
+            lines.append(f"*Study type detected: {study_type.replace('_', ' ')}. "
+                         f"Evaluated against the {result.checklist_name} checklist ({result.total_items} items).*\n")
+
+        # --- Traffic light summary by section ---
+        lines.append("## What does this study report well, and what is missing?\n")
+
+        explanations = self.SECTION_EXPLANATIONS_PUBLIC
+        for sec, cov in sorted(result.section_coverage.items()):
+            if cov >= 60:
+                icon = '🟢'
+                status = 'Well covered'
+            elif cov >= 30:
+                icon = '🟡'
+                status = 'Partially covered'
+            else:
+                icon = '🔴'
+                status = 'Poorly covered or missing'
+
+            question = explanations.get(sec, f'Is the {sec.lower()} section adequate?')
+            lines.append(f"{icon} **{sec}** — {status} ({cov:.0f}%)")
+            lines.append(f"   {question}\n")
+
+        # --- Key concerns in plain language ---
+        critical = [i for i in result.items if i.verdict in ('absent', 'explicitly_absent') and i.weight >= 1.1]
+        if critical:
+            lines.append("## Key concerns\n")
+            lines.append("The following important information is **missing** from this article:\n")
+            for item in critical:
+                why = self._get_why_it_matters(item.description)
+                lines.append(f"- **{item.description}**")
+                lines.append(f"  *Why it matters:* {why}\n")
+
+        # --- Bottom line ---
+        lines.append("## Bottom line\n")
+        if result.grade in ('A', 'B'):
+            lines.append("The article provides enough methodological detail for readers to evaluate the study. "
+                         "However, good reporting does not automatically mean the conclusions are correct — "
+                         "it means you have enough information to judge for yourself.")
+        elif result.grade == 'C':
+            lines.append("The article is missing some important details. "
+                         "Consider looking for other studies on the same topic before drawing conclusions.")
+        else:
+            lines.append("This article is missing substantial information about how the study was done. "
+                         "It is difficult to evaluate whether the conclusions are trustworthy. "
+                         "Look for better-reported studies or systematic reviews on this topic.")
+
+        return "\n".join(lines)
+
+    def _report_student(self, result: CheckResult, study_type: str = '') -> str:
+        """Educational report for students learning to critically appraise articles."""
+        lines = []
+        grade_emoji = {'A': '🟢', 'B': '🔵', 'C': '🟡', 'D': '🟠', 'F': '🔴'}.get(result.grade, '⚪')
+
+        lines.append(f"# Reporting Quality Assessment — Study Guide")
+        lines.append(f"\n**Checklist used:** {result.checklist_name} ({result.checklist_full_name})")
+        if study_type:
+            lines.append(f"**Study type:** {study_type.replace('_', ' ')}")
+        lines.append("")
+
+        # --- Overall grade ---
+        lines.append(f"## Overall: {grade_emoji} Grade {result.grade} — {result.grade_label}")
+        lines.append(f"**Score: {result.weighted_score:.1f}%** — "
+                      f"{result.present_count} fully reported, "
+                      f"{result.partial_count} partially, "
+                      f"{result.absent_count} missing out of {result.total_items} items.\n")
+
+        # --- Section-by-section breakdown ---
+        lines.append("## Section-by-section analysis\n")
+
+        explanations = self.SECTION_EXPLANATIONS_STUDENT
+
+        # Group items by base section
+        section_groups: dict = {}
+        for item in result.items:
+            base = item.section.split(' - ')[0] if ' - ' in item.section else item.section
+            section_groups.setdefault(base, []).append(item)
+
+        for sec in sorted(section_groups.keys()):
+            items = section_groups[sec]
+            cov = result.section_coverage.get(sec, 0)
+
+            if cov >= 60:
+                sec_icon = '🟢'
+            elif cov >= 30:
+                sec_icon = '🟡'
+            else:
+                sec_icon = '🔴'
+
+            lines.append(f"### {sec_icon} {sec} ({cov:.0f}%)\n")
+
+            # Section explanation
+            if sec in explanations:
+                lines.append(f"*{explanations[sec]}*\n")
+
+            # Items table
+            lines.append("| Item | Status | Description | Confidence |")
+            lines.append("|------|--------|-------------|------------|")
+            for item in items:
+                icon = {'present': '✅', 'partial': '🟡', 'absent': '❌',
+                        'explicitly_absent': '🚫'}.get(item.verdict, '❓')
+                lines.append(f"| {item.item_id} | {icon} {item.verdict} | "
+                             f"{item.description[:70]} | {item.confidence:.0%} |")
+            lines.append("")
+
+            # Missing items with educational notes
+            missing = [i for i in items if i.verdict in ('absent', 'explicitly_absent')]
+            if missing:
+                lines.append("**What to look for** when these items are missing:\n")
+                for item in missing:
+                    why = self._get_why_it_matters(item.description)
+                    lines.append(f"- Item {item.item_id} — {item.description}")
+                    lines.append(f"  → {why}")
+                lines.append("")
+
+        # --- Learning points ---
+        lines.append("## Learning points\n")
+
+        if result.grade in ('D', 'F'):
+            lines.append("This article demonstrates **common reporting deficiencies**. "
+                         "Pay attention to:\n")
+            if any(i.verdict == 'absent' and 'bias' in i.description.lower() for i in result.items):
+                lines.append("- **Bias discussion absent:** A well-designed study should always acknowledge potential biases "
+                             "(selection bias, information bias, confounding).")
+            if any(i.verdict == 'absent' and 'limitation' in i.description.lower() for i in result.items):
+                lines.append("- **No limitations section:** This is a red flag. Every study has limitations; "
+                             "not reporting them suggests lack of critical reflection.")
+            if any(i.verdict == 'absent' and 'sample size' in i.description.lower() for i in result.items):
+                lines.append("- **No sample size justification:** Without a power calculation, the study may be "
+                             "underpowered — unable to detect a real effect even if one exists.")
+        elif result.grade in ('A', 'B'):
+            lines.append("This article demonstrates **good reporting practice**. "
+                         "Notice how the authors provide enough detail for you to assess the study independently.")
+
+        lines.append(f"\n*Evaluated against the {result.checklist_name} checklist. "
+                     f"For the full checklist, see: {result.checklist_full_name}.*")
+
+        return "\n".join(lines)
+
+    def _report_specialist(self, result: CheckResult, study_type: str = '') -> str:
+        """Full technical report for researchers and clinicians."""
+        # This is the existing detailed markdown report
+        return self._to_markdown(result, study_type)
 
     def _to_json(self, result: CheckResult) -> str:
         data = {
@@ -432,21 +736,23 @@ class EnhancedChecker:
         }
         return json.dumps(data, indent=2, ensure_ascii=False)
 
-    def _to_markdown(self, result: CheckResult) -> str:
+    def _to_markdown(self, result: CheckResult, study_type: str = '') -> str:
         lines = []
-        lines.append(f"# {result.checklist_full_name} — Enhanced Analysis")
+        lines.append(f"# {result.checklist_full_name} — Reporting Quality Assessment")
         lines.append(f"\n**Checklist:** {result.checklist_name}")
+        if study_type:
+            lines.append(f"**Study type:** {study_type}")
         lines.append(f"**Description:** {result.description}\n")
 
-        # Scores
-        lines.append("## Compliance Scores\n")
+        # Overall grade — the main output
+        grade_emoji = {'A': '🟢', 'B': '🔵', 'C': '🟡', 'D': '🟠', 'F': '🔴'}.get(result.grade, '⚪')
+        lines.append(f"## Overall Quality: {grade_emoji} Grade {result.grade} — {result.grade_label}\n")
         lines.append(f"| Metric | Value |")
         lines.append(f"|--------|-------|")
-        lines.append(f"| Weighted score | **{result.weighted_score:.1f}%** |")
-        lines.append(f"| Simple score (binary) | {result.simple_score:.1f}% |")
-        lines.append(f"| Items present/partial | {result.present_count} |")
-        lines.append(f"| Items absent | {result.absent_count} |")
-        lines.append(f"| Total items | {result.total_items} |")
+        lines.append(f"| **Reporting quality score** | **{result.weighted_score:.1f}%** |")
+        lines.append(f"| Items fully reported | {result.present_count} of {result.total_items} |")
+        lines.append(f"| Items partially reported | {result.partial_count} |")
+        lines.append(f"| Items missing | {result.absent_count} |")
 
         # Section coverage
         lines.append("\n## Section Coverage\n")
@@ -506,11 +812,13 @@ class EnhancedChecker:
     def _to_text(self, result: CheckResult) -> str:
         lines = []
         lines.append("=" * 80)
-        lines.append(f"  {result.checklist_full_name} — Enhanced Analysis")
+        lines.append(f"  {result.checklist_full_name} — Reporting Quality Assessment")
         lines.append("=" * 80)
-        lines.append(f"  Weighted score:  {result.weighted_score:.1f}%")
-        lines.append(f"  Simple score:    {result.simple_score:.1f}%")
-        lines.append(f"  Present/Partial: {result.present_count}/{result.total_items}")
+        lines.append(f"  GRADE: {result.grade} — {result.grade_label}")
+        lines.append(f"  Reporting quality score: {result.weighted_score:.1f}%")
+        lines.append(f"  Fully reported:   {result.present_count}/{result.total_items}")
+        lines.append(f"  Partially:        {result.partial_count}/{result.total_items}")
+        lines.append(f"  Missing:          {result.absent_count}/{result.total_items}")
         lines.append("-" * 80)
 
         for item in result.items:

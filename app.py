@@ -96,6 +96,17 @@ with col_upload:
     )
 
 with col_options:
+    audience = st.radio(
+        "Report level:",
+        options=["public", "student", "specialist"],
+        format_func=lambda x: {
+            'public': '👤 General public (patient/reader)',
+            'student': '🎓 Student (learning critical appraisal)',
+            'specialist': '🔬 Specialist (researcher/clinician)',
+        }[x],
+        index=1,
+        help="Choose the level of detail and language for the report.",
+    )
     auto_detect = st.checkbox("Auto-detect study type", value=True)
     manual_checklist = st.selectbox(
         "Or choose checklist manually:",
@@ -176,31 +187,52 @@ if uploaded_file is not None:
     with st.spinner(f"Applying {checklist_name} checklist..."):
         result = checker.check(article_text, checklist_name, sections=sections)
 
-    # --- Results dashboard ---
+    # --- Overall Quality Assessment ---
     st.divider()
-    st.header("Compliance Results")
+
+    grade_colors = {'A': '🟢', 'B': '🔵', 'C': '🟡', 'D': '🟠', 'F': '🔴'}
+    grade_emoji = grade_colors.get(result.grade, '⚪')
+
+    st.header(f"Reporting Quality: {grade_emoji} Grade {result.grade}")
+    st.subheader(result.grade_label)
 
     # Top-level metrics
-    col_m1, col_m2, col_m3, col_m4 = st.columns(4)
+    col_m1, col_m2, col_m3, col_m4, col_m5 = st.columns(5)
     with col_m1:
         st.metric(
-            "Weighted Score",
+            "Quality Score",
             f"{result.weighted_score:.1f}%",
-            help="Context-aware weighted compliance score",
+            help="Weighted reporting quality score (0–100%)",
         )
     with col_m2:
-        st.metric(
-            "Simple Score",
-            f"{result.simple_score:.1f}%",
-            help="Binary present/absent compliance",
-        )
+        st.metric("Fully Reported", f"{result.present_count}")
     with col_m3:
-        st.metric("Items Present", f"{result.present_count}/{result.total_items}")
+        st.metric("Partially Reported", f"{result.partial_count}")
     with col_m4:
-        st.metric("Items Missing", result.absent_count)
+        st.metric("Missing", f"{result.absent_count}")
+    with col_m5:
+        st.metric("Total Items", f"{result.total_items}")
 
     # Progress bar
-    st.progress(result.weighted_score / 100)
+    st.progress(min(result.weighted_score / 100, 1.0))
+
+    # Critical missing items warning
+    critical_missing = [
+        i for i in result.items
+        if i.verdict in ('absent', 'explicitly_absent') and i.weight >= 1.1
+    ]
+    if critical_missing:
+        with st.expander(f"⚠️ {len(critical_missing)} critical items missing (high-weight)", expanded=True):
+            for item in critical_missing:
+                st.markdown(f"- **Item {item.item_id}** ({item.section}): {item.description}")
+
+    # --- Audience-specific report ---
+    st.divider()
+    detected_type = detection.study_type if auto_detect else ''
+    audience_report = checker.generate_report(result, 'markdown', audience=audience,
+                                              study_type=detected_type)
+    with st.expander("📋 Full Report", expanded=(audience != 'specialist')):
+        st.markdown(audience_report)
 
     # --- Section coverage ---
     st.subheader("Section Coverage")
@@ -283,7 +315,8 @@ if uploaded_file is not None:
     export_col1, export_col2, export_col3 = st.columns(3)
 
     with export_col1:
-        md_report = checker.generate_report(result, 'markdown')
+        md_report = checker.generate_report(result, 'markdown', audience=audience,
+                                            study_type=detected_type if auto_detect else '')
         st.download_button(
             "📄 Download Markdown",
             data=md_report,
