@@ -8,154 +8,386 @@
       "section": "Title and Abstract",
       "item": "1",
       "description": "Identify the study as genomic/sequence analysis in title",
-      "keywords": ["genomic analysis", "whole-genome sequencing", "next-generation sequencing", "phylogenetic analysis", "molecular epidemiology", "sequence analysis"],
+      "keywords": [
+        "genomic analysis",
+        "whole-genome sequencing",
+        "next-generation sequencing",
+        "phylogenetic analysis",
+        "molecular epidemiology",
+        "sequence analysis",
+        "phylogenetic network analysis",
+        "phylogenetic network of",
+        "phylogenetic network analysis",
+        "phylogenetic network of",
+        "phylogenetic analysis of"
+      ],
       "weight": 1.0
     },
     {
       "section": "Introduction",
       "item": "2",
       "description": "Provide background on pathogen/organism and rationale for sequencing",
-      "keywords": ["rationale for sequencing", "molecular characterization", "genomic surveillance", "genetic diversity of", "epidemiological context"],
+      "keywords": [
+        "rationale for sequencing",
+        "molecular characterization",
+        "genomic surveillance",
+        "genetic diversity of",
+        "epidemiological context",
+        "understanding of coronavirus evolution",
+        "understand the evolution of",
+        "understanding of coronavirus evolution",
+        "understand the evolution of",
+        "explore how this method"
+      ],
       "weight": 0.8
     },
     {
       "section": "Methods - Sample collection",
       "item": "3",
       "description": "Describe sample collection methods, dates, and locations",
-      "keywords": ["sample collection", "specimen collection", "collection dates", "geographic location", "sampling strategy", "clinical specimens"],
+      "keywords": [
+        "sample collection",
+        "specimen collection",
+        "collection dates",
+        "geographic location",
+        "sampling strategy",
+        "clinical specimens"
+      ],
       "weight": 1.1
     },
     {
       "section": "Methods - Sample size",
       "item": "4",
       "description": "Report number of samples sequenced and selection criteria",
-      "keywords": ["samples sequenced", "number of specimens", "sample size", "selection criteria for sequencing", "n = "],
+      "keywords": [
+        "samples sequenced",
+        "number of specimens",
+        "sample size",
+        "selection criteria for sequencing",
+        "n = ",
+        "160 complete human",
+        "160 largely complete",
+        "253 coronavirus genomes",
+        "resulting 160 sequences"
+      ],
       "weight": 1.0
     },
     {
       "section": "Methods - Sequencing platform",
       "item": "5",
       "description": "Specify sequencing platform and technology used",
-      "keywords": ["Illumina MiSeq", "Illumina HiSeq", "Illumina NextSeq", "PacBio", "Oxford Nanopore", "MinION", "Sanger sequencing", "Ion Torrent", "next-generation sequencing platform"],
+      "keywords": [
+        "Illumina MiSeq",
+        "Illumina HiSeq",
+        "Illumina NextSeq",
+        "PacBio",
+        "Oxford Nanopore",
+        "MinION",
+        "Sanger sequencing",
+        "Ion Torrent",
+        "next-generation sequencing platform"
+      ],
       "weight": 1.3
     },
     {
       "section": "Methods - Library preparation",
       "item": "6",
       "description": "Describe library preparation methods, extraction, and amplification protocols",
-      "keywords": ["library preparation", "RNA extraction", "DNA extraction", "amplicon-based", "whole-genome amplification", "PCR amplification", "primer design", "enrichment protocol"],
+      "keywords": [
+        "library preparation",
+        "RNA extraction",
+        "DNA extraction",
+        "amplicon-based",
+        "whole-genome amplification",
+        "PCR amplification",
+        "primer design",
+        "enrichment protocol"
+      ],
       "weight": 1.2
     },
     {
       "section": "Methods - Quality control",
       "item": "7",
       "description": "Describe quality control measures for sequencing data",
-      "keywords": ["quality control", "quality filtering", "Phred score", "Q30", "read trimming", "adapter removal", "FastQC", "quality threshold"],
+      "keywords": [
+        "quality control",
+        "quality filtering",
+        "Phred score",
+        "Q30",
+        "read trimming",
+        "adapter removal",
+        "FastQC",
+        "quality threshold"
+      ],
       "weight": 1.1
     },
     {
       "section": "Methods - Sequence assembly",
       "item": "8",
       "description": "Describe assembly methods and reference sequences used",
-      "keywords": ["de novo assembly", "reference-based assembly", "reference genome", "consensus sequence", "read mapping", "alignment method", "BWA", "Bowtie"],
+      "keywords": [
+        "de novo assembly",
+        "reference-based assembly",
+        "reference genome",
+        "consensus sequence",
+        "read mapping",
+        "alignment method",
+        "BWA",
+        "Bowtie",
+        "aligned to the full reference genome",
+        "truncated the flanks",
+        "consensus range 56 to"
+      ],
       "weight": 1.2
     },
     {
       "section": "Methods - Bioinformatics pipeline",
       "item": "9",
       "description": "Detail bioinformatics software, versions, and parameters used",
-      "keywords": ["bioinformatics pipeline", "software version", "GATK", "SAMtools", "bcftools", "variant calling", "pipeline parameters", "analysis workflow"],
+      "keywords": [
+        "bioinformatics pipeline",
+        "software version",
+        "GATK",
+        "SAMtools",
+        "bcftools",
+        "variant calling",
+        "pipeline parameters",
+        "analysis workflow",
+        "network 5011cs package",
+        "network5011cs",
+        "network publisher option",
+        "epsilon parameter set to"
+      ],
       "weight": 1.3
     },
     {
       "section": "Methods - Phylogenetic analysis",
       "item": "10",
       "description": "Describe phylogenetic methods, substitution models, and software",
-      "keywords": ["phylogenetic method", "maximum likelihood", "Bayesian inference", "BEAST", "RAxML", "IQ-TREE", "substitution model", "GTR model", "bootstrap support", "posterior probability"],
+      "keywords": [
+        "phylogenetic method",
+        "maximum likelihood",
+        "Bayesian inference",
+        "BEAST",
+        "RAxML",
+        "IQ-TREE",
+        "substitution model",
+        "GTR model",
+        "bootstrap support",
+        "posterior probability",
+        "phylogenetic network methods",
+        "median joining network algorithm",
+        "steiner tree algorithm",
+        "median joining network algorithm",
+        "median-joining network",
+        "steiner tree algorithm",
+        "most-parsimonious trees"
+      ],
       "weight": 1.3
     },
     {
       "section": "Methods - Statistical analysis",
       "item": "11",
       "description": "Describe statistical methods for sequence/genetic analysis",
-      "keywords": ["genetic distance", "nucleotide diversity", "selection analysis", "dN/dS ratio", "molecular clock", "divergence time", "population genetics", "recombination analysis"],
+      "keywords": [
+        "genetic distance",
+        "nucleotide diversity",
+        "selection analysis",
+        "dN/dS ratio",
+        "molecular clock",
+        "divergence time",
+        "population genetics",
+        "recombination analysis",
+        "deletion events",
+        "recurrent mutations at",
+        "parsimony",
+        "parallel evolution events"
+      ],
       "weight": 1.0
     },
     {
       "section": "Methods - Metadata",
       "item": "12",
       "description": "Describe patient/sample metadata collected and linked to sequences",
-      "keywords": ["clinical metadata", "epidemiological metadata", "demographic data", "treatment history", "clinical covariates", "linked metadata"],
+      "keywords": [
+        "clinical metadata",
+        "epidemiological metadata",
+        "demographic data",
+        "treatment history",
+        "clinical covariates",
+        "linked metadata"
+      ],
       "weight": 0.9
     },
     {
       "section": "Results - Sequence quality",
       "item": "13",
       "description": "Report sequencing quality metrics, depth of coverage, and yield",
-      "keywords": ["sequencing depth", "coverage depth", "mean coverage", "genome coverage", "sequencing yield", "read count", "quality metrics"],
+      "keywords": [
+        "sequencing depth",
+        "coverage depth",
+        "mean coverage",
+        "genome coverage",
+        "sequencing yield",
+        "read count",
+        "quality metrics"
+      ],
       "weight": 1.1
     },
     {
       "section": "Results - Sequence characteristics",
       "item": "14",
       "description": "Describe characteristics of obtained sequences—length, completeness, notable features",
-      "keywords": ["genome length", "sequence completeness", "genome completeness", "ambiguous bases", "genome size", "coding regions"],
+      "keywords": [
+        "genome length",
+        "sequence completeness",
+        "genome completeness",
+        "ambiguous bases",
+        "genome size",
+        "coding regions",
+        "consensus range",
+        "sequence range",
+        "101 distinct genomic sequences",
+        "sequence similarity of 96.2%",
+        "29903 nucleotides"
+      ],
       "weight": 1.0
     },
     {
       "section": "Results - Genetic diversity",
       "item": "15",
       "description": "Report genetic diversity, mutations, variants, and polymorphisms found",
-      "keywords": ["genetic diversity", "nucleotide substitutions", "mutations identified", "single nucleotide polymorphisms", "SNPs", "amino acid changes", "variant frequency"],
+      "keywords": [
+        "genetic diversity",
+        "nucleotide substitutions",
+        "mutations identified",
+        "single nucleotide polymorphisms",
+        "SNPs",
+        "amino acid changes",
+        "variant frequency",
+        "nucleotide polymorphisms",
+        "synonymous mutation",
+        "nonsynonymous mutation",
+        "mutated nucleotide position"
+      ],
       "weight": 1.2
     },
     {
       "section": "Results - Phylogenetic results",
       "item": "16",
       "description": "Present phylogenetic analyses with trees, clusters, and lineage assignments",
-      "keywords": ["phylogenetic tree", "phylogenetic clusters", "lineage assignment", "clades identified", "transmission clusters", "phylogeographic analysis"],
+      "keywords": [
+        "phylogenetic tree",
+        "phylogenetic clusters",
+        "lineage assignment",
+        "clades identified",
+        "transmission clusters",
+        "phylogeographic analysis",
+        "phylogenetic network",
+        "phylogenetic network of 160",
+        "labeled these phylogenetic clusters"
+      ],
       "weight": 1.3
     },
     {
       "section": "Results - Drug resistance",
       "item": "17",
       "description": "Report drug resistance mutations or determinants if applicable",
-      "keywords": ["drug resistance mutations", "resistance-associated mutations", "antiretroviral resistance", "antimicrobial resistance", "resistance profile", "susceptibility testing"],
+      "keywords": [
+        "drug resistance mutations",
+        "resistance-associated mutations",
+        "antiretroviral resistance",
+        "antimicrobial resistance",
+        "resistance profile",
+        "susceptibility testing"
+      ],
       "weight": 1.0
     },
     {
       "section": "Discussion",
       "item": "18",
       "description": "Interpret genomic findings in context of pathogen epidemiology and public health",
-      "keywords": ["epidemiological interpretation", "public health implications", "transmission dynamics", "molecular evolution", "genomic epidemiology", "clinical significance"],
+      "keywords": [
+        "epidemiological interpretation",
+        "public health implications",
+        "transmission dynamics",
+        "molecular evolution",
+        "genomic epidemiology",
+        "clinical significance",
+        "phylogeographic patterns",
+        "founder events",
+        "infection pathways",
+        "trace infection paths",
+        "founder events",
+        "immunologically or environmentally adapted",
+        "public health risk"
+      ],
       "weight": 1.0
     },
     {
       "section": "Data availability",
       "item": "19",
       "description": "State where sequences are deposited with accession numbers",
-      "keywords": ["GenBank accession", "ENA accession", "GISAID", "accession numbers", "sequence repository", "SRA submission", "deposited in GenBank"],
+      "keywords": [
+        "GenBank accession",
+        "ENA accession",
+        "GISAID",
+        "accession numbers",
+        "sequence repository",
+        "SRA submission",
+        "deposited in GenBank",
+        "gisaid database",
+        "gisaid org",
+        "fluxus-engineering.com",
+        "fluxus technology"
+      ],
       "weight": 1.3
     },
     {
       "section": "Data availability",
       "item": "20",
       "description": "Provide access to analysis code and scripts for reproducibility",
-      "keywords": ["analysis code", "GitHub repository", "reproducible analysis", "analysis scripts", "code availability", "computational pipeline"],
+      "keywords": [
+        "analysis code",
+        "GitHub repository",
+        "reproducible analysis",
+        "analysis scripts",
+        "code availability",
+        "computational pipeline",
+        "network5011 software package",
+        "shareware on the fluxus",
+        "freely available"
+      ],
       "weight": 0.9
     },
     {
       "section": "Ethics",
       "item": "21",
       "description": "State ethical approval and patient consent procedures",
-      "keywords": ["ethical approval", "ethics committee", "institutional review board", "informed consent", "IRB approval", "ethics statement"],
+      "keywords": [
+        "ethical approval",
+        "ethics committee",
+        "institutional review board",
+        "informed consent",
+        "IRB approval",
+        "ethics statement"
+      ],
       "weight": 1.1
     },
     {
       "section": "Funding",
       "item": "22",
       "description": "Declare funding sources and conflicts of interest",
-      "keywords": ["funding source", "grant support", "financial support", "conflict of interest", "competing interests", "funded by"],
+      "keywords": [
+        "funding source",
+        "grant support",
+        "financial support",
+        "conflict of interest",
+        "competing interests",
+        "funded by",
+        "no competing interest",
+        "acknowledge the authors"
+      ],
       "weight": 0.9
     }
   ]

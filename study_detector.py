@@ -162,26 +162,36 @@ class EnhancedStudyTypeDetector:
                     (r'\b(?:double|triple|single)[- ]blind\b', 6),
                     (r'\bplacebo[- ]controlled\b', 6),
                     (r'\ballocation concealment\b', 5),
-                    (r'\bintention[- ]to[- ]treat\b', 5),
+                    (r'\bintention[- ]to[- ]treat\b', 7),       # Strong RCT signal
                     (r'\bCONSORT\b', 5),
                     (r'\bparallel[- ]group\b', 4),
                     (r'\bcrossover trial\b', 4),
-                    (r'\brandomly assigned\b', 4),
-                    (r'\brandomized to\b', 4),
-                    (r'\brandomised to\b', 4),
+                    (r'\brandomly assigned\b', 6),              # Strong RCT signal
+                    (r'\brandomized to\b', 5),
+                    (r'\brandomised to\b', 5),
                     (r'\bblock randomi[sz]ation\b', 4),
                     (r'\bRCT\b', 3),
+                    (r'\bunderwent\s+randomi[sz]ation\b', 8),   # Very strong
+                    (r'\bwere\s+(?:randomly\s+)?assigned\s+(?:to|in)\b', 6),
+                    (r'\brandom(?:ly|ized|ised)\s+(?:allocation|assignment)\b', 6),
+                    (r'\b(?:2|1):(?:1|2)\s+ratio\b', 5),       # 2:1 or 1:1 ratio
+                    (r'\brandomized\s+evaluation\b', 8),        # e.g. RECOVERY
+                    (r'\brandomized\s+trial\b', 7),
+                    (r'\brandomised\s+trial\b', 7),
+                    (r'\btrial\s+registration\b', 3),
+                    (r'\bNCT\d{8}\b', 5),                       # ClinicalTrials.gov ID
+                    (r'\bISRCTN\b', 5),                         # ISRCTN registry
                 ],
                 "negative": [
                     # These SUBTRACT from RCT score
                     (r'\bnon[- ]?randomi[sz]ed\b', -10),  # Explicit non-randomized
-                    (r'\bopen[- ]label\b', -4),             # Reduces RCT likelihood
+                    (r'\bopen[- ]label\b', -2),             # Mild penalty (many RCTs are open-label)
                     (r'\bno\s+randomi[sz]ation\b', -8),
                     (r'\bwithout\s+randomi[sz]ation\b', -8),
                     (r'\bquasi[- ]experiment\b', -10),
                     (r'\buncontrolled\b', -5),
                     (r'\bno\s+control\s+group\b', -6),
-                    (r'\bobservational\b', -3),
+                    (r'\bobservational\b', -2),              # Mild penalty (can appear in references)
                 ],
             },
 
@@ -447,7 +457,22 @@ class EnhancedStudyTypeDetector:
 
         Returns DetectionResult with best match, confidence, and full scores.
         """
+        # --- Strip references section to avoid contamination ---
+        # References often cite other study types, skewing detection
         text_lower = article_text.lower()
+        ref_patterns = [
+            r'\n\s*references\s*\n',
+            r'\n\s*bibliography\s*\n',
+            r'\n\s*❚\s*references\s*\n',
+            r'\breferences\s*\n\s*1[\.\)]',
+        ]
+        body_text = text_lower
+        for rp in ref_patterns:
+            m = re.search(rp, text_lower)
+            if m:
+                body_text = text_lower[:m.start()]
+                break
+
         scores: Dict[str, float] = {}
         all_matched: Dict[str, List[str]] = {}
         warnings: List[str] = []
@@ -456,15 +481,15 @@ class EnhancedStudyTypeDetector:
             score = 0.0
             matched = []
 
-            # Positive patterns
+            # Positive patterns — match only in body (excluding references)
             for pattern, weight in config["positive"]:
-                if re.search(pattern, text_lower, re.IGNORECASE | re.DOTALL):
+                if re.search(pattern, body_text, re.IGNORECASE | re.DOTALL):
                     score += weight
                     matched.append(f"+{weight}: {pattern}")
 
-            # Negative patterns (subtract from score)
+            # Negative patterns (subtract from score) — also body only
             for pattern, weight in config.get("negative", []):
-                if re.search(pattern, text_lower, re.IGNORECASE | re.DOTALL):
+                if re.search(pattern, body_text, re.IGNORECASE | re.DOTALL):
                     score += weight  # weight is already negative
                     matched.append(f"{weight}: {pattern}")
 

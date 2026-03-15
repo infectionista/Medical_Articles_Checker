@@ -1,0 +1,264 @@
+[
+  {
+    "article_id": "forster_2020_phylogenetic",
+    "type_correct": true,
+    "checklist_correct": true,
+    "recall": 0.9286,
+    "specificity": 0.875,
+    "precision": 0.9286,
+    "f1": 0.9286,
+    "accuracy": 0.9091,
+    "tp": 13,
+    "tn": 7,
+    "fp": 1,
+    "fn": 1,
+    "errors": [
+      {
+        "item": "2",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.07,
+        "annotator_notes": "Background on mitochondrial DNA phylogenetics, network methods, application to coronavirus evolution"
+      },
+      {
+        "item": "3",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.55,
+        "annotator_notes": "Sequences taken from GISAID database, not collected by authors. No clinical specimen collection described"
+      }
+    ]
+  },
+  {
+    "article_id": "gautret_2020_hydroxychloroquine",
+    "type_correct": true,
+    "checklist_correct": true,
+    "recall": 0.8571,
+    "specificity": 0.9412,
+    "precision": 0.9231,
+    "f1": 0.8889,
+    "accuracy": 0.9032,
+    "tp": 12,
+    "tn": 16,
+    "fp": 1,
+    "fn": 2,
+    "errors": [
+      {
+        "item": "12a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.167,
+        "annotator_notes": "Chi-square test, Fisher exact test mentioned"
+      },
+      {
+        "item": "12c",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.36,
+        "annotator_notes": "No discussion of missing data handling"
+      },
+      {
+        "item": "20",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Interpretation given but one-sided, no caveats"
+      }
+    ]
+  },
+  {
+    "article_id": "moraes_2022_hcq_systematic_review",
+    "type_correct": true,
+    "checklist_correct": true,
+    "recall": 0.9615,
+    "specificity": 0.6667,
+    "precision": 0.9615,
+    "f1": 0.9615,
+    "accuracy": 0.931,
+    "tp": 25,
+    "tn": 2,
+    "fp": 1,
+    "fn": 1,
+    "errors": [
+      {
+        "item": "2",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Structured abstract with Objective, Methods, Results, Conclusion"
+      },
+      {
+        "item": "22c",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.55,
+        "annotator_notes": "No explicit discussion of implications for future research beyond general statement about properly designed RCTs"
+      }
+    ]
+  },
+  {
+    "article_id": "recovery_2021_dexamethasone",
+    "type_correct": true,
+    "checklist_correct": true,
+    "recall": 0.7647,
+    "specificity": 0.3333,
+    "precision": 0.9286,
+    "f1": 0.8387,
+    "accuracy": 0.7297,
+    "tp": 26,
+    "tn": 1,
+    "fp": 2,
+    "fn": 8,
+    "errors": [
+      {
+        "item": "2a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.064,
+        "annotator_notes": "Introduction covers glucocorticoid rationale, inflammation in Covid-19, lack of evidence"
+      },
+      {
+        "item": "3b",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.255,
+        "annotator_notes": "Protocol changes mentioned (age limit removed May 9, 2020) but not as formal protocol amendments"
+      },
+      {
+        "item": "6b",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.28,
+        "annotator_notes": "No mention of changes to outcomes after trial commenced"
+      },
+      {
+        "item": "7a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.188,
+        "annotator_notes": "Power calculation: 2000 dexa + 4000 control gives 90% power at P=0.01 to detect 20% reduction"
+      },
+      {
+        "item": "8b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.064,
+        "annotator_notes": "Unstratified randomization (mentioned: 'through the play of chance in the unstratified randomization')"
+      },
+      {
+        "item": "9",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.064,
+        "annotator_notes": "Concealment via Web-based system described"
+      },
+      {
+        "item": "10",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.22,
+        "annotator_notes": "Local trial staff enrolled, Web-based system assigned"
+      },
+      {
+        "item": "14b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.064,
+        "annotator_notes": "Trial stopped by steering committee when enrollment exceeded 2000 in dexa group"
+      },
+      {
+        "item": "16",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.054,
+        "annotator_notes": "All analyses intention-to-treat: all 2104 dexa and 4321 usual care included"
+      },
+      {
+        "item": "21",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.064,
+        "annotator_notes": "Generalizability discussed: ~10% of UK hospitalized Covid-19 patients, mortality consistent with national data"
+      }
+    ]
+  },
+  {
+    "article_id": "wakefield_1998_vaccines_autism",
+    "type_correct": false,
+    "checklist_correct": true,
+    "recall": 0.4167,
+    "specificity": 0.8947,
+    "precision": 0.7143,
+    "f1": 0.5263,
+    "accuracy": 0.7097,
+    "tp": 5,
+    "tn": 17,
+    "fp": 2,
+    "fn": 7,
+    "errors": [
+      {
+        "item": "3",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Objective: investigate children with enterocolitis and developmental regression"
+      },
+      {
+        "item": "5",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Royal Free Hospital, London. Children admitted for 1 week"
+      },
+      {
+        "item": "6a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "12 consecutively referred children described with referral criteria"
+      },
+      {
+        "item": "6b",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.55,
+        "annotator_notes": "Not a case-control study"
+      },
+      {
+        "item": "7",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Outcomes: GI histology, neurological assessment, behavioral diagnosis"
+      },
+      {
+        "item": "12a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Mann-Whitney U test, chi-square test mentioned"
+      },
+      {
+        "item": "18",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Key finding: associated GI disease and developmental regression"
+      },
+      {
+        "item": "19",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Acknowledges: did not prove association, further investigation needed"
+      },
+      {
+        "item": "22",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.55,
+        "annotator_notes": "Funding source not clearly stated in paper"
+      }
+    ]
+  }
+]

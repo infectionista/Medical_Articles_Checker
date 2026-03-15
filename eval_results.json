@@ -1,0 +1,516 @@
+[
+  {
+    "article_id": "forster_2020_phylogenetic",
+    "type_correct": true,
+    "checklist_correct": true,
+    "recall": 0.2857,
+    "specificity": 0.875,
+    "precision": 0.8,
+    "f1": 0.4211,
+    "accuracy": 0.5,
+    "tp": 4,
+    "tn": 7,
+    "fp": 1,
+    "fn": 10,
+    "errors": [
+      {
+        "item": "1",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.117,
+        "annotator_notes": "Title: 'Phylogenetic network analysis of SARS-CoV-2 genomes'"
+      },
+      {
+        "item": "2",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Background on mitochondrial DNA phylogenetics, network methods, application to coronavirus evolution"
+      },
+      {
+        "item": "3",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.55,
+        "annotator_notes": "Sequences taken from GISAID database, not collected by authors. No clinical specimen collection described"
+      },
+      {
+        "item": "4",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.14,
+        "annotator_notes": "160 complete genomes used, from 253 available in GISAID as of March 4, 2020. Selection: most complete genomes"
+      },
+      {
+        "item": "9",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Network5011CS software package; median-joining network algorithm and Steiner tree algorithm; epsilon=0 and epsilon=10"
+      },
+      {
+        "item": "10",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Median-joining network (Bandelt et al. 1999) and Steiner algorithm (Polzin & Daneshmand 2003), 288 most-parsimonious trees of length 229"
+      },
+      {
+        "item": "11",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Parsimony analysis, recurrent mutations at np11083 noted; gap coding as single deletion events"
+      },
+      {
+        "item": "14",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "160 human + 1 bat virus, 101 distinct genomic sequence types; range 56-29797; bat 96.2% similarity"
+      },
+      {
+        "item": "18",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Infection tracing (Brazil-Italy, Ontario-Guangdong, Mexico-Italy-Germany-Wuhan chains); founder effects vs immunological adaptation hypothesis"
+      },
+      {
+        "item": "20",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Network5011CS software package freely available as shareware; coronavirus network files downloadable"
+      },
+      {
+        "item": "22",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "No competing interest declared; acknowledgments to GISAID contributors and labs"
+      }
+    ]
+  },
+  {
+    "article_id": "gautret_2020_hydroxychloroquine",
+    "type_correct": false,
+    "checklist_correct": true,
+    "recall": 0.8571,
+    "specificity": 0.9412,
+    "precision": 0.9231,
+    "f1": 0.8889,
+    "accuracy": 0.9032,
+    "tp": 12,
+    "tn": 16,
+    "fp": 1,
+    "fn": 2,
+    "errors": [
+      {
+        "item": "12a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.167,
+        "annotator_notes": "Chi-square test, Fisher exact test mentioned"
+      },
+      {
+        "item": "12c",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.36,
+        "annotator_notes": "No discussion of missing data handling"
+      },
+      {
+        "item": "20",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Interpretation given but one-sided, no caveats"
+      }
+    ]
+  },
+  {
+    "article_id": "moraes_2022_hcq_systematic_review",
+    "type_correct": true,
+    "checklist_correct": true,
+    "recall": 0.4615,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "f1": 0.6316,
+    "accuracy": 0.5172,
+    "tp": 12,
+    "tn": 3,
+    "fp": 0,
+    "fn": 14,
+    "errors": [
+      {
+        "item": "2",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Structured abstract with Objective, Methods, Results, Conclusion"
+      },
+      {
+        "item": "3",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Rationale: HCQ attention, lack of good evidence, need for systematic evaluation of RCTs"
+      },
+      {
+        "item": "4",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Objective: evaluate efficacy and safety of HCQ for COVID-19 patients (mortality, serious adverse events)"
+      },
+      {
+        "item": "8",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Full MEDLINE search strategy with MeSH terms and text words provided"
+      },
+      {
+        "item": "13a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Random-effects model, Mantel-Haenszel method, risk ratio with 95% CI"
+      },
+      {
+        "item": "13b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Cochran's Q statistic and I² for heterogeneity (I²>50% threshold)"
+      },
+      {
+        "item": "17",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Table 1: country, site, drug, HCQ regimens, control, age, sample sizes, diagnosis method per study"
+      },
+      {
+        "item": "18",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Figure 2: risk of bias assessment (summarized and individual per study)"
+      },
+      {
+        "item": "20",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Forest plot (Figure 4) with risk difference showing individual study estimates"
+      },
+      {
+        "item": "21",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Table 2: Summary of findings with GRADE assessment (low for mortality, very low for adverse events)"
+      },
+      {
+        "item": "22a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Summary: no significant mortality reduction with HCQ (RR 1.09, 95% CI 0.99-1.19), no increase in adverse events"
+      },
+      {
+        "item": "22b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Limitations: heterogeneous populations, different HCQ dose criteria, RECOVERY trial dominates weight, only 2 double-blinded"
+      },
+      {
+        "item": "23",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Conclusion: HCQ not efficacious in reducing mortality of COVID-19 patients"
+      },
+      {
+        "item": "24",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "PROSPERO CRD42020197070 registered"
+      }
+    ]
+  },
+  {
+    "article_id": "recovery_2021_dexamethasone",
+    "type_correct": false,
+    "checklist_correct": false,
+    "recall": 0.2647,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "f1": 0.4186,
+    "accuracy": 0.3243,
+    "tp": 9,
+    "tn": 3,
+    "fp": 0,
+    "fn": 25,
+    "errors": [
+      {
+        "item": "1b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.14,
+        "annotator_notes": "Structured abstract with Background, Methods, Results, Conclusions"
+      },
+      {
+        "item": "2a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Introduction covers glucocorticoid rationale, inflammation in Covid-19, lack of evidence"
+      },
+      {
+        "item": "2b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.078,
+        "annotator_notes": "Objective: evaluate effect of dexamethasone on 28-day mortality"
+      },
+      {
+        "item": "4a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.1,
+        "annotator_notes": "Eligibility: hospitalized Covid-19, clinically suspected or lab-confirmed, no contraindication"
+      },
+      {
+        "item": "5",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.078,
+        "annotator_notes": "Dexamethasone 6mg once daily oral/IV for up to 10 days vs usual care"
+      },
+      {
+        "item": "7a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Power calculation: 2000 dexa + 4000 control gives 90% power at P=0.01 to detect 20% reduction"
+      },
+      {
+        "item": "7b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Steering committee monitored data, closed recruitment June 8 2020 when >2000 enrolled"
+      },
+      {
+        "item": "8a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Web-based randomization system with concealment of group assignment"
+      },
+      {
+        "item": "8b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Unstratified randomization (mentioned: 'through the play of chance in the unstratified randomization')"
+      },
+      {
+        "item": "9",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Concealment via Web-based system described"
+      },
+      {
+        "item": "11a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.078,
+        "annotator_notes": "Open-label: patients and local members of trial staff were aware of assignments"
+      },
+      {
+        "item": "12b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Prespecified subgroup analyses by age, sex, race, respiratory support, days since symptom onset"
+      },
+      {
+        "item": "13a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.1,
+        "annotator_notes": "Figure 1: CONSORT flow diagram with enrollment, randomization, allocation, analysis"
+      },
+      {
+        "item": "13b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.1,
+        "annotator_notes": "Reasons for exclusion: 1948 excluded (357 no drug, 1707 not suitable)"
+      },
+      {
+        "item": "14a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.087,
+        "annotator_notes": "Enrollment March 19 to June 8, 2020"
+      },
+      {
+        "item": "14b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Trial stopped by steering committee when enrollment exceeded 2000 in dexa group"
+      },
+      {
+        "item": "15",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.117,
+        "annotator_notes": "Table 1: detailed baseline characteristics by treatment group and respiratory support level"
+      },
+      {
+        "item": "16",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.1,
+        "annotator_notes": "All analyses intention-to-treat: all 2104 dexa and 4321 usual care included"
+      },
+      {
+        "item": "17b",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Age-adjusted absolute reductions reported: 12.3 percentage points for ventilated, 4.2 for oxygen"
+      },
+      {
+        "item": "18",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.117,
+        "annotator_notes": "Subgroup analyses by respiratory support (Figure 3), sensitivity analyses without age adjustment (Table S3)"
+      },
+      {
+        "item": "19",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.236,
+        "annotator_notes": "4 serious adverse reactions: 2 hyperglycemia, 1 GI hemorrhage, 1 psychosis"
+      },
+      {
+        "item": "20",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Extensive limitations: open-label, no physiologic/virologic measures, only essential data collected"
+      },
+      {
+        "item": "21",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Generalizability discussed: ~10% of UK hospitalized Covid-19 patients, mortality consistent with national data"
+      },
+      {
+        "item": "22",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Discussion of findings in context of prior evidence, cautious interpretation for non-oxygen patients"
+      },
+      {
+        "item": "24",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Protocol available at NEJM.org and www.recoverytrial.net"
+      }
+    ]
+  },
+  {
+    "article_id": "wakefield_1998_vaccines_autism",
+    "type_correct": false,
+    "checklist_correct": true,
+    "recall": 0.4167,
+    "specificity": 0.8947,
+    "precision": 0.7143,
+    "f1": 0.5263,
+    "accuracy": 0.7097,
+    "tp": 5,
+    "tn": 17,
+    "fp": 2,
+    "fn": 7,
+    "errors": [
+      {
+        "item": "3",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Objective: investigate children with enterocolitis and developmental regression"
+      },
+      {
+        "item": "5",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Royal Free Hospital, London. Children admitted for 1 week"
+      },
+      {
+        "item": "6a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "12 consecutively referred children described with referral criteria"
+      },
+      {
+        "item": "6b",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.55,
+        "annotator_notes": "Not a case-control study"
+      },
+      {
+        "item": "7",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Outcomes: GI histology, neurological assessment, behavioral diagnosis"
+      },
+      {
+        "item": "12a",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Mann-Whitney U test, chi-square test mentioned"
+      },
+      {
+        "item": "18",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Key finding: associated GI disease and developmental regression"
+      },
+      {
+        "item": "19",
+        "category": "FN",
+        "system_verdict": "absent",
+        "confidence": 0.0,
+        "annotator_notes": "Acknowledges: did not prove association, further investigation needed"
+      },
+      {
+        "item": "22",
+        "category": "FP",
+        "system_verdict": "partial",
+        "confidence": 0.55,
+        "annotator_notes": "Funding source not clearly stated in paper"
+      }
+    ]
+  }
+]

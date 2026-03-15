@@ -1,0 +1,48 @@
+{
+  "_comment": "Ground truth annotation — PRISMA checklist for Moraes et al. 2022",
+  "article": {
+    "id": "moraes_2022_hcq_systematic_review",
+    "title": "Hydroxychloroquine for treatment of COVID-19 patients: a systematic review and meta-analysis of randomized controlled trials",
+    "authors": "Moraes VY, Marra AR, Matos LL, Serpa Neto A, Rizzo LV, Cendoroglo Neto M, Lenza M",
+    "year": 2022,
+    "journal": "einstein (São Paulo)",
+    "doi": "10.31744/einstein_journal/2022RW0045",
+    "file": "articles/hydroxichlorochine_systematic_review.pdf"
+  },
+  "study_type": {
+    "expected_type": "systematic_review_interventions",
+    "expected_checklist": "PRISMA",
+    "notes": "Systematic review and meta-analysis of RCTs. Follows PRISMA guidelines and Cochrane handbook. Registered in PROSPERO."
+  },
+  "prisma_items": {
+    "1":  { "present": true,  "notes": "Title: 'systematic review and meta-analysis of randomized controlled trials'" },
+    "2":  { "present": true,  "notes": "Structured abstract with Objective, Methods, Results, Conclusion" },
+    "3":  { "present": true,  "notes": "Rationale: HCQ attention, lack of good evidence, need for systematic evaluation of RCTs" },
+    "4":  { "present": true,  "notes": "Objective: evaluate efficacy and safety of HCQ for COVID-19 patients (mortality, serious adverse events)" },
+    "5":  { "present": true,  "notes": "PROSPERO registration CRD42020197070 mentioned; conducted per PRISMA and Cochrane handbook" },
+    "6":  { "present": true,  "notes": "Inclusion: RCTs, adults ≥18, COVID-19, HCQ vs placebo/standard of care. Exclusion: prevention/prophylaxis studies" },
+    "7":  { "present": true,  "notes": "CENTRAL, MEDLINE, EMBASE, LILACS searched; also WHO Clinical Trials Registry and reference lists" },
+    "8":  { "present": true,  "notes": "Full MEDLINE search strategy with MeSH terms and text words provided" },
+    "9":  { "present": true,  "notes": "Two authors independently selected studies, disagreements resolved by discussion/consensus, third author if needed" },
+    "10": { "present": true,  "notes": "Two authors independently extracted data using specific extraction form; study design, participants, interventions, outcomes, risk of bias" },
+    "11": { "present": true,  "notes": "Cochrane Collaboration Risk of Bias tool: random sequence generation, allocation concealment, blinding, incomplete data, selective reporting, other bias" },
+    "12": { "present": true,  "notes": "Primary: all-cause mortality. Secondary: serious adverse events" },
+    "13a": { "present": true,  "notes": "Random-effects model, Mantel-Haenszel method, risk ratio with 95% CI" },
+    "13b": { "present": true,  "notes": "Cochran's Q statistic and I² for heterogeneity (I²>50% threshold)" },
+    "14": { "present": true,  "notes": "GRADE approach for quality of evidence: high/moderate/low/very low" },
+    "15": { "present": true,  "notes": "Funnel plots for publication bias assessment" },
+    "16": { "present": true,  "notes": "3,014 articles identified → 44 screened → 17 assessed → 9 included, 8 excluded. Figure 1 flowchart" },
+    "17": { "present": true,  "notes": "Table 1: country, site, drug, HCQ regimens, control, age, sample sizes, diagnosis method per study" },
+    "18": { "present": true,  "notes": "Figure 2: risk of bias assessment (summarized and individual per study)" },
+    "19": { "present": true,  "notes": "Forest plots (Figures 3-5) for mortality and adverse events with pooled RR and 95% CI" },
+    "20": { "present": true,  "notes": "Forest plot (Figure 4) with risk difference showing individual study estimates" },
+    "21": { "present": true,  "notes": "Table 2: Summary of findings with GRADE assessment (low for mortality, very low for adverse events)" },
+    "22a": { "present": true,  "notes": "Summary: no significant mortality reduction with HCQ (RR 1.09, 95% CI 0.99-1.19), no increase in adverse events" },
+    "22b": { "present": true,  "notes": "Limitations: heterogeneous populations, different HCQ dose criteria, RECOVERY trial dominates weight, only 2 double-blinded" },
+    "22c": { "present": false, "notes": "No explicit discussion of implications for future research beyond general statement about properly designed RCTs" },
+    "23": { "present": true,  "notes": "Conclusion: HCQ not efficacious in reducing mortality of COVID-19 patients" },
+    "24": { "present": true,  "notes": "PROSPERO CRD42020197070 registered" },
+    "25": { "present": false, "notes": "No specific statement about funding for the review itself" },
+    "26": { "present": false, "notes": "No conflicts of interest statement for the review authors" }
+  }
+}

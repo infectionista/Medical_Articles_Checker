@@ -465,7 +465,8 @@ class EnhancedChecker:
     # ----- reporting -----
 
     def generate_report(self, result: CheckResult, format: str = 'markdown',
-                        audience: str = 'specialist', study_type: str = '') -> str:
+                        audience: str = 'specialist', study_type: str = '',
+                        detection_result=None, article_text: str = '') -> str:
         """
         Generate a report.
 
@@ -474,11 +475,14 @@ class EnhancedChecker:
             format: 'markdown', 'json', or 'text'
             audience: 'public' (patient/layperson), 'student', or 'specialist'
             study_type: detected study type string (for context)
+            detection_result: DetectionResult from study_detector (optional, for design analysis)
+            article_text: original article text (optional, for propensity score detection)
         """
         if format == 'json':
             return self._to_json(result)
         elif format == 'markdown':
-            return self._to_audience_markdown(result, audience, study_type)
+            return self._to_audience_markdown(result, audience, study_type,
+                                              detection_result, article_text)
         else:
             return self._to_text(result)
 
@@ -521,6 +525,231 @@ class EnhancedChecker:
         'consent': 'Ethical approval and consent ensure participants were protected and the study was reviewed.',
     }
 
+    # ---- Study design classification with mapping to same checklist ----
+    STROBE_SUBTYPES = {
+        'cohort_study', 'case_control', 'analytical_cross_sectional',
+        'descriptive_cross_sectional', 'case_series', 'case_report',
+        'non_randomized_intervention', 'diagnostic_accuracy',
+        'prognostic_factors', 'prognostic_model',
+    }
+
+    DESIGN_EXPLANATIONS_STUDENT = {
+        'cohort_study': (
+            "A **cohort study** follows a group of people over time to see who develops "
+            "an outcome. Researchers observe but do not assign treatments."
+        ),
+        'case_control': (
+            "A **case-control study** starts with people who have the outcome (cases) "
+            "and compares them with similar people without it (controls), looking backward "
+            "for exposures."
+        ),
+        'case_series': (
+            "A **case series** describes a group of patients with a particular condition, "
+            "without a comparison group. It cannot prove causation."
+        ),
+        'non_randomized_intervention': (
+            "A **non-randomized intervention study** assigns a treatment, but without random "
+            "allocation. This introduces selection bias — patients in the treatment group "
+            "may differ systematically from controls."
+        ),
+        'randomized_controlled_trial': (
+            "A **randomized controlled trial (RCT)** is the gold standard for evaluating "
+            "interventions. Random assignment minimizes bias by making groups comparable."
+        ),
+        'systematic_review_interventions': (
+            "A **systematic review with meta-analysis** pools results from multiple studies "
+            "using predefined methods, providing the strongest level of evidence."
+        ),
+        'genomic_study': (
+            "A **genomic/phylogenetic study** analyzes genetic sequences to understand "
+            "evolutionary relationships, transmission patterns, or molecular epidemiology."
+        ),
+    }
+
+    DESIGN_EXPLANATIONS_SPECIALIST = {
+        'cohort_study': "Cohort study — prospective or retrospective follow-up of exposed vs unexposed groups.",
+        'case_control': "Case-control study — retrospective comparison of cases vs controls for prior exposures.",
+        'case_series': "Case series — descriptive report of consecutive/selected cases, no control group.",
+        'non_randomized_intervention': "Non-randomized intervention — treatment assigned without randomization (quasi-experimental).",
+        'randomized_controlled_trial': "Randomized controlled trial — participants randomly allocated to intervention vs control.",
+        'systematic_review_interventions': "Systematic review and meta-analysis of intervention studies.",
+        'genomic_study': "Genomic/phylogenetic sequence analysis study.",
+    }
+
+    # Propensity score matching patterns
+    PSM_PATTERNS = [
+        r'propensity[- ]score\s+match',
+        r'propensity[- ]score\s+analysis',
+        r'propensity[- ]score\s+weight',
+        r'inverse\s+probability\s+(?:of\s+treatment\s+)?weight',
+        r'IPTW',
+        r'propensity[- ]adjusted',
+        r'PS[- ]match',
+    ]
+
+    # Age-matched/historical controls patterns
+    MATCHED_CONTROL_PATTERNS = [
+        r'(?:age|sex|gender)[- ]matched\s+control',
+        r'historical\s+control',
+        r'matched\s+(?:pair|cohort|sample)',
+        r'frequency[- ]match',
+    ]
+
+    def _detect_control_methods(self, article_text: str) -> dict:
+        """Detect propensity score matching and control matching methods in text."""
+        if not article_text:
+            return {}
+
+        text_lower = article_text.lower()
+        found = {}
+
+        for pat in self.PSM_PATTERNS:
+            m = re.search(pat, text_lower)
+            if m:
+                start = max(0, m.start() - 60)
+                end = min(len(text_lower), m.end() + 60)
+                found['propensity_score'] = text_lower[start:end].strip()
+                break
+
+        for pat in self.MATCHED_CONTROL_PATTERNS:
+            m = re.search(pat, text_lower)
+            if m:
+                start = max(0, m.start() - 60)
+                end = min(len(text_lower), m.end() + 60)
+                found['matched_controls'] = text_lower[start:end].strip()
+                break
+
+        return found
+
+    def _design_analysis_block(self, audience: str, study_type: str,
+                               detection_result=None, article_text: str = '') -> str:
+        """Generate a study design analysis block for student/specialist reports."""
+        lines = []
+        is_student = (audience == 'student')
+
+        lines.append("## Study design analysis\n")
+
+        # --- Primary classification ---
+        if is_student:
+            expl = self.DESIGN_EXPLANATIONS_STUDENT.get(study_type, '')
+            if expl:
+                lines.append(expl + "\n")
+        else:
+            expl = self.DESIGN_EXPLANATIONS_SPECIALIST.get(study_type, '')
+            if expl:
+                lines.append(f"**Primary classification:** {expl}\n")
+
+        # --- Design ambiguity: if competing types are close ---
+        if detection_result and hasattr(detection_result, 'all_scores') and detection_result.all_scores:
+            sorted_scores = sorted(detection_result.all_scores.items(), key=lambda x: -x[1])
+            if len(sorted_scores) >= 2:
+                best_type, best_score = sorted_scores[0]
+                second_type, second_score = sorted_scores[1]
+
+                # Check if both map to same checklist (STROBE family)
+                both_strobe = (best_type in self.STROBE_SUBTYPES
+                               and second_type in self.STROBE_SUBTYPES)
+
+                gap_ratio = second_score / best_score if best_score > 0 else 0
+
+                if gap_ratio > 0.4:  # Close competition
+                    if is_student:
+                        lines.append("### Design classification note\n")
+                        lines.append(
+                            f"This study shows features of both "
+                            f"**{best_type.replace('_', ' ')}** and "
+                            f"**{second_type.replace('_', ' ')}**. "
+                        )
+                        if both_strobe:
+                            lines.append(
+                                "Both types are evaluated with the same STROBE checklist, "
+                                "so the quality assessment is valid regardless of which "
+                                "exact subtype applies.\n"
+                            )
+                        lines.append(
+                            "Study design classification is not always clear-cut — "
+                            "real articles often combine elements of different designs. "
+                            "What matters most is understanding what type of evidence "
+                            "the study provides and what biases may be present.\n"
+                        )
+                    else:
+                        lines.append("### Design ambiguity\n")
+                        lines.append(
+                            f"Competing classifications: "
+                            f"**{best_type.replace('_', ' ')}** (score {best_score:.0f}) vs "
+                            f"**{second_type.replace('_', ' ')}** (score {second_score:.0f}). "
+                        )
+                        if both_strobe:
+                            lines.append(
+                                "Both map to STROBE checklist — assessment validity unaffected."
+                            )
+                        lines.append("")
+
+        # --- Propensity score matching / control methods ---
+        control_methods = self._detect_control_methods(article_text)
+
+        if control_methods:
+            if is_student:
+                lines.append("### Control group methodology\n")
+                if 'propensity_score' in control_methods:
+                    lines.append(
+                        "This study uses **propensity score matching (PSM)** — "
+                        "a statistical technique that creates comparable groups "
+                        "when randomization is not possible. PSM estimates each "
+                        "participant's probability of receiving the treatment based on "
+                        "their characteristics (age, sex, comorbidities, etc.), then "
+                        "matches treated and untreated participants with similar "
+                        "probabilities. This reduces selection bias but cannot fully "
+                        "replace randomization because unmeasured confounders may "
+                        "still differ between groups.\n"
+                    )
+                if 'matched_controls' in control_methods:
+                    lines.append(
+                        "The study compares results against **matched controls** "
+                        "(e.g., age-matched, sex-matched). While matching improves "
+                        "comparability, it is not equivalent to randomization. "
+                        "Matched controls from a different population or time period "
+                        "(historical controls) may introduce additional biases from "
+                        "differences in care standards, diagnostic criteria, or "
+                        "population characteristics.\n"
+                    )
+            else:  # specialist
+                lines.append("### Control methodology detected\n")
+                if 'propensity_score' in control_methods:
+                    lines.append(
+                        "**Propensity score methods detected.** "
+                        "PSM/IPTW can reduce measured confounding in non-randomized studies "
+                        "but cannot address unmeasured confounders. Verify: "
+                        "balance diagnostics reported, caliper specified, "
+                        "sensitivity analysis for unmeasured confounding (e.g., E-value).\n"
+                    )
+                if 'matched_controls' in control_methods:
+                    lines.append(
+                        "**Matched controls detected** (age/sex/frequency matching). "
+                        "Verify matching variables are appropriate, report number unmatched, "
+                        "and assess whether matching introduces collider bias.\n"
+                    )
+        elif article_text and study_type in ('non_randomized_intervention', 'cohort_study', 'case_control'):
+            # No PSM found in an observational study — worth noting
+            if is_student:
+                lines.append("### Note on confounding\n")
+                lines.append(
+                    "This observational study does not appear to use propensity score "
+                    "matching or other statistical methods to control for confounding. "
+                    "Without such adjustments, differences between treatment groups "
+                    "may be due to patient characteristics rather than the treatment itself.\n"
+                )
+            else:
+                lines.append("### Confounding adjustment\n")
+                lines.append(
+                    "No propensity score methods or formal matching detected. "
+                    "For non-randomized comparisons, consider whether adequate "
+                    "confounding adjustment was performed (multivariable regression, "
+                    "stratification, or instrumental variables).\n"
+                )
+
+        return "\n".join(lines) if len(lines) > 1 else ""
+
     def _get_why_it_matters(self, description: str) -> str:
         """Get a plain-language explanation of why a missing item matters."""
         desc_lower = description.lower()
@@ -530,14 +759,25 @@ class EnhancedChecker:
         return 'This information helps readers assess whether the study was conducted and reported properly.'
 
     def _to_audience_markdown(self, result: CheckResult, audience: str = 'specialist',
-                              study_type: str = '') -> str:
+                              study_type: str = '', detection_result=None,
+                              article_text: str = '') -> str:
         """Generate markdown report tailored to audience level."""
         if audience == 'public':
-            return self._report_public(result, study_type)
+            report = self._report_public(result, study_type)
         elif audience == 'student':
-            return self._report_student(result, study_type)
+            report = self._report_student(result, study_type)
         else:
-            return self._report_specialist(result, study_type)
+            report = self._report_specialist(result, study_type)
+
+        # Add study design analysis for student and specialist audiences
+        if audience in ('student', 'specialist') and (detection_result or article_text):
+            design_block = self._design_analysis_block(
+                audience, study_type, detection_result, article_text)
+            if design_block:
+                # Insert after the first heading block
+                report = report + "\n\n" + design_block
+
+        return report
 
     def _report_public(self, result: CheckResult, study_type: str = '') -> str:
         """Plain-language report for patients and non-specialists."""
