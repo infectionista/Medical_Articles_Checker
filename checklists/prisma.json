@@ -81,7 +81,9 @@
         "study selection criteria",
         "PICO criteria",
         "inclusion and exclusion criteria",
-        "inclusion criteria and exclusion criteria"
+        "inclusion criteria and exclusion criteria",
+        "independently assessed",
+        "independently reviewed"
       ],
       "weight": 1.2
     },
@@ -103,7 +105,9 @@
         "cochrane central register of controlled trials",
         "medline embase lilacs",
         "who clinical trials registry",
-        "reference lists of selected articles"
+        "reference lists of selected articles",
+        "cochrane renal group specialised register",
+        "conference proceedings"
       ],
       "weight": 1.3
     },
@@ -139,7 +143,9 @@
         "any disagreements were resolved",
         "search strategy was adapted",
         "subject-specific search",
-        "search strategies were adapted"
+        "search strategies were adapted",
+        "four authors independently",
+        "discarded initially"
       ],
       "weight": 1.2
     },
@@ -156,7 +162,10 @@
         "data extraction tool",
         "two authors independently extracted",
         "data extraction form",
-        "specific extraction form"
+        "specific extraction form",
+        "data extraction forms",
+        "independent extraction",
+        "four authors extracted"
       ],
       "weight": 1.1
     },
@@ -171,7 +180,8 @@
         "secondary outcomes",
         "variables extracted",
         "primary outcome was all-cause mortality",
-        "serious adverse events of hcq treatment"
+        "serious adverse events of hcq treatment",
+        "primary and secondary outcomes"
       ],
       "weight": 1.0
     },
@@ -188,7 +198,14 @@
         "methodological quality",
         "bias domains",
         "cochrane collaboration risk of bias",
-        "risk of bias domains"
+        "risk of bias domains",
+        "risk of bias tool",
+        "risk of bias graph",
+        "risk of bias summary",
+        "blinding of outcome assessors",
+        "sequence generation at low risk",
+        "allocation concealment at low risk",
+        "incomplete outcome reporting"
       ],
       "weight": 1.3
     },
@@ -226,7 +243,9 @@
         "mantel-haenszel method",
         "random-effects models",
         "mantel-haenszel method",
-        "review manager"
+        "review manager",
+        "heterogeneity assessment",
+        "heterogeneity in outcomes"
       ],
       "weight": 1.3
     },
@@ -237,7 +256,7 @@
       "keywords": [
         "statistical heterogeneity",
         "I-squared",
-        "I² statistic",
+        "I\u00b2 statistic",
         "Cochran Q test",
         "tau-squared",
         "heterogeneity assessment",
@@ -248,7 +267,8 @@
         "heterogeneity was considered present",
         "cochran q statistic",
         "i2 value",
-        "heterogeneity was assessed"
+        "heterogeneity was assessed",
+        "heterogeneity in outcomes"
       ],
       "weight": 1.2
     },
@@ -297,7 +317,10 @@
         "studies excluded",
         "selection results",
         "flowchart of article selection",
-        "studies included and excluded"
+        "studies included and excluded",
+        "number of studies identified",
+        "number screened",
+        "number included"
       ],
       "weight": 1.2
     },
@@ -311,7 +334,9 @@
         "summary of included studies",
         "evidence table",
         "main characteristics of the included",
-        "table 1"
+        "table 1",
+        "characteristics table",
+        "study population characteristics"
       ],
       "weight": 1.1
     },
@@ -328,7 +353,8 @@
         "methodological domains",
         "risk of bias assessment",
         "quality assessment",
-        "summarized and individual risk of bias"
+        "summarized and individual risk of bias",
+        "risk of bias assessment results"
       ],
       "weight": 1.1
     },
@@ -396,7 +422,8 @@
         "interpreted in the context",
         "no significant difference in mortality",
         "not efficacious",
-        "absence of evidence"
+        "absence of evidence",
+        "consistent with"
       ],
       "weight": 1.0
     },

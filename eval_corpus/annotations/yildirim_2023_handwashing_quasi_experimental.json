@@ -1,0 +1,142 @@
+{
+  "article": {
+    "id": "yildirim_2023_handwashing_quasi_experimental",
+    "title": "A Quasi-experimental Intervention Study on Handwashing Behavior of Healthcare Workers in the Emergency Department",
+    "authors": "Yildirim Ozt\u00fcrk EN, Uyar M, Ozt\u00fcrk M, Sahin TK",
+    "year": 2023,
+    "journal": "Journal of Contemporary Medicine",
+    "doi": "10.16899/jcm.1212334",
+    "file": "articles/Handwashing_Behavior_of_Healthcare_Workers.pdf"
+  },
+  "study_type": {
+    "expected_type": "non_randomized_intervention",
+    "expected_checklist": "STROBE",
+    "notes": "Quasi-experimental intervention study with retrospective pre-test/post-test design. 131 healthcare workers in emergency department. Training intervention on handwashing behavior."
+  },
+  "strobe_items": {
+    "1": {
+      "present": true,
+      "notes": "Title indicates 'Quasi-experimental Intervention Study'"
+    },
+    "2": {
+      "present": true,
+      "notes": "Background: importance of handwashing in healthcare settings, preventing infections"
+    },
+    "3": {
+      "present": true,
+      "notes": "Objective: 'to determine attitudes, behaviors and knowledge of healthcare workers...and ensure correct handwashing with an intervention'"
+    },
+    "4": {
+      "present": true,
+      "notes": "Study design: 'quasi-experimental intervention study (retrospective pre-test/post-test design)'"
+    },
+    "5": {
+      "present": true,
+      "notes": "Setting: emergency department of a hospital. Specific location and dates not fully detailed"
+    },
+    "6a": {
+      "present": true,
+      "notes": "Eligibility and selection: 'Number of participants was 131 (research participation rate 86.7%)'"
+    },
+    "6b": {
+      "present": false,
+      "notes": "Not a case-control study"
+    },
+    "7": {
+      "present": true,
+      "notes": "Outcomes: handwashing behavior, knowledge scores (items correct on 37-question form), adequacy of handwashing during 8-hour shift"
+    },
+    "8": {
+      "present": true,
+      "notes": "Data collection: 'A data collection form comprising 37 questions was used...As a training intervention, a text was read to participants under observation'"
+    },
+    "9": {
+      "present": false,
+      "notes": "No discussion of potential sources of bias or measures to address bias"
+    },
+    "10": {
+      "present": false,
+      "notes": "No sample size calculation described"
+    },
+    "11": {
+      "present": false,
+      "notes": "Limited description of how continuous variables were categorized or handled"
+    },
+    "12a": {
+      "present": true,
+      "notes": "Statistical methods: 'Data were summarized with mean\u00b1standard deviation, median (min-max), frequency distributions, percentages. Chi-square and Mc-Nemar tests applied. p<0.05 considered significant'"
+    },
+    "12b": {
+      "present": false,
+      "notes": "No subgroup or interaction analyses reported"
+    },
+    "12c": {
+      "present": false,
+      "notes": "No discussion of missing data"
+    },
+    "12d": {
+      "present": false,
+      "notes": "No specific accounting of attrition or matching"
+    },
+    "12e": {
+      "present": false,
+      "notes": "No sensitivity analyses"
+    },
+    "13a": {
+      "present": true,
+      "notes": "Participant flow: 131 participants (86.7% participation rate). Mean age 32.04\u00b16.52, 51.5% women, 74.8% nurses"
+    },
+    "13b": {
+      "present": false,
+      "notes": "Limited information on reasons for non-participation"
+    },
+    "14a": {
+      "present": true,
+      "notes": "Baseline characteristics: mean age, gender distribution, profession (nurses vs other), perception of adequacy of handwashing (67.2% thought adequate)"
+    },
+    "14b": {
+      "present": false,
+      "notes": "No explicit reporting of missing data"
+    },
+    "15": {
+      "present": true,
+      "notes": "Outcome data: '69.5% of healthcare workers answered correctly to 70% and more of knowledge questions...A significant difference was found in 10 of 14 intervention questions (p<0.05)'"
+    },
+    "16a": {
+      "present": true,
+      "notes": "Results with frequencies/percentages: '67.2% thought they washed hands adequately...69.5% answered \u226570% of knowledge questions correctly'"
+    },
+    "16b": {
+      "present": false,
+      "notes": "No specific category boundaries discussed"
+    },
+    "16c": {
+      "present": false,
+      "notes": "No absolute risk measures"
+    },
+    "17": {
+      "present": false,
+      "notes": "No additional analyses reported"
+    },
+    "18": {
+      "present": true,
+      "notes": "Key results: 'training intervention performed is effective...significant difference found in 10 of 14 intervention questions regarding handwashing (p<0.05)'"
+    },
+    "19": {
+      "present": false,
+      "notes": "No explicit discussion of limitations or sources of bias (retrospective design, recall bias not mentioned)"
+    },
+    "20": {
+      "present": false,
+      "notes": "Limited cautious interpretation; conclusions stated without substantial caveats"
+    },
+    "21": {
+      "present": false,
+      "notes": "No discussion of generalizability to other settings"
+    },
+    "22": {
+      "present": false,
+      "notes": "Funding/conflicts not stated"
+    }
+  }
+}

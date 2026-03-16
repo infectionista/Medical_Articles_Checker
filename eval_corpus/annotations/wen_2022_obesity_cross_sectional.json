@@ -1,0 +1,142 @@
+{
+  "article": {
+    "id": "wen_2022_obesity_cross_sectional",
+    "title": "Trends in the prevalence of metabolically healthy and unhealthy obesity in the US adult population: analysis of eight NHANES cross-sectional survey cycles, 1999-2014",
+    "authors": "Wen Y, Liu T, Li S, Gong R, Li C",
+    "year": 2022,
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2022-062651",
+    "file": "articles/metabolically_healthy_and_unhealthy_obesity.pdf"
+  },
+  "study_type": {
+    "expected_type": "analytical_cross_sectional",
+    "expected_checklist": "STROBE",
+    "notes": "Cross-sectional analysis of 8 NHANES survey cycles (1999-2014). Participants: 16,459 adults aged 20+ years. Analysis of metabolically healthy obesity (MHO) and metabolically unhealthy obesity (MUO) trends. NHANES is cross-sectional by design, but repeated cycles 1999-2014 create a trend analysis resembling ecological/cohort approach. Design ambiguity noted."
+  },
+  "strobe_items": {
+    "1": {
+      "present": true,
+      "notes": "Title clearly indicates 'cross-sectional survey cycles'"
+    },
+    "2": {
+      "present": true,
+      "notes": "Background: 'accumulating evidence suggests that obesity is not homogeneous...metabolically healthy obesity (MHO)...at much lower risk for cardiometabolic morbidity'"
+    },
+    "3": {
+      "present": true,
+      "notes": "Objective: 'to determine the prevalence and trends of different obesity phenotypes among a nationally representative sample'"
+    },
+    "4": {
+      "present": true,
+      "notes": "Study design: 'Eight cross-sectional survey cycles...NHANES is a programme of studies designed to assess health and nutritional status'"
+    },
+    "5": {
+      "present": true,
+      "notes": "Setting: 'National Health and Nutrition Examination Survey (NHANES), 1999-2014...eight survey cycles conducted between 1999 and 2014'"
+    },
+    "6a": {
+      "present": true,
+      "notes": "Eligibility and selection: '19,537 participants aged 20 years and older from eight survey cycles...3,078 excluded for missing data...final sample 16,459'"
+    },
+    "6b": {
+      "present": false,
+      "notes": "Not a case-control study"
+    },
+    "7": {
+      "present": true,
+      "notes": "Outcomes clearly defined: MHO (central obesity + metabolically healthy), MUO (obese + abnormality). Exposures: gender, race/ethnicity, age, education. Confounders: medication use"
+    },
+    "8": {
+      "present": true,
+      "notes": "Data collection: 'Trained interviewers conducted household interviews...standardized physical examinations...waist circumference by trained technologist...BP by trained physician...HDL-C and TG measured enzymatically...glucose measured enzymatically'"
+    },
+    "9": {
+      "present": true,
+      "notes": "Bias discussion: 'Due to serial cross-sectional design, we are not able to track dynamic changes...did not include insulin resistance or inflammation criteria, potentially limiting detection'"
+    },
+    "10": {
+      "present": false,
+      "notes": "No sample size calculation or power analysis described"
+    },
+    "11": {
+      "present": true,
+      "notes": "Quantitative variables: 'Waist circumference \u2265102 cm men, \u226588 cm women; systolic BP <130; fasting glucose <100; TG <150; HDL-C \u226540 men, \u226550 women'"
+    },
+    "12a": {
+      "present": true,
+      "notes": "Statistical methods: 'PROC SURVEYREG procedure...to test for trends across survey cycles...stratified, multistage, probability cluster sampling design...SAS software (V.9.4)'"
+    },
+    "12b": {
+      "present": true,
+      "notes": "Subgroup analysis: 'stratified by gender, race/ethnicity, age group, education levels...Differences compared between men and women...among age groups and race/ethnic groups'"
+    },
+    "12c": {
+      "present": true,
+      "notes": "Missing data: 'Of 19,537 participants, 3,078 were excluded because of missing data on waist circumference, blood pressure, HDL-C, triglycerides or glucose'"
+    },
+    "12d": {
+      "present": false,
+      "notes": "Not applicable - cross-sectional design, no follow-up or matching"
+    },
+    "12e": {
+      "present": false,
+      "notes": "No formal sensitivity analyses reported"
+    },
+    "13a": {
+      "present": true,
+      "notes": "Participant flow: 19,537 from 8 cycles, 3,078 excluded, 16,459 analyzed. Table 1 shows characteristics by cycle"
+    },
+    "13b": {
+      "present": true,
+      "notes": "Reasons for exclusion: missing data on waist circumference, blood pressure, HDL-C, triglycerides or glucose"
+    },
+    "14a": {
+      "present": true,
+      "notes": "Baseline characteristics: Table 1 shows mean age, gender, race/ethnicity, education distribution across survey cycles"
+    },
+    "14b": {
+      "present": true,
+      "notes": "Missing data completeness: specified 3,078 excluded for missing data; implicit reporting of data availability"
+    },
+    "15": {
+      "present": true,
+      "notes": "Outcome data: Figure 1, Table 2 report prevalence of MHO, MUO across cycles. 'MHO prevalence increased from 11.0% to 15.7% in centrally obese population'"
+    },
+    "16a": {
+      "present": true,
+      "notes": "Estimates with precision: Prevalences reported with percentages and p-values. 'Central obesity 45.2% (1999-2000) to 56.7% (2013-2014) (p=0.003)'"
+    },
+    "16b": {
+      "present": true,
+      "notes": "Category boundaries: age groups (10-year), education levels (9th grade, high school, college), race/ethnicity categories defined"
+    },
+    "16c": {
+      "present": false,
+      "notes": "Absolute prevalence provided but not translated to absolute risk reduction or number needed to treat"
+    },
+    "17": {
+      "present": true,
+      "notes": "Secondary analysis: stratified results by gender, age, race/ethnicity, education. Gender differences highlighted with trend analysis"
+    },
+    "18": {
+      "present": true,
+      "notes": "Key results: 'MHO prevalence in centrally obese population slightly increased from 11.0% to 15.7%...significant increase among women (7.1% to 13.7%)'"
+    },
+    "19": {
+      "present": true,
+      "notes": "Limitations: 'Due to serial cross-sectional design, unable to track dynamic changes...did not include insulin resistance or inflammation...secondary analysis of de-identified data'"
+    },
+    "20": {
+      "present": true,
+      "notes": "Cautious interpretation: discusses obesity paradox and need for further research. Acknowledges limitations in generalizability of trends"
+    },
+    "21": {
+      "present": true,
+      "notes": "Generalizability: 'nationally representative sample of US adults...high generalisability of study findings...large sample size allowed estimation for minority groups'"
+    },
+    "22": {
+      "present": false,
+      "notes": "Funding/conflicts not clearly stated in abstract or methods section"
+    }
+  }
+}

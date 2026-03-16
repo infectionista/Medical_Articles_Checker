@@ -8,217 +8,593 @@
       "section": "Title and Abstract",
       "item": "1",
       "description": "Indicate study design in title or abstract with commonly used term",
-      "keywords": ["cohort study", "case-control study", "cross-sectional study", "observational study", "prospective study", "retrospective study", "longitudinal study", "clinical trial", "open-label", "non-randomized"],
+      "keywords": [
+        "cohort study",
+        "case-control study",
+        "cross-sectional study",
+        "observational study",
+        "prospective study",
+        "retrospective study",
+        "longitudinal study",
+        "clinical trial",
+        "open-label",
+        "non-randomized",
+        "six-year follow-up",
+        "nested case-control study",
+        "proof-of-concept study",
+        "quasi-experimental intervention study"
+      ],
       "weight": 1.0
     },
     {
       "section": "Introduction - Background",
       "item": "2",
       "description": "Explain scientific background and rationale for investigation",
-      "keywords": ["scientific background", "rationale for the study", "existing evidence", "knowledge gap", "previous studies have shown", "have been found to be", "have been reported", "background"],
+      "keywords": [
+        "scientific background",
+        "rationale for the study",
+        "existing evidence",
+        "knowledge gap",
+        "previous studies have shown",
+        "have been found to be",
+        "have been reported",
+        "background",
+        "leading cause of",
+        "remains unclear",
+        "remains unknown",
+        "etiology",
+        "burden of",
+        "health hazard",
+        "diagnostic challenge",
+        "epidemiologic information",
+        "epidemiologic data",
+        "associated with increased risk",
+        "associated with high risk",
+        "no single essential factor",
+        "no important reduction in",
+        "preventive program",
+        "early detection",
+        "crucial for",
+        "essential yet",
+        "represents a challenge",
+        "contemporary health",
+        "no significant reduction in",
+        "characterized by"
+      ],
       "weight": 0.8
     },
     {
       "section": "Introduction - Objectives",
       "item": "3",
       "description": "State specific objectives, including any prespecified hypotheses",
-      "keywords": ["specific objectives", "prespecified hypotheses", "aim of this study", "research question", "primary objective", "we evaluate", "we assess", "we aimed", "objective of this study", "purpose of this study"],
+      "keywords": [
+        "aim of",
+        "aim of this study",
+        "objective of this study",
+        "prespecified hypotheses",
+        "primary objective",
+        "purpose of the study",
+        "purpose of this study",
+        "research question",
+        "specific objectives",
+        "we aimed",
+        "we assess",
+        "we evaluate",
+        "we investigated",
+        "was aimed to",
+        "was aimed to determine",
+        "aims to determine",
+        "sought to identify",
+        "designed to evaluate",
+        "sought to examine",
+        "intended to evaluate",
+        "was designed to determine"
+      ],
       "weight": 1.0
     },
     {
       "section": "Methods - Study design",
       "item": "4",
       "description": "Present key elements of study design early in paper",
-      "keywords": ["study design", "cohort design", "case-control design", "cross-sectional design", "matched design", "nested design"],
+      "keywords": [
+        "study design",
+        "cohort design",
+        "case-control design",
+        "cross-sectional design",
+        "matched design",
+        "nested design",
+        "eight cross-sectional survey cycles",
+        "nested case-control studies"
+      ],
       "weight": 1.2
     },
     {
       "section": "Methods - Setting",
       "item": "5",
       "description": "Describe setting, locations, and relevant dates including recruitment, exposure, follow-up, and data collection",
-      "keywords": ["study setting", "recruitment period", "follow-up period", "data collection period", "study location", "enrollment dates", "hospital setting", "were included from", "single center", "multi-center"],
+      "keywords": [
+        "study setting",
+        "recruitment period",
+        "follow-up period",
+        "data collection period",
+        "study location",
+        "enrollment dates",
+        "hospital setting",
+        "were included from",
+        "single center",
+        "multi-center"
+      ],
       "weight": 1.0
     },
     {
       "section": "Methods - Participants",
       "item": "6a",
       "description": "Cohort: describe eligibility criteria, sources and methods of selection, and follow-up methods",
-      "keywords": ["eligibility criteria", "inclusion criteria", "exclusion criteria", "source population", "methods of selection", "follow-up methods", "patients were included", "were enrolled", "confirmed patients"],
+      "keywords": [
+        "confirmed patients",
+        "consecutive patients",
+        "eligibility criteria",
+        "exclusion criteria",
+        "follow-up methods",
+        "inclusion criteria",
+        "methods of selection",
+        "patients were included",
+        "source population",
+        "were enrolled",
+        "were included from",
+        "inclusion criteria were",
+        "inclusion criteria clearly defined",
+        "consecutive cases",
+        "consecutive participants",
+        "criteria for inclusion",
+        "criteria for exclusion",
+        "eligible participants",
+        "participants who met"
+      ],
       "weight": 1.2
     },
     {
       "section": "Methods - Participants",
       "item": "6b",
       "description": "Case-control: describe case definition, selection of cases and controls, source population, matching criteria",
-      "keywords": ["case definition", "selection of controls", "matching criteria", "control selection", "source population", "matched controls"],
+      "keywords": [
+        "case definition",
+        "selection of controls",
+        "matching criteria",
+        "control selection",
+        "source population",
+        "matched controls",
+        "incident brain tumour",
+        "incidence density sampling",
+        "age-frequency matched"
+      ],
       "weight": 1.2
     },
     {
       "section": "Methods - Variables",
       "item": "7",
       "description": "Clearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers",
-      "keywords": ["outcome variable", "exposure variable", "potential confounders", "effect modifiers", "outcome definition", "exposure definition", "viral load", "end point", "endpoint", "primary outcome"],
+      "keywords": [
+        "effect modifiers",
+        "end point",
+        "endpoint",
+        "exposure definition",
+        "exposure variable",
+        "measured",
+        "metabolically healthy obesity",
+        "outcome definition",
+        "outcome variable",
+        "potential confounders",
+        "primary outcome",
+        "primary outcome measure",
+        "viral load",
+        "waist circumference",
+        "procedural success was defined as",
+        "defined as successful",
+        "success was defined as",
+        "variables were defined as",
+        "operationally defined",
+        "secondary outcome measure"
+      ],
       "weight": 1.3
     },
     {
       "section": "Methods - Data sources",
       "item": "8",
       "description": "For each variable, give sources of data and details of methods of assessment (measurement)",
-      "keywords": ["data sources", "methods of assessment", "measurement methods", "data collection", "medical records", "questionnaire", "laboratory methods", "nasopharyngeal", "PCR", "swab", "blood samples", "serology"],
+      "keywords": [
+        "PCR",
+        "blood samples",
+        "data collection",
+        "data collection form",
+        "data sources",
+        "database",
+        "laboratory methods",
+        "laboratory tests",
+        "measurement methods",
+        "medical records",
+        "methods of assessment",
+        "nasopharyngeal",
+        "primary care records",
+        "questionnaire",
+        "serology",
+        "swab",
+        "measured using",
+        "measured after",
+        "review of medical records",
+        "chart review",
+        "clinical records",
+        "laboratory measurements",
+        "measurement of clot",
+        "assessment methods"
+      ],
       "weight": 1.0
     },
     {
       "section": "Methods - Bias",
       "item": "9",
       "description": "Describe any efforts to address potential sources of bias",
-      "keywords": ["potential sources of bias", "selection bias", "information bias", "measurement bias", "recall bias", "efforts to address bias"],
+      "keywords": [
+        "potential sources of bias",
+        "selection bias",
+        "information bias",
+        "measurement bias",
+        "recall bias",
+        "efforts to address bias"
+      ],
       "weight": 1.3
     },
     {
       "section": "Methods - Study size",
       "item": "10",
       "description": "Explain how the study size was arrived at",
-      "keywords": ["sample size calculation", "power calculation", "study size", "sample size justification", "power analysis"],
+      "keywords": [
+        "sample size calculation",
+        "power calculation",
+        "study size",
+        "sample size justification",
+        "power analysis",
+        "pragmatic sample size",
+        "survey response rates"
+      ],
       "weight": 1.1
     },
     {
       "section": "Methods - Quantitative variables",
       "item": "11",
       "description": "Explain how quantitative variables were handled in the analyses, including groupings and cutoffs",
-      "keywords": ["quantitative variables", "categorization of variables", "cutoff points", "continuous variables", "groupings chosen"],
+      "keywords": [
+        "categorical variables",
+        "categorization of variables",
+        "continuous variables",
+        "cutoff points",
+        "groupings chosen",
+        "quantitative variables"
+      ],
       "weight": 0.9
     },
     {
       "section": "Methods - Statistical methods",
       "item": "12a",
       "description": "Describe all statistical methods, including those used to control for confounding",
-      "keywords": ["statistical methods", "Cox regression", "logistic regression", "Poisson regression", "adjusted for confounding", "multivariable analysis", "hazard ratio", "odds ratio", "relative risk", "chi-square", "Fisher exact", "t-test", "Mann-Whitney", "Wilcoxon", "ANOVA", "statistical analysis"],
+      "keywords": [
+        "ANOVA",
+        "Cox regression",
+        "Fisher exact",
+        "Mann-Whitney",
+        "Poisson regression",
+        "Wilcoxon",
+        "adjusted for confounding",
+        "chi-square",
+        "chi-square test",
+        "confidence interval",
+        "hazard ratio",
+        "logistic regression",
+        "multivariable analysis",
+        "odds ratio",
+        "odds ratios and 95% confidence",
+        "relative risk",
+        "statistical analysis",
+        "statistical methods",
+        "t-test",
+        "determination of",
+        "measurement of clot",
+        "clot formation time",
+        "clotting time",
+        "thrombelastometry",
+        "ROTEM",
+        "aggregometry",
+        "recalcification",
+        "quantitative estimation",
+        "sensitivity, specificity",
+        "PPV and NPV",
+        "positive predictive value",
+        "negative predictive value"
+      ],
       "weight": 1.3
     },
     {
       "section": "Methods - Statistical methods",
       "item": "12b",
       "description": "Describe methods for examining subgroups and interactions",
-      "keywords": ["subgroup analysis", "interaction analysis", "effect modification", "stratified analysis"],
+      "keywords": [
+        "subgroup analysis",
+        "interaction analysis",
+        "effect modification",
+        "stratified analysis"
+      ],
       "weight": 0.9
     },
     {
       "section": "Methods - Statistical methods",
       "item": "12c",
       "description": "Explain how missing data were addressed",
-      "keywords": ["missing data", "multiple imputation", "complete case analysis", "missing values", "loss to follow-up"],
+      "keywords": [
+        "missing data",
+        "multiple imputation",
+        "complete case analysis",
+        "missing values",
+        "loss to follow-up",
+        "excluded because of missing data",
+        "missing data on"
+      ],
       "weight": 1.1
     },
     {
       "section": "Methods - Statistical methods",
       "item": "12d",
       "description": "Cohort: describe methods for handling loss to follow-up; Case-control: describe matching and its accounting in analysis",
-      "keywords": ["loss to follow-up", "matching analysis", "conditional logistic regression", "matched analysis", "censoring"],
+      "keywords": [
+        "loss to follow-up",
+        "matching analysis",
+        "conditional logistic regression",
+        "matched analysis",
+        "censoring"
+      ],
       "weight": 1.0
     },
     {
       "section": "Methods - Statistical methods",
       "item": "12e",
       "description": "Describe any sensitivity analyses",
-      "keywords": ["sensitivity analysis", "sensitivity analyses", "robustness check", "alternative analysis"],
+      "keywords": [
+        "sensitivity analysis",
+        "sensitivity analyses",
+        "robustness check",
+        "alternative analysis"
+      ],
       "weight": 0.9
     },
     {
       "section": "Results - Participants",
       "item": "13a",
-      "description": "Report numbers of individuals at each stage—numbers potentially eligible, examined, confirmed eligible, included, completing follow-up, and analysed",
-      "keywords": ["participant flow", "flow diagram", "numbers at each stage", "eligible participants", "flowchart", "CONSORT diagram"],
+      "description": "Report numbers of individuals at each stage\u2014numbers potentially eligible, examined, confirmed eligible, included, completing follow-up, and analysed",
+      "keywords": [
+        "CONSORT diagram",
+        "eligible participants",
+        "flow diagram",
+        "flowchart",
+        "numbers at each stage",
+        "participant flow",
+        "response rate",
+        "sample selection",
+        "total of N",
+        "were included"
+      ],
       "weight": 1.2
     },
     {
       "section": "Results - Participants",
       "item": "13b",
       "description": "Give reasons for non-participation at each stage",
-      "keywords": ["reasons for non-participation", "reasons for exclusion", "non-response", "refusal", "were excluded", "dropped out", "lost to follow-up", "transferred to intensive care", "withdrew"],
+      "keywords": [
+        "reasons for non-participation",
+        "reasons for exclusion",
+        "non-response",
+        "refusal",
+        "were excluded",
+        "dropped out",
+        "lost to follow-up",
+        "transferred to intensive care",
+        "withdrew"
+      ],
       "weight": 0.9
     },
     {
       "section": "Results - Descriptive data",
       "item": "14a",
       "description": "Give characteristics of study participants and information on exposures and potential confounders",
-      "keywords": ["baseline characteristics", "table 1", "participant characteristics", "demographic characteristics", "exposure distribution"],
+      "keywords": [
+        "baseline characteristics",
+        "table 1",
+        "participant characteristics",
+        "demographic characteristics",
+        "exposure distribution",
+        "composition of",
+        "patient demographics",
+        "procedural characteristics",
+        "random sample",
+        "study population characteristics",
+        "characteristics of the",
+        "characteristics at baseline"
+      ],
       "weight": 1.1
     },
     {
       "section": "Results - Descriptive data",
       "item": "14b",
       "description": "Indicate number of participants with missing data for each variable of interest",
-      "keywords": ["completeness of data", "participants with missing data", "percentage missing", "data were available for"],
+      "keywords": [
+        "completeness of data",
+        "participants with missing data",
+        "percentage missing",
+        "data were available for"
+      ],
       "weight": 0.9
     },
     {
       "section": "Results - Outcome data",
       "item": "15",
       "description": "Report numbers of outcome events or summary measures over time",
-      "keywords": ["outcome events", "incidence rate", "prevalence", "person-years", "summary measures", "event rate", "viral carriage", "virological cure", "at day", "positive rate", "negative rate"],
+      "keywords": [
+        "at day",
+        "event rate",
+        "incidence",
+        "incidence rate",
+        "negative rate",
+        "outcome events",
+        "person-years",
+        "positive rate",
+        "prevalence",
+        "summary measures",
+        "viral carriage",
+        "virological cure",
+        "acceptable sensitivity",
+        "excellent specificity",
+        "sensitivity and specificity",
+        "median turnaround time",
+        "cumulative incidence",
+        "outcome frequency"
+      ],
       "weight": 1.1
     },
     {
       "section": "Results - Main results",
       "item": "16a",
       "description": "Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision",
-      "keywords": ["unadjusted estimate", "adjusted estimate", "confidence interval", "crude estimate", "multivariable-adjusted"],
+      "keywords": [
+        "95% confidence interval",
+        "95% confidence intervals",
+        "adjusted estimate",
+        "adjusted for",
+        "adjusted odds ratio",
+        "confidence interval",
+        "crude estimate",
+        "multivariable-adjusted",
+        "unadjusted estimate"
+      ],
       "weight": 1.3
     },
     {
       "section": "Results - Main results",
       "item": "16b",
       "description": "Report category boundaries when continuous variables were categorized",
-      "keywords": ["category boundaries", "cutoff values", "tertiles", "quartiles", "categorized"],
+      "keywords": [
+        "category boundaries",
+        "cutoff values",
+        "tertiles",
+        "quartiles",
+        "categorized"
+      ],
       "weight": 0.8
     },
     {
       "section": "Results - Main results",
       "item": "16c",
       "description": "If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period",
-      "keywords": ["absolute risk", "number needed to treat", "absolute risk reduction", "risk difference"],
+      "keywords": [
+        "absolute risk",
+        "number needed to treat",
+        "absolute risk reduction",
+        "risk difference"
+      ],
       "weight": 0.8
     },
     {
       "section": "Results - Other analyses",
       "item": "17",
-      "description": "Report other analyses done—e.g., analyses of subgroups, interactions, sensitivity analyses",
-      "keywords": ["subgroup analysis", "interaction analysis", "sensitivity analysis", "secondary analysis", "additional analysis"],
+      "description": "Report other analyses done\u2014e.g., analyses of subgroups, interactions, sensitivity analyses",
+      "keywords": [
+        "subgroup analysis",
+        "interaction analysis",
+        "sensitivity analysis",
+        "secondary analysis",
+        "additional analysis",
+        "subgroup-specific",
+        "stratified analysis",
+        "exploratory analysis",
+        "post-hoc analysis"
+      ],
       "weight": 0.9
     },
     {
       "section": "Discussion - Key results",
       "item": "18",
       "description": "Summarise key results with reference to study objectives",
-      "keywords": ["key results", "main findings", "principal findings", "key finding", "in summary", "significant reduction", "significantly associated", "our results show", "we report", "our study shows"],
+      "keywords": [
+        "key results",
+        "main findings",
+        "principal findings",
+        "key finding",
+        "in summary",
+        "significant reduction",
+        "significantly associated",
+        "our results show",
+        "we report",
+        "our study shows"
+      ],
       "weight": 1.0
     },
     {
       "section": "Discussion - Limitations",
       "item": "19",
       "description": "Discuss limitations of the study, taking into account sources of potential bias or imprecision",
-      "keywords": ["study limitations", "limitations of this study", "potential bias", "residual confounding", "measurement error", "selection bias"],
+      "keywords": [
+        "study limitations",
+        "limitations of this study",
+        "potential bias",
+        "residual confounding",
+        "measurement error",
+        "selection bias"
+      ],
       "weight": 1.3
     },
     {
       "section": "Discussion - Interpretation",
       "item": "20",
       "description": "Give a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses",
-      "keywords": ["overall interpretation", "cautious interpretation", "in context of", "compared with previous studies", "consistent with", "we suggest", "we recommend", "our findings suggest", "these results suggest"],
+      "keywords": [
+        "overall interpretation",
+        "cautious interpretation",
+        "in context of",
+        "compared with previous studies",
+        "consistent with",
+        "we suggest",
+        "we recommend",
+        "our findings suggest",
+        "these results suggest"
+      ],
       "weight": 1.0
     },
     {
       "section": "Discussion - Generalisability",
       "item": "21",
       "description": "Discuss the generalisability (external validity) of the study results",
-      "keywords": ["generalisability", "generalizability", "external validity", "applicability of findings", "transferability"],
+      "keywords": [
+        "generalisability",
+        "generalizability",
+        "external validity",
+        "applicability of findings",
+        "transferability",
+        "nationally representative sample"
+      ],
       "weight": 1.0
     },
     {
       "section": "Other - Funding",
       "item": "22",
       "description": "Give the source of funding and the role of the funders for the present study",
-      "keywords": ["source of funding", "role of the funders", "financial support", "grant number", "conflict of interest", "competing interests", "funded by", "supported by", "no conflict"],
+      "keywords": [
+        "source of funding",
+        "role of the funders",
+        "financial support",
+        "grant number",
+        "conflict of interest",
+        "competing interests",
+        "funded by",
+        "supported by",
+        "no conflict"
+      ],
       "weight": 1.0
     }
   ]

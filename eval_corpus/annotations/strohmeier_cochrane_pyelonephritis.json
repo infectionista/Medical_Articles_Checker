@@ -1,0 +1,135 @@
+{
+  "_comment": "Ground truth annotation \u2014 PRISMA checklist for Strohmeier et al. 2014 Cochrane Review",
+  "article": {
+    "id": "strohmeier_cochrane_pyelonephritis",
+    "title": "Antibiotics for acute pyelonephritis in children",
+    "authors": "Strohmeier Y, Hodson EM, Willis NS, Webster AC, Craig JC",
+    "year": 2014,
+    "journal": "Cochrane Database of Systematic Reviews",
+    "doi": "10.1002/14651858.CD003772.pub4",
+    "file": "articles/antibiotics_for_acute_pyelonephritis_in_children.pdf"
+  },
+  "study_type": {
+    "expected_type": "systematic_review_interventions",
+    "expected_checklist": "PRISMA",
+    "notes": "Cochrane intervention review on antibiotic regimens for acute pyelonephritis in children. Includes multiple comparisons and meta-analyses."
+  },
+  "prisma_items": {
+    "1": {
+      "present": true,
+      "notes": "Title clearly identifies as '[Intervention Review] Antibiotics for acute pyelonephritis in children'"
+    },
+    "2": {
+      "present": true,
+      "notes": "Structured abstract with BACKGROUND, OBJECTIVES, SEARCH STRATEGY, SELECTION CRITERIA, DATA COLLECTION AND ANALYSIS, MAIN RESULTS, and AUTHORS' CONCLUSIONS"
+    },
+    "3": {
+      "present": true,
+      "notes": "Background describes UTIs in children, pyelonephritis, current treatment approaches, and need for systematic evaluation of antibiotic regimens"
+    },
+    "4": {
+      "present": true,
+      "notes": "Explicit objectives: to evaluate efficacy and safety of different antibiotic regimens for acute pyelonephritis in children"
+    },
+    "5": {
+      "present": true,
+      "notes": "Inclusion criteria: RCTs and quasi-RCTs of antibiotics for acute pyelonephritis in children. Exclusion: studies of prophylaxis or prevention"
+    },
+    "6": {
+      "present": true,
+      "notes": "Cochrane Central Register of Controlled Trials (CENTRAL), MEDLINE, EMBASE, and handsearching of journals searched"
+    },
+    "7": {
+      "present": true,
+      "notes": "Full search strategies provided with MeSH terms, text words, and Boolean operators for each database"
+    },
+    "8": {
+      "present": true,
+      "notes": "Two reviewers independently assessed studies for inclusion using standardized criteria. Disagreements resolved by consensus or third reviewer"
+    },
+    "9": {
+      "present": true,
+      "notes": "Two reviewers independently extracted data using standardized data extraction forms. Forms piloted before use"
+    },
+    "10": {
+      "present": true,
+      "notes": "Outcomes clearly specified: primary outcomes include persistent bacteriuria, fever resolution, kidney damage; secondary outcomes include recurrent UTI"
+    },
+    "11": {
+      "present": true,
+      "notes": "Cochrane risk of bias tool used to assess: sequence generation, allocation concealment, blinding, incomplete outcome data, selective outcome reporting, other bias"
+    },
+    "12": {
+      "present": true,
+      "notes": "Effect measures specified: risk difference for primary comparisons, odds ratios or risk ratios used throughout meta-analyses"
+    },
+    "13a": {
+      "present": true,
+      "notes": "Random-effects models described with Mantel-Haenszel method for pooling. Criteria for synthesis eligibility clearly stated"
+    },
+    "13b": {
+      "present": true,
+      "notes": "Statistical heterogeneity assessed using Cochran's Q test and I-squared (I\u00b2) statistic. I\u00b2 > 50% considered substantial heterogeneity"
+    },
+    "14": {
+      "present": true,
+      "notes": "Funnel plots generated to assess publication bias for main outcomes"
+    },
+    "15": {
+      "present": true,
+      "notes": "GRADE approach mentioned for assessing quality of evidence for primary comparisons"
+    },
+    "16": {
+      "present": true,
+      "notes": "PRISMA flow diagram (Figure 1) showing: studies identified, screened, assessed for eligibility, and included in review"
+    },
+    "17": {
+      "present": true,
+      "notes": "Table of characteristics of included studies providing study design, population, interventions, and outcomes for each study"
+    },
+    "18": {
+      "present": true,
+      "notes": "Risk of bias assessment results presented with risk of bias summary figure and individual study assessments"
+    },
+    "19": {
+      "present": true,
+      "notes": "Forest plots (Figures 2-3) presenting meta-analysis results with pooled estimates and 95% confidence intervals for main outcomes"
+    },
+    "20": {
+      "present": true,
+      "notes": "Publication bias results presented via funnel plots for main analyses"
+    },
+    "21": {
+      "present": true,
+      "notes": "Summary of findings table provided with GRADE assessment of evidence quality"
+    },
+    "22a": {
+      "present": true,
+      "notes": "General interpretation: no definitive evidence for superiority of specific antibiotic regimens for uncomplicated acute pyelonephritis"
+    },
+    "22b": {
+      "present": true,
+      "notes": "Discussion of limitations: heterogeneous populations, different clinical presentations, study quality concerns, limited long-term follow-up"
+    },
+    "22c": {
+      "present": true,
+      "notes": "Implications discussed: need for further high-quality RCTs, standardized outcome measures, long-term follow-up studies"
+    },
+    "23": {
+      "present": true,
+      "notes": "Registration noted in Cochrane Renal Group with publication in Issue 7, 2014"
+    },
+    "24": {
+      "present": false,
+      "notes": "No funding information explicitly stated for the Cochrane review itself"
+    },
+    "25": {
+      "present": false,
+      "notes": "No conflicts of interest statement provided for the authors"
+    },
+    "26": {
+      "present": false,
+      "notes": "No statement about data availability or supplementary materials"
+    }
+  }
+}

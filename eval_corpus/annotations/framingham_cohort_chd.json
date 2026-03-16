@@ -1,0 +1,142 @@
+{
+  "article": {
+    "id": "framingham_cohort_chd",
+    "title": "Factors of Risk in the Development of Coronary Heart Disease - Six-Year Follow-up Experience",
+    "authors": "Kannel WB, Dawber TR, Kagan A, Revotskie N, Stokes J III",
+    "year": 1961,
+    "journal": "Annals of Internal Medicine",
+    "doi": "",
+    "file": "articles/development_coronary_heart_disease.pdf"
+  },
+  "study_type": {
+    "expected_type": "cohort_study",
+    "expected_checklist": "STROBE",
+    "notes": "Prospective cohort study. Classic Framingham Heart Study. 5,127 participants free of CHD at baseline followed for 6 years. Multiple CHD risk factors (cholesterol, hypertension, ECG) evaluated."
+  },
+  "strobe_items": {
+    "1": {
+      "present": true,
+      "notes": "Title clearly indicates 'Six-Year Follow-up Experience The Framingham Study' - prospective cohort design"
+    },
+    "2": {
+      "present": true,
+      "notes": "Background: 'Cardiovascular disease is now the leading cause of death... prevention program is clearly necessary'"
+    },
+    "3": {
+      "present": true,
+      "notes": "Objective: 'study the characteristics of persons who develop coronary heart disease under observation...determine the characteristics of susceptible individuals'"
+    },
+    "4": {
+      "present": true,
+      "notes": "Study design clearly presented in Methods: prospective cohort design with baseline and follow-up examinations"
+    },
+    "5": {
+      "present": true,
+      "notes": "Setting: Framingham, Massachusetts. Study established 1948-1950. Follow-up period: 6 years"
+    },
+    "6a": {
+      "present": true,
+      "notes": "Eligibility: 6,507 persons selected at random, 4,469 examined and found free of CHD at baseline (ages 30-59), plus 740 volunteers. 5,127 total free of disease at entry"
+    },
+    "6b": {
+      "present": false,
+      "notes": "Not a case-control study"
+    },
+    "7": {
+      "present": true,
+      "notes": "Outcomes clearly defined: myocardial infarction, angina pectoris, sudden death. Risk factors: serum cholesterol, blood pressure, ECG patterns"
+    },
+    "8": {
+      "present": true,
+      "notes": "Data collection methods: 'Detailed history and physical examination by physician...Laboratory studies included chest X ray, electrocardiogram...blood glucose, uric acid, lipoproteins, cholesterol'"
+    },
+    "9": {
+      "present": false,
+      "notes": "No explicit discussion of potential biases or efforts to address bias"
+    },
+    "10": {
+      "present": false,
+      "notes": "No sample size calculation or power analysis described"
+    },
+    "11": {
+      "present": false,
+      "notes": "Quantitative variables (cholesterol, BP) presented but no specific discussion of categorization methods or cutoffs"
+    },
+    "12a": {
+      "present": true,
+      "notes": "Statistical methods described: incidence rates per 1,000 population, age-specific rates, comparison of means with significance testing"
+    },
+    "12b": {
+      "present": true,
+      "notes": "Subgroup analysis by sex and age group throughout results"
+    },
+    "12c": {
+      "present": false,
+      "notes": "No discussion of missing data handling"
+    },
+    "12d": {
+      "present": true,
+      "notes": "Follow-up accounting: '87% at clinic on fourth biennial examination...2.4% known to have died before their fourth examination'"
+    },
+    "12e": {
+      "present": false,
+      "notes": "No sensitivity analyses reported"
+    },
+    "13a": {
+      "present": true,
+      "notes": "Participant flow: Table 1 shows 6,507 selected, 4,469 examined, 4,393 free of CHD at baseline plus 734 volunteers = 5,127 total"
+    },
+    "13b": {
+      "present": true,
+      "notes": "Non-participation: 'Of the 6,507 persons selected at random, 4,469 persons...came in for examination' (implicit reasons: non-response/refusal)"
+    },
+    "14a": {
+      "present": true,
+      "notes": "Baseline characteristics: Tables 1, 5, 7 show age, sex, cholesterol levels, blood pressure distribution"
+    },
+    "14b": {
+      "present": false,
+      "notes": "No explicit reporting of completeness or missing data"
+    },
+    "15": {
+      "present": true,
+      "notes": "Outcome events: Tables 3A, 3B, 4 report incidence of CHD by type and sex. Overall 186 new cases in 6 years"
+    },
+    "16a": {
+      "present": true,
+      "notes": "Unadjusted estimates: incidence rates per 1,000 by cholesterol level, age, sex. Examples: '245 or more mg cholesterol: 120.3 per 1,000 in men vs 43.5 in women'"
+    },
+    "16b": {
+      "present": true,
+      "notes": "Category boundaries for cholesterol: '<210', '210-244', '245 or more' mg/100 ml. Age groups: 30-34, 35-39, etc."
+    },
+    "16c": {
+      "present": false,
+      "notes": "Absolute incidence rates provided but not translated to number needed to treat"
+    },
+    "17": {
+      "present": false,
+      "notes": "Only basic stratified analysis by age and sex; no formal sensitivity analyses"
+    },
+    "18": {
+      "present": true,
+      "notes": "Key results: 'six-year incidence of 36.3 per thousand...in men was 54.8 per thousand...in women 21.4 per thousand'"
+    },
+    "19": {
+      "present": false,
+      "notes": "No discussion of study limitations or sources of bias"
+    },
+    "20": {
+      "present": false,
+      "notes": "No cautious interpretation or discussion of alternative explanations"
+    },
+    "21": {
+      "present": false,
+      "notes": "No discussion of generalizability or external validity"
+    },
+    "22": {
+      "present": false,
+      "notes": "Funding acknowledged: 'From the Heart Disease Epidemiology Study, Framingham, Mass., and the National Heart Institute'"
+    }
+  }
+}

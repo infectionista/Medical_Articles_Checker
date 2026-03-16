@@ -68,19 +68,19 @@ STUDY_TYPE_CHECKLISTS = {
         "name_ru": "Серия клинических случаев",
         "name_en": "Case Series",
         "checklist": "JBI Case Series",
-        "local_checklist": "STROBE"
+        "local_checklist": "JBI_CASE_SERIES"
     },
     "case_report": {
         "name_ru": "Один клинический случай",
         "name_en": "Case Report",
         "checklist": "JBI Case Report",
-        "local_checklist": "STROBE"
+        "local_checklist": "JBI_CASE_SERIES"
     },
     "diagnostic_accuracy": {
         "name_ru": "Исследование точности диагностики",
         "name_en": "Diagnostic Accuracy Study",
         "checklist": "QUADAS-2",
-        "local_checklist": "STROBE"
+        "local_checklist": "QUADAS2"
     },
     "systematic_review_interventions": {
         "name_ru": "Систематический обзор вмешательств",
@@ -122,7 +122,7 @@ STUDY_TYPE_CHECKLISTS = {
         "name_ru": "Экономическая оценка здравоохранения",
         "name_en": "Health Economic Evaluation",
         "checklist": "CHEERS 2022",
-        "local_checklist": None
+        "local_checklist": "CHEERS"
     },
     "prognostic_factors": {
         "name_ru": "Исследование прогностических факторов",
@@ -166,9 +166,9 @@ class EnhancedStudyTypeDetector:
                     (r'\bCONSORT\b', 5),
                     (r'\bparallel[- ]group\b', 4),
                     (r'\bcrossover trial\b', 4),
-                    (r'\brandomly assigned\b', 6),              # Strong RCT signal
-                    (r'\brandomized to\b', 5),
-                    (r'\brandomised to\b', 5),
+                    (r'\brandomly assigned\b', 7),              # Strong RCT signal (boosted)
+                    (r'\brandomized to\b', 7),                  # Boosted: very specific RCT pattern
+                    (r'\brandomised to\b', 7),
                     (r'\bblock randomi[sz]ation\b', 4),
                     (r'\bRCT\b', 3),
                     (r'\bunderwent\s+randomi[sz]ation\b', 8),   # Very strong
@@ -178,6 +178,8 @@ class EnhancedStudyTypeDetector:
                     (r'\brandomized\s+evaluation\b', 8),        # e.g. RECOVERY
                     (r'\brandomized\s+trial\b', 7),
                     (r'\brandomised\s+trial\b', 7),
+                    (r'\brandomized\s+to\s+(?:receive|the|a)\b', 8),  # New: "randomized to receive drug" pattern
+                    (r'\brandomly\s+assigned\s+to\s+receive\b', 8),   # New: "randomly assigned to receive"
                     (r'\btrial\s+registration\b', 3),
                     (r'\bNCT\d{8}\b', 5),                       # ClinicalTrials.gov ID
                     (r'\bISRCTN\b', 5),                         # ISRCTN registry
@@ -233,6 +235,9 @@ class EnhancedStudyTypeDetector:
                     (r'\brandomized controlled trial\b', -5),
                     (r'\bsystematic review\b', -5),
                     (r'\bmeta[- ]analysis\b', -5),
+                    (r'\bNHANES\b', -6),                        # New: NHANES is cross-sectional, not cohort
+                    (r'\bcross[- ]sectional\s+(?:study|survey)\b', -5),  # New: explicit cross-sectional
+                    (r'\bnational(?:ly)?\s+representative\s+sample\b', -3),  # New: survey language
                 ],
             },
 
@@ -248,16 +253,20 @@ class EnhancedStudyTypeDetector:
                 "negative": [
                     (r'\bcohort study\b', -3),
                     (r'\brandomized\b', -3),
+                    (r'\bno\s+control\s+(?:group|subjects?|patients?)\b', -5),  # New: explicit absence of controls
+                    (r'\b(?:consecutive|series of)\s+(?:patients|cases)\b', -4),  # New: case series language
                 ],
             },
 
             "case_series": {
                 "positive": [
                     (r'\bcase\s+series\b', 8),
-                    (r'\bconsecutive\s+(?:patients|cases)\b', 5),
+                    (r'\bconsecutive\s+(?:patients|cases|patients/cases)\b', 7),  # Boosted
+                    (r'\bconsecutive\s+referrals?\b', 6),       # New: consecutive referrals
                     (r'\bseries\s+of\s+\d+\s+(?:patients|cases)\b', 6),
-                    (r'\bno\s+control\s+group\b', 3),
+                    (r'\bno\s+control\s+group\b', 4),           # Boosted
                     (r'\buncontrolled\s+case\b', 5),
+                    (r'\b\d+\s+consecutive\s+(?:patients|cases)\b', 7),  # New: e.g. "12 consecutive children"
                 ],
                 "negative": [
                     (r'\brandomized\b', -4),
@@ -268,11 +277,16 @@ class EnhancedStudyTypeDetector:
             "case_report": {
                 "positive": [
                     (r'\bcase\s+report\b', 8),
-                    (r'\bsingle\s+(?:case|patient)\b', 5),
+                    (r'\bsingle\s+(?:case|patient)\b', 6),      # Boosted
                     (r'\bunique\s+case\b', 5),
                     (r'\brare\s+case\b', 5),
                     (r'\bwe\s+report\s+(?:a|the)\s+case\b', 6),
                     (r'\bwe\s+present\s+(?:a|the)\s+case\b', 6),
+                    (r'\ba\s+\d+[- ]year[- ]old\s+(?:patient|male|female|boy|girl|man|woman)\b', 6),  # New: age-gender pattern
+                    (r'\bthe\s+patient\s+underwent\b', 5),      # New: single patient clinical course
+                    (r'\bfollow[- ]up\s+(?:at|of)\s+\d+\s+(?:days?|weeks?|months?|years?)\b', 4),  # New: follow-up timing
+                    (r'\bpostoperative\s+day\s+\d+\b', 5),      # New: postoperative course
+                    (r'\bpresented\s+with\s+a\b', 4),           # New: patient presentation
                 ],
                 "negative": [
                     (r'\bcase\s+series\b', -5),
@@ -286,6 +300,12 @@ class EnhancedStudyTypeDetector:
                     (r'\bprevalence\s+(?:study|survey|of)\b', 5),
                     (r'\bassociation\s+between\b', 3),
                     (r'\bcross[- ]sectional\b', 4),
+                    (r'\bNHANES\b', 7),                         # New: NHANES is cross-sectional by design
+                    (r'\bNational\s+Health\s+and\s+Nutrition\s+Examination\s+Survey\b', 7),  # New: full name
+                    (r'\b(?:survey\s+)?cycles?\b.*\b(?:data|sample)\b', 4),  # New: survey cycles language
+                    (r'\bweighted\s+prevalence\b', 5),           # New: survey-specific terminology
+                    (r'\bnational(?:ly)?\s+representative\s+(?:sample|population)\b', 6),  # New: nationally representative
+                    (r'\b(?:cross[- ]sectional\s+)?survey\b', 4),  # New: generic survey term
                 ],
                 "negative": [
                     (r'\blongitudinal\b', -4),
@@ -338,7 +358,11 @@ class EnhancedStudyTypeDetector:
                     (r'\bquality\s+assessment\b', 3),
                     (r'\brisk\s+of\s+bias\b', 3),
                 ],
-                "negative": [],
+                "negative": [
+                    (r'\ba\s+\d+[- ]year[- ]old\s+(?:patient|male|female|boy|girl|man|woman)\b', -6),  # New: single patient description
+                    (r'\bthe\s+patient\s+underwent\b', -5),     # New: single patient clinical course
+                    (r'\bpostoperative\s+day\s+\d+\b', -4),     # New: single patient postop course
+                ],
             },
 
             "systematic_review_prognostic": {

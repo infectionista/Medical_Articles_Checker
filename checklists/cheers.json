@@ -1,0 +1,541 @@
+{
+  "name": "CHEERS",
+  "full_name": "Consolidated Health Economic Evaluation Reporting Standards",
+  "description": "Checklist for reporting health economic evaluation studies (CHEERS 2022)",
+  "version": "2022",
+  "items": [
+    {
+      "section": "Title",
+      "item": "1",
+      "description": "Identify the study as an economic evaluation and specify the interventions being compared",
+      "keywords": [
+        "economic evaluation",
+        "cost-effectiveness",
+        "cost-utility analysis",
+        "cost-benefit analysis",
+        "health economic evaluation",
+        "budget impact analysis",
+        "cost analysis",
+        "economic analysis",
+        "intervention comparison",
+        "comparing interventions",
+        "cost-effectiveness study"
+      ],
+      "weight": 1.5,
+      "notes": "Critical identifier; must appear in title for rapid article identification"
+    },
+    {
+      "section": "Abstract",
+      "item": "2",
+      "description": "Provide a structured summary including objectives, perspective, setting, methods, results, and conclusions",
+      "keywords": [
+        "structured abstract",
+        "economic evaluation abstract",
+        "background methods results",
+        "objectives perspective setting",
+        "abstract cost-effectiveness",
+        "incremental cost-effectiveness ratio",
+        "ICER",
+        "willingness-to-pay",
+        "cost per QALY",
+        "cost per LY"
+      ],
+      "weight": 1.0,
+      "notes": "Standard abstract structure; often follows journal guidelines"
+    },
+    {
+      "section": "Introduction",
+      "item": "3",
+      "description": "Provide an explicit statement of the broader context and study question, its relevance to health policy or practice decisions",
+      "keywords": [
+        "background and objectives",
+        "policy relevance",
+        "clinical decision-making",
+        "resource allocation",
+        "health technology assessment",
+        "HTA",
+        "decision-making context",
+        "healthcare policy",
+        "treatment burden",
+        "clinical effectiveness"
+      ],
+      "weight": 0.9,
+      "notes": "Introduction nearly always present; focuses on context and rationale"
+    },
+    {
+      "section": "Methods",
+      "item": "4",
+      "description": "Indicate whether a health economic analysis plan was developed",
+      "keywords": [
+        "health economic analysis plan",
+        "analysis plan",
+        "HEAP",
+        "pre-specified analysis",
+        "analytical protocol",
+        "analytical framework",
+        "predefined methodology",
+        "analytical approach",
+        "study protocol",
+        "methodological protocol"
+      ],
+      "weight": 1.2,
+      "notes": "Transparency requirement; indicates pre-specification of analyses"
+    },
+    {
+      "section": "Methods",
+      "item": "5",
+      "description": "Describe characteristics of the study population",
+      "keywords": [
+        "study population",
+        "patient population",
+        "population characteristics",
+        "demographic characteristics",
+        "inclusion criteria",
+        "exclusion criteria",
+        "eligibility criteria",
+        "baseline characteristics",
+        "target population",
+        "recruited population"
+      ],
+      "weight": 1.2,
+      "notes": "Essential for understanding generalizability"
+    },
+    {
+      "section": "Methods",
+      "item": "6",
+      "description": "Provide relevant contextual information for the study",
+      "keywords": [
+        "setting and location",
+        "study setting",
+        "healthcare system",
+        "country context",
+        "healthcare setting",
+        "clinical setting",
+        "primary care",
+        "hospital setting",
+        "institution",
+        "geographic location"
+      ],
+      "weight": 1.0,
+      "notes": "Context affects cost estimates and generalizability"
+    },
+    {
+      "section": "Methods",
+      "item": "7",
+      "description": "Describe the interventions or strategies being compared",
+      "keywords": [
+        "intervention comparison",
+        "interventions compared",
+        "treatment alternatives",
+        "comparator intervention",
+        "alternative strategy",
+        "usual care",
+        "standard treatment",
+        "intervention description",
+        "strategy description",
+        "treatment arms"
+      ],
+      "weight": 1.5,
+      "notes": "Critical; must be detailed enough for replication"
+    },
+    {
+      "section": "Methods",
+      "item": "8",
+      "description": "State the perspective(s) of the analysis",
+      "keywords": [
+        "perspective of analysis",
+        "analytic perspective",
+        "healthcare payer",
+        "societal perspective",
+        "patient perspective",
+        "provider perspective",
+        "third-party payer",
+        "NHS perspective",
+        "payer perspective",
+        "economic perspective"
+      ],
+      "weight": 1.5,
+      "notes": "Critical; determines which costs are included"
+    },
+    {
+      "section": "Methods",
+      "item": "9",
+      "description": "State the time horizon for the study",
+      "keywords": [
+        "time horizon",
+        "study period",
+        "time frame",
+        "analytical horizon",
+        "lifetime horizon",
+        "follow-up period",
+        "study duration",
+        "time frame of analysis",
+        "years horizon",
+        "month follow-up"
+      ],
+      "weight": 1.3,
+      "notes": "Critical; affects which costs and outcomes are captured"
+    },
+    {
+      "section": "Methods",
+      "item": "10",
+      "description": "Report the discount rate(s) used",
+      "keywords": [
+        "discount rate",
+        "discounting",
+        "annual discount rate",
+        "3% discount",
+        "5% discount",
+        "present value",
+        "discounted costs",
+        "discounted outcomes",
+        "discount factor",
+        "future value"
+      ],
+      "weight": 1.5,
+      "notes": "Critical for long time horizons; allows replication"
+    },
+    {
+      "section": "Methods",
+      "item": "11",
+      "description": "Describe what outcomes were used as the measure(s) of benefit",
+      "keywords": [
+        "outcome measures",
+        "quality-adjusted life year",
+        "QALY",
+        "life year",
+        "LY",
+        "disability-adjusted life year",
+        "DALY",
+        "disability-free life year",
+        "health-adjusted life year",
+        "natural units"
+      ],
+      "weight": 1.4,
+      "notes": "Critical; defines benefits captured in evaluation"
+    },
+    {
+      "section": "Methods",
+      "item": "12",
+      "description": "Describe how outcomes were measured",
+      "keywords": [
+        "measurement of outcomes",
+        "outcome assessment",
+        "outcome data collection",
+        "health status measurement",
+        "utility measurement",
+        "quality of life assessment",
+        "EQ-5D",
+        "SF-6D",
+        "HUI",
+        "health utility index"
+      ],
+      "weight": 1.3,
+      "notes": "Details how effectiveness is measured and assessed"
+    },
+    {
+      "section": "Methods",
+      "item": "13",
+      "description": "Describe methods for valuing outcomes",
+      "keywords": [
+        "valuation of outcomes",
+        "health state valuation",
+        "utility weights",
+        "preference weights",
+        "quality of life weights",
+        "utility elicitation",
+        "time trade-off",
+        "visual analog scale",
+        "standard gamble",
+        "visual analogue scale"
+      ],
+      "weight": 1.3,
+      "notes": "Key methodological component for utility-based outcomes"
+    },
+    {
+      "section": "Methods",
+      "item": "14",
+      "description": "Describe how costs were valued",
+      "keywords": [
+        "resources and costs",
+        "cost valuation",
+        "cost identification",
+        "cost categories",
+        "medical costs",
+        "healthcare costs",
+        "direct medical costs",
+        "direct non-medical costs",
+        "indirect costs",
+        "productivity costs"
+      ],
+      "weight": 1.4,
+      "notes": "Critical; determines cost inputs and scope"
+    },
+    {
+      "section": "Methods",
+      "item": "15",
+      "description": "Report the dates, conversion rates, methods used",
+      "keywords": [
+        "currency and price date",
+        "price year",
+        "cost year",
+        "currency conversion",
+        "exchange rate",
+        "purchasing power parity",
+        "PPP",
+        "price adjustment",
+        "inflation adjustment",
+        "currency method"
+      ],
+      "weight": 1.2,
+      "notes": "Enables cost updating and international comparisons"
+    },
+    {
+      "section": "Methods",
+      "item": "16",
+      "description": "If using modelling, describe key structural assumptions",
+      "keywords": [
+        "model structure",
+        "Markov model",
+        "decision tree",
+        "decision analysis",
+        "model assumptions",
+        "simulation model",
+        "microsimulation",
+        "state transitions",
+        "transition probabilities",
+        "model framework"
+      ],
+      "weight": 1.4,
+      "notes": "Essential if study includes modelling component"
+    },
+    {
+      "section": "Methods",
+      "item": "17",
+      "description": "Describe analytical methods used",
+      "keywords": [
+        "analytical methods",
+        "statistical analysis",
+        "cost-effectiveness plane",
+        "incremental analysis",
+        "net benefit",
+        "dominance",
+        "dominance analysis",
+        "calculation methods",
+        "analysis approach",
+        "analytical technique"
+      ],
+      "weight": 1.3,
+      "notes": "How ICER or other summary measures are calculated"
+    },
+    {
+      "section": "Methods",
+      "item": "18",
+      "description": "Describe methods for characterizing heterogeneity",
+      "keywords": [
+        "characterizing heterogeneity",
+        "subgroup analysis",
+        "population heterogeneity",
+        "treatment effect heterogeneity",
+        "stratified analysis",
+        "differential effectiveness",
+        "population differences",
+        "subgroup differences",
+        "heterogeneous effects",
+        "patient subgroups"
+      ],
+      "weight": 1.0,
+      "notes": "How variation across populations is examined"
+    },
+    {
+      "section": "Methods",
+      "item": "19",
+      "description": "Describe methods for characterizing distributional effects",
+      "keywords": [
+        "distributional effects",
+        "equity analysis",
+        "fairness",
+        "distribution of costs",
+        "distribution of benefits",
+        "distributional impact",
+        "equity considerations",
+        "differential impact",
+        "health equity",
+        "social determinants"
+      ],
+      "weight": 0.9,
+      "notes": "How costs and benefits are distributed across groups"
+    },
+    {
+      "section": "Methods",
+      "item": "20",
+      "description": "Describe approaches used to characterize uncertainty",
+      "keywords": [
+        "characterizing uncertainty",
+        "sensitivity analysis",
+        "probabilistic sensitivity analysis",
+        "PSA",
+        "one-way sensitivity",
+        "tornado diagram",
+        "parameter uncertainty",
+        "structural uncertainty",
+        "uncertainty analysis",
+        "scenario analysis"
+      ],
+      "weight": 1.5,
+      "notes": "Critical for assessing robustness of results"
+    },
+    {
+      "section": "Methods",
+      "item": "21",
+      "description": "Describe approaches to engage patients or public",
+      "keywords": [
+        "patient engagement",
+        "public engagement",
+        "stakeholder engagement",
+        "patient involvement",
+        "community input",
+        "patient preference",
+        "participatory approach",
+        "patient advisory",
+        "stakeholder consultation",
+        "end-user involvement"
+      ],
+      "weight": 0.8,
+      "notes": "Increasingly important for transparency and relevance"
+    },
+    {
+      "section": "Results",
+      "item": "22",
+      "description": "Report values, ranges, references for all parameters",
+      "keywords": [
+        "study parameters",
+        "parameter values",
+        "model parameters",
+        "cost parameters",
+        "effectiveness parameters",
+        "clinical parameters",
+        "baseline data",
+        "parameter estimates",
+        "input parameters",
+        "parameter assumptions"
+      ],
+      "weight": 1.4,
+      "notes": "Essential for transparency and replication"
+    },
+    {
+      "section": "Results",
+      "item": "23",
+      "description": "Report mean values for main categories of costs and outcomes",
+      "keywords": [
+        "summary of main results",
+        "main findings",
+        "total costs",
+        "mean costs",
+        "total QALYs",
+        "mean QALYs",
+        "cost-effectiveness result",
+        "ICER result",
+        "incremental cost",
+        "incremental effectiveness"
+      ],
+      "weight": 1.5,
+      "notes": "Core results of the economic evaluation"
+    },
+    {
+      "section": "Results",
+      "item": "24",
+      "description": "Describe effects of uncertainty",
+      "keywords": [
+        "effect of uncertainty",
+        "sensitivity analysis results",
+        "uncertainty results",
+        "confidence intervals",
+        "probabilistic results",
+        "cost-effectiveness acceptability",
+        "CEAC",
+        "confidence ellipse",
+        "uncertainty analysis",
+        "robust to variation"
+      ],
+      "weight": 1.3,
+      "notes": "Shows how results vary under different assumptions"
+    },
+    {
+      "section": "Discussion",
+      "item": "25",
+      "description": "Summarize key findings",
+      "keywords": [
+        "study findings",
+        "key findings",
+        "main findings",
+        "implications of findings",
+        "clinical implications",
+        "limitations",
+        "potential limitations",
+        "generalizability",
+        "external validity",
+        "internal validity"
+      ],
+      "weight": 1.2,
+      "notes": "Synthesizes findings and addresses limitations"
+    },
+    {
+      "section": "Discussion",
+      "item": "26",
+      "description": "Discuss how study findings relate to current knowledge",
+      "keywords": [
+        "relate to current knowledge",
+        "comparison with literature",
+        "consistent with",
+        "differs from previous",
+        "previous studies",
+        "literature findings",
+        "in line with",
+        "contrasts with",
+        "evidence synthesis",
+        "contextual findings"
+      ],
+      "weight": 1.1,
+      "notes": "Places findings in context of existing evidence"
+    },
+    {
+      "section": "Other",
+      "item": "27",
+      "description": "Describe how the study was funded",
+      "keywords": [
+        "source of funding",
+        "funding source",
+        "funded by",
+        "supported by",
+        "grant from",
+        "financial support",
+        "no funding",
+        "no financial disclosure",
+        "funding acknowledgement",
+        "funding disclosure"
+      ],
+      "weight": 1.2,
+      "notes": "Transparency item; important for assessing potential bias"
+    },
+    {
+      "section": "Other",
+      "item": "28",
+      "description": "Report authors' conflicts of interest",
+      "keywords": [
+        "conflicts of interest",
+        "conflict of interest",
+        "competing interests",
+        "author disclosures",
+        "competing financial interests",
+        "no competing interests",
+        "declaration of interests",
+        "potential conflicts",
+        "financial interests",
+        "industry relationships"
+      ],
+      "weight": 1.2,
+      "notes": "Transparency item; important for assessing bias"
+    }
+  ]
+}

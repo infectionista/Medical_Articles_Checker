@@ -1,0 +1,59 @@
+{
+  "_comment": "Updated annotation \u2014 JBI Case Series checklist for Garcia et al. 2026 case series",
+  "article": {
+    "id": "garcia_2026_robotic_bronchoscopy_case_series",
+    "title": "Synergistic use of robotic navigational platform and ultrathin bronchoscopy in diagnostic yield optimization for cavitary lung lesions: a case series",
+    "authors": "Rodrigo Garcia Tome",
+    "year": 2026,
+    "journal": "Journal of Thoracic Disease",
+    "doi": "10.21037/jtd-2025-aw-2052",
+    "file": "articles/Synergistic_use_of_robotic_navigational plat.pdf"
+  },
+  "study_type": {
+    "expected_type": "case_series",
+    "expected_checklist": "JBI_CASE_SERIES",
+    "notes": "Retrospective case series of 6 consecutive patients with cavitary lung lesions evaluated using combined robotic and ultrathin bronchoscopy."
+  },
+  "jbi_case_series_items": {
+    "1": {
+      "present": true,
+      "notes": "Clear inclusion criteria: patients aged \u226518 with cavitary lung lesions requiring tissue/microbiological diagnosis; pregnant patients excluded; consecutive enrollment of qualifying patients"
+    },
+    "2": {
+      "present": true,
+      "notes": "Standardized measurement: cavitary lesion diagnosis confirmed radiologically; ultrathin bronchoscopy performed using standardized Vathin 3.2-mm OD bronchoscope; tissue diagnosis via biopsy following standard protocol"
+    },
+    "3": {
+      "present": true,
+      "notes": "Valid diagnostic methods: lesion identification via CT imaging; ultrathin flexible bronchoscopy validated technique; robotic platform (Ion\u2122) navigation confirmed via fluoroscopy; tissue samples for histology/microbiology"
+    },
+    "4": {
+      "present": true,
+      "notes": "Consecutive inclusion: 'six consecutive patients with cavitary lung lesions' explicitly stated; prospective enrollment period (1-month); no selection bias from non-consecutive sampling"
+    },
+    "5": {
+      "present": true,
+      "notes": "Complete inclusion: all eligible consecutive patients meeting criteria included in analysis; no post-hoc exclusions; n=6 total enrolled and analyzed"
+    },
+    "6": {
+      "present": false,
+      "notes": "Limited demographic reporting: case-by-case presentation provided but no formal demographics table; age, sex inferred from case descriptions but not explicitly summarized"
+    },
+    "7": {
+      "present": true,
+      "notes": "Clinical information: presenting complaint (cavitary lesions), prior imaging, suspected diagnoses documented; clinical context for each patient provided in case descriptions"
+    },
+    "8": {
+      "present": true,
+      "notes": "Outcomes clearly reported: successful navigation in 6/6 (100%); enhanced diagnosis with ultrathin bronchoscopy in 2/4 robotic cases; 1 transient fever (resolved with antibiotics); 0 major complications; 3-month clinical improvement in all 6"
+    },
+    "9": {
+      "present": true,
+      "notes": "Site demographics: Los Angeles General Medical Center; tertiary academic medical center; endoscopy suite setting specified; single institution, single operator"
+    },
+    "10": {
+      "present": true,
+      "notes": "Statistical analysis: descriptive analysis appropriate for case series; proportions reported (6/6 successful, 2/6 enhanced diagnosis); frequency counts and percentages used"
+    }
+  }
+}

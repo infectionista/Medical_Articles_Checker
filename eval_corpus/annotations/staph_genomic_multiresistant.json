@@ -1,0 +1,107 @@
+{
+  "_comment": "Ground truth annotation \u2014 GENOMICS checklist for Rolain et al. 2009 genomic study",
+  "article": {
+    "id": "staph_genomic_multiresistant",
+    "title": "Genomic analysis of an emerging multiresistant Staphylococcus aureus strain rapidly spreading in cystic fibrosis patients revealed the presence of an antibiotic inducible bacteriophage",
+    "authors": "Rolain JM, Fran\u00e7ois P, Hernandez D, Bittar F, Richet H, et al.",
+    "year": 2009,
+    "journal": "Biology Direct",
+    "doi": "10.1186/1745-6150-4-1",
+    "file": "articles/Genomic_analysis_emerging_multiresistant_Staphylococcus.pdf"
+  },
+  "study_type": {
+    "expected_type": "genomic_study",
+    "expected_checklist": "GENOMICS",
+    "notes": "Whole-genome sequencing and phylogenetic analysis of MRSA strain (CF-Marseille) from cystic fibrosis patients. Includes 454 pyrosequencing, microarray, molecular genotyping, and epidemiological characterization."
+  },
+  "genomics_items": {
+    "1": {
+      "present": true,
+      "notes": "Title clearly identifies as genomic analysis: 'Genomic analysis of an emerging multiresistant Staphylococcus aureus strain'"
+    },
+    "2": {
+      "present": true,
+      "notes": "Background: S. aureus as major pathogen; MRSA prevalence increasing; CF airways as model ecosystem for resistant bacteria emergence; antibiotic selection pressure in CF"
+    },
+    "3": {
+      "present": true,
+      "notes": "Sample collection: 2006 in Marseille, France; epidemiological survey of S. aureus in CF patients; detection of atypical MRSA strain (CF-Marseille)"
+    },
+    "4": {
+      "present": true,
+      "notes": "Sample sequenced: one representative isolate (CF-Marseille); retrospective epidemiological analysis of S. aureus isolated 2002-2007 in CF patients at institution"
+    },
+    "5": {
+      "present": true,
+      "notes": "Sequencing platform: high-throughput sequencing system (454 Life Science Corp., Roche); yielded 19,064,566 nucleotides; 131 assembled contigs (546-210,978 bp); total 2.83 Mbp"
+    },
+    "6": {
+      "present": true,
+      "notes": "Library preparation: 454 pyrosequencing coupled with microarrays and molecular genotyping methods; extraction and amplification protocols implicit in platform description"
+    },
+    "7": {
+      "present": false,
+      "notes": "Quality control specific to raw sequencing reads not explicitly detailed (Q30, adapter removal not mentioned); focus on assembly and contigs"
+    },
+    "8": {
+      "present": true,
+      "notes": "Assembly method: 131 contigs assembled; total length 2.83 Mbp; reference-based comparison to other S. aureus genomes (N315, MW2, USA300, Mu50, NCTC 8325, COL, MRSA252)"
+    },
+    "9": {
+      "present": true,
+      "notes": "Bioinformatics pipeline: Glimmer software for CDS prediction; UniProtKB/Swiss-Prot database for protein matching; protein identity threshold of \u226590%; comparison approach described"
+    },
+    "10": {
+      "present": true,
+      "notes": "Phylogenetic analysis: Complete Genome Hybridization (CGH) and Multi Locus VNTR Assay performed; phylogenetic relationships to Mu50, USA300 identified; closest match USA300/Mu50 with 2522 matches (95% of proteome)"
+    },
+    "11": {
+      "present": true,
+      "notes": "Statistical analysis: parsimony analysis; recurrent mutations at specific positions noted; gap coding as single deletion events; comparison of gene expression profiles between strains"
+    },
+    "12": {
+      "present": false,
+      "notes": "Minimal clinical metadata; study focused on genomic characterization rather than clinical correlations; CF status and antibiotic exposure history not formally linked"
+    },
+    "13": {
+      "present": false,
+      "notes": "No sequencing quality metrics (depth, coverage) reported; assembly only summarized by contig size range and total length"
+    },
+    "14": {
+      "present": true,
+      "notes": "Sequence characteristics: total 2.83 Mbp; 2736 hypothetical proteins predicted; 2675 (97.8%) matched known proteins at \u226590% identity; core genome similar to other MRSA but different genomic organization"
+    },
+    "15": {
+      "present": true,
+      "notes": "Genetic diversity reported: 61 proteins unique to CF-Marseille; novel SCCmec type IV mosaic cassette identified; new phage (44 Kb) closely related to phiETA3; resistance genes identified (methicillin, fluoroquinolone)"
+    },
+    "16": {
+      "present": true,
+      "notes": "Phylogenetic results: Complete Genome Hybridization showing relationship to Mu50 (vancomycin-resistant S. aureus); phylogenetic analysis suggests polyclonal MRSA populations in CF patients"
+    },
+    "17": {
+      "present": true,
+      "notes": "Drug resistance mutations: chromosomally-encoded beta-lactam and ofloxacin resistance identified; hetero-GISA (Glycopeptide-Intermediate) phenotype; antibiotic inducible phage mobilization described"
+    },
+    "18": {
+      "present": true,
+      "notes": "Epidemiological interpretation: emergence and spread of well-adapted MRSA in CF niche; antibiotic selection pressure driving evolution; phage induction and lateral gene transfer mechanisms; public health implications for CF population"
+    },
+    "19": {
+      "present": true,
+      "notes": "Data availability: 131 contigs available in EMBL Nucleotide Sequence Database, accession number DS:71627; supplementary files referenced (Additional files 1-2)"
+    },
+    "20": {
+      "present": true,
+      "notes": "Analysis code/methods: Glimmer software, CGH analysis, MLVA genotyping described; specific methods and parameters provided for reproducibility"
+    },
+    "21": {
+      "present": false,
+      "notes": "No formal ethics statement; strain from routine CF patient cultures; no patient consent issues (genomic sequencing of established isolate)"
+    },
+    "22": {
+      "present": false,
+      "notes": "No funding source explicitly stated; no competing interests declared for authors"
+    }
+  }
+}

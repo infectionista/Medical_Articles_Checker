@@ -16,7 +16,8 @@
         "randomized controlled",
         "randomly assigned patients",
         "randomized evaluation of",
-        "controlled open-label trial"
+        "controlled open-label trial",
+        "factorial study design"
       ],
       "weight": 1.5,
       "notes": "High specificity: these keywords are unlikely to appear outside title/abstract if the article is not a trial"
@@ -53,7 +54,19 @@
         "lack of reliable evidence",
         "emerged in china",
         "requires hospital care",
-        "been shown to reduce mortality"
+        "been shown to reduce mortality",
+        "realistically moderate mortality reduction",
+        "reliable assessment of reduction",
+        "early and accurate detection",
+        "is important for",
+        "is crucial for",
+        "timely intervention",
+        "timely initiation",
+        "emergence of",
+        "optimal solution",
+        "is unclear",
+        "remains unclear",
+        "diagnostic challenge"
       ],
       "weight": 0.8,
       "notes": "Introduction is nearly always present; low weight"
@@ -76,7 +89,8 @@
         "primary outcome was",
         "28-day mortality",
         "report the results of",
-        "we report the final results"
+        "we report the final results",
+        "was designed to determine whether"
       ],
       "weight": 1.2,
       "notes": "Expanded keywords to catch common phrasings"
@@ -114,7 +128,8 @@
         "protocol deviation",
         "protocol violation",
         "statistical analysis plan",
-        "added once the"
+        "added once the",
+        "stopping guideline"
       ],
       "weight": 1.0,
       "notes": "More specific phrases; original 'modifications' was too generic"
@@ -135,7 +150,8 @@
         "eligible for the trial",
         "eligible for the trial",
         "hospitalized patients were eligible",
-        "eligible to receive"
+        "eligible to receive",
+        "no clear indication for or contraindication"
       ],
       "weight": 1.3,
       "notes": "Replaced generic 'participants' with criteria-specific phrases"
@@ -155,7 +171,9 @@
         "tertiary care",
         "hospital sites with",
         "176 nhs hospital",
-        "hospital at the time"
+        "hospital at the time",
+        "623 centers in",
+        "33357 participants aged"
       ],
       "weight": 1.0,
       "notes": "Added institutional descriptors"
@@ -181,7 +199,10 @@
         "receive oral or intravenous",
         "dexamethasone at a dose",
         "usual care alone",
-        "usual standard of care"
+        "usual standard of care",
+        "1-hour intravenous infusion",
+        "matching placebo",
+        "1500 ml of 6% hes"
       ],
       "weight": 1.5,
       "notes": "Critical item; expanded to catch drug/intervention descriptors"
@@ -200,7 +221,8 @@
         "efficacy endpoint",
         "primary outcome was all-cause",
         "secondary outcomes were the",
-        "outcome measures"
+        "outcome measures",
+        "4 to 8 years"
       ],
       "weight": 1.5,
       "notes": "Critical; replaced generic 'outcome' with compound phrases"
@@ -259,7 +281,8 @@
         "trial steering committee",
         "steering committee closed",
         "trial steering committee",
-        "closed recruitment"
+        "closed recruitment",
+        "independent data monitoring committee"
       ],
       "weight": 1.0,
       "notes": "Added DSMB and futility"
@@ -299,7 +322,8 @@
         "assigned in a 2:1",
         "unstratified randomization the mean",
         "assigned in a 2:1 ratio",
-        "unstratified randomization"
+        "unstratified randomization",
+        "stratified by center"
       ],
       "weight": 1.3,
       "notes": "Specific randomization method terms"
@@ -361,7 +385,8 @@
         "open-label trial comparing",
         "aware of the assigned",
         "controlled open-label trial",
-        "aware of the assigned treatments"
+        "aware of the assigned treatments",
+        "with placebo control"
       ],
       "weight": 1.5,
       "notes": "Critical; added open-label as it explicitly addresses blinding status"
@@ -400,10 +425,12 @@
         "analysis of variance",
         "cox regression was used",
         "chi-square tests for",
-        "95% confidence interval ci"
+        "95% confidence interval ci",
+        "95% confidence intervals were calculated",
+        "relative risks and 95%"
       ],
       "weight": 1.3,
-      "notes": "Added specific test names — much less ambiguous than 'analysis plan'"
+      "notes": "Added specific test names \u2014 much less ambiguous than 'analysis plan'"
     },
     {
       "section": "Methods - Statistical methods",
@@ -484,7 +511,8 @@
         "march 19 to june",
         "28 days after randomization",
         "recruitment period was",
-        "from march 19 to june"
+        "from march 19 to june",
+        "between february 1994 and january"
       ],
       "weight": 1.0,
       "notes": "Added date-pattern phrases"
@@ -504,7 +532,8 @@
         "enrollment had exceeded 2000",
         "closed recruitment to the",
         "enrollment had exceeded",
-        "stopped by steering committee"
+        "stopped by steering committee",
+        "steering committee closed"
       ],
       "weight": 0.8,
       "notes": "Often implicit; low weight"
@@ -523,7 +552,8 @@
         "characteristics of the patients",
         "baseline characteristics table",
         "patient characteristics at baseline",
-        "characteristics of the patients at baseline"
+        "characteristics of the patients at baseline",
+        "demographic and clinical characteristics"
       ],
       "weight": 1.3,
       "notes": "Compound phrases to distinguish from incidental 'baseline' mentions"
@@ -545,7 +575,8 @@
         "all analyses were according",
         "intention-to-treat analysis",
         "intention-to-treat principle",
-        "all analyses were performed according"
+        "all analyses were performed according",
+        "analyzed according to intention"
       ],
       "weight": 1.2,
       "notes": "Replaced generic 'sample size' and 'analyzed'"
@@ -566,7 +597,15 @@
         "p value",
         "age-adjusted rate ratio",
         "95% confidence interval ci",
-        "hazard ratio from cox"
+        "hazard ratio from cox",
+        "odds reduction",
+        "relative risks and 95%",
+        "reported laboratory results",
+        "sensitivity, specificity, PPV and NPV",
+        "sensitivity and specificity",
+        "positive predictive value",
+        "negative predictive value",
+        "diagnostic accuracy"
       ],
       "weight": 1.5,
       "notes": "Statistical result terms instead of generic 'results'"
@@ -632,7 +671,9 @@
         "adverse effects of",
         "recognized adverse effects",
         "serious adverse reaction",
-        "adverse effects of glucocorticoids"
+        "adverse effects of glucocorticoids",
+        "excess of bleeds requiring",
+        "cerebral haemorrhage confirmed"
       ],
       "weight": 1.5,
       "notes": "Critical safety reporting; expanded vocabulary"
@@ -693,7 +734,8 @@
         "resulted in lower 28-day",
         "our results show that",
         "results also show",
-        "discussion"
+        "discussion",
+        "clinical implications"
       ],
       "weight": 1.0,
       "notes": "Interpretation-specific phrases instead of generic 'discussion'"

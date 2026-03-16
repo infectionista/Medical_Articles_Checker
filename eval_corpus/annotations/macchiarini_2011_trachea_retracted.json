@@ -1,0 +1,59 @@
+{
+  "article": {
+    "id": "macchiarini_2011_trachea_retracted",
+    "title": "Tracheobronchial transplantation with a stem-cell-seeded bioartificial nanocomposite: a proof-of-concept study",
+    "authors": "Jungebluth P, Alici E, Baiguera S, Blomberg P, et al. (Macchiarini P)",
+    "year": 2011,
+    "journal": "The Lancet",
+    "doi": "10.1016/S0140-6736(11)61715-7",
+    "file": "articles/Tracheobronchial_transplantation.pdf"
+  },
+  "study_type": {
+    "expected_type": "case_report",
+    "expected_checklist": "JBI_CASE_SERIES",
+    "notes": "Case report of single patient (36-year-old male) with recurrent primary tracheal cancer treated with bioartificial tracheal transplant. n=1. RETRACTED - published Lancet 2011, retracted 2016 due to scientific misconduct and patient harm."
+  },
+  "is_retracted": true,
+  "jbi_case_series_items": {
+    "1": {
+      "present": true,
+      "notes": "Case selection criteria: 36-year-old male; recurrent primary tracheal cancer after previous debulking and radiation therapy; candidate for experimental bioartificial transplant"
+    },
+    "2": {
+      "present": true,
+      "notes": "Condition measurement: tracheal cancer confirmed by pathology; recurrence verified by imaging and endoscopy; bioartificial construct assessed via scanning electron microscopy and confocal microscopy"
+    },
+    "3": {
+      "present": true,
+      "notes": "Valid diagnostic methods: pathological confirmation of tracheal cancer; radiological imaging for staging/recurrence; endoscopic examination; laboratory methods (flow cytometry, gene expression analysis)"
+    },
+    "4": {
+      "present": false,
+      "notes": "Single case only; consecutive inclusion not applicable with n=1"
+    },
+    "5": {
+      "present": true,
+      "notes": "Complete inclusion: single identified patient meeting criteria; patient included in all reported analyses; no exclusions from analysis"
+    },
+    "6": {
+      "present": true,
+      "notes": "Demographics: 36-year-old male explicitly stated; gender and age documented; prior medical history provided"
+    },
+    "7": {
+      "present": true,
+      "notes": "Clinical information: history of tracheal cancer; prior debulking surgery and radiation therapy; recurrent disease; presenting complaint and clinical indication for transplant described"
+    },
+    "8": {
+      "present": true,
+      "notes": "Outcomes reported: bioartificial construct characteristics (extracellular matrix-like coating, cell proliferation); gene expression patterns; pathological findings from graft examination"
+    },
+    "9": {
+      "present": true,
+      "notes": "Site demographics: Karolinska Institutet, Stockholm; Advanced Center for Translational Regenerative Medicine; tertiary academic center; European Airway Institute setting"
+    },
+    "10": {
+      "present": true,
+      "notes": "Analysis appropriate: descriptive analysis of single case; laboratory findings presented (flow cytometry, microscopy, gene expression); qualitative assessment of graft characteristics"
+    }
+  }
+}

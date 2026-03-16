@@ -1,0 +1,302 @@
+{
+  "name": "QUADAS2",
+  "full_name": "Quality Assessment of Diagnostic Accuracy Studies - 2",
+  "description": "Checklist for assessing the quality of diagnostic accuracy studies",
+  "version": "2.0",
+  "items": [
+    {
+      "section": "Domain 1: Patient Selection",
+      "item": "1.1",
+      "description": "Was a consecutive or random sample of patients enrolled?",
+      "keywords": [
+        "consecutive patients",
+        "random sample",
+        "consecutively enrolled",
+        "all patients presenting",
+        "consecutive series",
+        "unselected patients",
+        "systematic sampling",
+        "prospective enrollment",
+        "consecutive referrals",
+        "random selection",
+        "sequential enrollment",
+        "all eligible patients"
+      ],
+      "weight": 1.9,
+      "notes": "Consecutive or random enrollment minimizes selection bias in diagnostic accuracy studies"
+    },
+    {
+      "section": "Domain 1: Patient Selection",
+      "item": "1.2",
+      "description": "Was a case-control design avoided?",
+      "keywords": [
+        "prospective",
+        "cross-sectional",
+        "cohort",
+        "case-control",
+        "retrospective cohort",
+        "study design",
+        "patient selection strategy",
+        "non-case-control",
+        "observational design",
+        "consecutive design",
+        "unselected series",
+        "population-based"
+      ],
+      "weight": 1.8,
+      "notes": "Case-control designs for diagnostic accuracy studies artificially inflate diagnostic accuracy estimates"
+    },
+    {
+      "section": "Domain 1: Patient Selection",
+      "item": "1.3",
+      "description": "Did the study avoid inappropriate exclusions?",
+      "keywords": [
+        "exclusion criteria",
+        "were excluded",
+        "no inappropriate exclusions",
+        "exclusion",
+        "excluded patients",
+        "applied exclusions",
+        "exclusion bias",
+        "post-hoc exclusion",
+        "exclusions",
+        "eligible but excluded",
+        "inclusion and exclusion",
+        "exclude"
+      ],
+      "weight": 1.7,
+      "notes": "Inappropriate exclusions can distort the spectrum of disease and limit generalizability"
+    },
+    {
+      "section": "Domain 1: Patient Selection",
+      "item": "1.risk",
+      "description": "Risk of bias for patient selection",
+      "keywords": [
+        "selection bias",
+        "spectrum bias",
+        "verification bias",
+        "workup bias",
+        "risk of bias",
+        "bias assessment",
+        "patient selection bias",
+        "differential verification",
+        "incorporation bias",
+        "bias due to",
+        "susceptibility",
+        "enrollment bias"
+      ],
+      "weight": 1.5,
+      "notes": "Overall assessment of bias risk arising from patient selection methods"
+    },
+    {
+      "section": "Domain 2: Index Test",
+      "item": "2.1",
+      "description": "Were the index test results interpreted without knowledge of the reference standard results?",
+      "keywords": [
+        "blinded",
+        "independent interpretation",
+        "without knowledge of",
+        "unaware of",
+        "masked",
+        "blind to",
+        "blinding of test",
+        "interpretive blinding",
+        "reader blinded",
+        "independent assessment",
+        "unblinded",
+        "knowledge of reference"
+      ],
+      "weight": 1.9,
+      "notes": "Blinding prevents bias in interpretation of the index test results"
+    },
+    {
+      "section": "Domain 2: Index Test",
+      "item": "2.2",
+      "description": "If a threshold was used, was it pre-specified?",
+      "keywords": [
+        "pre-specified threshold",
+        "cut-off value",
+        "predetermined",
+        "manufacturer recommended",
+        "threshold",
+        "cutoff",
+        "pre-specified",
+        "defined threshold",
+        "established cutoff",
+        "predetermined value",
+        "ROC curve",
+        "optimal threshold"
+      ],
+      "weight": 1.8,
+      "notes": "Pre-specified thresholds prevent bias from data-driven threshold selection"
+    },
+    {
+      "section": "Domain 2: Index Test",
+      "item": "2.concern",
+      "description": "Applicability of index test",
+      "keywords": [
+        "commercially available",
+        "point-of-care",
+        "field conditions",
+        "clinical practice",
+        "practical setting",
+        "available test",
+        "laboratory test",
+        "imaging modality",
+        "test feasibility",
+        "clinical applicability",
+        "real-world setting",
+        "clinical utility"
+      ],
+      "weight": 1.2,
+      "notes": "Assessment of whether the index test is applicable to the clinical question"
+    },
+    {
+      "section": "Domain 3: Reference Standard",
+      "item": "3.1",
+      "description": "Is the reference standard likely to correctly classify the target condition?",
+      "keywords": [
+        "gold standard",
+        "reference standard",
+        "culture",
+        "biopsy",
+        "histopathology",
+        "definitive diagnosis",
+        "diagnostic confirmation",
+        "standard reference",
+        "diagnostic gold standard",
+        "pathological confirmation",
+        "reference method",
+        "established standard"
+      ],
+      "weight": 1.9,
+      "notes": "The reference standard must be appropriate and valid for diagnosing the target condition"
+    },
+    {
+      "section": "Domain 3: Reference Standard",
+      "item": "3.2",
+      "description": "Were the reference standard results interpreted without knowledge of the index test?",
+      "keywords": [
+        "blinded",
+        "independent",
+        "without knowledge",
+        "unaware of",
+        "masked interpretation",
+        "blind assessment",
+        "interpretive blinding",
+        "blinding to test result",
+        "reader blinded",
+        "independent evaluation",
+        "unblinded results",
+        "reference test blinding"
+      ],
+      "weight": 1.9,
+      "notes": "Blinding the reference standard interpretation prevents bias from knowing index test results"
+    },
+    {
+      "section": "Domain 3: Reference Standard",
+      "item": "3.concern",
+      "description": "Applicability of reference standard",
+      "keywords": [
+        "clinical follow-up",
+        "composite reference",
+        "reference applicability",
+        "appropriate reference",
+        "feasible standard",
+        "clinical standard",
+        "practical reference",
+        "available standard",
+        "ethical standard",
+        "acceptable reference",
+        "consensus reference",
+        "multiple reference standards"
+      ],
+      "weight": 1.1,
+      "notes": "Assessment of whether the reference standard is applicable to the clinical context"
+    },
+    {
+      "section": "Domain 4: Flow and Timing",
+      "item": "4.1",
+      "description": "Was there an appropriate interval between index test and reference standard?",
+      "keywords": [
+        "same day",
+        "within",
+        "interval between",
+        "simultaneously",
+        "time between tests",
+        "temporal relationship",
+        "time interval",
+        "appropriate timing",
+        "conducted together",
+        "timing of tests",
+        "disease progression",
+        "interval bias"
+      ],
+      "weight": 1.7,
+      "notes": "Excessive time between tests can introduce bias from disease progression or treatment"
+    },
+    {
+      "section": "Domain 4: Flow and Timing",
+      "item": "4.2",
+      "description": "Did all patients receive the same reference standard?",
+      "keywords": [
+        "all patients received",
+        "same reference",
+        "uniform",
+        "differential reference",
+        "all had",
+        "complete reference testing",
+        "uniform verification",
+        "consistent reference",
+        "identical reference",
+        "applied to all",
+        "reference standard selection",
+        "verification strategy"
+      ],
+      "weight": 1.8,
+      "notes": "Different reference standards for different patients can introduce differential verification bias"
+    },
+    {
+      "section": "Domain 4: Flow and Timing",
+      "item": "4.3",
+      "description": "Were all patients included in the analysis?",
+      "keywords": [
+        "all patients",
+        "no exclusions",
+        "intention to diagnose",
+        "indeterminate results",
+        "all enrolled",
+        "complete analysis",
+        "fully analyzed",
+        "post-test exclusions",
+        "excluded from analysis",
+        "missing data",
+        "lost to follow-up",
+        "attrition"
+      ],
+      "weight": 1.8,
+      "notes": "Post-test exclusion of patients biases diagnostic accuracy estimates"
+    },
+    {
+      "section": "Domain 4: Flow and Timing",
+      "item": "4.concern",
+      "description": "Flow and timing applicability",
+      "keywords": [
+        "turnaround time",
+        "time to result",
+        "workflow",
+        "clinical workflow",
+        "practical timing",
+        "feasible timing",
+        "time constraints",
+        "result availability",
+        "decision-making timing",
+        "appropriate interval",
+        "clinically relevant timing",
+        "test scheduling"
+      ],
+      "weight": 1.1,
+      "notes": "Assessment of whether the flow and timing are feasible and applicable to clinical practice"
+    }
+  ]
+}

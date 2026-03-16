@@ -366,7 +366,10 @@ class SectionParser:
 SECTION_ALIASES = {
     # Map checklist section expectations to parser section names
     'Title and Abstract': ['abstract', 'title'],
+    'Title': ['title', 'abstract'],
+    'Abstract': ['abstract'],
     'Introduction': ['introduction'],
+    'Other': ['acknowledgements', 'full_text'],
     'Methods': ['methods'],
     'Methods - Trial design': ['methods'],
     'Methods - Participants': ['methods'],

@@ -1,0 +1,142 @@
+{
+  "article": {
+    "id": "stampfer_1991_estrogen_cohort",
+    "title": "Postmenopausal Estrogen Therapy and Cardiovascular Disease: Ten-Year Follow-up from the Nurses' Health Study",
+    "authors": "Stampfer MJ, Colditz GA, Willett WC, Manson JE, Rosner B, Speizer FE, Hennekels CH",
+    "year": 1991,
+    "journal": "New England Journal of Medicine",
+    "doi": "10.1056/NEJM199109123251102",
+    "file": "articles/POSTMENOPAUSAL_ESTROGEN_THERAPY_AND_CARDIOVASCULAR_DISEASE.pdf"
+  },
+  "study_type": {
+    "expected_type": "cohort_study",
+    "expected_checklist": "STROBE",
+    "notes": "Prospective cohort study. Classic Nurses' Health Study. 48,470 postmenopausal women aged 30-63, free of cancer and CVD at baseline. 10-year follow-up (337,854 person-years). Evaluated estrogen therapy effect on cardiovascular disease risk."
+  },
+  "strobe_items": {
+    "1": {
+      "present": true,
+      "notes": "Title clearly indicates study design: 'Ten-Year Follow-up from the Nurses' Health Study' indicates prospective cohort"
+    },
+    "2": {
+      "present": true,
+      "notes": "Background: 'The effect of postmenopausal estrogen therapy on the risk of cardiovascular disease remains controversial...existing evidence conflicting'"
+    },
+    "3": {
+      "present": true,
+      "notes": "Objectives: 'We followed...postmenopausal women...to evaluate effect of estrogen therapy on stroke and coronary disease risk'"
+    },
+    "4": {
+      "present": true,
+      "notes": "Study design: clearly presented as prospective cohort study in Methods section"
+    },
+    "5": {
+      "present": true,
+      "notes": "Setting and dates: participants in the Nurses' Health Study (1976 baseline); follow-up through 1990; 48,470 women enrolled at baseline; up to 10 years of follow-up"
+    },
+    "6a": {
+      "present": true,
+      "notes": "Eligibility criteria: postmenopausal women aged 30-63; without history of cancer or cardiovascular disease at baseline; method of selection from NHS cohort clearly described"
+    },
+    "6b": {
+      "present": false,
+      "notes": "Not a case-control study"
+    },
+    "7": {
+      "present": true,
+      "notes": "Outcomes defined: major coronary disease (nonfatal MI or coronary death), stroke, total mortality, cardiovascular mortality. Exposure: estrogen therapy (current use, former use, never use)"
+    },
+    "8": {
+      "present": true,
+      "notes": "Data sources: biennial questionnaires for exposure and covariate data; medical record review and death certificates for outcome validation; standardized assessment methods"
+    },
+    "9": {
+      "present": true,
+      "notes": "Efforts to address bias: validation of reported events with medical records; sensitivity analyses excluding women with recent physician visits; analyses in low-risk subgroups"
+    },
+    "10": {
+      "present": false,
+      "notes": "No explicit sample size calculation described - used all eligible cohort members"
+    },
+    "11": {
+      "present": false,
+      "notes": "Minimal discussion of quantitative variable handling; main analysis uses exposure categories (current, former, never users)"
+    },
+    "12a": {
+      "present": true,
+      "notes": "Statistical methods: Cox proportional hazards regression for adjustment of confounders; relative risk estimates with 95% CI; stratified analyses by menopausal type"
+    },
+    "12b": {
+      "present": true,
+      "notes": "Subgroup analyses: by type of menopause (natural vs surgical); by smoking status and other risk factors; stratified analysis results presented"
+    },
+    "12c": {
+      "present": false,
+      "notes": "No explicit discussion of missing data handling"
+    },
+    "12d": {
+      "present": true,
+      "notes": "Loss to follow-up methods: biennial questionnaire response rates tracked; 88% response rate maintained through follow-up period"
+    },
+    "12e": {
+      "present": true,
+      "notes": "Sensitivity analyses: analyses restricted to women with recent physician visits; analyses in low-risk subgroups excluding smokers, diabetics, hypertensive, hypercholesterolemic"
+    },
+    "13a": {
+      "present": true,
+      "notes": "Participant flow: 48,470 women at baseline free of cancer and CVD; follow-up through 10 years; 337,854 person-years documented"
+    },
+    "13b": {
+      "present": false,
+      "notes": "No explicit discussion of reasons for non-participation; cohort members tracked through questionnaire returns"
+    },
+    "14a": {
+      "present": true,
+      "notes": "Baseline characteristics by estrogen use status: age, smoking, diabetes, hypertension, cholesterol levels, BMI presented in table format"
+    },
+    "14b": {
+      "present": false,
+      "notes": "No explicit reporting of missing data completeness"
+    },
+    "15": {
+      "present": true,
+      "notes": "Outcome events: 224 strokes, 405 major coronary events, 1,263 deaths from all causes documented over follow-up period"
+    },
+    "16a": {
+      "present": true,
+      "notes": "Main findings with precision: adjusted RR for current estrogen use = 0.56 (95% CI 0.40-0.80); for all causes mortality RR=0.89 (CI 0.78-1.00); for CVD mortality RR=0.72 (CI 0.55-0.95)"
+    },
+    "16b": {
+      "present": false,
+      "notes": "Main analysis uses categorical exposure groups (current, former, never); no continuous variable categorization issues"
+    },
+    "16c": {
+      "present": false,
+      "notes": "Relative risk estimates provided but not translated to absolute risk or number needed to treat"
+    },
+    "17": {
+      "present": true,
+      "notes": "Other analyses: subgroup analyses by menopausal type, smoking status; sensitivity analyses in different population subsets with varying inclusion criteria"
+    },
+    "18": {
+      "present": true,
+      "notes": "Key results: 'current use of estrogen reduced risk of major coronary disease by 44%; risk reduction significant for both natural and surgical menopause'"
+    },
+    "19": {
+      "present": false,
+      "notes": "No explicit discussion of study limitations or potential biases in Discussion section"
+    },
+    "20": {
+      "present": true,
+      "notes": "Overall interpretation: findings suggest estrogen therapy protective for coronary disease; results consistent with prior 4-year follow-up data but conflict with Framingham concurrent report"
+    },
+    "21": {
+      "present": false,
+      "notes": "Limited discussion of generalizability; cohort of nurses may limit external validity"
+    },
+    "22": {
+      "present": true,
+      "notes": "Funding: National Institutes of Health, NIH Public Health Service grants cited in funding statement"
+    }
+  }
+}

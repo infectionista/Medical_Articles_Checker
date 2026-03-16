@@ -1,5 +1,5 @@
 {
-  "_comment": "Ground truth annotation — STROBE checklist for Wakefield et al. 1998 (RETRACTED)",
+  "_comment": "Updated annotation \u2014 JBI Case Series checklist for Wakefield et al. 1998 (RETRACTED)",
   "article": {
     "id": "wakefield_1998_vaccines_autism",
     "title": "Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children",
@@ -11,40 +11,50 @@
   },
   "study_type": {
     "expected_type": "case_series",
-    "expected_checklist": "STROBE",
-    "notes": "Case series of 12 children. No controls, no comparison group. Retracted in 2010."
+    "expected_checklist": "JBI_CASE_SERIES",
+    "notes": "Case series of 12 consecutively referred children with enterocolitis and developmental disorder. Retracted in 2010 due to ethical concerns and methodological flaws."
   },
-  "strobe_items": {
-    "1":   { "present": false, "notes": "Title does not indicate study design type" },
-    "2":   { "present": true,  "notes": "Background on developmental disorders and GI symptoms" },
-    "3":   { "present": true,  "notes": "Objective: investigate children with enterocolitis and developmental regression" },
-    "4":   { "present": false, "notes": "No formal study design description" },
-    "5":   { "present": true,  "notes": "Royal Free Hospital, London. Children admitted for 1 week" },
-    "6a":  { "present": true,  "notes": "12 consecutively referred children described with referral criteria" },
-    "6b":  { "present": false, "notes": "Not a case-control study" },
-    "7":   { "present": true,  "notes": "Outcomes: GI histology, neurological assessment, behavioral diagnosis" },
-    "8":   { "present": true,  "notes": "Ileocolonoscopy, biopsy, MRI, EEG, lumbar puncture described" },
-    "9":   { "present": false, "notes": "No discussion of potential biases" },
-    "10":  { "present": false, "notes": "No sample size justification — consecutive referral" },
-    "11":  { "present": false, "notes": "No discussion of quantitative variable handling" },
-    "12a": { "present": true,  "notes": "Mann-Whitney U test, chi-square test mentioned" },
-    "12b": { "present": false, "notes": "No subgroup or interaction analyses" },
-    "12c": { "present": false, "notes": "No discussion of missing data" },
-    "12d": { "present": false, "notes": "Not applicable — no follow-up or matching" },
-    "12e": { "present": false, "notes": "No sensitivity analyses" },
-    "13a": { "present": false, "notes": "No participant flow diagram" },
-    "13b": { "present": false, "notes": "No reasons for non-participation" },
-    "14a": { "present": true,  "notes": "Table with patient characteristics, age, sex, symptoms" },
-    "14b": { "present": false, "notes": "No missing data reporting" },
-    "15":  { "present": true,  "notes": "Histological findings, behavioral diagnoses reported" },
-    "16a": { "present": false, "notes": "No adjusted/unadjusted estimates" },
-    "16b": { "present": false, "notes": "No category boundaries" },
-    "16c": { "present": false, "notes": "No absolute risk reported" },
-    "17":  { "present": false, "notes": "No additional analyses" },
-    "18":  { "present": true,  "notes": "Key finding: associated GI disease and developmental regression" },
-    "19":  { "present": true,  "notes": "Acknowledges: did not prove association, further investigation needed" },
-    "20":  { "present": true,  "notes": "Cautious: possible environmental triggers, no causal claim in paper" },
-    "21":  { "present": false, "notes": "No generalizability discussion" },
-    "22":  { "present": false, "notes": "Funding source not clearly stated in paper" }
+  "is_retracted": true,
+  "jbi_case_series_items": {
+    "1": {
+      "present": true,
+      "notes": "Clear inclusion criteria: children with chronic enterocolitis and regressive developmental disorder; 'consecutively referred children' with normal development followed by loss of acquired skills"
+    },
+    "2": {
+      "present": true,
+      "notes": "Standardized condition measurement: ileocolonoscopy and biopsy for GI assessment; neurological and developmental assessment conducted; MRI, EEG performed; standardized histological examination"
+    },
+    "3": {
+      "present": true,
+      "notes": "Valid diagnostic methods: ileocolonoscopy (endoscopic gold standard for GI pathology); histopathology for tissue diagnosis; developmental assessment using recognized criteria; radiological imaging (MRI)"
+    },
+    "4": {
+      "present": true,
+      "notes": "Consecutive inclusion: 'consecutive series of children...consecutively referred'; sequential enrollment of qualifying patients from pediatric gastroenterology unit"
+    },
+    "5": {
+      "present": true,
+      "notes": "Complete inclusion: all 12 consecutively referred children included; no post-hoc exclusions reported; complete sample of qualifying referrals during study period"
+    },
+    "6": {
+      "present": true,
+      "notes": "Demographics reported: mean age 6 years (range 3-10); 11 boys, 1 girl; gender and age distribution clearly specified in summary"
+    },
+    "7": {
+      "present": true,
+      "notes": "Clinical information: medical history with normal development followed by regression; loss of acquired skills including language; diarrhea and abdominal pain documented; prior illness histories"
+    },
+    "8": {
+      "present": true,
+      "notes": "Outcomes clearly reported: histological findings (lymphoid nodular hyperplasia, chronic inflammation, aphthoid ulceration); neurological abnormalities (autism in 9, psychosis in 1); behavioral disorders documented"
+    },
+    "9": {
+      "present": true,
+      "notes": "Site demographics: Royal Free Hospital, London; pediatric gastroenterology unit; tertiary referral center setting specified"
+    },
+    "10": {
+      "present": true,
+      "notes": "Statistical analysis: descriptive analysis appropriate; histopathological frequencies reported (11/12 chronic colitis, 7/12 lymphoid hyperplasia); Mann-Whitney and chi-square tests used"
+    }
   }
 }

@@ -1,0 +1,75 @@
+{
+  "_comment": "Updated annotation \u2014 QUADAS2 checklist for Xpert MTB/RIF diagnostic accuracy study",
+  "article": {
+    "id": "xpert_mtb_rif_diagnostic_accuracy",
+    "title": "Diagnostic Accuracy and Turnaround Time of the Xpert MTB/RIF Assay in Routine Clinical Practice",
+    "authors": "Kwak N, Choi SM, Lee J, Park YS, Lee C-H, et al.",
+    "year": 2013,
+    "journal": "PLoS ONE",
+    "doi": "10.1371/journal.pone.0077456",
+    "file": "articles/Xpert_MTB:RIF_Assay.pdf"
+  },
+  "study_type": {
+    "expected_type": "diagnostic_accuracy",
+    "expected_checklist": "QUADAS2",
+    "notes": "Retrospective diagnostic accuracy study evaluating Xpert MTB/RIF assay for tuberculosis and rifampicin resistance detection in routine clinical practice. Cross-sectional design comparing index test to gold standard reference (culture)."
+  },
+  "quadas2_items": {
+    "1.1": {
+      "present": true,
+      "notes": "Consecutive patient enrollment: 'retrospectively reviewed the medical records of patients in whom Xpert MTB/RIF assay using sputum were requested'; all consecutive Xpert requests during study period included; n=681 total"
+    },
+    "1.2": {
+      "present": true,
+      "notes": "Case-control design avoided: cross-sectional retrospective design; consecutive enrollment of suspected TB patients requesting Xpert; not case-control matching"
+    },
+    "1.3": {
+      "present": true,
+      "notes": "Inappropriate exclusions avoided: study included all patients with Xpert requests during study period (Jan 1 2011-May 31 2013); eligibility criteria: sputum Xpert assay requested"
+    },
+    "1.risk": {
+      "present": true,
+      "notes": "Overall bias risk for patient selection: LOW - consecutive enrollment of patients meeting clinical suspicion for TB, no selective exclusions, representative of routine clinical practice"
+    },
+    "2.1": {
+      "present": false,
+      "notes": "Index test interpretation blinding: retrospective design means Xpert results likely known when gold standard performed; no explicit statement of blinding for interpretation"
+    },
+    "2.2": {
+      "present": true,
+      "notes": "Threshold pre-specified: Xpert MTB/RIF uses manufacturer-established thresholds; automated positive/negative determination per manufacturer protocol; no data-driven threshold selection"
+    },
+    "2.concern": {
+      "present": true,
+      "notes": "Index test applicability: Xpert MTB/RIF is WHO-endorsed, commercially available point-of-care test; evaluated in routine clinical practice; applicable to clinical TB diagnosis"
+    },
+    "3.1": {
+      "present": true,
+      "notes": "Reference standard validity: mycobacterial culture is gold standard for TB diagnosis; DST (drug susceptibility testing) gold standard for rifampicin resistance; both established standards"
+    },
+    "3.2": {
+      "present": false,
+      "notes": "Reference standard interpretation blinding: no explicit statement that culture/DST interpretation blinded to Xpert results; likely performed without knowledge but not explicitly stated"
+    },
+    "3.concern": {
+      "present": true,
+      "notes": "Reference standard applicability: culture and DST are clinical standards for TB diagnosis; appropriate reference standards for evaluating Xpert in routine practice"
+    },
+    "4.1": {
+      "present": true,
+      "notes": "Appropriate interval between tests: Xpert performed within 24 hours of sample collection; culture conducted on same samples; appropriate timing (same day or within 24h)"
+    },
+    "4.2": {
+      "present": true,
+      "notes": "Uniform reference standard: all patients received mycobacterial culture; DST applied to culture-positive isolates uniformly; same reference standard applied to all"
+    },
+    "4.3": {
+      "present": true,
+      "notes": "All patients included in analysis: 681 total enrolled; all included in TB diagnosis analysis; exclusion of culture-negative/Xpert-positive cases noted for sensitivity purposes but intent-to-diagnose approach"
+    },
+    "4.concern": {
+      "present": true,
+      "notes": "Flow and timing applicability: median TAT 0 (0-1) days for Xpert report; 6 (3-7) days for physician confirmation; clinically relevant timing for TB diagnosis decision-making"
+    }
+  }
+}

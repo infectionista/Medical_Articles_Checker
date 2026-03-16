@@ -19,7 +19,8 @@
         "phylogenetic network of",
         "phylogenetic network analysis",
         "phylogenetic network of",
-        "phylogenetic analysis of"
+        "phylogenetic analysis of",
+        "whole genome sequencing"
       ],
       "weight": 1.0
     },
@@ -51,7 +52,8 @@
         "collection dates",
         "geographic location",
         "sampling strategy",
-        "clinical specimens"
+        "clinical specimens",
+        "specimens collected"
       ],
       "weight": 1.1
     },
@@ -68,7 +70,8 @@
         "160 complete human",
         "160 largely complete",
         "253 coronavirus genomes",
-        "resulting 160 sequences"
+        "resulting 160 sequences",
+        "sequenced strains"
       ],
       "weight": 1.0
     },
@@ -136,7 +139,11 @@
         "Bowtie",
         "aligned to the full reference genome",
         "truncated the flanks",
-        "consensus range 56 to"
+        "consensus range 56 to",
+        "assembled contigs",
+        "contig assembly",
+        "coding sequence prediction",
+        "protein content analysis"
       ],
       "weight": 1.2
     },
@@ -156,7 +163,10 @@
         "network 5011cs package",
         "network5011cs",
         "network publisher option",
-        "epsilon parameter set to"
+        "epsilon parameter set to",
+        "glimmer software",
+        "protein prediction",
+        "cds analysis"
       ],
       "weight": 1.3
     },
@@ -181,7 +191,11 @@
         "median joining network algorithm",
         "median-joining network",
         "steiner tree algorithm",
-        "most-parsimonious trees"
+        "most-parsimonious trees",
+        "complete genome hybridization",
+        "multi locus vntr assay",
+        "phylogenetic relationship analysis",
+        "strain phylogeny"
       ],
       "weight": 1.3
     },
@@ -201,7 +215,10 @@
         "deletion events",
         "recurrent mutations at",
         "parsimony",
-        "parallel evolution events"
+        "parallel evolution events",
+        "genome similarity",
+        "protein content comparison",
+        "proteome analysis"
       ],
       "weight": 1.0
     },
@@ -215,7 +232,8 @@
         "demographic data",
         "treatment history",
         "clinical covariates",
-        "linked metadata"
+        "linked metadata",
+        "antibiotic susceptibility profiles"
       ],
       "weight": 0.9
     },
@@ -237,7 +255,7 @@
     {
       "section": "Results - Sequence characteristics",
       "item": "14",
-      "description": "Describe characteristics of obtained sequences—length, completeness, notable features",
+      "description": "Describe characteristics of obtained sequences\u2014length, completeness, notable features",
       "keywords": [
         "genome length",
         "sequence completeness",
@@ -249,7 +267,9 @@
         "sequence range",
         "101 distinct genomic sequences",
         "sequence similarity of 96.2%",
-        "29903 nucleotides"
+        "29903 nucleotides",
+        "genome organization",
+        "hypothetical proteins"
       ],
       "weight": 1.0
     },
@@ -268,7 +288,10 @@
         "nucleotide polymorphisms",
         "synonymous mutation",
         "nonsynonymous mutation",
-        "mutated nucleotide position"
+        "mutated nucleotide position",
+        "antimicrobial resistance genes",
+        "antibiotic resistance determinants",
+        "resistance-associated elements"
       ],
       "weight": 1.2
     },
@@ -285,7 +308,9 @@
         "phylogeographic analysis",
         "phylogenetic network",
         "phylogenetic network of 160",
-        "labeled these phylogenetic clusters"
+        "labeled these phylogenetic clusters",
+        "phylogenetic analysis results",
+        "strain relationships"
       ],
       "weight": 1.3
     },
@@ -299,7 +324,11 @@
         "antiretroviral resistance",
         "antimicrobial resistance",
         "resistance profile",
-        "susceptibility testing"
+        "susceptibility testing",
+        "multidrug resistant phenotype",
+        "hetero-glycopeptide-intermediate resistance",
+        "hetero-gisa phenotype",
+        "resistance mechanisms"
       ],
       "weight": 1.0
     },
@@ -320,7 +349,11 @@
         "trace infection paths",
         "founder events",
         "immunologically or environmentally adapted",
-        "public health risk"
+        "public health risk",
+        "phage mobilization",
+        "antibiotic-mediated phage induction",
+        "virulence factors",
+        "antibiotic pressure effects"
       ],
       "weight": 1.0
     },
@@ -339,7 +372,8 @@
         "gisaid database",
         "gisaid org",
         "fluxus-engineering.com",
-        "fluxus technology"
+        "fluxus technology",
+        "embl nucleotide sequence database"
       ],
       "weight": 1.3
     },
@@ -356,7 +390,9 @@
         "computational pipeline",
         "network5011 software package",
         "shareware on the fluxus",
-        "freely available"
+        "freely available",
+        "454 sequencing technology",
+        "high-throughput sequencing"
       ],
       "weight": 0.9
     },

@@ -1,0 +1,142 @@
+{
+  "article": {
+    "id": "robinson_2024_brain_tumours_case_control",
+    "title": "Use of drugs for hyperlipidaemia and diabetes and risk of primary and secondary brain tumours: nested case-control studies using the UK Clinical Practice Research Datalink (CPRD)",
+    "authors": "Robinson JW, Martin R, Ozawa M, Elwenspoek MC, Redaniel MT, Kurian KM, Ben-Shlomo Y",
+    "year": 2024,
+    "journal": "BMJ Open",
+    "doi": "10.1136/bmjopen-2023-072026",
+    "file": "articles/drugs_hyperlipidaemia_diabetes_risk_primary_secondary_brain_tumours.pdf"
+  },
+  "study_type": {
+    "expected_type": "case_control",
+    "expected_checklist": "STROBE",
+    "notes": "Nested case-control study using UK CPRD. Two separate studies: primary (1,950 cases, 7,791 controls) and secondary brain tumours (480 cases, 1,920 controls). Analysis of glitazone and fibrate exposure."
+  },
+  "strobe_items": {
+    "1": {
+      "present": true,
+      "notes": "Title indicates 'nested case-control studies'"
+    },
+    "2": {
+      "present": true,
+      "notes": "Background: 'Previous studies have suggested that fibrates and glitazones may have a role in brain tumour prevention'"
+    },
+    "3": {
+      "present": true,
+      "notes": "Objective: 'We examined if there is support for these observations using primary care records from the UK CPRD'"
+    },
+    "4": {
+      "present": true,
+      "notes": "Study design: 'We conducted two nested case-control studies using primary and secondary brain tumours identified within CPRD between 2000 and 2016'"
+    },
+    "5": {
+      "present": true,
+      "notes": "Setting: 'Adults older than 18 years registered with a general practitioner in the UK contributing data to CPRD...brain tumours identified within CPRD between 2000 and 2016'"
+    },
+    "6a": {
+      "present": false,
+      "notes": "Not cohort study; case-control design described"
+    },
+    "6b": {
+      "present": true,
+      "notes": "Case definition and control selection: '7,496 individuals with any brain tumour (4,471 primary; 3,025 secondary)...After restricting cases and controls to those prescribed anti-diabetic/anti-hyperlipidaemic medication: 1,950 cases and 7,791 controls for fibrate analysis'"
+    },
+    "7": {
+      "present": true,
+      "notes": "Outcomes: primary and secondary brain tumours. Exposures: glitazone use, fibrate use. Confounders controlled through matching and antibiotic/antihyperglycemic cohort restriction"
+    },
+    "8": {
+      "present": true,
+      "notes": "Data sources: UK CPRD primary care records. Variables extracted: medication exposure duration, brain tumour diagnosis codes, covariates from medical records"
+    },
+    "9": {
+      "present": true,
+      "notes": "Bias addressing: 'We selected cases and controls among population of individuals treated with anti-diabetic/anti-hyperlipidaemic medication to reduce confounding by indication'"
+    },
+    "10": {
+      "present": false,
+      "notes": "No sample size justification or power calculation described"
+    },
+    "11": {
+      "present": false,
+      "notes": "Limited discussion of how duration of drug use was handled as continuous variable"
+    },
+    "12a": {
+      "present": true,
+      "notes": "Statistical methods: 'adjusted OR (aOR) 0.89 per year, 95% CI 0.80 to 0.98' - logistic regression with adjusted odds ratios"
+    },
+    "12b": {
+      "present": false,
+      "notes": "No explicit subgroup or interaction analyses reported"
+    },
+    "12c": {
+      "present": false,
+      "notes": "No discussion of missing data handling"
+    },
+    "12d": {
+      "present": false,
+      "notes": "Matching described: 'We selected cases and controls' but detailed matching strategy and its accounting in analysis not fully specified"
+    },
+    "12e": {
+      "present": false,
+      "notes": "No sensitivity analyses reported"
+    },
+    "13a": {
+      "present": true,
+      "notes": "Participant numbers: '7,496 individuals with brain tumour...restricted to those with medication: 1,950 cases/7,791 controls (fibrate); 480 cases/1,920 controls (glitazone)'"
+    },
+    "13b": {
+      "present": false,
+      "notes": "Limited information on reasons for restrictions or exclusions"
+    },
+    "14a": {
+      "present": false,
+      "notes": "No baseline characteristics table shown in provided text"
+    },
+    "14b": {
+      "present": false,
+      "notes": "No explicit reporting of missing data completeness"
+    },
+    "15": {
+      "present": true,
+      "notes": "Outcome data: glitazone exposure 'associated with reduced risk of primary (aOR 0.89 per year)...secondary (aOR 0.87 per year)...combined (aOR 0.88 per year)'"
+    },
+    "16a": {
+      "present": true,
+      "notes": "Adjusted estimates with precision: 'adjusted OR (aOR) 0.89 per year, 95% CI 0.80 to 0.98' for glitazone and primary tumours"
+    },
+    "16b": {
+      "present": false,
+      "notes": "Category boundaries not explicitly reported for continuous exposure"
+    },
+    "16c": {
+      "present": false,
+      "notes": "No absolute risk reported"
+    },
+    "17": {
+      "present": false,
+      "notes": "No secondary subgroup or sensitivity analyses reported"
+    },
+    "18": {
+      "present": true,
+      "notes": "Key results: 'Longer exposure to glitazones was associated with reduced primary and secondary brain tumour risk'"
+    },
+    "19": {
+      "present": false,
+      "notes": "Limited discussion of study limitations in methods/abstract section"
+    },
+    "20": {
+      "present": true,
+      "notes": "Cautious interpretation: 'Further basic science and population-based research should explore this finding in greater detail'"
+    },
+    "21": {
+      "present": false,
+      "notes": "No explicit discussion of generalizability"
+    },
+    "22": {
+      "present": false,
+      "notes": "Funding source not stated in provided text"
+    }
+  }
+}
