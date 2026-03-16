@@ -16,12 +16,38 @@ Key improvements over the original checklist_applier.py:
 """
 
 import json
+import os
 import re
+import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
 
+# Auto-load .env file if present (keeps API key out of code)
+_env_path = Path(__file__).resolve().parent / '.env'
+if _env_path.exists():
+    for line in _env_path.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith('#') and '=' in line:
+            key, _, value = line.partition('=')
+            os.environ.setdefault(key.strip(), value.strip())
+
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+    HAS_SKLEARN = True
+except ImportError:
+    HAS_SKLEARN = False
+
+try:
+    import anthropic
+    HAS_ANTHROPIC = True
+except ImportError:
+    HAS_ANTHROPIC = False
+
 from section_parser import SectionParser, ArticleSection, get_expected_sections
+
+logger = logging.getLogger(__name__)
 
 
 def normalize_pdf_text(text: str) -> str:
@@ -234,11 +260,46 @@ class EnhancedChecker:
         if sections is None:
             sections = self.section_parser.parse(article_text)
 
-        # Evaluate each item
+        # Evaluate each item (Phase 1 + 2 + 2.5: keywords + semantic)
         item_scores: List[ItemScore] = []
         for item_def in checklist['items']:
-            score = self._evaluate_item(item_def, sections)
+            score = self._evaluate_item(item_def, sections, article_text)
             item_scores.append(score)
+
+        # --- Phase 3 (optional): LLM fallback for remaining "absent" items ---
+        # Only runs if ANTHROPIC_API_KEY is set and anthropic library installed
+        absent_items = [
+            (i, item_def) for i, (score, item_def)
+            in enumerate(zip(item_scores, checklist['items']))
+            if score.verdict == 'absent'
+        ]
+        if absent_items and HAS_ANTHROPIC:
+            items_to_check = [item_def for _, item_def in absent_items]
+            llm_results = self._llm_evaluate_items(
+                items_to_check, article_text, checklist_name
+            )
+            for idx, item_def in absent_items:
+                item_id = item_def['item']
+                if item_id in llm_results:
+                    is_present, evidence = llm_results[item_id]
+                    if is_present:
+                        old = item_scores[idx]
+                        item_scores[idx] = ItemScore(
+                            item_id=old.item_id,
+                            section=old.section,
+                            description=old.description,
+                            confidence=0.55,  # LLM-detected: moderate confidence
+                            verdict='partial',
+                            matched_keywords=old.matched_keywords,
+                            matched_in_sections=old.matched_in_sections + ['LLM'],
+                            total_keywords=old.total_keywords,
+                            keyword_match_ratio=old.keyword_match_ratio,
+                            section_match=old.section_match,
+                            weight=old.weight,
+                            evidence_snippets=(
+                                old.evidence_snippets + [f"[LLM] {evidence}"]
+                            )[:4],
+                        )
 
         # Aggregate scores
         total_weight = sum(s.weight for s in item_scores)
@@ -277,6 +338,7 @@ class EnhancedChecker:
         self,
         item_def: dict,
         sections: Dict[str, ArticleSection],
+        article_text: str = '',
     ) -> ItemScore:
         """Evaluate a single checklist item against parsed sections."""
 
@@ -350,6 +412,25 @@ class EnhancedChecker:
                     snippet = '...' + full_text[start:end].strip() + '...'
                     evidence_snippets.append(snippet)
 
+        # --- Phase 2.5: TF-IDF Semantic Matching (ambiguity resolution) ---
+        # Activate when keyword matching found few/no matches — the item
+        # *might* be present but described with different wording.
+        semantic_boost = 0.0
+        keyword_match_ratio_raw = len(matched_keywords) / len(keywords) if keywords else 0
+        if HAS_SKLEARN and keyword_match_ratio_raw < 0.25 and article_text:
+            sem_score, sem_snippet = self._semantic_match(description, article_text)
+            if sem_score >= 0.12:
+                # Scale boost: 0.12→small boost, 0.25+→strong boost
+                semantic_boost = min(sem_score * 1.8, 0.35)
+                if sem_snippet and sem_snippet not in evidence_snippets:
+                    evidence_snippets.append(f"[semantic] {sem_snippet}")
+                if not matched_in_sections:
+                    matched_in_sections.append('full_text (semantic)')
+                logger.debug(
+                    "Semantic match for %s: score=%.3f, boost=%.3f",
+                    item_id, sem_score, semantic_boost,
+                )
+
         # --- Phase 3: Check for negative evidence ---
         if 'full_text' in sections:
             full_text = sections['full_text'].text
@@ -365,6 +446,10 @@ class EnhancedChecker:
             num_keywords_matched=len(matched_keywords),
             total_keywords=len(keywords),
         )
+
+        # Apply semantic boost on top of keyword confidence
+        if semantic_boost > 0:
+            confidence = min(confidence + semantic_boost, 0.85)  # Cap at 0.85
 
         # --- Determine verdict ---
         if has_negative_evidence and keyword_match_ratio < 0.3:
@@ -461,6 +546,167 @@ class EnhancedChecker:
                 except (re.error, KeyError, IndexError):
                     continue
         return False
+
+    # ----- semantic matching -----
+
+    def _semantic_match(
+        self, item_description: str, article_text: str,
+        top_n: int = 3, min_sentence_len: int = 20,
+    ) -> Tuple[float, str]:
+        """
+        Use TF-IDF cosine similarity to find article sentences that
+        semantically match a checklist item description.
+
+        Returns:
+            (best_similarity_score, best_matching_snippet)
+            Score is 0.0–1.0; snippet is the best-matching sentence.
+        """
+        if not HAS_SKLEARN or not article_text or not item_description:
+            return 0.0, ''
+
+        # Pre-process: fix PDF line-break artifacts (e.g., "Framing-\nham" → "Framingham")
+        cleaned_text = re.sub(r'-\s*\n\s*', '', article_text)
+        cleaned_text = re.sub(r'\s+', ' ', cleaned_text)
+
+        # Use overlapping windows (2-3 sentences) for better context matching
+        # First split into sentences
+        raw_sentences = re.split(r'(?<=[.!?])\s+', cleaned_text)
+        raw_sentences = [
+            s.strip() for s in raw_sentences
+            if len(s.strip()) >= min_sentence_len
+            and not re.match(r'^\d+[\.\)]?\s', s.strip())  # skip numbered refs
+        ]
+
+        if not raw_sentences:
+            return 0.0, ''
+
+        # Create windows of 2 consecutive sentences for better context
+        windows = []
+        for i in range(len(raw_sentences)):
+            windows.append(raw_sentences[i])
+            if i + 1 < len(raw_sentences):
+                windows.append(raw_sentences[i] + ' ' + raw_sentences[i + 1])
+
+        # Limit to prevent memory issues
+        if len(windows) > 800:
+            windows = windows[:800]
+
+        try:
+            corpus = [item_description.lower()] + [w.lower() for w in windows]
+
+            vectorizer = TfidfVectorizer(
+                stop_words='english',
+                max_features=8000,
+                ngram_range=(1, 3),  # up to trigrams for better phrase matching
+                min_df=1,
+                sublinear_tf=True,
+            )
+            tfidf_matrix = vectorizer.fit_transform(corpus)
+
+            similarities = cosine_similarity(
+                tfidf_matrix[0:1], tfidf_matrix[1:]
+            ).flatten()
+
+            top_indices = similarities.argsort()[-top_n:][::-1]
+            best_idx = top_indices[0]
+            best_score = float(similarities[best_idx])
+
+            # Use top-3 average for more robust scoring
+            top3_scores = [float(similarities[i]) for i in top_indices]
+            avg_top3 = sum(top3_scores) / len(top3_scores)
+
+            # Combined score: best match weighted more, but top-3 avg helps
+            combined_score = best_score * 0.7 + avg_top3 * 0.3
+
+            if combined_score >= 0.08:  # Threshold tuned for PDF text
+                best_window = windows[best_idx]
+                if len(best_window) > 180:
+                    best_window = best_window[:180] + '...'
+                return combined_score, best_window
+
+        except Exception as e:
+            logger.debug("Semantic matching failed: %s", e)
+
+        return 0.0, ''
+
+    def _llm_evaluate_items(
+        self,
+        items_to_check: List[dict],
+        article_text: str,
+        checklist_name: str,
+    ) -> Dict[str, Tuple[bool, str]]:
+        """
+        Use Claude API (Haiku) to evaluate ambiguous checklist items.
+
+        This is Phase 3 (optional): called only when an API key is configured
+        and items remain ambiguous after keyword + semantic matching.
+
+        Args:
+            items_to_check: list of item defs with 'item' and 'description'
+            article_text: the full article text
+            checklist_name: name of the checklist being applied
+
+        Returns:
+            Dict mapping item_id -> (present: bool, evidence: str)
+        """
+        if not HAS_ANTHROPIC:
+            logger.debug("anthropic library not available; skipping LLM phase")
+            return {}
+
+        import os
+        api_key = os.environ.get('ANTHROPIC_API_KEY', '')
+        if not api_key:
+            logger.debug("No ANTHROPIC_API_KEY set; skipping LLM phase")
+            return {}
+
+        # Build a focused prompt with just the ambiguous items
+        items_text = '\n'.join(
+            f"- [{it['item']}] {it['description']}"
+            for it in items_to_check
+        )
+
+        # Truncate article to fit context window (Haiku: ~200k tokens)
+        max_chars = 80_000
+        if len(article_text) > max_chars:
+            article_text = article_text[:max_chars] + '\n[...truncated...]'
+
+        prompt = (
+            f"You are evaluating a medical research article against the "
+            f"{checklist_name} reporting checklist.\n\n"
+            f"For each item below, determine if the article adequately reports "
+            f"that element. Respond in JSON format: a dict where each key is "
+            f"the item ID and the value is an object with 'present' (boolean) "
+            f"and 'evidence' (brief quote or explanation, max 100 chars).\n\n"
+            f"Items to evaluate:\n{items_text}\n\n"
+            f"Article text:\n{article_text}"
+        )
+
+        try:
+            client = anthropic.Anthropic(api_key=api_key)
+            response = client.messages.create(
+                model='claude-haiku-4-5-20251001',
+                max_tokens=2048,
+                messages=[{'role': 'user', 'content': prompt}],
+            )
+
+            # Parse the JSON response
+            response_text = response.content[0].text
+            # Extract JSON from response (may be wrapped in markdown code block)
+            json_match = re.search(r'\{[\s\S]+\}', response_text)
+            if json_match:
+                results = json.loads(json_match.group())
+                return {
+                    item_id: (
+                        val.get('present', False),
+                        val.get('evidence', ''),
+                    )
+                    for item_id, val in results.items()
+                }
+
+        except Exception as e:
+            logger.warning("LLM evaluation failed: %s", e)
+
+        return {}
 
     # ----- reporting -----
 
