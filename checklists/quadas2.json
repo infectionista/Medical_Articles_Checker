@@ -104,7 +104,17 @@
         "reader blinded",
         "independent assessment",
         "unblinded",
-        "knowledge of reference"
+        "knowledge of reference",
+        "sensitivity",
+        "specificity",
+        "positive predictive value",
+        "PPV",
+        "negative predictive value",
+        "NPV",
+        "diagnostic accuracy",
+        "area under the ROC curve",
+        "AUC",
+        "receiver operating characteristic"
       ],
       "weight": 1.9,
       "notes": "Blinding prevents bias in interpretation of the index test results"
@@ -125,7 +135,17 @@
         "established cutoff",
         "predetermined value",
         "ROC curve",
-        "optimal threshold"
+        "optimal threshold",
+        "sensitivity",
+        "specificity",
+        "area under the ROC curve",
+        "AUC",
+        "receiver operating characteristic",
+        "positive predictive value",
+        "PPV",
+        "negative predictive value",
+        "NPV",
+        "diagnostic accuracy"
       ],
       "weight": 1.8,
       "notes": "Pre-specified thresholds prevent bias from data-driven threshold selection"
@@ -167,7 +187,17 @@
         "diagnostic gold standard",
         "pathological confirmation",
         "reference method",
-        "established standard"
+        "established standard",
+        "sensitivity",
+        "specificity",
+        "diagnostic accuracy",
+        "positive predictive value",
+        "PPV",
+        "negative predictive value",
+        "NPV",
+        "area under the ROC curve",
+        "AUC",
+        "receiver operating characteristic"
       ],
       "weight": 1.9,
       "notes": "The reference standard must be appropriate and valid for diagnosing the target condition"

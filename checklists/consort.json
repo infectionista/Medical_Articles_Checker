@@ -111,7 +111,13 @@
         "trial design and oversight",
         "assigned in a 2:1",
         "open-label randomized evaluation",
-        "controlled open-label"
+        "controlled open-label",
+        "cluster randomization",
+        "cluster randomised",
+        "intra-cluster correlation",
+        "design effect",
+        "2x2 factorial",
+        "factorial design 2x2"
       ],
       "weight": 1.5,
       "notes": "Critical methodological item; replaced generic 'allocation' with specific design terms"
@@ -402,7 +408,13 @@
         "indistinguishable",
         "identical tablets",
         "sham procedure",
-        "placebo arm"
+        "placebo arm",
+        "identically-appearing",
+        "identical capsules",
+        "identical tablets appearance",
+        "multi-centre",
+        "multicenter",
+        "multicentre"
       ],
       "weight": 1.0,
       "notes": "More specific; original 'similarity' and 'appearance' too generic"
@@ -796,7 +808,12 @@
         "no financial support",
         "funded by the medical research council",
         "supported by a grant",
-        "supported by a grant"
+        "informed consent",
+        "ethics committee",
+        "ethical approval",
+        "IRB approval",
+        "institutional review board",
+        "ethics board approval"
       ],
       "weight": 1.2,
       "notes": "Added 'no funding' to catch explicit disclosure of no funding"

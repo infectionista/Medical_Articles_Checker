@@ -226,7 +226,11 @@
         "clinical records",
         "laboratory measurements",
         "measurement of clot",
-        "assessment methods"
+        "assessment methods",
+        "survey weights",
+        "sampling weights",
+        "complex survey design",
+        "stratified multistage"
       ],
       "weight": 1.0
     },
@@ -309,7 +313,10 @@
         "sensitivity, specificity",
         "PPV and NPV",
         "positive predictive value",
-        "negative predictive value"
+        "negative predictive value",
+        "propensity score",
+        "propensity score matching",
+        "inverse probability weighting"
       ],
       "weight": 1.3
     },

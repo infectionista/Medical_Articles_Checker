@@ -1,0 +1,917 @@
+============================================================
+  Eval v8 — hybrid approach
+============================================================
+  Phase 1-2:  keywords ............ OK
+  Phase 2.5:  TF-IDF semantic ..... OK
+  Phase 3:    LLM fallback ........ OK  (uses raw HTTP, no SDK needed)
+  LLM triggers when: >50% items absent after Phase 1-2.5
+
+  Articles: 19 PDFs, 19 pre-extracted .md files
+
+[ 1/19] allhat_2002_hypertension... done (4.1s)
+
+======================================================================
+  Major Outcomes in High-Risk Hypertensive Patients Randomized to Angiotensin-Converting Enzyme Inhibitor or Calcium Channel Blocker vs Diuretic: The Antihypertensive and Lipid-Lowering Treatment to Prevent Heart Attack Trial (ALLHAT)
+  [allhat_2002_hypertension]
+======================================================================
+
+  Study type:  ✅ expected=randomized_controlled_trial, detected=randomized_controlled_trial
+  Checklist:   ✅ expected=CONSORT, detected=CONSORT
+
+  Confusion matrix (37 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  32             │ FP =  0 │
+  │ Sys Absent  │ FN =   5             │ TN =  0 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 86.5%  — of 37 present items, found 32
+  Specificity:          0.0%  — of 0 absent items, correctly rejected 0
+  Precision:            100.0%  — of 32 system 'present', 32 truly present
+  F1 score:             92.8%
+  Accuracy:             86.5%
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    3b: system=absent (conf=24%)
+      annotator: Protocol amendments mentioned: primary outcome and study design modifications during trial; doxazosin arm discontinued early due to increased heart failure risk
+    6b: system=absent (conf=23%)
+      annotator: Changes to outcomes documented: primary outcome expanded during trial; some secondary outcomes modified
+    16: system=absent (conf=24%)
+      annotator: Numbers analyzed: intention-to-treat analysis; all randomized participants included in primary outcome analysis (33,357 total: 15,255 chlorthalidone, 9,048 amlodipine, 9,054 lisinopril)
+    18: system=absent (conf=0%)
+      annotator: Subgroup analyses extensively reported: results stratified by race, age, sex, diabetes, LVH status showing treatment interactions and differential effects
+    23: system=absent (conf=0%)
+      annotator: Registration: NCT number provided in methods section; trial registered with clinical trials registry
+[ 2/19] boldt_retracted_cpb_priming... done (16.6s)
+
+======================================================================
+  Cardiopulmonary Bypass Priming Using a High Dose of a Balanced Hydroxyethyl Starch Versus an Albumin-Based Priming Strategy
+  [boldt_retracted_cpb_priming]
+======================================================================
+
+  Study type:  ✅ expected=randomized_controlled_trial, detected=randomized_controlled_trial
+  Checklist:   ✅ expected=CONSORT, detected=CONSORT
+
+  Confusion matrix (37 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  10             │ FP = 14 │
+  │ Sys Absent  │ FN =   0             │ TN = 13 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 100.0%  — of 10 present items, found 10
+  Specificity:          48.1%  — of 27 absent items, correctly rejected 13
+  Precision:            41.7%  — of 24 system 'present', 10 truly present
+  F1 score:             58.8%
+  Accuracy:             62.2%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    4b: system=present (conf=63%)
+      keywords: ['hospital', 'department of']
+      annotator: Settings not clearly specified; appears to be single-center study but location/institution not stated
+    7a: system=partial (conf=55%)
+      keywords: []
+      annotator: Sample size calculation not described; 50 patients total appears small and unjustified; no power analysis mentioned
+    8a: system=partial (conf=55%)
+      keywords: ['computer-generated']
+      annotator: Method used to generate random allocation sequence not described; only stated that CPB 'was prospectively and randomly primed'
+    8b: system=partial (conf=55%)
+      keywords: []
+      annotator: Type of randomization not specified; no mention of stratification, blocking, or randomization scheme
+    9: system=partial (conf=55%)
+      keywords: []
+      annotator: Allocation concealment not described; no mention of methods to conceal treatment assignment
+    11a: system=partial (conf=55%)
+      keywords: ['blinded']
+      annotator: No mention of blinding of patients or staff; appears to be open-label given nature of intervention (priming solution)
+    11b: system=partial (conf=55%)
+      keywords: []
+      annotator: Not applicable; open intervention design, no masking of appearance between groups
+    13a: system=partial (conf=55%)
+      keywords: []
+      annotator: No participant flow diagram; no CONSORT flow chart showing enrollment, allocation, follow-up
+    15: system=partial (conf=55%)
+      keywords: ['Table 1']
+      annotator: No baseline characteristics table; no demographic or clinical characteristics of groups reported; groups presumably comparable but not described
+    16: system=partial (conf=55%)
+      keywords: []
+      annotator: No description of intention-to-treat vs per-protocol analysis; number analyzed per group not explicitly stated (appears to be 25 per group but not confirmed)
+    19: system=partial (conf=55%)
+      keywords: []
+      annotator: No systematic reporting of adverse events or complications; some outcomes (e.g., base excess, clotting measures) might reflect harm but not labeled as such
+    20: system=partial (conf=55%)
+      keywords: []
+      annotator: No discussion of limitations; paper does not address potential biases or sources of imprecision
+    22: system=partial (conf=55%)
+      keywords: ['discussion']
+      annotator: Discussion minimal; brief conclusions but limited interpretation in context of prior evidence
+    25: system=partial (conf=55%)
+      keywords: ['supported by']
+      annotator: No funding sources or conflicts of interest disclosed; no statement of funder role
+[ 3/19] forster_2020_phylogenetic... done (0.5s)
+
+======================================================================
+  Phylogenetic network analysis of SARS-CoV-2 genomes
+  [forster_2020_phylogenetic]
+======================================================================
+
+  Study type:  ✅ expected=genomic_study, detected=genomic_study
+  Checklist:   ✅ expected=GENOMICS, detected=GENOMICS
+
+  Confusion matrix (22 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  13             │ FP =  1 │
+  │ Sys Absent  │ FN =   1             │ TN =  7 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 92.9%  — of 14 present items, found 13
+  Specificity:          87.5%  — of 8 absent items, correctly rejected 7
+  Precision:            92.9%  — of 14 system 'present', 13 truly present
+  F1 score:             92.9%
+  Accuracy:             90.9%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    3: system=partial (conf=55%)
+      keywords: ['sample collection']
+      annotator: Sequences taken from GISAID database, not collected by authors. No clinical specimen collection described
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    2: system=absent (conf=7%)
+      annotator: Background on mitochondrial DNA phylogenetics, network methods, application to coronavirus evolution
+[ 4/19] framingham_cohort_chd... done (2.4s)
+
+======================================================================
+  Factors of Risk in the Development of Coronary Heart Disease - Six-Year Follow-up Experience
+  [framingham_cohort_chd]
+======================================================================
+
+  Study type:  ✅ expected=cohort_study, detected=cohort_study
+  Checklist:   ✅ expected=STROBE, detected=STROBE
+
+  Confusion matrix (31 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  13             │ FP =  8 │
+  │ Sys Absent  │ FN =   5             │ TN =  5 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 72.2%  — of 18 present items, found 13
+  Specificity:          38.5%  — of 13 absent items, correctly rejected 5
+  Precision:            61.9%  — of 21 system 'present', 13 truly present
+  F1 score:             66.7%
+  Accuracy:             58.1%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    6b: system=partial (conf=33%)
+      keywords: []
+      annotator: Not a case-control study
+    9: system=partial (conf=25%)
+      keywords: []
+      annotator: No explicit discussion of potential biases or efforts to address bias
+    10: system=partial (conf=27%)
+      keywords: []
+      annotator: No sample size calculation or power analysis described
+    11: system=partial (conf=26%)
+      keywords: []
+      annotator: Quantitative variables (cholesterol, BP) presented but no specific discussion of categorization methods or cutoffs
+    12c: system=partial (conf=35%)
+      keywords: []
+      annotator: No discussion of missing data handling
+    19: system=partial (conf=27%)
+      keywords: []
+      annotator: No discussion of study limitations or sources of bias
+    20: system=partial (conf=35%)
+      keywords: []
+      annotator: No cautious interpretation or discussion of alternative explanations
+    21: system=partial (conf=33%)
+      keywords: []
+      annotator: No discussion of generalizability or external validity
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    4: system=absent (conf=25%)
+      annotator: Study design clearly presented in Methods: prospective cohort design with baseline and follow-up examinations
+    7: system=absent (conf=0%)
+      annotator: Outcomes clearly defined: myocardial infarction, angina pectoris, sudden death. Risk factors: serum cholesterol, blood pressure, ECG patterns
+    13a: system=absent (conf=0%)
+      annotator: Participant flow: Table 1 shows 6,507 selected, 4,469 examined, 4,393 free of CHD at baseline plus 734 volunteers = 5,127 total
+    15: system=explicitly_absent (conf=75%)
+      annotator: Outcome events: Tables 3A, 3B, 4 report incidence of CHD by type and sex. Overall 186 new cases in 6 years
+    18: system=absent (conf=22%)
+      annotator: Key results: 'six-year incidence of 36.3 per thousand...in men was 54.8 per thousand...in women 21.4 per thousand'
+[ 5/19] garcia_2026_robotic_bronchoscopy_case_series... done (0.5s)
+
+======================================================================
+  Synergistic use of robotic navigational platform and ultrathin bronchoscopy in diagnostic yield optimization for cavitary lung lesions: a case series
+  [garcia_2026_robotic_bronchoscopy_case_series]
+======================================================================
+
+  Study type:  ✅ expected=case_series, detected=case_series
+  Checklist:   ✅ expected=JBI_CASE_SERIES, detected=JBI_CASE_SERIES
+
+  Confusion matrix (10 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =   8             │ FP =  1 │
+  │ Sys Absent  │ FN =   1             │ TN =  0 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 88.9%  — of 9 present items, found 8
+  Specificity:          0.0%  — of 1 absent items, correctly rejected 0
+  Precision:            88.9%  — of 9 system 'present', 8 truly present
+  F1 score:             88.9%
+  Accuracy:             80.0%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    6: system=present (conf=70%)
+      keywords: ['age', 'sex', 'demographics']
+      annotator: Limited demographic reporting: case-by-case presentation provided but no formal demographics table; age, sex inferred from case descriptions but not explicitly summarized
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    3: system=absent (conf=0%)
+      annotator: Valid diagnostic methods: lesion identification via CT imaging; ultrathin flexible bronchoscopy validated technique; robotic platform (Ion™) navigation confirmed via fluoroscopy; tissue samples for histology/microbiology
+[ 6/19] gautret_2020_hydroxychloroquine... done (28.5s)
+
+======================================================================
+  Hydroxychloroquine and azithromycin as a treatment of COVID-19
+  [gautret_2020_hydroxychloroquine]
+======================================================================
+
+  Study type:  ✅ expected=non_randomized_intervention, detected=non_randomized_intervention
+  Checklist:   ✅ expected=STROBE, detected=STROBE
+
+  Confusion matrix (31 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  13             │ FP =  8 │
+  │ Sys Absent  │ FN =   1             │ TN =  9 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 92.9%  — of 14 present items, found 13
+  Specificity:          52.9%  — of 17 absent items, correctly rejected 9
+  Precision:            61.9%  — of 21 system 'present', 13 truly present
+  F1 score:             74.3%
+  Accuracy:             71.0%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    4: system=partial (conf=55%)
+      keywords: []
+      annotator: No formal study design description (cohort/case-control etc)
+    10: system=partial (conf=55%)
+      keywords: []
+      annotator: No sample size calculation or justification
+    11: system=partial (conf=55%)
+      keywords: ['categorical variables']
+      annotator: No discussion of how quantitative variables were handled
+    12c: system=partial (conf=28%)
+      keywords: ['missing data', 'loss to follow-up']
+      annotator: No discussion of missing data handling
+    12d: system=partial (conf=55%)
+      keywords: ['loss to follow-up']
+      annotator: No loss-to-follow-up methods described
+    13a: system=partial (conf=55%)
+      keywords: ['were included']
+      annotator: No flow diagram of participants
+    16a: system=partial (conf=55%)
+      keywords: []
+      annotator: No adjusted or unadjusted estimates with CI
+    19: system=partial (conf=55%)
+      keywords: []
+      annotator: No limitations discussed
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    12a: system=absent (conf=12%)
+      annotator: Chi-square test, Fisher exact test mentioned
+[ 7/19] isis2_1988_streptokinase_aspirin... done (3.3s)
+
+======================================================================
+  Randomised trial of intravenous streptokinase, oral aspirin, both, or neither among 17 187 cases of suspected acute myocardial infarction: ISIS-2
+  [isis2_1988_streptokinase_aspirin]
+======================================================================
+
+  Study type:  ✅ expected=randomized_controlled_trial, detected=randomized_controlled_trial
+  Checklist:   ✅ expected=CONSORT, detected=CONSORT
+
+  Confusion matrix (37 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  28             │ FP =  4 │
+  │ Sys Absent  │ FN =   4             │ TN =  1 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 87.5%  — of 32 present items, found 28
+  Specificity:          20.0%  — of 5 absent items, correctly rejected 1
+  Precision:            87.5%  — of 32 system 'present', 28 truly present
+  F1 score:             87.5%
+  Accuracy:             78.4%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    3b: system=partial (conf=35%)
+      keywords: []
+      annotator: No mention of protocol amendments after trial commencement; paper does not address this item
+    6b: system=partial (conf=35%)
+      keywords: []
+      annotator: No mention of changes to outcomes after trial commenced; appears pre-specified
+    23: system=partial (conf=34%)
+      keywords: []
+      annotator: Trial registration: not applicable (1988 publication pre-dates clinical trial registries like ClinicalTrials.gov)
+    24: system=partial (conf=35%)
+      keywords: []
+      annotator: Protocol availability: full protocol not described as available in paper; supplementary materials not mentioned
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    2a: system=absent (conf=0%)
+      annotator: Introduction establishes rationale: benefit of thrombolysis and antiplatelet therapy in MI, prior evidence from smaller trials
+    6a: system=absent (conf=0%)
+      annotator: Primary outcome: 5-week vascular mortality. Secondary outcomes: reinfarction, stroke, bleeding complications, discharge from hospital
+    9: system=absent (conf=22%)
+      annotator: Allocation concealment: sequential randomization described; local hospital staff received allocation via communication with coordinating center
+    17b: system=absent (conf=5%)
+      annotator: Both relative and absolute effects reported: odds reductions with percentages (25% SD 4, 23% SD 4) and absolute mortality differences
+[ 8/19] macchiarini_2011_trachea_retracted... done (0.6s)
+
+======================================================================
+  Tracheobronchial transplantation with a stem-cell-seeded bioartificial nanocomposite: a proof-of-concept study
+  [macchiarini_2011_trachea_retracted]
+======================================================================
+
+  Study type:  ✅ expected=case_report, detected=case_report
+  Checklist:   ✅ expected=JBI_CASE_SERIES, detected=JBI_CASE_SERIES
+
+  Confusion matrix (10 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =   8             │ FP =  1 │
+  │ Sys Absent  │ FN =   1             │ TN =  0 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 88.9%  — of 9 present items, found 8
+  Specificity:          0.0%  — of 1 absent items, correctly rejected 0
+  Precision:            88.9%  — of 9 system 'present', 8 truly present
+  F1 score:             88.9%
+  Accuracy:             80.0%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    4: system=partial (conf=33%)
+      keywords: []
+      annotator: Single case only; consecutive inclusion not applicable with n=1
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    2: system=absent (conf=0%)
+      annotator: Condition measurement: tracheal cancer confirmed by pathology; recurrence verified by imaging and endoscopy; bioartificial construct assessed via scanning electron microscopy and confocal microscopy
+[ 9/19] moraes_2022_hcq_systematic_review... done (1.2s)
+
+======================================================================
+  Hydroxychloroquine for treatment of COVID-19 patients: a systematic review and meta-analysis of randomized controlled trials
+  [moraes_2022_hcq_systematic_review]
+======================================================================
+
+  Study type:  ✅ expected=systematic_review_interventions, detected=systematic_review_interventions
+  Checklist:   ✅ expected=PRISMA, detected=PRISMA
+
+  Confusion matrix (29 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  25             │ FP =  2 │
+  │ Sys Absent  │ FN =   1             │ TN =  1 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 96.2%  — of 26 present items, found 25
+  Specificity:          33.3%  — of 3 absent items, correctly rejected 1
+  Precision:            92.6%  — of 27 system 'present', 25 truly present
+  F1 score:             94.3%
+  Accuracy:             89.7%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    22c: system=partial (conf=55%)
+      keywords: ['well-powered properly designed rcts']
+      annotator: No explicit discussion of implications for future research beyond general statement about properly designed RCTs
+    25: system=partial (conf=32%)
+      keywords: []
+      annotator: No specific statement about funding for the review itself
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    2: system=absent (conf=0%)
+      annotator: Structured abstract with Objective, Methods, Results, Conclusion
+[10/19] recovery_2021_dexamethasone... done (2.0s)
+
+======================================================================
+  Dexamethasone in Hospitalized Patients with Covid-19
+  [recovery_2021_dexamethasone]
+======================================================================
+
+  Study type:  ✅ expected=randomized_controlled_trial, detected=randomized_controlled_trial
+  Checklist:   ✅ expected=CONSORT, detected=CONSORT
+
+  Confusion matrix (37 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  31             │ FP =  3 │
+  │ Sys Absent  │ FN =   3             │ TN =  0 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 91.2%  — of 34 present items, found 31
+  Specificity:          0.0%  — of 3 absent items, correctly rejected 0
+  Precision:            91.2%  — of 34 system 'present', 31 truly present
+  F1 score:             91.2%
+  Accuracy:             83.8%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    3b: system=partial (conf=51%)
+      keywords: ['statistical analysis plan', 'added once the']
+      annotator: Protocol changes mentioned (age limit removed May 9, 2020) but not as formal protocol amendments
+    6b: system=partial (conf=28%)
+      keywords: ['prespecified composite secondary outcome', 'prespecified analyses of']
+      annotator: No mention of changes to outcomes after trial commenced
+    11b: system=partial (conf=35%)
+      keywords: []
+      annotator: No description of similarity of interventions (open-label, no placebo)
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    7a: system=absent (conf=19%)
+      annotator: Power calculation: 2000 dexa + 4000 control gives 90% power at P=0.01 to detect 20% reduction
+    8b: system=absent (conf=6%)
+      annotator: Unstratified randomization (mentioned: 'through the play of chance in the unstratified randomization')
+    9: system=absent (conf=6%)
+      annotator: Concealment via Web-based system described
+[11/19] redcvd_2021_cardiovascular_protocol... done (2.4s)
+
+======================================================================
+  Improving early diagnosis of cardiovascular disease in patients with type 2 diabetes and COPD: protocol of the RED-CVD cluster randomised diagnostic trial
+  [redcvd_2021_cardiovascular_protocol]
+======================================================================
+
+  Study type:  ✅ expected=randomized_controlled_trial, detected=randomized_controlled_trial
+  Checklist:   ✅ expected=CONSORT, detected=CONSORT
+
+  Confusion matrix (37 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  20             │ FP =  7 │
+  │ Sys Absent  │ FN =   5             │ TN =  5 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 80.0%  — of 25 present items, found 20
+  Specificity:          41.7%  — of 12 absent items, correctly rejected 5
+  Precision:            74.1%  — of 27 system 'present', 20 truly present
+  F1 score:             76.9%
+  Accuracy:             67.6%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    9: system=partial (conf=30%)
+      keywords: []
+      annotator: Allocation concealment: cluster-level randomisation makes concealment challenging; method for concealing allocation of practices not described
+    11a: system=present (conf=85%)
+      keywords: ['blinded', 'masked']
+      annotator: Blinding: cluster randomisation and intervention nature (diagnostic strategy vs. care as usual) make blinding of practices impossible; patient blinding not feasible
+    11b: system=partial (conf=27%)
+      keywords: []
+      annotator: Not applicable; open-label cluster intervention design
+    13b: system=partial (conf=35%)
+      keywords: []
+      annotator: Protocol article; losses and exclusions will be documented in results paper
+    14b: system=partial (conf=34%)
+      keywords: []
+      annotator: Protocol article; trial endpoint criteria not yet applicable
+    15: system=partial (conf=40%)
+      keywords: ['baseline characteristics', 'Table 1', 'patient characteristics']
+      annotator: Protocol article; baseline characteristics table will be provided in results paper
+    22: system=partial (conf=55%)
+      keywords: ['discussion']
+      annotator: Protocol article; interpretation of findings will follow results dissemination
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    1a: system=absent (conf=16%)
+      annotator: Title identifies as randomized trial: 'protocol of the RED-CVD cluster randomised diagnostic trial'
+    4a: system=absent (conf=0%)
+      annotator: Eligibility criteria: patients participating in primary care disease management programme for COPD or type 2 diabetes; age 30-75 years mentioned in methods
+    7b: system=absent (conf=23%)
+      annotator: Data safety monitoring mentioned: independent data safety and monitoring committee established; interim analyses planned
+    16: system=absent (conf=23%)
+      annotator: Analysis population: intention-to-treat analysis mentioned; all clusters and participants randomised will be included in primary analysis
+    21: system=absent (conf=24%)
+      annotator: Generalizability discussed: applicability to primary care patients with diabetes and COPD in Netherlands; tools used (ECG, BNP, questionnaires) readily available in primary care; generalizability to other healthcare settings noted
+[12/19] robinson_2024_brain_tumours_case_control... done (1.8s)
+
+======================================================================
+  Use of drugs for hyperlipidaemia and diabetes and risk of primary and secondary brain tumours: nested case-control studies using the UK Clinical Practice Research Datalink (CPRD)
+  [robinson_2024_brain_tumours_case_control]
+======================================================================
+
+  Study type:  ✅ expected=case_control, detected=case_control
+  Checklist:   ✅ expected=STROBE, detected=STROBE
+
+  Confusion matrix (31 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  13             │ FP = 14 │
+  │ Sys Absent  │ FN =   2             │ TN =  2 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 86.7%  — of 15 present items, found 13
+  Specificity:          12.5%  — of 16 absent items, correctly rejected 2
+  Precision:            48.1%  — of 27 system 'present', 13 truly present
+  F1 score:             61.9%
+  Accuracy:             48.4%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    6a: system=present (conf=85%)
+      keywords: ['eligibility criteria', 'eligible participants', 'were included from']
+      annotator: Not cohort study; case-control design described
+    10: system=present (conf=85%)
+      keywords: ['sample size calculation']
+      annotator: No sample size justification or power calculation described
+    11: system=partial (conf=26%)
+      keywords: []
+      annotator: Limited discussion of how duration of drug use was handled as continuous variable
+    12b: system=partial (conf=30%)
+      keywords: []
+      annotator: No explicit subgroup or interaction analyses reported
+    12c: system=present (conf=92%)
+      keywords: ['missing data', 'multiple imputation', 'missing values']
+      annotator: No discussion of missing data handling
+    12d: system=partial (conf=32%)
+      keywords: []
+      annotator: Matching described: 'We selected cases and controls' but detailed matching strategy and its accounting in analysis not fully specified
+    12e: system=present (conf=78%)
+      keywords: ['sensitivity analyses', 'sensitivity analysis']
+      annotator: No sensitivity analyses reported
+    14a: system=present (conf=85%)
+      keywords: ['table 1', 'patient demographics']
+      annotator: No baseline characteristics table shown in provided text
+    16b: system=partial (conf=25%)
+      keywords: []
+      annotator: Category boundaries not explicitly reported for continuous exposure
+    16c: system=partial (conf=26%)
+      keywords: []
+      annotator: No absolute risk reported
+    17: system=present (conf=85%)
+      keywords: ['sensitivity analysis']
+      annotator: No secondary subgroup or sensitivity analyses reported
+    19: system=partial (conf=50%)
+      keywords: ['limitations of this study', 'residual confounding', 'selection bias']
+      annotator: Limited discussion of study limitations in methods/abstract section
+    21: system=present (conf=82%)
+      keywords: ['generalisability']
+      annotator: No explicit discussion of generalizability
+    22: system=present (conf=79%)
+      keywords: ['grant number', 'competing interests', 'funded by']
+      annotator: Funding source not stated in provided text
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    2: system=absent (conf=23%)
+      annotator: Background: 'Previous studies have suggested that fibrates and glitazones may have a role in brain tumour prevention'
+    3: system=absent (conf=0%)
+      annotator: Objective: 'We examined if there is support for these observations using primary care records from the UK CPRD'
+[13/19] stampfer_1991_estrogen_cohort... done (20.5s)
+
+======================================================================
+  Postmenopausal Estrogen Therapy and Cardiovascular Disease: Ten-Year Follow-up from the Nurses' Health Study
+  [stampfer_1991_estrogen_cohort]
+======================================================================
+
+  Study type:  ✅ expected=cohort_study, detected=cohort_study
+  Checklist:   ✅ expected=STROBE, detected=STROBE
+
+  Confusion matrix (31 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  20             │ FP =  5 │
+  │ Sys Absent  │ FN =   1             │ TN =  5 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 95.2%  — of 21 present items, found 20
+  Specificity:          50.0%  — of 10 absent items, correctly rejected 5
+  Precision:            80.0%  — of 25 system 'present', 20 truly present
+  F1 score:             87.0%
+  Accuracy:             80.6%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    11: system=partial (conf=55%)
+      keywords: []
+      annotator: Minimal discussion of quantitative variable handling; main analysis uses exposure categories (current, former, never users)
+    12c: system=partial (conf=55%)
+      keywords: []
+      annotator: No explicit discussion of missing data handling
+    16b: system=partial (conf=55%)
+      keywords: []
+      annotator: Main analysis uses categorical exposure groups (current, former, never); no continuous variable categorization issues
+    19: system=partial (conf=55%)
+      keywords: []
+      annotator: No explicit discussion of study limitations or potential biases in Discussion section
+    21: system=partial (conf=55%)
+      keywords: []
+      annotator: Limited discussion of generalizability; cohort of nurses may limit external validity
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    22: system=absent (conf=0%)
+      annotator: Funding: National Institutes of Health, NIH Public Health Service grants cited in funding statement
+[14/19] staph_genomic_multiresistant... done (2.0s)
+
+======================================================================
+  Genomic analysis of an emerging multiresistant Staphylococcus aureus strain rapidly spreading in cystic fibrosis patients revealed the presence of an antibiotic inducible bacteriophage
+  [staph_genomic_multiresistant]
+======================================================================
+
+  Study type:  ✅ expected=genomic_study, detected=genomic_study
+  Checklist:   ✅ expected=GENOMICS, detected=GENOMICS
+
+  Confusion matrix (22 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  15             │ FP =  3 │
+  │ Sys Absent  │ FN =   2             │ TN =  2 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 88.2%  — of 17 present items, found 15
+  Specificity:          40.0%  — of 5 absent items, correctly rejected 2
+  Precision:            83.3%  — of 18 system 'present', 15 truly present
+  F1 score:             85.7%
+  Accuracy:             77.3%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    7: system=partial (conf=31%)
+      keywords: []
+      annotator: Quality control specific to raw sequencing reads not explicitly detailed (Q30, adapter removal not mentioned); focus on assembly and contigs
+    12: system=partial (conf=32%)
+      keywords: []
+      annotator: Minimal clinical metadata; study focused on genomic characterization rather than clinical correlations; CF status and antibiotic exposure history not formally linked
+    13: system=partial (conf=35%)
+      keywords: []
+      annotator: No sequencing quality metrics (depth, coverage) reported; assembly only summarized by contig size range and total length
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    3: system=absent (conf=22%)
+      annotator: Sample collection: 2006 in Marseille, France; epidemiological survey of S. aureus in CF patients; detection of atypical MRSA strain (CF-Marseille)
+    4: system=absent (conf=22%)
+      annotator: Sample sequenced: one representative isolate (CF-Marseille); retrospective epidemiological analysis of S. aureus isolated 2002-2007 in CF patients at institution
+[15/19] strohmeier_cochrane_pyelonephritis... done (6.3s)
+
+======================================================================
+  Antibiotics for acute pyelonephritis in children
+  [strohmeier_cochrane_pyelonephritis]
+======================================================================
+
+  Study type:  ✅ expected=systematic_review_interventions, detected=systematic_review_interventions
+  Checklist:   ✅ expected=PRISMA, detected=PRISMA
+
+  Confusion matrix (29 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  23             │ FP =  3 │
+  │ Sys Absent  │ FN =   3             │ TN =  0 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 88.5%  — of 26 present items, found 23
+  Specificity:          0.0%  — of 3 absent items, correctly rejected 0
+  Precision:            88.5%  — of 26 system 'present', 23 truly present
+  F1 score:             88.5%
+  Accuracy:             79.3%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    24: system=present (conf=63%)
+      keywords: ['source of funding', 'financial support']
+      annotator: No funding information explicitly stated for the Cochrane review itself
+    25: system=partial (conf=35%)
+      keywords: []
+      annotator: No conflicts of interest statement provided for the authors
+    26: system=partial (conf=29%)
+      keywords: []
+      annotator: No statement about data availability or supplementary materials
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    3: system=absent (conf=24%)
+      annotator: Background describes UTIs in children, pyelonephritis, current treatment approaches, and need for systematic evaluation of antibiotic regimens
+    4: system=absent (conf=0%)
+      annotator: Explicit objectives: to evaluate efficacy and safety of different antibiotic regimens for acute pyelonephritis in children
+    23: system=absent (conf=24%)
+      annotator: Registration noted in Cochrane Renal Group with publication in Issue 7, 2014
+[16/19] wakefield_1998_vaccines_autism... done (0.4s)
+
+======================================================================
+  Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children
+  [wakefield_1998_vaccines_autism]
+======================================================================
+
+  Study type:  ❌ expected=case_series, detected=case_control
+  Checklist:   ❌ expected=JBI_CASE_SERIES, detected=STROBE
+
+  Confusion matrix (10 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =   7             │ FP =  0 │
+  │ Sys Absent  │ FN =   3             │ TN =  0 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 70.0%  — of 10 present items, found 7
+  Specificity:          0.0%  — of 0 absent items, correctly rejected 0
+  Precision:            100.0%  — of 7 system 'present', 7 truly present
+  F1 score:             82.4%
+  Accuracy:             70.0%
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    1: system=absent (conf=0%)
+      annotator: Clear inclusion criteria: children with chronic enterocolitis and regressive developmental disorder; 'consecutively referred children' with normal development followed by loss of acquired skills
+    2: system=absent (conf=0%)
+      annotator: Standardized condition measurement: ileocolonoscopy and biopsy for GI assessment; neurological and developmental assessment conducted; MRI, EEG performed; standardized histological examination
+    3: system=absent (conf=0%)
+      annotator: Valid diagnostic methods: ileocolonoscopy (endoscopic gold standard for GI pathology); histopathology for tissue diagnosis; developmental assessment using recognized criteria; radiological imaging (MRI)
+[17/19] wen_2022_obesity_cross_sectional... done (1.6s)
+
+======================================================================
+  Trends in the prevalence of metabolically healthy and unhealthy obesity in the US adult population: analysis of eight NHANES cross-sectional survey cycles, 1999-2014
+  [wen_2022_obesity_cross_sectional]
+======================================================================
+
+  Study type:  ✅ expected=analytical_cross_sectional, detected=analytical_cross_sectional
+  Checklist:   ✅ expected=STROBE, detected=STROBE
+
+  Confusion matrix (31 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  15             │ FP =  2 │
+  │ Sys Absent  │ FN =  10             │ TN =  4 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 60.0%  — of 25 present items, found 15
+  Specificity:          66.7%  — of 6 absent items, correctly rejected 4
+  Precision:            88.2%  — of 17 system 'present', 15 truly present
+  F1 score:             71.4%
+  Accuracy:             61.3%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    10: system=partial (conf=55%)
+      keywords: ['survey response rates']
+      annotator: No sample size calculation or power analysis described
+    22: system=present (conf=63%)
+      keywords: ['competing interests', 'supported by']
+      annotator: Funding/conflicts not clearly stated in abstract or methods section
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    1: system=absent (conf=18%)
+      annotator: Title clearly indicates 'cross-sectional survey cycles'
+    5: system=absent (conf=0%)
+      annotator: Setting: 'National Health and Nutrition Examination Survey (NHANES), 1999-2014...eight survey cycles conducted between 1999 and 2014'
+    9: system=absent (conf=0%)
+      annotator: Bias discussion: 'Due to serial cross-sectional design, we are not able to track dynamic changes...did not include insulin resistance or inflammation criteria, potentially limiting detection'
+    12a: system=absent (conf=0%)
+      annotator: Statistical methods: 'PROC SURVEYREG procedure...to test for trends across survey cycles...stratified, multistage, probability cluster sampling design...SAS software (V.9.4)'
+    12b: system=absent (conf=0%)
+      annotator: Subgroup analysis: 'stratified by gender, race/ethnicity, age group, education levels...Differences compared between men and women...among age groups and race/ethnic groups'
+    13a: system=absent (conf=0%)
+      annotator: Participant flow: 19,537 from 8 cycles, 3,078 excluded, 16,459 analyzed. Table 1 shows characteristics by cycle
+    14b: system=absent (conf=0%)
+      annotator: Missing data completeness: specified 3,078 excluded for missing data; implicit reporting of data availability
+    16a: system=absent (conf=0%)
+      annotator: Estimates with precision: Prevalences reported with percentages and p-values. 'Central obesity 45.2% (1999-2000) to 56.7% (2013-2014) (p=0.003)'
+    19: system=absent (conf=12%)
+      annotator: Limitations: 'Due to serial cross-sectional design, unable to track dynamic changes...did not include insulin resistance or inflammation...secondary analysis of de-identified data'
+    20: system=absent (conf=8%)
+      annotator: Cautious interpretation: discusses obesity paradox and need for further research. Acknowledges limitations in generalizability of trends
+[18/19] xpert_mtb_rif_diagnostic_accuracy... done (0.6s)
+
+======================================================================
+  Diagnostic Accuracy and Turnaround Time of the Xpert MTB/RIF Assay in Routine Clinical Practice
+  [xpert_mtb_rif_diagnostic_accuracy]
+======================================================================
+
+  Study type:  ✅ expected=diagnostic_accuracy, detected=diagnostic_accuracy
+  Checklist:   ✅ expected=QUADAS2, detected=QUADAS2
+
+  Confusion matrix (14 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =   8             │ FP =  1 │
+  │ Sys Absent  │ FN =   4             │ TN =  1 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 66.7%  — of 12 present items, found 8
+  Specificity:          50.0%  — of 2 absent items, correctly rejected 1
+  Precision:            88.9%  — of 9 system 'present', 8 truly present
+  F1 score:             76.2%
+  Accuracy:             64.3%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    3.2: system=partial (conf=55%)
+      keywords: ['independent']
+      annotator: Reference standard interpretation blinding: no explicit statement that culture/DST interpretation blinded to Xpert results; likely performed without knowledge but not explicitly stated
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    1.1: system=absent (conf=0%)
+      annotator: Consecutive patient enrollment: 'retrospectively reviewed the medical records of patients in whom Xpert MTB/RIF assay using sputum were requested'; all consecutive Xpert requests during study period included; n=681 total
+    3.1: system=explicitly_absent (conf=33%)
+      annotator: Reference standard validity: mycobacterial culture is gold standard for TB diagnosis; DST (drug susceptibility testing) gold standard for rifampicin resistance; both established standards
+    3.concern: system=absent (conf=0%)
+      annotator: Reference standard applicability: culture and DST are clinical standards for TB diagnosis; appropriate reference standards for evaluating Xpert in routine practice
+    4.2: system=absent (conf=0%)
+      annotator: Uniform reference standard: all patients received mycobacterial culture; DST applied to culture-positive isolates uniformly; same reference standard applied to all
+[19/19] yildirim_2023_handwashing_quasi_experimental... done (12.6s)
+
+======================================================================
+  A Quasi-experimental Intervention Study on Handwashing Behavior of Healthcare Workers in the Emergency Department
+  [yildirim_2023_handwashing_quasi_experimental]
+======================================================================
+
+  Study type:  ✅ expected=non_randomized_intervention, detected=non_randomized_intervention
+  Checklist:   ✅ expected=STROBE, detected=STROBE
+
+  Confusion matrix (31 items evaluated):
+  ┌─────────────┬────────────────────────────────┐
+  │             │ Ground truth Present │ Absent  │
+  ├─────────────┼──────────────────────┼─────────┤
+  │ Sys Present │ TP =  12             │ FP =  7 │
+  │ Sys Absent  │ FN =   2             │ TN = 10 │
+  └─────────────┴──────────────────────┴─────────┘
+
+  Recall (sensitivity): 85.7%  — of 14 present items, found 12
+  Specificity:          58.8%  — of 17 absent items, correctly rejected 10
+  Precision:            63.2%  — of 19 system 'present', 12 truly present
+  F1 score:             72.7%
+  Accuracy:             71.0%
+
+  FALSE POSITIVES (system found, but absent in ground truth):
+    11: system=partial (conf=55%)
+      keywords: []
+      annotator: Limited description of how continuous variables were categorized or handled
+    13b: system=partial (conf=55%)
+      keywords: []
+      annotator: Limited information on reasons for non-participation
+    16b: system=partial (conf=55%)
+      keywords: []
+      annotator: No specific category boundaries discussed
+    17: system=partial (conf=55%)
+      keywords: []
+      annotator: No additional analyses reported
+    19: system=partial (conf=35%)
+      keywords: []
+      annotator: No explicit discussion of limitations or sources of bias (retrospective design, recall bias not mentioned)
+    20: system=partial (conf=55%)
+      keywords: []
+      annotator: Limited cautious interpretation; conclusions stated without substantial caveats
+    21: system=partial (conf=55%)
+      keywords: ['generalizability']
+      annotator: No discussion of generalizability to other settings
+
+  FALSE NEGATIVES (system missed, but present in ground truth):
+    6a: system=absent (conf=0%)
+      annotator: Eligibility and selection: 'Number of participants was 131 (research participation rate 86.7%)'
+    16a: system=absent (conf=0%)
+      annotator: Results with frequencies/percentages: '67.2% thought they washed hands adequately...69.5% answered ≥70% of knowledge questions correctly'
+
+======================================================================
+  AGGREGATE METRICS (19 articles)
+======================================================================
+
+  Study type detection: 18/19 correct
+  Checklist selection:  18/19 correct
+
+  Pooled metrics (517 item-level comparisons):
+    Recall:      85.3%  (TP=314, FN=54)
+    Specificity: 43.6%  (TN=65, FP=84)
+    Precision:   78.9%
+    F1:          82.0%
+    Accuracy:    73.3%
+
+  Per-article summary:
+  Article                                    Recall     Spec       F1   Type
+  ---------------------------------------- -------- -------- -------- ------
+  allhat_2002_hypertension                     86%      0%     93%      ✅
+  boldt_retracted_cpb_priming                 100%     48%     59%      ✅
+  forster_2020_phylogenetic                    93%     88%     93%      ✅
+  framingham_cohort_chd                        72%     38%     67%      ✅
+  garcia_2026_robotic_bronchoscopy_case_series     89%      0%     89%      ✅
+  gautret_2020_hydroxychloroquine              93%     53%     74%      ✅
+  isis2_1988_streptokinase_aspirin             88%     20%     88%      ✅
+  macchiarini_2011_trachea_retracted           89%      0%     89%      ✅
+  moraes_2022_hcq_systematic_review            96%     33%     94%      ✅
+  recovery_2021_dexamethasone                  91%      0%     91%      ✅
+  redcvd_2021_cardiovascular_protocol          80%     42%     77%      ✅
+  robinson_2024_brain_tumours_case_control     87%     12%     62%      ✅
+  stampfer_1991_estrogen_cohort                95%     50%     87%      ✅
+  staph_genomic_multiresistant                 88%     40%     86%      ✅
+  strohmeier_cochrane_pyelonephritis           88%      0%     88%      ✅
+  wakefield_1998_vaccines_autism               70%      0%     82%      ❌
+  wen_2022_obesity_cross_sectional             60%     67%     71%      ✅
+  xpert_mtb_rif_diagnostic_accuracy            67%     50%     76%      ✅
+  yildirim_2023_handwashing_quasi_experimental     86%     59%     73%      ✅
+
+
+  Evaluated 19/19 articles

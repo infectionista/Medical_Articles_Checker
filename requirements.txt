@@ -1,6 +1,12 @@
 # Core
 PyPDF2>=3.0.0
 
+# Hybrid detection (Phase 2.5: TF-IDF semantic matching)
+scikit-learn>=1.3.0
+
+# Optional: LLM fallback (Phase 3 — uses raw HTTP, only needs ANTHROPIC_API_KEY in .env)
+# anthropic SDK is NOT required — Phase 3 calls the API directly via urllib
+
 # Optional: better PDF extraction
 pdfplumber>=0.9.0
 

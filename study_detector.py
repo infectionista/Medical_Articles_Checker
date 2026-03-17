@@ -24,6 +24,65 @@ class DetectionResult:
     matched_keywords: List[str]  # Patterns that matched
     all_scores: Dict[str, float] # All study types with their scores
     warnings: List[str]          # Potential issues (e.g., "conflicting signals")
+    subtypes: List[str] = None   # Detected subtypes (e.g., ["factorial", "double-blind"])
+
+    def __post_init__(self):
+        if self.subtypes is None:
+            self.subtypes = []
+
+
+# ---------------------------------------------------------------------------
+# Study subtype detection patterns
+# ---------------------------------------------------------------------------
+SUBTYPE_PATTERNS = {
+    'randomized_controlled_trial': [
+        ('factorial', [
+            r'(?i)\bfactorial\s+(?:design|study|trial)',
+            r'(?i)\b2\s*[x×]\s*2\s+factorial',
+            r'(?i)\bfactorial\s+randomi[sz]',
+        ]),
+        ('cluster', [
+            r'(?i)\bcluster\s+randomi[sz]',
+            r'(?i)\bintra[- ]cluster\s+correlation',
+            r'(?i)\bdesign\s+effect',
+            r'(?i)\bclusters?\s+(?:were|was)\s+randomi[sz]ed',
+        ]),
+        ('open-label', [
+            r'(?i)\bopen[- ]label\s+(?:trial|study|randomi[sz])',
+            r'(?i)\bnot\s+blinded',
+            r'(?i)\bno\s+(?:masking|blinding)\s+was',
+        ]),
+        ('double-blind', [
+            r'(?i)\bdouble[- ]blind',
+            r'(?i)\btriple[- ]blind',
+        ]),
+        ('placebo-controlled', [
+            r'(?i)\bplacebo[- ]controlled',
+            r'(?i)\bmatching\s+placebo',
+        ]),
+    ],
+    'cohort_study': [
+        ('prospective', [
+            r'(?i)\bprospective\s+(?:cohort|study|follow)',
+            r'(?i)\bfollowed\s+(?:up\s+)?(?:for|over|prospectively)',
+        ]),
+        ('retrospective', [
+            r'(?i)\bretrospective\s+(?:cohort|study|analysis|review)',
+            r'(?i)\bmedical\s+records?\s+(?:were\s+)?review',
+        ]),
+    ],
+    'case_control': [
+        ('nested', [
+            r'(?i)\bnested\s+case[- ]control',
+            r'(?i)\bwithin\s+(?:the|a)\s+cohort',
+        ]),
+        ('matched', [
+            r'(?i)\b(?:age|sex|gender)[- ]matched\s+control',
+            r'(?i)\bfrequency[- ]match',
+            r'(?i)\bmatched\s+(?:\d+:\d+|one[- ]to[- ]one)',
+        ]),
+    ],
+}
 
 
 # Checklist mapping (same as detailed_check.py but kept here for reference)
@@ -38,7 +97,7 @@ STUDY_TYPE_CHECKLISTS = {
         "name_ru": "Нерандомизированное интервенционное исследование",
         "name_en": "Non-randomized Interventional Study",
         "checklist": "ROBINS-I",
-        "local_checklist": "STROBE"
+        "local_checklist": "TREND"
     },
     "cohort_study": {
         "name_ru": "Когортное исследование",
@@ -73,14 +132,14 @@ STUDY_TYPE_CHECKLISTS = {
     "case_report": {
         "name_ru": "Один клинический случай",
         "name_en": "Case Report",
-        "checklist": "JBI Case Report",
-        "local_checklist": "JBI_CASE_SERIES"
+        "checklist": "CARE",
+        "local_checklist": "CARE"
     },
     "diagnostic_accuracy": {
         "name_ru": "Исследование точности диагностики",
         "name_en": "Diagnostic Accuracy Study",
-        "checklist": "QUADAS-2",
-        "local_checklist": "QUADAS2"
+        "checklist": "STARD / QUADAS-2",
+        "local_checklist": "STARD"
     },
     "systematic_review_interventions": {
         "name_ru": "Систематический обзор вмешательств",
@@ -550,12 +609,22 @@ class EnhancedStudyTypeDetector:
         else:
             confidence = min(100, best_score * 5)
 
+        # --- Detect subtypes for the best match ---
+        subtypes = []
+        subtype_defs = SUBTYPE_PATTERNS.get(best_type, [])
+        for subtype_name, subtype_pats in subtype_defs:
+            for sp in subtype_pats:
+                if re.search(sp, body_text):
+                    subtypes.append(subtype_name)
+                    break
+
         return DetectionResult(
             study_type=best_type,
             confidence=round(confidence, 1),
             matched_keywords=all_matched.get(best_type, []),
             all_scores=scores,
             warnings=warnings,
+            subtypes=subtypes,
         )
 
     def get_checklist_for_type(self, study_type: str) -> Optional[str]:

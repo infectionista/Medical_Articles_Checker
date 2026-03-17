@@ -1,0 +1,487 @@
+{
+  "name": "TREND",
+  "full_name": "Transparent Reporting of Evaluations with Nonrandomized Designs",
+  "description": "Checklist for quasi-experimental and non-randomized intervention studies (TREND 2004)",
+  "version": "2004",
+  "items": [
+    {
+      "section": "Title and Abstract",
+      "item": "1",
+      "description": "Information on how unit were allocated to interventions",
+      "keywords": [
+        "non-randomized",
+        "quasi-experimental",
+        "before-and-after",
+        "pre-post",
+        "controlled trial",
+        "intervention study",
+        "non-randomised",
+        "assigned to",
+        "allocated to",
+        "implementation study"
+      ],
+      "weight": 1.8,
+      "notes": "Title should identify the non-randomized design"
+    },
+    {
+      "section": "Title and Abstract",
+      "item": "2",
+      "description": "Structured abstract with design, methods, results, conclusions",
+      "keywords": [
+        "structured abstract",
+        "objective",
+        "design",
+        "setting",
+        "participants",
+        "intervention",
+        "main outcome measures",
+        "results",
+        "conclusions"
+      ],
+      "weight": 1.0,
+      "notes": "Structured abstract recommended"
+    },
+    {
+      "section": "Introduction",
+      "item": "3",
+      "description": "Scientific background and rationale for study",
+      "keywords": [
+        "background",
+        "rationale",
+        "evidence gap",
+        "justification",
+        "need for evaluation",
+        "existing evidence",
+        "previous studies",
+        "theoretical framework",
+        "conceptual model"
+      ],
+      "weight": 1.2,
+      "notes": "Theoretical or conceptual framework for the intervention"
+    },
+    {
+      "section": "Introduction",
+      "item": "4",
+      "description": "Theories used in designing behavioral interventions",
+      "keywords": [
+        "theory-based",
+        "theoretical framework",
+        "behavior change",
+        "social cognitive theory",
+        "health belief model",
+        "theory of planned behavior",
+        "intervention development",
+        "logic model",
+        "conceptual framework",
+        "program theory"
+      ],
+      "weight": 1.3,
+      "notes": "Theoretical basis for behavioral and public health interventions"
+    },
+    {
+      "section": "Methods: Participants",
+      "item": "5",
+      "description": "Eligibility criteria for participants, including criteria at different levels in recruitment/sampling plan",
+      "keywords": [
+        "eligibility criteria",
+        "inclusion criteria",
+        "exclusion criteria",
+        "recruitment",
+        "sampling",
+        "eligible participants",
+        "target population",
+        "recruitment strategy",
+        "selection criteria"
+      ],
+      "weight": 1.5,
+      "notes": "Multi-level eligibility criteria for cluster/community interventions"
+    },
+    {
+      "section": "Methods: Participants",
+      "item": "6",
+      "description": "Settings and locations where the data were collected",
+      "keywords": [
+        "setting",
+        "study site",
+        "location",
+        "community",
+        "clinic",
+        "school",
+        "workplace",
+        "hospital",
+        "data collection site",
+        "recruitment site"
+      ],
+      "weight": 1.2,
+      "notes": "Settings are particularly important for community-based interventions"
+    },
+    {
+      "section": "Methods: Interventions",
+      "item": "7",
+      "description": "Details of the interventions intended for each study condition and how and when they were actually administered, specifically including: content, delivery method, unit of delivery, deliverer, setting, exposure quantity and duration, time span, activities to increase compliance or adherence",
+      "keywords": [
+        "intervention",
+        "program",
+        "treatment condition",
+        "control condition",
+        "usual care",
+        "standard care",
+        "active control",
+        "intervention components",
+        "dose",
+        "frequency",
+        "delivery method",
+        "fidelity",
+        "compliance",
+        "adherence",
+        "implementation"
+      ],
+      "weight": 2.0,
+      "notes": "CRITICAL: Detailed intervention description is essential for non-randomized designs"
+    },
+    {
+      "section": "Methods: Objectives",
+      "item": "8",
+      "description": "Specific objectives and hypotheses",
+      "keywords": [
+        "objective",
+        "hypothesis",
+        "aim",
+        "primary aim",
+        "we hypothesized",
+        "we aimed to",
+        "research question",
+        "specific aims"
+      ],
+      "weight": 1.0,
+      "notes": "Clear a priori hypotheses"
+    },
+    {
+      "section": "Methods: Outcomes",
+      "item": "9",
+      "description": "Clearly defined primary and secondary outcome measures",
+      "keywords": [
+        "primary outcome",
+        "secondary outcome",
+        "outcome measure",
+        "endpoint",
+        "primary endpoint",
+        "outcome variable",
+        "dependent variable",
+        "main outcome",
+        "measurement instrument"
+      ],
+      "weight": 1.7,
+      "notes": "Pre-defined primary and secondary outcomes"
+    },
+    {
+      "section": "Methods: Sample Size",
+      "item": "10",
+      "description": "How sample size was determined and, when applicable, explanation of any interim analyses and stopping rules",
+      "keywords": [
+        "sample size",
+        "power calculation",
+        "power analysis",
+        "effect size",
+        "alpha level",
+        "detectable difference",
+        "minimum sample",
+        "sample size justification"
+      ],
+      "weight": 1.5,
+      "notes": "Sample size justification including design effect for clustered designs"
+    },
+    {
+      "section": "Methods: Assignment Method",
+      "item": "11a",
+      "description": "Unit of assignment (the unit being assigned to study condition, e.g., individual, group, community)",
+      "keywords": [
+        "unit of assignment",
+        "allocated by",
+        "assigned by",
+        "cluster",
+        "community-level",
+        "individual-level",
+        "group assignment",
+        "unit of allocation",
+        "site-level",
+        "school-level"
+      ],
+      "weight": 1.8,
+      "notes": "Unit of assignment is critical for non-randomized designs"
+    },
+    {
+      "section": "Methods: Assignment Method",
+      "item": "11b",
+      "description": "Method by which units were assigned to study conditions, including details of any restriction",
+      "keywords": [
+        "assignment method",
+        "allocation method",
+        "self-selected",
+        "physician choice",
+        "geographic assignment",
+        "by convenience",
+        "alternating",
+        "matched",
+        "propensity score",
+        "historical control",
+        "waitlist control",
+        "time-series"
+      ],
+      "weight": 1.9,
+      "notes": "Non-random assignment method must be clearly described"
+    },
+    {
+      "section": "Methods: Assignment Method",
+      "item": "11c",
+      "description": "Inclusion of aspects employed to help minimize potential bias induced due to non-randomization",
+      "keywords": [
+        "propensity score matching",
+        "propensity score",
+        "inverse probability weighting",
+        "instrumental variable",
+        "regression discontinuity",
+        "difference-in-differences",
+        "interrupted time series",
+        "matching",
+        "stratification",
+        "covariate adjustment",
+        "bias reduction",
+        "quasi-experimental method"
+      ],
+      "weight": 2.0,
+      "notes": "CRITICAL: Methods to address confounding in non-randomized designs"
+    },
+    {
+      "section": "Methods: Blinding (Masking)",
+      "item": "12",
+      "description": "Whether or not participants, those administering the interventions, and those assessing the outcomes were blinded to study condition assignment",
+      "keywords": [
+        "blinded",
+        "blinding",
+        "masking",
+        "double-blind",
+        "single-blind",
+        "open-label",
+        "not blinded",
+        "unblinded",
+        "outcome assessors blinded",
+        "participants were aware",
+        "no blinding"
+      ],
+      "weight": 1.6,
+      "notes": "Blinding status particularly important when not randomized"
+    },
+    {
+      "section": "Methods: Statistical Methods",
+      "item": "13a",
+      "description": "Statistical methods used to compare study groups for primary outcome(s)",
+      "keywords": [
+        "statistical analysis",
+        "regression",
+        "logistic regression",
+        "linear regression",
+        "ANCOVA",
+        "mixed model",
+        "GEE",
+        "generalized estimating equations",
+        "multilevel model",
+        "hierarchical model",
+        "adjusted analysis",
+        "multivariable analysis"
+      ],
+      "weight": 1.7,
+      "notes": "Statistical methods must account for non-randomized design"
+    },
+    {
+      "section": "Methods: Statistical Methods",
+      "item": "13b",
+      "description": "Statistical methods used for additional analyses (subgroup analyses and adjusted analyses)",
+      "keywords": [
+        "subgroup analysis",
+        "stratified analysis",
+        "sensitivity analysis",
+        "adjusted for",
+        "controlling for",
+        "covariates",
+        "confounders",
+        "confounder adjustment",
+        "effect modification",
+        "interaction"
+      ],
+      "weight": 1.5,
+      "notes": "Sensitivity and subgroup analyses to test robustness"
+    },
+    {
+      "section": "Results: Participant Flow",
+      "item": "14",
+      "description": "Flow of participants through each stage of the study — enrollment, assignment, allocation, and analysis",
+      "keywords": [
+        "flow diagram",
+        "participant flow",
+        "flowchart",
+        "enrollment",
+        "allocated",
+        "analyzed",
+        "lost to follow-up",
+        "withdrew",
+        "discontinued",
+        "attrition",
+        "retention"
+      ],
+      "weight": 1.7,
+      "notes": "TREND flow diagram with participant numbers at each stage"
+    },
+    {
+      "section": "Results: Baseline Data",
+      "item": "15",
+      "description": "Baseline demographic and clinical characteristics of each group",
+      "keywords": [
+        "baseline characteristics",
+        "table 1",
+        "demographics",
+        "comparison of groups",
+        "balance between groups",
+        "baseline equivalence",
+        "group comparison",
+        "intervention group",
+        "control group",
+        "baseline differences"
+      ],
+      "weight": 1.6,
+      "notes": "Baseline comparisons crucial for non-randomized studies"
+    },
+    {
+      "section": "Results: Baseline Equivalence",
+      "item": "16",
+      "description": "Data on study group equivalence at baseline and statistical methods used to control for baseline differences",
+      "keywords": [
+        "baseline equivalence",
+        "baseline imbalance",
+        "groups were similar",
+        "groups differed",
+        "adjusted for baseline",
+        "propensity score",
+        "standardized difference",
+        "no significant differences at baseline",
+        "comparable at baseline"
+      ],
+      "weight": 1.8,
+      "notes": "Assessment of baseline equivalence is fundamental in non-randomized designs"
+    },
+    {
+      "section": "Results: Outcomes",
+      "item": "17",
+      "description": "For each primary and secondary outcome, a summary of results for each study condition, and the estimated effect size and a confidence interval",
+      "keywords": [
+        "effect size",
+        "odds ratio",
+        "risk ratio",
+        "relative risk",
+        "mean difference",
+        "95% confidence interval",
+        "95% CI",
+        "p-value",
+        "statistical significance",
+        "intervention effect",
+        "treatment effect",
+        "between-group difference"
+      ],
+      "weight": 1.9,
+      "notes": "Effect sizes with confidence intervals for all outcomes"
+    },
+    {
+      "section": "Results: Ancillary Analyses",
+      "item": "18",
+      "description": "Summary of other analyses performed, including subgroup and sensitivity analyses",
+      "keywords": [
+        "subgroup analysis",
+        "sensitivity analysis",
+        "per-protocol",
+        "intention-to-treat",
+        "as-treated",
+        "dose-response",
+        "exploratory analysis",
+        "secondary analysis"
+      ],
+      "weight": 1.3,
+      "notes": "Additional analyses to assess robustness of findings"
+    },
+    {
+      "section": "Results: Adverse Events",
+      "item": "19",
+      "description": "Summary of all important adverse events or unintended effects in each study condition",
+      "keywords": [
+        "adverse events",
+        "adverse effects",
+        "side effects",
+        "unintended effects",
+        "harms",
+        "complications",
+        "safety",
+        "no adverse events",
+        "well tolerated"
+      ],
+      "weight": 1.5,
+      "notes": "Adverse events must be reported for interventional studies"
+    },
+    {
+      "section": "Discussion",
+      "item": "20",
+      "description": "Interpretation of the results, taking into account study hypotheses, sources of potential bias, imprecision of measures, and the dangers associated with multiplicity of analyses and outcomes",
+      "keywords": [
+        "interpretation",
+        "implications",
+        "potential bias",
+        "confounding",
+        "residual confounding",
+        "unmeasured confounders",
+        "selection bias",
+        "information bias",
+        "generalizability",
+        "external validity",
+        "internal validity",
+        "limitations"
+      ],
+      "weight": 1.7,
+      "notes": "Must address confounding and bias due to non-randomization"
+    },
+    {
+      "section": "Discussion",
+      "item": "21",
+      "description": "Discussion of results in relation to non-randomized design, and discussion of potential sources of bias or imprecision. Include barriers to intervention implementation",
+      "keywords": [
+        "non-randomized design",
+        "limitation",
+        "cannot infer causation",
+        "observational",
+        "confounding by indication",
+        "selection bias",
+        "implementation barriers",
+        "scalability",
+        "feasibility",
+        "real-world",
+        "effectiveness vs efficacy"
+      ],
+      "weight": 1.8,
+      "notes": "CRITICAL: Must explicitly discuss limitations of non-randomized design"
+    },
+    {
+      "section": "Discussion",
+      "item": "22",
+      "description": "Generalizability (external validity) of the trial findings",
+      "keywords": [
+        "generalizability",
+        "external validity",
+        "transferability",
+        "applicable to",
+        "other settings",
+        "other populations",
+        "population",
+        "context-dependent"
+      ],
+      "weight": 1.3,
+      "notes": "External validity considerations for non-randomized evidence"
+    }
+  ]
+}

@@ -1,0 +1,560 @@
+{
+  "name": "STARD",
+  "full_name": "Standards for Reporting of Diagnostic Accuracy Studies",
+  "description": "Checklist for diagnostic accuracy studies (STARD 2015)",
+  "version": "2015",
+  "items": [
+    {
+      "section": "Title and Abstract",
+      "item": "1",
+      "description": "Identification as a study of diagnostic accuracy using at least one measure of accuracy",
+      "keywords": [
+        "diagnostic accuracy",
+        "sensitivity and specificity",
+        "diagnostic study",
+        "accuracy of",
+        "diagnostic performance",
+        "diagnostic test evaluation",
+        "diagnostic validation"
+      ],
+      "weight": 1.8,
+      "notes": "Title should clearly identify the study as evaluating diagnostic accuracy"
+    },
+    {
+      "section": "Title and Abstract",
+      "item": "2",
+      "description": "Structured abstract with study design, methods, results, and conclusions",
+      "keywords": [
+        "structured abstract",
+        "background methods results conclusions",
+        "objective",
+        "study design",
+        "main outcome",
+        "diagnostic accuracy",
+        "sensitivity",
+        "specificity"
+      ],
+      "weight": 1.0,
+      "notes": "Abstract should include key accuracy metrics"
+    },
+    {
+      "section": "Introduction",
+      "item": "3",
+      "description": "Scientific and clinical background, including the intended use and clinical role of the index test",
+      "keywords": [
+        "clinical role",
+        "intended use",
+        "screening",
+        "triage",
+        "replacement test",
+        "add-on test",
+        "clinical context",
+        "diagnostic pathway",
+        "clinical need for",
+        "current diagnostic approach"
+      ],
+      "weight": 1.3,
+      "notes": "Should clarify whether the test is for triage, replacement, or add-on"
+    },
+    {
+      "section": "Introduction",
+      "item": "4",
+      "description": "Study objectives and hypotheses",
+      "keywords": [
+        "objective",
+        "aim",
+        "hypothesis",
+        "purpose",
+        "goal of this study",
+        "we aimed to",
+        "we sought to evaluate",
+        "primary objective"
+      ],
+      "weight": 1.0,
+      "notes": "Clear statement of study aims"
+    },
+    {
+      "section": "Methods: Study Design",
+      "item": "5",
+      "description": "Whether data collection was planned before the index test and reference standard were performed (prospective study) or after (retrospective study)",
+      "keywords": [
+        "prospective",
+        "retrospective",
+        "data collection planned",
+        "prospective enrollment",
+        "retrospective analysis",
+        "cross-sectional",
+        "cohort design",
+        "study design"
+      ],
+      "weight": 1.5,
+      "notes": "Prospective vs retrospective design affects bias risk"
+    },
+    {
+      "section": "Methods: Participants",
+      "item": "6",
+      "description": "Eligibility criteria",
+      "keywords": [
+        "eligibility criteria",
+        "inclusion criteria",
+        "exclusion criteria",
+        "eligible patients",
+        "patients were included if",
+        "were excluded",
+        "selection criteria"
+      ],
+      "weight": 1.5,
+      "notes": "Clear eligibility criteria define the study population"
+    },
+    {
+      "section": "Methods: Participants",
+      "item": "7",
+      "description": "On what basis potentially eligible participants were identified",
+      "keywords": [
+        "consecutive patients",
+        "consecutively enrolled",
+        "random sample",
+        "convenience sample",
+        "referred for",
+        "presenting with",
+        "suspected",
+        "clinical suspicion",
+        "presenting symptoms"
+      ],
+      "weight": 1.7,
+      "notes": "Consecutive or random enrollment reduces spectrum bias"
+    },
+    {
+      "section": "Methods: Participants",
+      "item": "8",
+      "description": "Where and when potentially eligible participants were identified (setting, location and dates)",
+      "keywords": [
+        "between",
+        "from",
+        "to",
+        "enrolled between",
+        "study period",
+        "study site",
+        "hospital",
+        "department",
+        "tertiary center",
+        "clinical setting",
+        "recruitment period"
+      ],
+      "weight": 1.2,
+      "notes": "Setting and dates provide context for generalizability"
+    },
+    {
+      "section": "Methods: Test Methods",
+      "item": "9",
+      "description": "Index test, in sufficient detail to allow replication",
+      "keywords": [
+        "index test",
+        "test protocol",
+        "assay",
+        "imaging protocol",
+        "test procedure",
+        "measurement method",
+        "reagent",
+        "kit",
+        "manufacturer",
+        "instrument",
+        "test was performed"
+      ],
+      "weight": 1.8,
+      "notes": "Sufficient detail for test replication is essential"
+    },
+    {
+      "section": "Methods: Test Methods",
+      "item": "10",
+      "description": "Reference standard, in sufficient detail to allow replication",
+      "keywords": [
+        "reference standard",
+        "gold standard",
+        "histopathology",
+        "biopsy",
+        "culture",
+        "surgical confirmation",
+        "clinical follow-up",
+        "composite reference",
+        "confirmatory test",
+        "definitive diagnosis"
+      ],
+      "weight": 1.9,
+      "notes": "The reference standard must be clearly described and appropriate"
+    },
+    {
+      "section": "Methods: Test Methods",
+      "item": "11",
+      "description": "Rationale for choosing the reference standard (if alternatives exist)",
+      "keywords": [
+        "rationale for reference",
+        "best available",
+        "accepted standard",
+        "widely used",
+        "established criterion",
+        "considered the gold standard",
+        "used as reference because"
+      ],
+      "weight": 1.2,
+      "notes": "Justification of the reference standard choice"
+    },
+    {
+      "section": "Methods: Test Methods",
+      "item": "12a",
+      "description": "Definition of and rationale for test positivity cut-offs or result categories of the index test, distinguishing pre-specified from exploratory",
+      "keywords": [
+        "cut-off",
+        "cutoff",
+        "threshold",
+        "pre-specified",
+        "predetermined",
+        "manufacturer recommended",
+        "optimal threshold",
+        "ROC-derived",
+        "exploratory threshold",
+        "Youden index",
+        "positive if"
+      ],
+      "weight": 1.7,
+      "notes": "Pre-specified vs exploratory thresholds affect validity"
+    },
+    {
+      "section": "Methods: Test Methods",
+      "item": "12b",
+      "description": "Definition of and rationale for test positivity cut-offs or result categories of the reference standard, distinguishing pre-specified from exploratory",
+      "keywords": [
+        "reference standard criteria",
+        "diagnostic criteria",
+        "case definition",
+        "positive diagnosis",
+        "confirmed by",
+        "classification criteria",
+        "disease present if"
+      ],
+      "weight": 1.5,
+      "notes": "Clear case definition for the target condition"
+    },
+    {
+      "section": "Methods: Test Methods",
+      "item": "13a",
+      "description": "Whether clinical information and reference standard results were available to the performers/readers of the index test",
+      "keywords": [
+        "blinded",
+        "blinding",
+        "masked",
+        "without knowledge of",
+        "unaware of reference",
+        "independent interpretation",
+        "readers were blinded",
+        "interpreted independently"
+      ],
+      "weight": 1.9,
+      "notes": "Blinding of index test interpretation prevents review bias"
+    },
+    {
+      "section": "Methods: Test Methods",
+      "item": "13b",
+      "description": "Whether clinical information and index test results were available to the assessors of the reference standard",
+      "keywords": [
+        "reference assessors blinded",
+        "pathologist blinded",
+        "without knowledge of index",
+        "independent assessment",
+        "blinded to test results",
+        "reference standard assessed independently"
+      ],
+      "weight": 1.9,
+      "notes": "Blinding of reference standard interpretation prevents bias"
+    },
+    {
+      "section": "Methods: Analysis",
+      "item": "14",
+      "description": "Methods for estimating or comparing measures of diagnostic accuracy",
+      "keywords": [
+        "2x2 table",
+        "two-by-two",
+        "cross-tabulation",
+        "sensitivity",
+        "specificity",
+        "predictive values",
+        "likelihood ratios",
+        "diagnostic odds ratio",
+        "area under the curve",
+        "AUC",
+        "ROC analysis",
+        "receiver operating characteristic"
+      ],
+      "weight": 1.8,
+      "notes": "Statistical methods for accuracy estimation"
+    },
+    {
+      "section": "Methods: Analysis",
+      "item": "15",
+      "description": "How indeterminate index test or reference standard results were handled",
+      "keywords": [
+        "indeterminate",
+        "inconclusive",
+        "uninterpretable",
+        "missing results",
+        "equivocal",
+        "borderline",
+        "failed test",
+        "invalid result",
+        "excluded from analysis"
+      ],
+      "weight": 1.5,
+      "notes": "Handling of indeterminate results affects accuracy estimates"
+    },
+    {
+      "section": "Methods: Analysis",
+      "item": "16",
+      "description": "How missing data on the index test and reference standard were handled",
+      "keywords": [
+        "missing data",
+        "incomplete data",
+        "lost to follow-up",
+        "not available",
+        "imputation",
+        "complete case analysis",
+        "missing values"
+      ],
+      "weight": 1.3,
+      "notes": "Missing data handling strategy"
+    },
+    {
+      "section": "Methods: Analysis",
+      "item": "17",
+      "description": "Any analyses of variability in diagnostic accuracy, distinguishing pre-specified from exploratory",
+      "keywords": [
+        "subgroup analysis",
+        "stratified analysis",
+        "variability in accuracy",
+        "heterogeneity",
+        "pre-specified subgroup",
+        "exploratory analysis",
+        "disease severity",
+        "by sex",
+        "by age group"
+      ],
+      "weight": 1.2,
+      "notes": "Subgroup analyses and sources of variation"
+    },
+    {
+      "section": "Methods: Analysis",
+      "item": "18",
+      "description": "Intended sample size and how it was determined",
+      "keywords": [
+        "sample size",
+        "power calculation",
+        "sample size calculation",
+        "precision of estimate",
+        "expected sensitivity",
+        "expected prevalence",
+        "confidence interval width",
+        "number needed"
+      ],
+      "weight": 1.5,
+      "notes": "Sample size justification for diagnostic accuracy studies"
+    },
+    {
+      "section": "Results: Participants",
+      "item": "19",
+      "description": "Flow of participants, using a diagram",
+      "keywords": [
+        "flow diagram",
+        "flowchart",
+        "participant flow",
+        "STARD flow",
+        "enrollment",
+        "eligible",
+        "excluded",
+        "analyzed",
+        "did not receive index test",
+        "did not receive reference standard"
+      ],
+      "weight": 1.8,
+      "notes": "STARD flow diagram showing participant flow through the study"
+    },
+    {
+      "section": "Results: Participants",
+      "item": "20",
+      "description": "Baseline demographic and clinical characteristics of participants",
+      "keywords": [
+        "baseline characteristics",
+        "table 1",
+        "demographics",
+        "age",
+        "sex",
+        "gender",
+        "comorbidities",
+        "disease severity",
+        "symptom duration",
+        "clinical presentation"
+      ],
+      "weight": 1.3,
+      "notes": "Demographics define the spectrum of tested patients"
+    },
+    {
+      "section": "Results: Participants",
+      "item": "21",
+      "description": "Distribution of severity of disease in those with the target condition",
+      "keywords": [
+        "disease severity",
+        "stage distribution",
+        "spectrum of disease",
+        "mild moderate severe",
+        "early-stage",
+        "advanced",
+        "grade",
+        "severity spectrum"
+      ],
+      "weight": 1.5,
+      "notes": "Disease spectrum affects diagnostic accuracy (spectrum bias)"
+    },
+    {
+      "section": "Results: Test Results",
+      "item": "22",
+      "description": "Cross tabulation of the index test results (or their distribution) by the results of the reference standard",
+      "keywords": [
+        "2x2 table",
+        "cross-tabulation",
+        "true positive",
+        "true negative",
+        "false positive",
+        "false negative",
+        "contingency table",
+        "TP",
+        "TN",
+        "FP",
+        "FN"
+      ],
+      "weight": 1.9,
+      "notes": "Core data table for calculating accuracy metrics"
+    },
+    {
+      "section": "Results: Test Results",
+      "item": "23",
+      "description": "Estimates of diagnostic accuracy and their precision (such as 95% confidence intervals)",
+      "keywords": [
+        "sensitivity",
+        "specificity",
+        "positive predictive value",
+        "PPV",
+        "negative predictive value",
+        "NPV",
+        "likelihood ratio",
+        "AUC",
+        "95% confidence interval",
+        "95% CI",
+        "diagnostic accuracy",
+        "area under"
+      ],
+      "weight": 2.0,
+      "notes": "Primary outcome measures with confidence intervals"
+    },
+    {
+      "section": "Results: Test Results",
+      "item": "24",
+      "description": "Any adverse events from performing the index test or the reference standard",
+      "keywords": [
+        "adverse events",
+        "complications",
+        "adverse effects",
+        "side effects",
+        "no adverse events",
+        "well tolerated",
+        "harms",
+        "safety"
+      ],
+      "weight": 1.2,
+      "notes": "Test-related harms should be reported"
+    },
+    {
+      "section": "Discussion",
+      "item": "25",
+      "description": "Study limitations, including sources of potential bias, statistical uncertainty, and generalizability",
+      "keywords": [
+        "limitations",
+        "bias",
+        "spectrum bias",
+        "verification bias",
+        "selection bias",
+        "generalizability",
+        "external validity",
+        "statistical uncertainty",
+        "single-center"
+      ],
+      "weight": 1.5,
+      "notes": "Key diagnostic accuracy biases: spectrum, verification, incorporation, review bias"
+    },
+    {
+      "section": "Discussion",
+      "item": "26",
+      "description": "Implications for practice, including the intended use and clinical role of the index test",
+      "keywords": [
+        "clinical implications",
+        "clinical utility",
+        "implications for practice",
+        "clinical decision-making",
+        "screening program",
+        "diagnostic algorithm",
+        "clinical pathway",
+        "test adoption"
+      ],
+      "weight": 1.2,
+      "notes": "How findings might be applied in clinical practice"
+    },
+    {
+      "section": "Other Information",
+      "item": "27",
+      "description": "Registration number and name of registry",
+      "keywords": [
+        "registered",
+        "registration number",
+        "PROSPERO",
+        "ClinicalTrials.gov",
+        "NCT",
+        "trial registration",
+        "study registration",
+        "protocol registration"
+      ],
+      "weight": 1.3,
+      "notes": "Study registration reduces selective reporting"
+    },
+    {
+      "section": "Other Information",
+      "item": "28",
+      "description": "Where the full study protocol can be accessed",
+      "keywords": [
+        "study protocol",
+        "protocol available",
+        "full protocol",
+        "published protocol",
+        "supplementary protocol",
+        "protocol can be accessed"
+      ],
+      "weight": 1.0,
+      "notes": "Protocol availability enables assessment of selective reporting"
+    },
+    {
+      "section": "Other Information",
+      "item": "29",
+      "description": "Sources of funding and other support; role of funders",
+      "keywords": [
+        "funding",
+        "funded by",
+        "grant",
+        "financial support",
+        "role of funder",
+        "sponsor",
+        "no funding",
+        "supported by",
+        "conflicts of interest",
+        "competing interests"
+      ],
+      "weight": 1.2,
+      "notes": "Funding sources and their role in the study"
+    }
+  ]
+}

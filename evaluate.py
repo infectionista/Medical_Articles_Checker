@@ -26,6 +26,8 @@ import json
 import sys
 import os
 import argparse
+import subprocess
+import re as _re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
@@ -252,19 +254,90 @@ class Evaluator:
         )
 
     def _read_article(self, path: str) -> str:
-        """Read article text from PDF or TXT."""
-        if path.lower().endswith('.pdf'):
-            try:
-                import PyPDF2
-                with open(path, 'rb') as f:
-                    reader = PyPDF2.PdfReader(f)
-                    return '\n'.join(page.extract_text() for page in reader.pages)
-            except Exception as e:
-                print(f"  Error reading PDF: {e}")
-                return ""
-        else:
+        """Read article text. Auto-converts PDF → .md on first access.
+
+        Strategy:
+          1. If .md exists alongside the PDF → read it (instant)
+          2. If no .md → extract PDF in a subprocess with timeout,
+             save .md for next time, return text
+          3. If PDF hangs or fails → return empty string
+        """
+        if not path.lower().endswith('.pdf'):
             with open(path, 'r', encoding='utf-8', errors='ignore') as f:
                 return f.read()
+
+        md_path = path.rsplit('.', 1)[0] + '.md'
+
+        # 1. Cached .md exists
+        if os.path.exists(md_path):
+            with open(md_path, 'r', encoding='utf-8', errors='ignore') as f:
+                text = f.read()
+            if len(text) > 500:
+                return text
+
+        # 2. Auto-convert PDF → .md via subprocess (timeout 25s)
+        if not os.path.exists(path):
+            print(f"  File not found: {path}")
+            return ""
+
+        print(f"    Auto-converting PDF → .md...", end=' ', flush=True)
+        text = self._extract_pdf_subprocess(path)
+        if text and len(text) > 500:
+            # Clean up PDF artifacts
+            text = _re.sub(r'-\s*\n\s*', '', text)
+            text = _re.sub(r'\n{3,}', '\n\n', text)
+            # Save .md for next time
+            try:
+                with open(md_path, 'w', encoding='utf-8') as f:
+                    f.write(text)
+                print(f"saved ({len(text):,} chars)")
+            except Exception:
+                print(f"ok ({len(text):,} chars, not cached)")
+            return text
+
+        print("FAILED")
+        return ""
+
+    @staticmethod
+    def _extract_pdf_subprocess(pdf_path: str, timeout: int = 25) -> str:
+        """Extract text from PDF in a subprocess (killable on timeout).
+        Tries PyPDF2 first, then pdfplumber."""
+        for method in ['pypdf2', 'pdfplumber']:
+            if method == 'pypdf2':
+                script = f'''
+import sys, PyPDF2
+with open({pdf_path!r}, "rb") as f:
+    r = PyPDF2.PdfReader(f)
+    for p in r.pages:
+        t = p.extract_text()
+        if t:
+            sys.stdout.buffer.write(t.encode("utf-8", errors="ignore"))
+            sys.stdout.buffer.write(b"\\n\\n")
+'''
+            else:
+                script = f'''
+import sys, pdfplumber
+with pdfplumber.open({pdf_path!r}) as pdf:
+    for p in pdf.pages:
+        t = p.extract_text()
+        if t:
+            sys.stdout.buffer.write(t.encode("utf-8", errors="ignore"))
+            sys.stdout.buffer.write(b"\\n\\n")
+'''
+            try:
+                result = subprocess.run(
+                    [sys.executable, '-c', script],
+                    capture_output=True, timeout=timeout,
+                )
+                if result.returncode == 0:
+                    text = result.stdout.decode('utf-8', errors='ignore')
+                    if len(text) > 500:
+                        return text
+            except subprocess.TimeoutExpired:
+                continue
+            except Exception:
+                continue
+        return ""
 
     def _annotation_only_eval(self, annotation: dict) -> ArticleEvaluation:
         """Create a stub evaluation when article file is not available."""

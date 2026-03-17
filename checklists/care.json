@@ -1,0 +1,488 @@
+{
+  "name": "CARE",
+  "full_name": "CAse REport Guidelines",
+  "description": "Checklist for case reports (CARE 2013, updated 2017)",
+  "version": "2017",
+  "items": [
+    {
+      "section": "Title",
+      "item": "1",
+      "description": "The words 'case report' in the title along with the area of focus",
+      "keywords": [
+        "case report",
+        "case of",
+        "a rare case",
+        "an unusual case",
+        "a unique case",
+        "novel case",
+        "first reported case",
+        "we report a case"
+      ],
+      "weight": 1.8,
+      "notes": "Title should clearly identify as a case report"
+    },
+    {
+      "section": "Key Words",
+      "item": "2",
+      "description": "2 to 5 key words that identify diagnoses or interventions in this case report",
+      "keywords": [
+        "keywords",
+        "key words",
+        "MeSH terms",
+        "index terms"
+      ],
+      "weight": 0.8,
+      "notes": "Standard keyword section"
+    },
+    {
+      "section": "Abstract",
+      "item": "3",
+      "description": "Structured abstract including introduction, case presentation, conclusions",
+      "keywords": [
+        "structured abstract",
+        "introduction",
+        "case presentation",
+        "conclusions",
+        "background",
+        "case summary",
+        "abstract"
+      ],
+      "weight": 1.0,
+      "notes": "Structured abstract with key case elements"
+    },
+    {
+      "section": "Introduction",
+      "item": "4",
+      "description": "Brief background summary of this case referencing the relevant medical literature",
+      "keywords": [
+        "background",
+        "rationale",
+        "literature review",
+        "previously reported",
+        "rare condition",
+        "novel presentation",
+        "clinical significance",
+        "educational value",
+        "unique aspect"
+      ],
+      "weight": 1.2,
+      "notes": "Why this case is worth reporting"
+    },
+    {
+      "section": "Patient Information",
+      "item": "5a",
+      "description": "De-identified patient demographic information (age, sex, ethnicity, occupation)",
+      "keywords": [
+        "year-old",
+        "male",
+        "female",
+        "patient",
+        "woman",
+        "man",
+        "boy",
+        "girl",
+        "child",
+        "infant",
+        "presented to",
+        "was admitted",
+        "referred to"
+      ],
+      "weight": 1.5,
+      "notes": "Patient demographics without identifying information"
+    },
+    {
+      "section": "Patient Information",
+      "item": "5b",
+      "description": "Main symptoms of the patient (chief complaints)",
+      "keywords": [
+        "presented with",
+        "chief complaint",
+        "presenting complaint",
+        "main symptoms",
+        "complained of",
+        "reported",
+        "history of",
+        "onset of",
+        "symptoms included"
+      ],
+      "weight": 1.7,
+      "notes": "Presenting symptoms drive the diagnostic workup narrative"
+    },
+    {
+      "section": "Patient Information",
+      "item": "5c",
+      "description": "Medical, family, and psychosocial history including relevant genetic information, relevant comorbidities, and relevant interventions",
+      "keywords": [
+        "medical history",
+        "past medical history",
+        "family history",
+        "social history",
+        "comorbidities",
+        "previous treatment",
+        "prior surgery",
+        "medication history",
+        "allergies",
+        "psychosocial",
+        "smoking history",
+        "alcohol"
+      ],
+      "weight": 1.4,
+      "notes": "Complete medical context including genetic and psychosocial history"
+    },
+    {
+      "section": "Clinical Findings",
+      "item": "6",
+      "description": "Relevant physical examination findings",
+      "keywords": [
+        "physical examination",
+        "on examination",
+        "clinical findings",
+        "vital signs",
+        "blood pressure",
+        "heart rate",
+        "temperature",
+        "examination revealed",
+        "palpation",
+        "auscultation",
+        "inspection",
+        "neurological examination"
+      ],
+      "weight": 1.7,
+      "notes": "Physical examination findings at presentation"
+    },
+    {
+      "section": "Timeline",
+      "item": "7",
+      "description": "Historical and current information from this episode of care organized as a timeline",
+      "keywords": [
+        "timeline",
+        "chronological",
+        "day 1",
+        "day of admission",
+        "hospital day",
+        "postoperative day",
+        "on the",
+        "after",
+        "subsequently",
+        "following day",
+        "weeks later",
+        "months later",
+        "course of illness",
+        "temporal sequence"
+      ],
+      "weight": 1.6,
+      "notes": "Chronological sequence of events in the clinical course"
+    },
+    {
+      "section": "Diagnostic Assessment",
+      "item": "8a",
+      "description": "Diagnostic methods (PE, laboratory testing, imaging, questionnaires)",
+      "keywords": [
+        "laboratory",
+        "blood tests",
+        "imaging",
+        "CT scan",
+        "MRI",
+        "X-ray",
+        "ultrasound",
+        "echocardiography",
+        "biopsy",
+        "histopathology",
+        "culture",
+        "PCR",
+        "serology",
+        "electrocardiogram",
+        "EEG",
+        "endoscopy"
+      ],
+      "weight": 1.8,
+      "notes": "All diagnostic tests performed"
+    },
+    {
+      "section": "Diagnostic Assessment",
+      "item": "8b",
+      "description": "Diagnostic reasoning including other diagnoses considered (differential diagnosis)",
+      "keywords": [
+        "differential diagnosis",
+        "differentials included",
+        "was suspected",
+        "could not be excluded",
+        "ruled out",
+        "diagnostic workup",
+        "consistent with",
+        "suggestive of",
+        "confirmed diagnosis",
+        "final diagnosis",
+        "working diagnosis"
+      ],
+      "weight": 1.7,
+      "notes": "Clinical reasoning and differential diagnosis process"
+    },
+    {
+      "section": "Diagnostic Assessment",
+      "item": "8c",
+      "description": "Prognostic characteristics (e.g., staging) where applicable",
+      "keywords": [
+        "staging",
+        "prognosis",
+        "prognostic factors",
+        "tumor grade",
+        "TNM",
+        "AJCC stage",
+        "risk stratification",
+        "severity score",
+        "disease stage",
+        "Gleason score"
+      ],
+      "weight": 1.3,
+      "notes": "Staging and prognostic assessment when relevant"
+    },
+    {
+      "section": "Therapeutic Intervention",
+      "item": "9a",
+      "description": "Types of intervention (pharmacological, surgical, preventive, self-care)",
+      "keywords": [
+        "treatment",
+        "therapy",
+        "medication",
+        "surgery",
+        "surgical",
+        "intervention",
+        "administered",
+        "prescribed",
+        "chemotherapy",
+        "radiotherapy",
+        "antibiotics",
+        "dose",
+        "dosage",
+        "regimen",
+        "procedure"
+      ],
+      "weight": 1.8,
+      "notes": "All interventions performed"
+    },
+    {
+      "section": "Therapeutic Intervention",
+      "item": "9b",
+      "description": "Administration of intervention (dosing, strength, duration)",
+      "keywords": [
+        "mg",
+        "dose",
+        "twice daily",
+        "intravenous",
+        "oral",
+        "for days",
+        "for weeks",
+        "treatment duration",
+        "course of treatment",
+        "total dose",
+        "cycles of",
+        "maintenance therapy"
+      ],
+      "weight": 1.5,
+      "notes": "Specific dosing and duration details"
+    },
+    {
+      "section": "Therapeutic Intervention",
+      "item": "9c",
+      "description": "Changes in intervention with rationale",
+      "keywords": [
+        "changed to",
+        "switched to",
+        "dose adjusted",
+        "escalated",
+        "de-escalated",
+        "discontinued",
+        "substituted",
+        "treatment modification",
+        "due to",
+        "because of",
+        "in response to"
+      ],
+      "weight": 1.3,
+      "notes": "Treatment modifications and clinical reasoning behind changes"
+    },
+    {
+      "section": "Follow-up and Outcomes",
+      "item": "10a",
+      "description": "Clinician-assessed and patient-assessed outcomes",
+      "keywords": [
+        "outcome",
+        "recovery",
+        "resolution",
+        "improvement",
+        "deterioration",
+        "remission",
+        "stable",
+        "worsened",
+        "discharged",
+        "clinical response",
+        "treatment response",
+        "patient-reported"
+      ],
+      "weight": 1.8,
+      "notes": "Both clinician and patient perspectives on outcomes"
+    },
+    {
+      "section": "Follow-up and Outcomes",
+      "item": "10b",
+      "description": "Important follow-up test results",
+      "keywords": [
+        "follow-up",
+        "repeat imaging",
+        "control scan",
+        "follow-up labs",
+        "at follow-up",
+        "repeat biopsy",
+        "surveillance",
+        "monitoring",
+        "routine follow-up"
+      ],
+      "weight": 1.5,
+      "notes": "Follow-up diagnostic results"
+    },
+    {
+      "section": "Follow-up and Outcomes",
+      "item": "10c",
+      "description": "Intervention adherence and tolerability",
+      "keywords": [
+        "adherence",
+        "compliance",
+        "tolerated",
+        "well tolerated",
+        "side effects",
+        "adverse effects",
+        "complications",
+        "adverse events",
+        "intolerance",
+        "discontinued due to"
+      ],
+      "weight": 1.3,
+      "notes": "Treatment adherence and adverse effects"
+    },
+    {
+      "section": "Follow-up and Outcomes",
+      "item": "10d",
+      "description": "Adverse and unanticipated events",
+      "keywords": [
+        "complication",
+        "unexpected",
+        "unanticipated",
+        "adverse event",
+        "postoperative complication",
+        "readmission",
+        "reoperation",
+        "treatment failure",
+        "relapse",
+        "recurrence"
+      ],
+      "weight": 1.5,
+      "notes": "Reporting adverse events is critical even in case reports"
+    },
+    {
+      "section": "Discussion",
+      "item": "11a",
+      "description": "Strengths and limitations in the management of this case",
+      "keywords": [
+        "strengths",
+        "limitations",
+        "limitation of this case",
+        "we acknowledge",
+        "could not",
+        "was not performed",
+        "single case",
+        "cannot generalize"
+      ],
+      "weight": 1.3,
+      "notes": "Honest assessment of case management limitations"
+    },
+    {
+      "section": "Discussion",
+      "item": "11b",
+      "description": "Discussion of the relevant medical literature with references",
+      "keywords": [
+        "literature review",
+        "previously reported",
+        "similar cases",
+        "in the literature",
+        "has been described",
+        "published cases",
+        "review of literature",
+        "other authors have",
+        "consistent with previous"
+      ],
+      "weight": 1.4,
+      "notes": "Contextualizing the case within existing literature"
+    },
+    {
+      "section": "Discussion",
+      "item": "11c",
+      "description": "The rationale for conclusions (including assessment of possible causes)",
+      "keywords": [
+        "we conclude",
+        "this case illustrates",
+        "this case demonstrates",
+        "possible mechanism",
+        "likely explanation",
+        "may be attributed to",
+        "pathophysiology",
+        "clinical significance"
+      ],
+      "weight": 1.2,
+      "notes": "Causal reasoning and lessons learned"
+    },
+    {
+      "section": "Discussion",
+      "item": "11d",
+      "description": "The main 'take-away' lessons from this case report",
+      "keywords": [
+        "take-away",
+        "lesson",
+        "learning points",
+        "clinical pearl",
+        "key message",
+        "clinicians should",
+        "awareness",
+        "should be considered",
+        "important to recognize"
+      ],
+      "weight": 1.3,
+      "notes": "Educational value of the case"
+    },
+    {
+      "section": "Patient Perspective",
+      "item": "12",
+      "description": "The patient should share their perspective on the treatments they received",
+      "keywords": [
+        "patient perspective",
+        "patient reported",
+        "patient stated",
+        "patient expressed",
+        "in the patient's words",
+        "patient satisfaction",
+        "quality of life",
+        "patient experience"
+      ],
+      "weight": 1.1,
+      "notes": "Patient perspective is encouraged but not always available"
+    },
+    {
+      "section": "Informed Consent",
+      "item": "13",
+      "description": "The patient should provide informed consent for this publication",
+      "keywords": [
+        "informed consent",
+        "consent was obtained",
+        "written consent",
+        "patient consented",
+        "consent for publication",
+        "consent to publish",
+        "patient agreed",
+        "verbal consent",
+        "next of kin consent"
+      ],
+      "weight": 2.0,
+      "notes": "CRITICAL: Informed consent for publication is mandatory for case reports"
+    }
+  ]
+}

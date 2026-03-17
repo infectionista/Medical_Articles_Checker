@@ -26,11 +26,21 @@ from dataclasses import dataclass, field
 # Auto-load .env file if present (keeps API key out of code)
 _env_path = Path(__file__).resolve().parent / '.env'
 if _env_path.exists():
-    for line in _env_path.read_text().splitlines():
+    # Read with utf-8-sig to auto-strip BOM if present
+    for line in _env_path.read_text(encoding='utf-8-sig').splitlines():
         line = line.strip()
         if line and not line.startswith('#') and '=' in line:
             key, _, value = line.partition('=')
-            os.environ.setdefault(key.strip(), value.strip())
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")  # Remove quotes
+            # Sanitize: keep only printable ASCII (0x20-0x7E)
+            # This strips invisible Unicode (zero-width spaces, BOM, etc.)
+            # that break Python http.client's latin-1 header encoding
+            value = ''.join(c for c in value if 32 <= ord(c) <= 126)
+            # Always override: .env file takes priority over system env
+            # (setdefault would silently ignore .env if a stale/wrong
+            # value was already exported in the shell)
+            os.environ[key] = value
 
 try:
     from sklearn.feature_extraction.text import TfidfVectorizer
@@ -188,11 +198,87 @@ NEGATIVE_PATTERNS = [
     r'(?i)\bno\s+{kw}\b',
     r'(?i)\bnot\s+(?:\w+\s+){{0,2}}{kw}',
     r'(?i)\bwithout\s+{kw}',
-    r'(?i)\b{kw}\s+was\s+not\s+(?:done|performed|used|applied|reported)',
-    r'(?i)\b{kw}\s+(?:were|was)\s+not\s+(?:available|possible)',
-    r'(?i)\black(?:ed|ing)?\s+(?:of\s+)?{kw}',
+    r'(?i)\b{kw}\s+was\s+not\s+(?:done|performed|used|applied|reported|conducted|obtained|provided)',
+    r'(?i)\b{kw}\s+(?:were|was)\s+not\s+(?:available|possible|required|sought|described|mentioned)',
+    r'(?i)\black(?:ed|ing)?\s+(?:of\s+)?(?:any\s+)?{kw}',
     r'(?i)\babsence\s+of\s+{kw}',
+    r'(?i)\bno\s+(?:formal|explicit|documented|clear)\s+{kw}',
+    r'(?i)\b{kw}\s+(?:is|are|was|were)\s+not\s+(?:clearly\s+)?(?:stated|specified|reported|described|addressed)',
+    r'(?i)\bfailed\s+to\s+(?:report|describe|mention|specify|provide|document)\s+{kw}',
+    r'(?i)\bdid\s+not\s+(?:report|describe|mention|specify|provide|address|include)\s+{kw}',
+    r'(?i)\bomit(?:ted|s)?\s+{kw}',
 ]
+
+# ---------------------------------------------------------------------------
+# Critical methodological elements that retracted/fraudulent papers often omit.
+# These are checked as "mandatory lacunae" — if absent, the system flags them
+# with higher severity. Used by _check_critical_lacunae().
+# ---------------------------------------------------------------------------
+CRITICAL_LACUNAE = {
+    'CONSORT': [
+        ('ethics approval', [
+            r'(?i)\b(?:ethics?\s+(?:committee|board|approval|review)|IRB\s+approv|'
+            r'institutional\s+review\s+board|(?:local|regional)\s+ethics)',
+        ]),
+        ('trial registration', [
+            r'(?i)\b(?:NCT\d{5,}|ISRCTN\d+|ACTRN\d+|clinicaltrials\.gov|'
+            r'trial\s+regist(?:ration|ered|ry))',
+        ]),
+        ('informed consent', [
+            r'(?i)\b(?:informed\s+consent|written\s+consent|consent\s+(?:was\s+)?obtained|'
+            r'participants?\s+(?:provided|gave)\s+(?:written\s+)?consent)',
+        ]),
+    ],
+    'STROBE': [
+        ('ethics approval', [
+            r'(?i)\b(?:ethics?\s+(?:committee|board|approval|review)|IRB\s+approv|'
+            r'institutional\s+review\s+board)',
+        ]),
+        ('informed consent', [
+            r'(?i)\b(?:informed\s+consent|written\s+consent|consent\s+(?:was\s+)?obtained)',
+        ]),
+    ],
+    'JBI_CASE_SERIES': [
+        ('ethics approval', [
+            r'(?i)\b(?:ethics?\s+(?:committee|board|approval)|IRB\s+approv)',
+        ]),
+        ('informed consent', [
+            r'(?i)\b(?:informed\s+consent|patient\s+consent|consent\s+(?:was\s+)?obtained)',
+        ]),
+    ],
+    'STARD': [
+        ('ethics approval', [
+            r'(?i)\b(?:ethics?\s+(?:committee|board|approval|review)|IRB\s+approv|'
+            r'institutional\s+review\s+board)',
+        ]),
+        ('informed consent', [
+            r'(?i)\b(?:informed\s+consent|written\s+consent|consent\s+(?:was\s+)?obtained)',
+        ]),
+        ('study registration', [
+            r'(?i)\b(?:registered|PROSPERO|ClinicalTrials\.gov|NCT\d{5,}|'
+            r'study\s+regist(?:ration|ered|ry))',
+        ]),
+    ],
+    'CARE': [
+        ('informed consent', [
+            r'(?i)\b(?:informed\s+consent|consent\s+(?:was\s+)?obtained|'
+            r'consent\s+for\s+publication|patient\s+consent(?:ed)?|'
+            r'written\s+consent)',
+        ]),
+        ('ethics approval', [
+            r'(?i)\b(?:ethics?\s+(?:committee|board|approval)|IRB\s+approv)',
+        ]),
+    ],
+    'TREND': [
+        ('ethics approval', [
+            r'(?i)\b(?:ethics?\s+(?:committee|board|approval|review)|IRB\s+approv|'
+            r'institutional\s+review\s+board)',
+        ]),
+        ('informed consent', [
+            r'(?i)\b(?:informed\s+consent|written\s+consent|consent\s+(?:was\s+)?obtained)',
+        ]),
+    ],
+}
 
 
 # ---------------------------------------------------------------------------
@@ -266,40 +352,57 @@ class EnhancedChecker:
             score = self._evaluate_item(item_def, sections, article_text)
             item_scores.append(score)
 
-        # --- Phase 3 (optional): LLM fallback for remaining "absent" items ---
-        # Only runs if ANTHROPIC_API_KEY is set and anthropic library installed
+        # --- Phase 3 (optional): LLM smart fallback ---
+        # Only triggers when Phase 1+2 gave POOR results (>50% items absent).
+        # This avoids expensive API calls for articles that already score well.
         absent_items = [
             (i, item_def) for i, (score, item_def)
             in enumerate(zip(item_scores, checklist['items']))
             if score.verdict == 'absent'
         ]
-        if absent_items and HAS_ANTHROPIC:
-            items_to_check = [item_def for _, item_def in absent_items]
-            llm_results = self._llm_evaluate_items(
-                items_to_check, article_text, checklist_name
+        absent_ratio = len(absent_items) / len(item_scores) if item_scores else 0
+
+        if absent_items and absent_ratio > 0.50:
+            api_key = os.environ.get('ANTHROPIC_API_KEY', '')
+            if api_key:
+                logger.info(
+                    "Phase 3 LLM: %d/%d items absent (%.0f%%) — calling Haiku",
+                    len(absent_items), len(item_scores), absent_ratio * 100,
+                )
+                items_to_check = [item_def for _, item_def in absent_items]
+                llm_results = self._llm_evaluate_items(
+                    items_to_check, article_text, checklist_name
+                )
+                for idx, item_def in absent_items:
+                    item_id = item_def['item']
+                    if item_id in llm_results:
+                        is_present, evidence = llm_results[item_id]
+                        if is_present:
+                            old = item_scores[idx]
+                            item_scores[idx] = ItemScore(
+                                item_id=old.item_id,
+                                section=old.section,
+                                description=old.description,
+                                confidence=0.55,
+                                verdict='partial',
+                                matched_keywords=old.matched_keywords,
+                                matched_in_sections=old.matched_in_sections + ['LLM'],
+                                total_keywords=old.total_keywords,
+                                keyword_match_ratio=old.keyword_match_ratio,
+                                section_match=old.section_match,
+                                weight=old.weight,
+                                evidence_snippets=(
+                                    old.evidence_snippets + [f"[LLM] {evidence}"]
+                                )[:4],
+                            )
+
+        # --- Critical lacunae detection (ethics, consent, registration) ---
+        critical_lacunae = self._check_critical_lacunae(article_text, checklist_name)
+        if critical_lacunae:
+            logger.info(
+                "Critical lacunae detected: %s",
+                ', '.join(critical_lacunae),
             )
-            for idx, item_def in absent_items:
-                item_id = item_def['item']
-                if item_id in llm_results:
-                    is_present, evidence = llm_results[item_id]
-                    if is_present:
-                        old = item_scores[idx]
-                        item_scores[idx] = ItemScore(
-                            item_id=old.item_id,
-                            section=old.section,
-                            description=old.description,
-                            confidence=0.55,  # LLM-detected: moderate confidence
-                            verdict='partial',
-                            matched_keywords=old.matched_keywords,
-                            matched_in_sections=old.matched_in_sections + ['LLM'],
-                            total_keywords=old.total_keywords,
-                            keyword_match_ratio=old.keyword_match_ratio,
-                            section_match=old.section_match,
-                            weight=old.weight,
-                            evidence_snippets=(
-                                old.evidence_snippets + [f"[LLM] {evidence}"]
-                            )[:4],
-                        )
 
         # Aggregate scores
         total_weight = sum(s.weight for s in item_scores)
@@ -547,6 +650,36 @@ class EnhancedChecker:
                     continue
         return False
 
+    def _check_critical_lacunae(
+        self, article_text: str, checklist_name: str,
+    ) -> List[str]:
+        """
+        Detect critical methodological omissions (lacunae).
+
+        Retracted/fraudulent papers often omit ethics approval, trial
+        registration, and informed consent — or replace them with vague
+        wording. This method scans for the PRESENCE of these mandatory
+        elements and returns a list of those that are MISSING.
+
+        Returns:
+            List of lacuna labels (e.g., ['ethics approval', 'informed consent'])
+        """
+        lacunae_defs = CRITICAL_LACUNAE.get(checklist_name, [])
+        if not lacunae_defs:
+            return []
+
+        missing = []
+        for label, patterns in lacunae_defs:
+            found = False
+            for pat in patterns:
+                if re.search(pat, article_text):
+                    found = True
+                    break
+            if not found:
+                missing.append(label)
+
+        return missing
+
     # ----- semantic matching -----
 
     def _semantic_match(
@@ -641,6 +774,9 @@ class EnhancedChecker:
         This is Phase 3 (optional): called only when an API key is configured
         and items remain ambiguous after keyword + semantic matching.
 
+        Uses raw HTTP (urllib) instead of the anthropic SDK to avoid
+        encoding issues on macOS and other platforms.
+
         Args:
             items_to_check: list of item defs with 'item' and 'description'
             article_text: the full article text
@@ -649,11 +785,6 @@ class EnhancedChecker:
         Returns:
             Dict mapping item_id -> (present: bool, evidence: str)
         """
-        if not HAS_ANTHROPIC:
-            logger.debug("anthropic library not available; skipping LLM phase")
-            return {}
-
-        import os
         api_key = os.environ.get('ANTHROPIC_API_KEY', '')
         if not api_key:
             logger.debug("No ANTHROPIC_API_KEY set; skipping LLM phase")
@@ -665,36 +796,148 @@ class EnhancedChecker:
             for it in items_to_check
         )
 
-        # Truncate article to fit context window (Haiku: ~200k tokens)
+        # Clean article text: remove non-UTF8 and problematic characters
+        article_text_clean = article_text.encode('utf-8', errors='ignore').decode('utf-8')
+        article_text_clean = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', ' ', article_text_clean)
+
+        # Truncate to fit context window (Haiku: ~200k tokens)
         max_chars = 80_000
-        if len(article_text) > max_chars:
-            article_text = article_text[:max_chars] + '\n[...truncated...]'
+        if len(article_text_clean) > max_chars:
+            article_text_clean = article_text_clean[:max_chars] + '\n[...truncated...]'
 
         prompt = (
-            f"You are evaluating a medical research article against the "
+            "You are evaluating a medical research article against the "
             f"{checklist_name} reporting checklist.\n\n"
-            f"For each item below, determine if the article adequately reports "
-            f"that element. Respond in JSON format: a dict where each key is "
-            f"the item ID and the value is an object with 'present' (boolean) "
-            f"and 'evidence' (brief quote or explanation, max 100 chars).\n\n"
+            "For each item below, determine if the article adequately reports "
+            "that element. Be strict: only mark 'present' if the article "
+            "explicitly and clearly addresses this item. If unclear or only "
+            "tangentially mentioned, mark as false.\n\n"
+            "Respond ONLY with valid JSON: a dict where each key is "
+            "the item ID and the value is an object with 'present' (boolean) "
+            "and 'evidence' (brief quote or explanation, max 100 chars).\n\n"
             f"Items to evaluate:\n{items_text}\n\n"
-            f"Article text:\n{article_text}"
+            f"Article text:\n{article_text_clean}"
         )
 
         try:
-            client = anthropic.Anthropic(api_key=api_key)
-            response = client.messages.create(
-                model='claude-haiku-4-5-20251001',
-                max_tokens=2048,
-                messages=[{'role': 'user', 'content': prompt}],
+            logger.info("LLM Phase 3: evaluating %d items via raw HTTP...", len(items_to_check))
+
+            import subprocess, sys, tempfile
+
+            # Write prompt to a temp file (avoids encoding issues entirely)
+            prompt_safe = prompt.encode('utf-8', errors='ignore').decode('utf-8')
+            prompt_safe = re.sub(r'[^\x09\x0a\x0d\x20-\x7e\x80-\uffff]', ' ', prompt_safe)
+
+            with tempfile.NamedTemporaryFile(
+                mode='w', suffix='.txt', encoding='utf-8', delete=False
+            ) as tf:
+                tf.write(prompt_safe)
+                prompt_file = tf.name
+
+            # Write a standalone Python script that uses urllib (no SDK needed)
+            # This avoids all anthropic SDK encoding/proxy issues
+            script_content = '''
+import json, sys, os, ssl
+
+# Read prompt from file
+with open(sys.argv[1], "r", encoding="utf-8") as f:
+    prompt_text = f.read()
+
+# Read API key from env
+api_key_raw = os.environ.get("ANTHROPIC_API_KEY", "")
+
+# Diagnostic: show key state before/after sanitization
+raw_len = len(api_key_raw)
+non_ascii = [f"U+{ord(c):04X}" for c in api_key_raw if ord(c) > 127]
+
+# Strip invisible/non-ASCII characters that break HTTP latin-1 headers
+api_key = "".join(c for c in api_key_raw if 32 <= ord(c) <= 126)
+
+print(f"  [LLM diag] key length: raw={raw_len}, clean={len(api_key)}, "
+      f"non-ascii chars removed: {non_ascii[:5]}", file=sys.stderr)
+print(f"  [LLM diag] key starts with: {api_key[:12]}..., ends with: ...{api_key[-6:]}",
+      file=sys.stderr)
+
+if not api_key or not api_key.startswith("sk-"):
+    print(f"ERROR: API key invalid after sanitization (len={len(api_key)})", file=sys.stderr)
+    sys.exit(1)
+
+# Build the request payload
+payload = json.dumps({
+    "model": "claude-haiku-4-5-20251001",
+    "max_tokens": 2048,
+    "messages": [{"role": "user", "content": prompt_text}],
+}).encode("utf-8")
+
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError
+
+req = Request(
+    "https://api.anthropic.com/v1/messages",
+    data=payload,
+    headers={
+        "content-type": "application/json",
+        "x-api-key": api_key,
+        "anthropic-version": "2023-06-01",
+    },
+    method="POST",
+)
+
+try:
+    ctx = ssl.create_default_context()
+    with urlopen(req, timeout=80, context=ctx) as resp:
+        body = json.loads(resp.read().decode("utf-8"))
+        print(body["content"][0]["text"])
+except HTTPError as e:
+    # Read and print the error response body for debugging
+    err_body = e.read().decode("utf-8", errors="replace")
+    print(f"HTTP {e.code}: {err_body}", file=sys.stderr)
+    sys.exit(1)
+except Exception as e:
+    import traceback
+    traceback.print_exc()
+    sys.exit(1)
+'''
+
+            with tempfile.NamedTemporaryFile(
+                mode='w', suffix='.py', encoding='utf-8', delete=False
+            ) as sf:
+                sf.write(script_content)
+                script_file = sf.name
+
+            # Build clean env: strip proxy vars that interfere with direct HTTPS
+            clean_env = {
+                k: v for k, v in os.environ.items()
+                if 'proxy' not in k.lower()
+            }
+            clean_env['PYTHONUTF8'] = '1'
+            clean_env['PYTHONIOENCODING'] = 'utf-8'
+
+            result = subprocess.run(
+                [sys.executable, '-X', 'utf8', script_file, prompt_file],
+                capture_output=True, text=True, timeout=90,
+                env=clean_env,
             )
 
-            # Parse the JSON response
-            response_text = response.content[0].text
-            # Extract JSON from response (may be wrapped in markdown code block)
+            # Clean up temp files
+            for tmp in (prompt_file, script_file):
+                try:
+                    os.unlink(tmp)
+                except OSError:
+                    pass
+
+            if result.returncode != 0:
+                # Show full stderr for debugging (not truncated)
+                err_msg = result.stderr.strip()
+                logger.warning("LLM subprocess failed:\n%s", err_msg[-500:])
+                print(f"  LLM error detail: {err_msg[-300:]}", flush=True)
+                return {}
+
+            response_text = result.stdout
             json_match = re.search(r'\{[\s\S]+\}', response_text)
             if json_match:
                 results = json.loads(json_match.group())
+                logger.info("LLM returned results for %d items", len(results))
                 return {
                     item_id: (
                         val.get('present', False),
@@ -702,7 +945,11 @@ class EnhancedChecker:
                     )
                     for item_id, val in results.items()
                 }
+            else:
+                logger.warning("LLM returned no JSON: %s", response_text[:200])
 
+        except subprocess.TimeoutExpired:
+            logger.warning("LLM call timed out after 90s")
         except Exception as e:
             logger.warning("LLM evaluation failed: %s", e)
 
