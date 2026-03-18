@@ -46,7 +46,12 @@
         "confirmed diagnosis",
         "objective measurement",
         "reproducible method",
-        "uniform assessment"
+        "uniform assessment",
+        "diagnosis was made",
+        "diagnostic confirmation",
+        "measurement method",
+        "assessment method",
+        "according to"
       ],
       "weight": 1.9,
       "notes": "Standardization across all participants ensures consistency and reliability of reported findings"
@@ -67,7 +72,12 @@
         "proper diagnostic",
         "recognized criteria",
         "objective criteria",
-        "pathological confirmation"
+        "pathological confirmation",
+        "method was used",
+        "identification method",
+        "valid method",
+        "criteria were used",
+        "diagnosis was based on"
       ],
       "weight": 1.9,
       "notes": "Use of valid methods strengthens the credibility of the diagnosis and subsequent findings"

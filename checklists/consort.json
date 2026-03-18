@@ -90,7 +90,13 @@
         "28-day mortality",
         "report the results of",
         "we report the final results",
-        "was designed to determine whether"
+        "was designed to determine whether",
+        "to evaluate the effect",
+        "to determine whether",
+        "was initiated to",
+        "was designed to",
+        "sought to determine",
+        "evaluate whether"
       ],
       "weight": 1.2,
       "notes": "Expanded keywords to catch common phrasings"
@@ -117,7 +123,14 @@
         "intra-cluster correlation",
         "design effect",
         "2x2 factorial",
-        "factorial design 2x2"
+        "factorial design 2x2",
+        "multicenter trial",
+        "multicentre trial",
+        "multi-center trial",
+        "1:1 ratio",
+        "assigned in a 1:1",
+        "randomized trial of",
+        "randomised trial of"
       ],
       "weight": 1.5,
       "notes": "Critical methodological item; replaced generic 'allocation' with specific design terms"
@@ -127,18 +140,17 @@
       "item": "3b",
       "description": "Important changes to methods after trial commencement",
       "keywords": [
-        "protocol amendment",
-        "protocol change",
-        "modification to methods",
-        "revised protocol",
-        "protocol deviation",
-        "protocol violation",
-        "statistical analysis plan",
-        "added once the",
-        "stopping guideline"
+        "was amended",
+        "protocol was modified",
+        "was revised after",
+        "changed during the trial",
+        "modification was made",
+        "deviation from protocol",
+        "originally planned",
+        "initially designed"
       ],
       "weight": 1.0,
-      "notes": "More specific phrases; original 'modifications' was too generic"
+      "notes": "Focused on explicit statements of changes made; removed generic phrases that cause false positives"
     },
     {
       "section": "Methods - Participants",
@@ -157,7 +169,15 @@
         "eligible for the trial",
         "hospitalized patients were eligible",
         "eligible to receive",
-        "no clear indication for or contraindication"
+        "no clear indication for or contraindication",
+        "between the ages of",
+        "years at entry",
+        "age group included",
+        "were ineligible",
+        "men aged",
+        "women aged",
+        "patients aged",
+        "years of age"
       ],
       "weight": 1.3,
       "notes": "Replaced generic 'participants' with criteria-specific phrases"
@@ -228,7 +248,12 @@
         "primary outcome was all-cause",
         "secondary outcomes were the",
         "outcome measures",
-        "4 to 8 years"
+        "4 to 8 years",
+        "primary outcome was the rate",
+        "rate of death",
+        "mortality was the primary",
+        "predefined outcome",
+        "primary outcome was"
       ],
       "weight": 1.5,
       "notes": "Critical; replaced generic 'outcome' with compound phrases"
@@ -238,16 +263,15 @@
       "item": "6b",
       "description": "Any changes to trial outcomes after trial commenced",
       "keywords": [
-        "outcome changed",
-        "modified endpoint",
+        "outcome was changed",
+        "endpoint was modified",
         "revised primary outcome",
-        "endpoint was changed",
-        "post-hoc outcome",
-        "prespecified composite secondary outcome",
-        "prespecified analyses of"
+        "post-hoc change",
+        "protocol amendment to outcome",
+        "originally the primary outcome"
       ],
       "weight": 0.8,
-      "notes": "Rare item; often not applicable"
+      "notes": "Rare item; focused on explicit outcome changes; removed generic phrases"
     },
     {
       "section": "Methods - Sample size",
@@ -259,17 +283,22 @@
         "power analysis",
         "sample size was determined",
         "statistical power",
-        "we calculated that",
-        "participants were needed",
-        "provide a power of",
-        "power of at least",
-        "enrollment of at least",
-        "provide a power of",
-        "power of at least 90%",
-        "sample sizes could not be"
+        "calculated that",
+        "would be needed",
+        "would provide",
+        "to detect a difference",
+        "assuming a",
+        "with 80% power",
+        "with 90% power",
+        "alpha of",
+        "type I error",
+        "required sample",
+        "enrollment target",
+        "planned to enroll",
+        "planned sample"
       ],
       "weight": 1.5,
-      "notes": "Critical quality marker; expanded phrases"
+      "notes": "Critical quality marker; added concept-patterns for sample size determination"
     },
     {
       "section": "Methods - Sample size",
@@ -288,7 +317,11 @@
         "steering committee closed",
         "trial steering committee",
         "closed recruitment",
-        "independent data monitoring committee"
+        "independent data monitoring committee",
+        "interim analyses",
+        "monitoring committee",
+        "alpha spending",
+        "data and safety monitoring committee"
       ],
       "weight": 1.0,
       "notes": "Added DSMB and futility"
@@ -339,20 +372,27 @@
       "item": "9",
       "description": "Mechanism used to implement random allocation sequence",
       "keywords": [
+        "were randomly assigned",
+        "randomization was performed",
+        "assigned to groups",
+        "allocation was",
+        "were allocated",
+        "random assignment",
+        "computer-generated",
+        "random number",
+        "interactive voice",
+        "interactive web",
+        "centralized randomization",
+        "randomization system",
         "allocation concealment",
         "sealed envelope",
         "central randomization",
         "opaque envelope",
-        "sequentially numbered",
         "telephone randomization",
-        "web-based randomization",
-        "web-based system with",
-        "concealment of the trial-group",
-        "concealment of the trial-group",
-        "web-based system with concealment"
+        "web-based randomization"
       ],
       "weight": 1.5,
-      "notes": "Critical bias prevention mechanism"
+      "notes": "Critical bias prevention mechanism; added concept-patterns for allocation implementation"
     },
     {
       "section": "Methods - Implementation",
@@ -368,7 +408,12 @@
         "assigned in a 2:1 ratio",
         "treating clinician prescribed",
         "assigned to receive either",
-        "eligible and consenting patients"
+        "eligible and consenting patients",
+        "identified from",
+        "from population registries",
+        "underwent randomization",
+        "provided consent",
+        "informed consent was obtained"
       ],
       "weight": 1.0,
       "notes": "Replaced single generic words with specific phrases"
@@ -461,7 +506,12 @@
         "subgroup analyses were",
         "prespecified analyses of the primary",
         "subgroup analyses by",
-        "subgroup-specific"
+        "subgroup-specific",
+        "exploratory analysis",
+        "according to age",
+        "according to study center",
+        "heterogeneity of rate ratios",
+        "effect of age on"
       ],
       "weight": 1.0,
       "notes": "Full compound phrases"
@@ -502,7 +552,12 @@
         "withdrew consent",
         "withdrew from the",
         "withdrew consent",
-        "were excluded"
+        "were excluded",
+        "noncompliance",
+        "non-compliance",
+        "were not included",
+        "not included in this analysis",
+        "contamination"
       ],
       "weight": 1.2,
       "notes": "Expanded loss/exclusion vocabulary"
@@ -524,7 +579,12 @@
         "28 days after randomization",
         "recruitment period was",
         "from march 19 to june",
-        "between february 1994 and january"
+        "between february 1994 and january",
+        "enrolled between",
+        "initiated in",
+        "ended on December",
+        "follow-up ended",
+        "censoring date"
       ],
       "weight": 1.0,
       "notes": "Added date-pattern phrases"
@@ -545,7 +605,11 @@
         "closed recruitment to the",
         "enrollment had exceeded",
         "stopped by steering committee",
-        "steering committee closed"
+        "steering committee closed",
+        "uniform censoring date",
+        "follow-up ended on",
+        "ended on December",
+        "censoring date"
       ],
       "weight": 0.8,
       "notes": "Often implicit; low weight"
@@ -565,7 +629,10 @@
         "baseline characteristics table",
         "patient characteristics at baseline",
         "characteristics of the patients at baseline",
-        "demographic and clinical characteristics"
+        "demographic and clinical characteristics",
+        "characteristics of the",
+        "summarizes the characteristics",
+        "Table 1 summarizes"
       ],
       "weight": 1.3,
       "notes": "Compound phrases to distinguish from incidental 'baseline' mentions"
@@ -639,7 +706,12 @@
         "risk ratio 0.79",
         "absolute between-group differences",
         "absolute reductions",
-        "age-adjusted absolute"
+        "age-adjusted absolute",
+        "rate ratio",
+        "absolute risk difference",
+        "number needed to screen",
+        "cumulative incidence",
+        "risk difference"
       ],
       "weight": 1.2,
       "notes": "Specific statistical measures for binary outcomes"
@@ -704,7 +776,14 @@
         "did not collect information",
         "large simple trials of",
         "did not collect information on",
-        "only essential data were collected"
+        "only essential data were collected",
+        "not powered",
+        "overdiagnosis",
+        "overtreatment",
+        "was not designed to",
+        "cannot infer",
+        "cannot be attributed",
+        "preliminary and inconclusive"
       ],
       "weight": 1.3,
       "notes": "More specific phrases"
@@ -724,7 +803,13 @@
         "from a legal representative",
         "united kingdom at the time",
         "approximately 10% of",
-        "consistent with the overall"
+        "consistent with the overall",
+        "restricted to",
+        "benefit was restricted",
+        "other age groups",
+        "other populations",
+        "results from each center",
+        "different populations"
       ],
       "weight": 1.0,
       "notes": "Multiple spellings + concept terms"
@@ -768,7 +853,11 @@
         "CTRI",
         "ChiCTR",
         "nct04381936 isrctn",
-        "isrctn number 50189673"
+        "isrctn number 50189673",
+        "ISRCTN49127736",
+        "Current Controlled Trials",
+        "controlled trials number",
+        "trial number"
       ],
       "weight": 1.5,
       "notes": "Critical transparency item; specific registry identifiers"
@@ -787,7 +876,11 @@
         "supplementary appendix available with",
         "provided in the supplementary",
         "supplementary appendix available",
-        "protocol with its statistical analysis plan"
+        "protocol with its statistical analysis plan",
+        "supplementary appendix",
+        "protocol was reviewed",
+        "available with the full text",
+        "full text of this article"
       ],
       "weight": 1.0,
       "notes": "Compound phrases instead of generic 'protocol' and 'supplementary'"

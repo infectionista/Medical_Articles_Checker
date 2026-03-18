@@ -20,7 +20,12 @@
         "consecutive referrals",
         "random selection",
         "sequential enrollment",
-        "all eligible patients"
+        "all eligible patients",
+        "patients were included",
+        "enrollment was",
+        "patients were enrolled",
+        "patient selection strategy",
+        "study population"
       ],
       "weight": 1.9,
       "notes": "Consecutive or random enrollment minimizes selection bias in diagnostic accuracy studies"
@@ -103,18 +108,9 @@
         "interpretive blinding",
         "reader blinded",
         "independent assessment",
-        "unblinded",
-        "knowledge of reference",
-        "sensitivity",
-        "specificity",
-        "positive predictive value",
-        "PPV",
-        "negative predictive value",
-        "NPV",
-        "diagnostic accuracy",
-        "area under the ROC curve",
-        "AUC",
-        "receiver operating characteristic"
+        "blinded assessment",
+        "interpretation of",
+        "test was interpreted"
       ],
       "weight": 1.9,
       "notes": "Blinding prevents bias in interpretation of the index test results"
@@ -214,11 +210,10 @@
         "masked interpretation",
         "blind assessment",
         "interpretive blinding",
-        "blinding to test result",
+        "blinded to",
         "reader blinded",
         "independent evaluation",
-        "unblinded results",
-        "reference test blinding"
+        "blinded assessment"
       ],
       "weight": 1.9,
       "notes": "Blinding the reference standard interpretation prevents bias from knowing index test results"
@@ -239,7 +234,11 @@
         "ethical standard",
         "acceptable reference",
         "consensus reference",
-        "multiple reference standards"
+        "multiple reference standards",
+        "reference standard was",
+        "standard used",
+        "reference method",
+        "standard test"
       ],
       "weight": 1.1,
       "notes": "Assessment of whether the reference standard is applicable to the clinical context"
@@ -273,15 +272,15 @@
         "all patients received",
         "same reference",
         "uniform",
-        "differential reference",
         "all had",
         "complete reference testing",
         "uniform verification",
         "consistent reference",
         "identical reference",
         "applied to all",
-        "reference standard selection",
-        "verification strategy"
+        "patients received",
+        "reference standard was applied",
+        "undergone"
       ],
       "weight": 1.8,
       "notes": "Different reference standards for different patients can introduce differential verification bias"

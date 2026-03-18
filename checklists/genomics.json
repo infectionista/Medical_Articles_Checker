@@ -36,9 +36,13 @@
         "epidemiological context",
         "understanding of coronavirus evolution",
         "understand the evolution of",
-        "understanding of coronavirus evolution",
-        "understand the evolution of",
-        "explore how this method"
+        "sequences were analyzed",
+        "genome was sequenced",
+        "to understand the transmission",
+        "investigate the evolution",
+        "assess genetic relationships",
+        "characterize the genomic",
+        "trace the origins"
       ],
       "weight": 0.8
     },
@@ -53,7 +57,14 @@
         "geographic location",
         "sampling strategy",
         "clinical specimens",
-        "specimens collected"
+        "specimens collected",
+        "samples were collected from",
+        "collected between",
+        "collection procedure",
+        "collection period",
+        "during the period",
+        "from patients",
+        "study period"
       ],
       "weight": 1.1
     },
@@ -71,7 +82,11 @@
         "160 largely complete",
         "253 coronavirus genomes",
         "resulting 160 sequences",
-        "sequenced strains"
+        "sequenced strains",
+        "sequences were obtained",
+        "genomes were retrieved",
+        "samples were selected",
+        "selection process"
       ],
       "weight": 1.0
     },
@@ -120,7 +135,10 @@
         "read trimming",
         "adapter removal",
         "FastQC",
-        "quality threshold"
+        "quality threshold",
+        "low quality reads",
+        "quality assessed",
+        "quality assurance"
       ],
       "weight": 1.1
     },
@@ -218,7 +236,10 @@
         "parallel evolution events",
         "genome similarity",
         "protein content comparison",
-        "proteome analysis"
+        "proteome analysis",
+        "sequences were analyzed",
+        "genetic analysis was performed",
+        "statistical test"
       ],
       "weight": 1.0
     },
@@ -233,7 +254,10 @@
         "treatment history",
         "clinical covariates",
         "linked metadata",
-        "antibiotic susceptibility profiles"
+        "antibiotic susceptibility profiles",
+        "metadata was collected",
+        "sample information",
+        "patient data"
       ],
       "weight": 0.9
     },
@@ -248,7 +272,10 @@
         "genome coverage",
         "sequencing yield",
         "read count",
-        "quality metrics"
+        "quality metrics",
+        "coverage was",
+        "mean depth",
+        "minimum coverage"
       ],
       "weight": 1.1
     },
@@ -406,7 +433,9 @@
         "institutional review board",
         "informed consent",
         "IRB approval",
-        "ethics statement"
+        "ethics statement",
+        "ethics approval was obtained",
+        "approved by the ethics"
       ],
       "weight": 1.1
     },

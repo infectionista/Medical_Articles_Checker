@@ -29,7 +29,10 @@
         "synthesis methods",
         "results and conclusions",
         "abstract background objectives",
-        "objective methods results conclusion"
+        "objective methods results conclusion",
+        "abstract included background",
+        "abstract reported background",
+        "included the following sections"
       ],
       "weight": 0.9
     },
@@ -47,7 +50,11 @@
         "potential treatment for coronavirus",
         "absence of evidence on the use",
         "received worldwide attention",
-        "scientific rationale for"
+        "scientific rationale for",
+        "described the background",
+        "to justify the systematic review",
+        "previous systematic reviews",
+        "evidence was limited"
       ],
       "weight": 0.8
     },
@@ -66,7 +73,10 @@
         "considering mortality and prevention",
         "we aimed to perform",
         "objective we aimed",
-        "aimed to evaluate"
+        "aimed to evaluate",
+        "primary objective was",
+        "specific research question",
+        "we defined the research question"
       ],
       "weight": 1.1
     },
@@ -451,10 +461,12 @@
       "keywords": [
         "implications for practice",
         "implications for research",
-        "future research",
-        "policy implications",
+        "implications for future research",
+        "implications for policy",
         "clinical implications",
-        "well-powered properly designed rcts"
+        "well-powered properly designed rcts",
+        "implications of these findings",
+        "implications for clinical practice"
       ],
       "weight": 0.9
     },
@@ -469,9 +481,10 @@
         "registered protocol",
         "review protocol",
         "prospero database registration",
-        "registration number crd42020197070",
-        "conclusion our systematic review",
-        "not efficacious in reducing mortality"
+        "registration number crd",
+        "registered in prospero",
+        "protocol was registered",
+        "protocol registered"
       ],
       "weight": 1.1
     },
@@ -486,8 +499,8 @@
         "grant support",
         "funded by",
         "sources of financial support",
-        "prospero database registration",
-        "crd42020197070"
+        "funding acknowledgment",
+        "received no funding"
       ],
       "weight": 0.9
     },
@@ -497,10 +510,11 @@
       "description": "Declare any competing interests of review authors",
       "keywords": [
         "competing interests",
-        "conflict of interest",
-        "declaration of interests",
-        "no conflicts",
-        "disclosure statement"
+        "conflicts of interest",
+        "declaration of competing interests",
+        "declare any competing interests",
+        "authors declare no competing",
+        "no competing interests to declare"
       ],
       "weight": 0.9
     },
@@ -509,11 +523,12 @@
       "item": "26",
       "description": "Report which data, analytic code, and other materials used in the review are publicly available and where they can be found",
       "keywords": [
-        "data availability",
-        "supplementary materials",
-        "analytic code",
-        "data sharing",
-        "publicly available data"
+        "data availability statement",
+        "supplementary materials available",
+        "analytic code available",
+        "data and code available",
+        "publicly available at",
+        "available upon request"
       ],
       "weight": 0.8
     }

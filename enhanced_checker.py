@@ -319,6 +319,7 @@ class EnhancedChecker:
         checklist_name: str,
         *,
         sections: Optional[Dict[str, ArticleSection]] = None,
+        force_llm: bool = False,
     ) -> CheckResult:
         """
         Evaluate an article against a checklist.
@@ -353,16 +354,23 @@ class EnhancedChecker:
             item_scores.append(score)
 
         # --- Phase 3 (optional): LLM smart fallback ---
-        # Only triggers when Phase 1+2 gave POOR results (>50% items absent).
-        # This avoids expensive API calls for articles that already score well.
-        absent_items = [
-            (i, item_def) for i, (score, item_def)
-            in enumerate(zip(item_scores, checklist['items']))
-            if score.verdict == 'absent'
-        ]
+        # When force_llm=True (user explicitly requested), check ALL absent + partial items.
+        # Otherwise, only triggers when >50% items absent (automatic mode).
+        if force_llm:
+            absent_items = [
+                (i, item_def) for i, (score, item_def)
+                in enumerate(zip(item_scores, checklist['items']))
+                if score.verdict in ('absent', 'partial')
+            ]
+        else:
+            absent_items = [
+                (i, item_def) for i, (score, item_def)
+                in enumerate(zip(item_scores, checklist['items']))
+                if score.verdict == 'absent'
+            ]
         absent_ratio = len(absent_items) / len(item_scores) if item_scores else 0
 
-        if absent_items and absent_ratio > 0.50:
+        if absent_items and (force_llm or absent_ratio > 0.50):
             api_key = os.environ.get('ANTHROPIC_API_KEY', '')
             if api_key:
                 logger.info(
@@ -555,11 +563,14 @@ class EnhancedChecker:
             confidence = min(confidence + semantic_boost, 0.85)  # Cap at 0.85
 
         # --- Determine verdict ---
+        # Thresholds calibrated against expert ground truth (517 items, 19 articles).
+        # Previous: present≥0.60, partial≥0.25 → κ=0.193
+        # Calibrated: present≥0.30, partial≥0.10 → κ=0.318
         if has_negative_evidence and keyword_match_ratio < 0.3:
             verdict = 'explicitly_absent'
-        elif confidence >= 0.6:
+        elif confidence >= 0.30:
             verdict = 'present'
-        elif confidence >= 0.25:
+        elif confidence >= 0.10:
             verdict = 'partial'
         else:
             verdict = 'absent'
@@ -955,11 +966,592 @@ except Exception as e:
 
         return {}
 
+    def generate_llm_commentary(
+        self,
+        result: 'CheckResult',
+        article_text: str,
+        checklist_name: str,
+    ) -> Dict[str, str]:
+        """
+        Generate LLM commentary explaining WHY items scored low.
+        This provides value even when LLM doesn't change any scores.
+
+        Returns dict with keys:
+          'summary': overall commentary
+          'items': dict of item_id -> explanation
+          'tier_insights': {'public': str, 'student': str, 'specialist': str}
+        """
+        api_key = os.environ.get('ANTHROPIC_API_KEY', '')
+        if not api_key:
+            return {}
+
+        # Collect items worth commenting on
+        low_items = [
+            i for i in result.items
+            if i.verdict in ('absent', 'partial', 'explicitly_absent')
+        ]
+        if not low_items:
+            return {'summary': 'All checklist items are well-reported.', 'items': {}, 'tier_insights': {}}
+
+        items_text = '\n'.join(
+            f"- [{i.item_id}] {i.verdict} ({i.confidence:.0%}): {i.description}"
+            + (f" | matched: {', '.join(i.matched_keywords[:3])}" if i.matched_keywords else ' | no keywords matched')
+            for i in low_items[:15]
+        )
+
+        # Truncate article
+        article_clean = article_text.encode('utf-8', errors='ignore').decode('utf-8')
+        article_clean = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', ' ', article_clean)
+        if len(article_clean) > 60000:
+            article_clean = article_clean[:60000] + '\n[...truncated...]'
+
+        prompt = (
+            f"You are analyzing a medical article checked against {checklist_name}.\n\n"
+            f"Below are items that scored low (absent or partial). For each:\n"
+            f"1. Explain briefly (1-2 sentences) what you actually see in the article related to this item\n"
+            f"2. Explain WHY it scored low (what's missing vs what checklist requires)\n"
+            f"3. Judge if the low score is FAIR or if the article actually covers it in non-standard wording\n\n"
+            f"Low-scoring items:\n{items_text}\n\n"
+            f"Then provide:\n"
+            f"- 'summary': 2-3 sentence overall assessment of the reporting gaps\n"
+            f"- 'public_insight': 1-2 sentences for a layperson (in Russian) explaining the practical meaning\n"
+            f"- 'student_insight': 2-3 sentences educational takeaway (in English)\n"
+            f"- 'specialist_insight': 2-3 sentences technical recommendations (in English)\n\n"
+            f"Respond as JSON:\n"
+            f'{{"items": {{"item_id": "explanation"}}, "summary": "...", '
+            f'"public_insight": "...", "student_insight": "...", "specialist_insight": "..."}}\n\n'
+            f"Article text:\n{article_clean}"
+        )
+
+        try:
+            import subprocess, sys, tempfile
+
+            prompt_safe = re.sub(r'[^\x09\x0a\x0d\x20-\x7e\x80-\uffff]', ' ', prompt)
+
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', encoding='utf-8', delete=False) as tf:
+                tf.write(prompt_safe)
+                prompt_file = tf.name
+
+            script = '''
+import json, sys, os, ssl
+with open(sys.argv[1], "r", encoding="utf-8") as f:
+    prompt_text = f.read()
+api_key = "".join(c for c in os.environ.get("ANTHROPIC_API_KEY", "") if 32 <= ord(c) <= 126)
+if not api_key or not api_key.startswith("sk-"):
+    sys.exit(1)
+payload = json.dumps({
+    "model": "claude-haiku-4-5-20251001",
+    "max_tokens": 2048,
+    "messages": [{"role": "user", "content": prompt_text}],
+}).encode("utf-8")
+from urllib.request import Request, urlopen
+req = Request("https://api.anthropic.com/v1/messages", data=payload, headers={
+    "content-type": "application/json",
+    "x-api-key": api_key,
+    "anthropic-version": "2023-06-01",
+}, method="POST")
+ctx = ssl.create_default_context()
+with urlopen(req, timeout=80, context=ctx) as resp:
+    body = json.loads(resp.read().decode("utf-8"))
+    print(body["content"][0]["text"])
+'''
+
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.py', encoding='utf-8', delete=False) as sf:
+                sf.write(script)
+                script_file = sf.name
+
+            clean_env = {k: v for k, v in os.environ.items() if 'proxy' not in k.lower()}
+            clean_env['PYTHONUTF8'] = '1'
+            clean_env['PYTHONIOENCODING'] = 'utf-8'
+
+            proc = subprocess.run(
+                [sys.executable, '-X', 'utf8', script_file, prompt_file],
+                capture_output=True, text=True, timeout=90, env=clean_env,
+            )
+
+            for tmp in (prompt_file, script_file):
+                try:
+                    os.unlink(tmp)
+                except OSError:
+                    pass
+
+            if proc.returncode != 0:
+                logger.warning("LLM commentary failed: %s", proc.stderr[-300:])
+                return {}
+
+            json_match = re.search(r'\{[\s\S]+\}', proc.stdout)
+            if json_match:
+                data = json.loads(json_match.group())
+                return {
+                    'summary': data.get('summary', ''),
+                    'items': data.get('items', {}),
+                    'tier_insights': {
+                        'public': data.get('public_insight', ''),
+                        'student': data.get('student_insight', ''),
+                        'specialist': data.get('specialist_insight', ''),
+                    },
+                }
+
+        except Exception as e:
+            logger.warning("LLM commentary generation failed: %s", e)
+
+        return {}
+
+    # ----- quality lenses (external validity) -----
+    # These 5 lenses evaluate generalizable quality dimensions that apply
+    # to ANY scientific article. They accumulate into an overall quality
+    # profile that tracks instrument accuracy across future articles.
+
+    def evaluate_quality_lenses(self, article_text: str) -> Dict[str, dict]:
+        """
+        Run all 5 quality lenses on the article.
+        Returns dict: lens_name -> {score: 0-1, findings: [...], tier_msgs: {...}}
+        """
+        text = article_text
+        lenses = {}
+        lenses['reproducibility'] = self._lens_reproducibility(text)
+        lenses['red_flags'] = self._lens_red_flags(text)
+        lenses['statistical_rigor'] = self._lens_statistical_rigor(text)
+        lenses['transparency'] = self._lens_transparency(text)
+        lenses['evidence_strength'] = self._lens_evidence_strength(text)
+        return lenses
+
+    def _lens_reproducibility(self, text: str) -> dict:
+        """Reproducibility & Openness: data sharing, code, pre-registration."""
+        findings = []
+        score = 0.0
+        max_pts = 0.0
+
+        checks = [
+            # (pattern, label, points)
+            (r'(?i)\b(?:data\s+(?:availab|shar|access|deposit|repositor))', 'data availability statement', 0.20),
+            (r'(?i)\b(?:open\s+data|publicly\s+available\s+data|data\s+(?:are|is)\s+available)', 'open data', 0.10),
+            (r'(?i)\b(?:figshare|zenodo|dryad|dataverse|osf\.io|github\.com|mendeley\s+data)', 'data repository', 0.15),
+            (r'(?i)\b(?:accession\s+(?:number|code)|GenBank|SRA|ENA|NCBI)', 'accession numbers', 0.15),
+            (r'(?i)\b(?:code\s+(?:availab|shar)|source\s+code|github|gitlab|bitbucket)', 'code shared', 0.10),
+            (r'(?i)\b(?:pre-?regist|prospero|osf\.io/.*regist|protocol\s+regist)', 'pre-registered', 0.15),
+            (r'(?i)\b(?:NCT\d{5,}|ISRCTN\d+|ACTRN\d+|clinicaltrials\.gov)', 'trial registered', 0.15),
+            (r'(?i)\b(?:supplement(?:ary|al)\s+(?:material|file|table|data|appendix))', 'supplementary materials', 0.10),
+        ]
+        for pat, label, pts in checks:
+            max_pts += pts
+            if re.search(pat, text):
+                score += pts
+                findings.append(f'✓ {label}')
+            else:
+                findings.append(f'✗ {label}')
+
+        final = score / max_pts if max_pts > 0 else 0.0
+
+        tier_msgs = {}
+        missing = [f.replace('✗ ', '') for f in findings if f.startswith('✗')]
+        if final < 0.3:
+            tier_msgs['public'] = (
+                'Это исследование не делится своими данными или методами открыто. '
+                'Другие учёные не могут легко проверить результаты.'
+            )
+            tier_msgs['student'] = (
+                f'Low reproducibility. Missing: {", ".join(missing[:4])}. '
+                f'Modern standards increasingly require open data, code, and pre-registration.'
+            )
+            tier_msgs['specialist'] = (
+                f'Reproducibility gaps: {", ".join(missing[:5])}. '
+                f'Check journal open-science policy compliance.'
+            )
+        elif final < 0.6:
+            tier_msgs['student'] = (
+                f'Partial reproducibility. Gaps: {", ".join(missing[:3])}.'
+            )
+            tier_msgs['specialist'] = (
+                f'Some reproducibility elements present; gaps: {", ".join(missing[:3])}.'
+            )
+
+        return {'score': round(final, 3), 'findings': findings, 'tier_msgs': tier_msgs,
+                'label': 'Reproducibility & Openness'}
+
+    def _lens_red_flags(self, text: str) -> dict:
+        """Red Flags & Integrity: ethics, consent, COI, p-hacking, round numbers."""
+        findings = []
+        score = 1.0  # Start at 1, deduct for problems
+
+        # Expected elements (absence = penalty)
+        expected = [
+            (r'(?i)\b(?:ethics?\s+(?:committee|board|approval|review)|IRB\s+approv|'
+             r'institutional\s+review\s+board|(?:local|regional)\s+ethics)',
+             'ethics approval', 0.25),
+            (r'(?i)\b(?:informed\s+consent|written\s+consent|'
+             r'consent\s+(?:was\s+)?obtained|participants?\s+(?:provided|gave)\s+consent)',
+             'informed consent', 0.20),
+            (r'(?i)\b(?:limitation|weakness|shortcoming|caveat)', 'limitations discussed', 0.15),
+            (r'(?i)\b(?:conflict\s+of\s+interest|competing\s+interest|'
+             r'no\s+(?:conflicts?|competing)\s+(?:of\s+interest|interests?)|'
+             r'(?:declare|report|disclose)\s+(?:no\s+)?(?:conflicts?|competing))',
+             'COI disclosure', 0.15),
+        ]
+        missing_critical = []
+        for pat, label, penalty in expected:
+            if re.search(pat, text):
+                findings.append(f'✓ {label}')
+            else:
+                score -= penalty
+                findings.append(f'✗ {label}')
+                missing_critical.append(label)
+
+        # Suspicious patterns (presence = penalty)
+        p_borderline = re.findall(r'(?i)p\s*[=<]\s*0\.04[0-9]', text)
+        if len(p_borderline) >= 2:
+            score -= 0.08
+            findings.append(f'⚠ {len(p_borderline)} borderline p-values (0.04x)')
+
+        round_100 = re.findall(r'(?i)\b(?:100%|0%)\s+(?:of\s+)?(?:patients?|participants?|subjects?)', text)
+        if round_100:
+            score -= 0.05
+            findings.append(f'⚠ suspiciously round percentages (100%/0%)')
+
+        zero_dropout = re.search(
+            r'(?i)\bno\s+(?:patients?|participants?)\s+(?:were\s+)?(?:lost|dropped|withdrew)', text)
+        if zero_dropout:
+            score -= 0.03
+            findings.append('⚠ claims zero dropout/loss to follow-up')
+
+        final = max(0.0, min(1.0, score))
+
+        tier_msgs = {}
+        if final < 0.5:
+            tier_msgs['public'] = (
+                'В этой статье отсутствуют стандартные раскрытия (этическое одобрение, '
+                'конфликт интересов), которые помогают оценить надёжность исследования.'
+            )
+            tier_msgs['student'] = (
+                f'Integrity red flags. Missing: {", ".join(missing_critical)}. '
+                f'These omissions are common in retracted papers — does not prove '
+                f'misconduct but warrants scrutiny.'
+            )
+            tier_msgs['specialist'] = (
+                f'Integrity signal deficit: {", ".join(missing_critical)}. '
+                f'Cross-reference with journal requirements; consider retraction-watch check.'
+            )
+        elif final < 0.75 and missing_critical:
+            tier_msgs['student'] = (
+                f'Some standard disclosures missing: {", ".join(missing_critical)}.'
+            )
+
+        return {'score': round(final, 3), 'findings': findings, 'tier_msgs': tier_msgs,
+                'label': 'Red Flags & Integrity'}
+
+    def _lens_statistical_rigor(self, text: str) -> dict:
+        """Statistical Rigor: CIs, effect sizes, power, multiple testing, sensitivity."""
+        findings = []
+        score = 0.0
+        max_pts = 0.0
+
+        good = [
+            (r'(?i)\b(?:confidence\s+interval|95%\s*CI|\b95%\s*confidence)', 'confidence intervals', 0.15),
+            (r'(?i)\b(?:effect\s+size|cohen.s?\s*d|odds\s+ratio|hazard\s+ratio|'
+             r'relative\s+risk|risk\s+ratio|mean\s+difference)', 'effect sizes', 0.15),
+            (r'(?i)\b(?:power\s+(?:analysis|calculation)|sample\s+size\s+'
+             r'(?:calculation|estimation|determination))', 'power analysis', 0.15),
+            (r'(?i)\b(?:bonferroni|holm|benjamini|hochberg|false\s+discovery\s+rate|'
+             r'multiple\s+(?:comparison|testing)\s+correction|adjusted\s+p-?value)',
+             'multiple testing correction', 0.12),
+            (r'(?i)\b(?:intention[- ]to[- ]treat|per[- ]protocol\s+analysis)',
+             'ITT/per-protocol', 0.10),
+            (r'(?i)\b(?:sensitivity\s+analysis|robustness\s+check)', 'sensitivity analysis', 0.10),
+            (r'(?i)\b(?:missing\s+data|multiple\s+imputation|last\s+observation\s+carried|'
+             r'complete\s+case\s+analysis)', 'missing data handling', 0.10),
+            (r'(?i)\b(?:pre-?specified|primary\s+(?:outcome|endpoint)\s+was)',
+             'pre-specified outcome', 0.08),
+        ]
+        for pat, label, pts in good:
+            max_pts += pts
+            if re.search(pat, text):
+                score += pts
+                findings.append(f'✓ {label}')
+            else:
+                findings.append(f'✗ {label}')
+
+        # Bad practices
+        if re.search(r'(?i)\btrend(?:ed)?\s+toward\s+(?:significance|statistical)', text):
+            findings.append('⚠ "trending toward significance" — not a valid statistical concept')
+        if re.search(r'(?i)\b(?:highly\s+significant|extremely\s+significant)', text):
+            findings.append('⚠ "highly significant" — imprecise; significance is binary')
+
+        final = score / max_pts if max_pts > 0 else 0.0
+        missing = [f.replace('✗ ', '') for f in findings if f.startswith('✗')]
+
+        tier_msgs = {}
+        if final < 0.3 and missing:
+            tier_msgs['public'] = (
+                'Статистическая отчётность в этой статье ограничена. '
+                'Ключевая информация о точности результатов не представлена.'
+            )
+            tier_msgs['student'] = (
+                f'Weak statistical reporting. Missing: {", ".join(missing[:4])}. '
+                f'These are essential for judging whether results are meaningful.'
+            )
+            tier_msgs['specialist'] = (
+                f'Statistical reporting gaps: {", ".join(missing[:5])}. '
+                f'Limits interpretability of effect magnitude and precision.'
+            )
+        elif final < 0.6 and missing:
+            tier_msgs['student'] = (
+                f'Moderate statistical reporting. Missing: {", ".join(missing[:3])}.'
+            )
+            tier_msgs['specialist'] = (
+                f'Partial statistical reporting. Gaps: {", ".join(missing[:3])}.'
+            )
+
+        return {'score': round(final, 3), 'findings': findings, 'tier_msgs': tier_msgs,
+                'label': 'Statistical Rigor'}
+
+    def _lens_transparency(self, text: str) -> dict:
+        """Transparency & Disclosure: funding, funder role, COI, author contributions."""
+        findings = []
+        score = 0.0
+        max_pts = 0.0
+
+        checks = [
+            (r'(?i)\b(?:funding|funded\s+by|grant|financial\s+support)', 'funding disclosed', 0.20),
+            (r'(?i)\b(?:role\s+of\s+(?:the\s+)?(?:funder|sponsor)|funder(?:s)?\s+had\s+no\s+role)',
+             'funder role stated', 0.15),
+            (r'(?i)\b(?:author\s+contribution|contributors?|CRediT)', 'author contributions', 0.15),
+            (r'(?i)\b(?:conflict\s+of\s+interest|competing\s+interest|'
+             r'no\s+(?:conflicts?|competing)\s+(?:of\s+interest|interests?))',
+             'COI statement', 0.20),
+            (r'(?i)\b(?:data\s+(?:availability|sharing)\s+statement)',
+             'data availability statement', 0.15),
+            (r'(?i)\b(?:(?:written|obtained)\s+(?:informed\s+)?consent|informed\s+consent)',
+             'consent documented', 0.10),
+            (r'(?i)\b(?:ORCID|orcid\.org)', 'ORCID present', 0.05),
+        ]
+        missing = []
+        for pat, label, pts in checks:
+            max_pts += pts
+            if re.search(pat, text):
+                score += pts
+                findings.append(f'✓ {label}')
+            else:
+                findings.append(f'✗ {label}')
+                missing.append(label)
+
+        final = score / max_pts if max_pts > 0 else 0.0
+
+        tier_msgs = {}
+        critical_missing = [m for m in missing if m in ('funding disclosed', 'COI statement')]
+        if final < 0.4:
+            if critical_missing:
+                tier_msgs['public'] = (
+                    'В статье не указано, кто финансировал исследование '
+                    'и есть ли у авторов конфликт интересов.'
+                )
+            tier_msgs['student'] = (
+                f'Low transparency. Missing: {", ".join(missing[:4])}. '
+                f'Transparency is foundational to research trustworthiness.'
+            )
+            tier_msgs['specialist'] = (
+                f'Transparency deficit: {", ".join(missing[:4])}. '
+                f'Verify against ICMJE requirements.'
+            )
+        elif final < 0.7 and critical_missing:
+            tier_msgs['student'] = (
+                f'Partial transparency. Missing: {", ".join(critical_missing)}.'
+            )
+
+        return {'score': round(final, 3), 'findings': findings, 'tier_msgs': tier_msgs,
+                'label': 'Transparency & Disclosure'}
+
+    def _lens_evidence_strength(self, text: str) -> dict:
+        """Evidence Strength: sample size, follow-up, design hierarchy."""
+        findings = []
+        score = 0.5  # Start neutral
+
+        # Sample size extraction
+        sample_sizes = []
+        for m in re.finditer(r'(?i)\b[Nn]\s*=\s*(\d+)', text):
+            try:
+                n = int(m.group(1))
+                if 5 <= n <= 500000:
+                    sample_sizes.append(n)
+            except ValueError:
+                pass
+        for m in re.finditer(
+            r'(?i)\b(\d+)\s+(?:patients?|participants?|subjects?|individuals?)\s+'
+            r'(?:were\s+)?(?:enrolled|included|recruited|randomized)', text):
+            try:
+                n = int(m.group(1))
+                if 5 <= n <= 500000:
+                    sample_sizes.append(n)
+            except ValueError:
+                pass
+
+        max_n = max(sample_sizes) if sample_sizes else 0
+        if max_n > 0:
+            findings.append(f'N={max_n:,} (largest reported sample)')
+            if max_n >= 1000:
+                score += 0.10
+            elif max_n >= 100:
+                score += 0.05
+            elif max_n < 30:
+                score -= 0.10
+                findings.append('⚠ small sample (<30)')
+
+        # Follow-up
+        if re.search(r'(?i)\b(?:follow[- ]?up|followed\s+for)\s+(?:of\s+)?(\d+)\s*'
+                      r'(?:months?|years?|weeks?|days?)', text):
+            score += 0.05
+            findings.append('✓ follow-up duration reported')
+
+        # Strong design
+        strong = [
+            (r'(?i)\b(?:random(?:ized|ly\s+assigned)|double[- ]blind|placebo[- ]controlled)',
+             'RCT features', 0.20),
+            (r'(?i)\b(?:systematic\s+review|meta[- ]analysis)',
+             'systematic review/meta-analysis', 0.25),
+            (r'(?i)\b(?:multi[- ]?cent(?:er|re)|multi[- ]?site)',
+             'multi-center', 0.10),
+        ]
+        for pat, label, pts in strong:
+            if re.search(pat, text):
+                score += pts
+                findings.append(f'✓ {label}')
+
+        # Weak design
+        weak = [
+            (r'(?i)\b(?:single[- ]?cent(?:er|re)|single[- ]?institution)',
+             'single center', -0.05),
+            (r'(?i)\b(?:retrospective|chart\s+review|medical\s+record\s+review)',
+             'retrospective design', -0.05),
+            (r'(?i)\b(?:case\s+report|case\s+series)\b',
+             'case-level evidence', -0.08),
+            (r'(?i)\b(?:pilot\s+study|feasibility\s+study|preliminary)',
+             'pilot/preliminary', -0.05),
+        ]
+        for pat, label, pts in weak:
+            if re.search(pat, text):
+                score += pts
+                findings.append(f'↓ {label}')
+
+        final = max(0.0, min(1.0, score))
+
+        tier_msgs = {}
+        if final >= 0.7:
+            tier_msgs['student'] = (
+                'Strong evidence design (e.g., randomization, large sample, multi-center). '
+                'Higher on the evidence hierarchy.'
+            )
+        elif final < 0.35:
+            tier_msgs['public'] = (
+                'У этого исследования есть ограничения, снижающие силу доказательств '
+                '(например, мало участников или нет группы сравнения).'
+            )
+            tier_msgs['student'] = (
+                'Weak evidence profile. Consider: small sample, single-center, '
+                'retrospective, or case-level evidence. Lower on the evidence hierarchy.'
+            )
+            tier_msgs['specialist'] = (
+                'Low evidence strength. Evaluate generalizability and risk of bias accordingly.'
+            )
+
+        return {'score': round(final, 3), 'findings': findings, 'tier_msgs': tier_msgs,
+                'label': 'Evidence Strength'}
+
+    # ----- tiered verdict blocks -----
+
+    # Thresholds: only show lens verdict to a tier if score is BELOW threshold
+    TIER_THRESHOLDS = {
+        'public': 0.5,
+        'student': 0.7,
+        'specialist': 0.8,
+    }
+
+    def build_tiered_verdicts(
+        self,
+        lenses: Dict[str, dict],
+        check_result: 'CheckResult' = None,
+    ) -> Dict[str, list]:
+        """
+        Build verdict blocks for each tier from lens results + checklist gaps.
+        Only includes a lens verdict for a tier if the score falls below that
+        tier's threshold — i.e., the finding is worth showing.
+
+        Returns: {'public': [...], 'student': [...], 'specialist': [...]}
+        """
+        verdicts: Dict[str, list] = {'public': [], 'student': [], 'specialist': []}
+
+        lens_weights = {
+            'red_flags': 0.30, 'statistical_rigor': 0.25,
+            'reproducibility': 0.20, 'transparency': 0.15,
+            'evidence_strength': 0.10,
+        }
+
+        # Composite score
+        w_sum = sum(lenses[k]['score'] * lens_weights.get(k, 0.1)
+                    for k in lenses)
+        w_total = sum(lens_weights.get(k, 0.1) for k in lenses)
+        composite = w_sum / w_total if w_total > 0 else 0.0
+
+        for lens_name, lens_data in lenses.items():
+            sc = lens_data['score']
+            label = lens_data['label']
+            icon = '🟢' if sc >= 0.7 else '🟡' if sc >= 0.4 else '🔴'
+
+            for tier in ('public', 'student', 'specialist'):
+                threshold = self.TIER_THRESHOLDS[tier]
+                msg = lens_data['tier_msgs'].get(tier)
+                if msg and sc < threshold:
+                    verdicts[tier].append({
+                        'lens': lens_name, 'label': label,
+                        'icon': icon, 'score': sc, 'message': msg,
+                    })
+
+        # Add checklist compliance gap block
+        if check_result:
+            critical = [
+                i for i in check_result.items
+                if i.verdict in ('absent', 'explicitly_absent') and i.weight >= 1.0
+            ]
+            if critical:
+                n = len(critical)
+                # Public: only if ≥3 critical items
+                if n >= 3:
+                    verdicts['public'].append({
+                        'lens': 'checklist', 'label': 'Checklist Compliance',
+                        'icon': '🔴' if n >= 5 else '🟡',
+                        'score': max(0, 1.0 - n * 0.1),
+                        'message': (
+                            f'В статье отсутствуют {n} важных элементов отчётности. '
+                            f'Без них сложно оценить, было ли исследование проведено корректно.'
+                        ),
+                    })
+                # Student: always if any critical
+                items_desc = '; '.join(f'{i.item_id}: {i.description[:50]}' for i in critical[:5])
+                verdicts['student'].append({
+                    'lens': 'checklist', 'label': 'Checklist Compliance',
+                    'icon': '🔴' if n >= 5 else '🟡',
+                    'score': max(0, 1.0 - n * 0.1),
+                    'message': f'{n} high-weight items missing. Key gaps: {items_desc}.',
+                })
+                # Specialist: always, sorted by weight
+                items_spec = '; '.join(
+                    f'{i.item_id} (w={i.weight:.1f}): {i.description[:40]}'
+                    for i in sorted(critical, key=lambda x: -x.weight)[:5]
+                )
+                verdicts['specialist'].append({
+                    'lens': 'checklist', 'label': 'Checklist Compliance',
+                    'icon': '🔴' if n >= 5 else '🟡',
+                    'score': max(0, 1.0 - n * 0.1),
+                    'message': f'{n} high-weight items absent. Priority: {items_spec}.',
+                })
+
+        return verdicts
+
     # ----- reporting -----
 
     def generate_report(self, result: CheckResult, format: str = 'markdown',
                         audience: str = 'specialist', study_type: str = '',
-                        detection_result=None, article_text: str = '') -> str:
+                        detection_result=None, article_text: str = '',
+                        lenses: Dict[str, dict] = None,
+                        tier_verdicts: Dict[str, list] = None) -> str:
         """
         Generate a report.
 
@@ -970,12 +1562,15 @@ except Exception as e:
             study_type: detected study type string (for context)
             detection_result: DetectionResult from study_detector (optional, for design analysis)
             article_text: original article text (optional, for propensity score detection)
+            lenses: quality lens results from evaluate_quality_lenses()
+            tier_verdicts: tiered verdict blocks from build_tiered_verdicts()
         """
         if format == 'json':
             return self._to_json(result)
         elif format == 'markdown':
             return self._to_audience_markdown(result, audience, study_type,
-                                              detection_result, article_text)
+                                              detection_result, article_text,
+                                              lenses, tier_verdicts)
         else:
             return self._to_text(result)
 
@@ -1253,7 +1848,9 @@ except Exception as e:
 
     def _to_audience_markdown(self, result: CheckResult, audience: str = 'specialist',
                               study_type: str = '', detection_result=None,
-                              article_text: str = '') -> str:
+                              article_text: str = '',
+                              lenses: Dict[str, dict] = None,
+                              tier_verdicts: Dict[str, list] = None) -> str:
         """Generate markdown report tailored to audience level."""
         if audience == 'public':
             report = self._report_public(result, study_type)
@@ -1267,10 +1864,80 @@ except Exception as e:
             design_block = self._design_analysis_block(
                 audience, study_type, detection_result, article_text)
             if design_block:
-                # Insert after the first heading block
                 report = report + "\n\n" + design_block
 
+        # Add quality lenses summary
+        if lenses:
+            report = report + "\n\n" + self._render_lenses_block(lenses, audience)
+
+        # Add tiered verdict blocks
+        if tier_verdicts:
+            tier_key = {'public': 'public', 'student': 'student'}.get(audience, 'specialist')
+            blocks = tier_verdicts.get(tier_key, [])
+            if blocks:
+                report = report + "\n\n" + self._render_verdict_block(blocks, audience)
+
         return report
+
+    def _render_lenses_block(self, lenses: Dict[str, dict], audience: str) -> str:
+        """Render quality lenses as a markdown block."""
+        lines = []
+
+        # Composite score
+        lens_weights = {
+            'red_flags': 0.30, 'statistical_rigor': 0.25,
+            'reproducibility': 0.20, 'transparency': 0.15,
+            'evidence_strength': 0.10,
+        }
+        w_sum = sum(lenses[k]['score'] * lens_weights.get(k, 0.1) for k in lenses)
+        w_total = sum(lens_weights.get(k, 0.1) for k in lenses)
+        composite = w_sum / w_total if w_total > 0 else 0.0
+        comp_icon = '🟢' if composite >= 0.7 else '🟡' if composite >= 0.4 else '🔴'
+
+        if audience == 'public':
+            lines.append("## Дополнительные проверки качества\n")
+            lines.append(f"Общая оценка качества: {comp_icon} **{composite:.0%}**\n")
+            # Only show problem lenses
+            for name, data in lenses.items():
+                if data['score'] < 0.5 and data['tier_msgs'].get('public'):
+                    icon = '🔴' if data['score'] < 0.3 else '🟡'
+                    lines.append(f"{icon} **{data['label']}:** {data['tier_msgs']['public']}\n")
+        else:
+            lines.append("## Quality Lenses (external validity)\n")
+            if audience == 'student':
+                lines.append("*These dimensions apply to any scientific article and help build "
+                             "your general critical appraisal skills.*\n")
+
+            lines.append(f"**Composite:** {comp_icon} {composite:.0%}\n")
+            lines.append("| Lens | Score | Status |")
+            lines.append("|------|-------|--------|")
+            for name, data in lenses.items():
+                sc = data['score']
+                icon = '🟢' if sc >= 0.7 else '🟡' if sc >= 0.4 else '🔴'
+                status = 'Good' if sc >= 0.7 else 'Gaps' if sc >= 0.4 else 'Weak'
+                lines.append(f"| {data['label']} | {icon} {sc:.0%} | {status} |")
+            lines.append("")
+
+        return "\n".join(lines)
+
+    def _render_verdict_block(self, blocks: list, audience: str) -> str:
+        """Render tiered verdict blocks as markdown."""
+        lines = []
+
+        if audience == 'public':
+            lines.append("## На что обратить внимание\n")
+        elif audience == 'student':
+            lines.append("## Improvement Verdict\n")
+            lines.append("*These insights have external validity — they apply to scientific "
+                         "articles in general, not just this one.*\n")
+        else:
+            lines.append("## Improvement Verdict\n")
+
+        for block in blocks:
+            lines.append(f"**{block['icon']} {block['label']}** ({block['score']:.0%})")
+            lines.append(f"> {block['message']}\n")
+
+        return "\n".join(lines)
 
     def _report_public(self, result: CheckResult, study_type: str = '') -> str:
         """Plain-language report for patients and non-specialists."""

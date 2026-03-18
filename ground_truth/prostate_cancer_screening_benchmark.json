@@ -1,0 +1,201 @@
+{
+  "article_id": "prostate_cancer_screening",
+  "checklist": "CONSORT",
+  "force_llm": false,
+  "checker_weighted_score": 46.76,
+  "checker_simple_score": 86.49,
+  "agreement_rate": 0.405,
+  "cohens_kappa": 0.094,
+  "total_items": 37,
+  "agreements": 15,
+  "disagreements_count": 22,
+  "underestimates": 18,
+  "overestimates": 4,
+  "per_item": {
+    "1a": {
+      "expert": "present",
+      "checker": "absent",
+      "match": false
+    },
+    "1b": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "2a": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "2b": {
+      "expert": "partial",
+      "checker": "present",
+      "match": false
+    },
+    "3a": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "3b": {
+      "expert": "present",
+      "checker": "absent",
+      "match": false
+    },
+    "4a": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "4b": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "5": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "6a": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "6b": {
+      "expert": "absent",
+      "checker": "partial",
+      "match": false
+    },
+    "7a": {
+      "expert": "present",
+      "checker": "absent",
+      "match": false
+    },
+    "7b": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "8a": {
+      "expert": "partial",
+      "checker": "partial",
+      "match": true
+    },
+    "8b": {
+      "expert": "partial",
+      "checker": "partial",
+      "match": true
+    },
+    "9": {
+      "expert": "partial",
+      "checker": "partial",
+      "match": true
+    },
+    "10": {
+      "expert": "partial",
+      "checker": "partial",
+      "match": true
+    },
+    "11a": {
+      "expert": "absent",
+      "checker": "absent",
+      "match": true
+    },
+    "11b": {
+      "expert": "absent",
+      "checker": "partial",
+      "match": false
+    },
+    "12a": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "12b": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "13a": {
+      "expert": "present",
+      "checker": "absent",
+      "match": false
+    },
+    "13b": {
+      "expert": "partial",
+      "checker": "present",
+      "match": false
+    },
+    "14a": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "14b": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "15": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "16": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "17a": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "17b": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "18": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "19": {
+      "expert": "present",
+      "checker": "partial",
+      "match": false
+    },
+    "20": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "21": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "22": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "23": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "24": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    },
+    "25": {
+      "expert": "present",
+      "checker": "present",
+      "match": true
+    }
+  }
+}

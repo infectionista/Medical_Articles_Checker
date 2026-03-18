@@ -1,0 +1,130 @@
+{
+  "total_articles": 19,
+  "total_items": 517,
+  "exact_agreement": 0.6595744680851063,
+  "lenient_agreement": 0.7253384912959381,
+  "kappa_3class": 0.305,
+  "kappa_binary": 0.338,
+  "underestimates": 108,
+  "overestimates": 68,
+  "per_article": {
+    "allhat_2002_hypertension": {
+      "checklist": "CONSORT",
+      "agree_rate": 0.676,
+      "kappa": 0.0,
+      "checker_score": 33.82
+    },
+    "boldt_retracted_cpb_priming": {
+      "checklist": "CONSORT",
+      "agree_rate": 0.595,
+      "kappa": -0.041,
+      "checker_score": 14.48
+    },
+    "forster_2020_phylogenetic": {
+      "checklist": "GENOMICS",
+      "agree_rate": 0.727,
+      "kappa": 0.535,
+      "checker_score": 25.18
+    },
+    "framingham_cohort_chd": {
+      "checklist": "STROBE",
+      "agree_rate": 0.484,
+      "kappa": 0.113,
+      "checker_score": 36.96
+    },
+    "garcia_2026_robotic_bronchoscopy_case_series": {
+      "checklist": "JBI_CASE_SERIES",
+      "agree_rate": 0.8,
+      "kappa": -0.111,
+      "checker_score": 64.48
+    },
+    "gautret_2020_hydroxychloroquine": {
+      "checklist": "STROBE",
+      "agree_rate": 0.645,
+      "kappa": 0.424,
+      "checker_score": 31.77
+    },
+    "isis2_1988_streptokinase_aspirin": {
+      "checklist": "CONSORT",
+      "agree_rate": 0.703,
+      "kappa": 0.111,
+      "checker_score": 42.85
+    },
+    "macchiarini_2011_trachea_retracted": {
+      "checklist": "JBI_CASE_SERIES",
+      "agree_rate": 0.9,
+      "kappa": 0.0,
+      "checker_score": 56.24
+    },
+    "moraes_2022_hcq_systematic_review": {
+      "checklist": "PRISMA",
+      "agree_rate": 0.862,
+      "kappa": 0.256,
+      "checker_score": 63.41
+    },
+    "recovery_2021_dexamethasone": {
+      "checklist": "CONSORT",
+      "agree_rate": 0.784,
+      "kappa": 0.122,
+      "checker_score": 51.11
+    },
+    "redcvd_2021_cardiovascular_protocol": {
+      "checklist": "CONSORT",
+      "agree_rate": 0.595,
+      "kappa": 0.14,
+      "checker_score": 38.03
+    },
+    "robinson_2024_brain_tumours_case_control": {
+      "checklist": "STROBE",
+      "agree_rate": 0.419,
+      "kappa": 0.018,
+      "checker_score": 58.42
+    },
+    "stampfer_1991_estrogen_cohort": {
+      "checklist": "STROBE",
+      "agree_rate": 0.323,
+      "kappa": 0.0,
+      "checker_score": 0.0
+    },
+    "staph_genomic_multiresistant": {
+      "checklist": "GENOMICS",
+      "agree_rate": 0.636,
+      "kappa": 0.27,
+      "checker_score": 53.71
+    },
+    "strohmeier_cochrane_pyelonephritis": {
+      "checklist": "PRISMA",
+      "agree_rate": 0.828,
+      "kappa": 0.356,
+      "checker_score": 53.24
+    },
+    "wakefield_1998_vaccines_autism": {
+      "checklist": "JBI_CASE_SERIES",
+      "agree_rate": 0.8,
+      "kappa": 0.0,
+      "checker_score": 46.08
+    },
+    "wen_2022_obesity_cross_sectional": {
+      "checklist": "STROBE",
+      "agree_rate": 0.645,
+      "kappa": 0.188,
+      "checker_score": 38.08
+    },
+    "xpert_mtb_rif_diagnostic_accuracy": {
+      "checklist": "QUADAS2",
+      "agree_rate": 0.643,
+      "kappa": 0.286,
+      "checker_score": 27.31
+    },
+    "yildirim_2023_handwashing_quasi_experimental": {
+      "checklist": "STROBE",
+      "agree_rate": 0.839,
+      "kappa": 0.668,
+      "checker_score": 24.04
+    }
+  },
+  "optimal_binary_threshold": 0.05,
+  "optimal_present_threshold": 0.3,
+  "optimal_partial_threshold": 0.25,
+  "optimal_kappa_3class": 0.328
+}
